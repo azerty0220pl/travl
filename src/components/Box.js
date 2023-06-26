@@ -17,6 +17,8 @@ export const BoxAbsolute = styled(Box)`
     height: 50%;
     top: 0;
     right: 0;
+    border-radius: ${props => props.radius || "0.25rem"};
+    padding: ${props => props.padding || "0.25rem 0rem"};
 `;
 
 export const Entry = styled(Box)`

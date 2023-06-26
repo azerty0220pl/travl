@@ -125,6 +125,9 @@ const Menu = ({ title }) => {
                 <Entry padding="1rem">
                     <Icon>
                         <BiEnvelope color="#135846" />
+                        <BoxAbsolute color="#E23428">
+                            <Text color="white" size="0.5rem" align="center">28</Text>
+                        </BoxAbsolute>
                     </Icon>
                     <Icon>
                         <BiBell color="#135846" />
