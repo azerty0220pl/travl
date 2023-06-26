@@ -6,7 +6,9 @@ export const Box = styled.div`
     background-color: ${props => props.color || "white"};
     border: ${props => props.border || "none"};
     padding: ${props => props.padding || "2rem"};
-    margin: auto;
+    margin: ${props => props.margin || "0"};
+    width: ${props => props.width || 'auto'};
+    height: ${props => props.height || 'auto'};
 `;
 
 export const BoxAbsolute = styled(Box)`
@@ -23,4 +25,14 @@ export const Entry = styled(Box)`
     gap: 1rem;
     justify-content: ${props => props.justify || "start"};
     align-items: center;
+    padding: ${props => props.padding || "1rem 2rem"};
 `;
+
+export const Icon = styled(Box)`
+    display: block;
+    padding: ${props => props.padding || "0.5rem"};
+    border-radius: ${props => props.radius || "0.5rem"};
+    width: ${props => props.width || '2rem'};
+    height: ${props => props.height || '2rem'};
+    margin: ${props => props.margin || "auto"};
+`; 
