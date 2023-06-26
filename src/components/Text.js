@@ -5,6 +5,9 @@ const Text = styled.p`
     text-align: ${props => props.align || "start"};
     font-size: ${props => props.color || "1rem"};
     font-weight: ${props => props.weight || "400"};
+    text-decoration: none;
+    width: 100%;
+    word-wrap: break-word;
 `;
 
 export default Text;
