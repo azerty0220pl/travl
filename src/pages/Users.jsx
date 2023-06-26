@@ -1,6 +1,10 @@
+import Menu from "../components/Menu";
+
 const Users = () => {
     return (
-        <div></div>
+        <div>
+            <Menu title="Users" />
+        </div>
     );
 }
 

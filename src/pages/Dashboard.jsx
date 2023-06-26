@@ -1,6 +1,10 @@
+import Menu from "../components/Menu";
+
 const Dashboard = () => {
     return (
-        <div></div>
+        <div>
+            <Menu title="Dashboard" />
+        </div>
     );
 }
 

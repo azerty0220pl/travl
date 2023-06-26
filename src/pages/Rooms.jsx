@@ -1,6 +1,10 @@
+import Menu from "../components/Menu";
+
 const Rooms = () => {
     return (
-        <div></div>
+        <div>
+            <Menu title="Rooms" />
+        </div>
     );
 }
 

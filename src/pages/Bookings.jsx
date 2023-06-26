@@ -1,6 +1,10 @@
+import Menu from "../components/Menu";
+
 const Bookings = () => {
     return (
-        <div></div>
+        <div>
+            <Menu title="Bookings" />
+        </div>
     );
 }
 
