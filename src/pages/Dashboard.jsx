@@ -1,15 +1,10 @@
 import Menu from "../components/Menu";
-import { Box, Entry, Icon } from "../components/Box";
-import Text from "../components/Text";
+import { Box, Entry } from "../components/Box";
 import { LiaBedSolid, LiaCalendarCheck } from 'react-icons/lia';
 import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import empty from "../assets/empty.png";
 import ReservationEntry from "../components/ReservationEntry";
 import KPI from "../components/KPI";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from "swiper";
-import 'swiper/css';
-import 'swiper/css/navigation';
 
 const Page = () => {
     return (
@@ -44,20 +39,6 @@ const Page = () => {
                     to="29/07/2023"
                     last />
             </Box>
-
-            <Swiper
-                navigation={true}
-                modules={[Navigation]}
-                spaceBetween={16}
-                slidesPerView={3}
-            >
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-            </Swiper>
         </div>
     );
 }
