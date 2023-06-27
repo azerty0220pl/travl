@@ -4,7 +4,7 @@ const Text = styled.p`
     color: ${props => props.color || "black"};
     text-align: ${props => props.align || "start"};
     font-size: ${props => props.size || "1rem"};
-    line-height: ${props => props.size || "1rem"};
+    line-height: ${props => props.line || props.size || "1rem"};
     font-weight: ${props => props.weight || "400"};
     text-decoration: none;
     width:  ${props => props.width || "100%"};
