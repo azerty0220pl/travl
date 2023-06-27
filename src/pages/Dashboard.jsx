@@ -6,6 +6,8 @@ import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import empty from "../assets/empty.png";
 import ReservationEntry from "../components/ReservationEntry";
 import KPI from "../components/KPI";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const Dashboard = () => {
     return (
@@ -17,7 +19,7 @@ const Dashboard = () => {
                 <KPI Ico={BiLogIn} number="753" title="Check In" />
                 <KPI Ico={BiLogOut} number="516" title="Check Out" />
             </Entry>
-            <Box margin="0 1rem" >
+            <Box margin="0 1rem">
                 <ReservationEntry
                     room="Deluxe Duplex Room"
                     number="001"
@@ -40,6 +42,20 @@ const Dashboard = () => {
                     from="27/07/2023"
                     to="29/07/2023"
                     last />
+            </Box>
+
+            <Box margin="1rem">
+                <Swiper
+                    spaceBetween={50}
+                    slidesPerView={3}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                >
+                    <SwiperSlide>Slide 1</SwiperSlide>
+                    <SwiperSlide>Slide 2</SwiperSlide>
+                    <SwiperSlide>Slide 3</SwiperSlide>
+                    <SwiperSlide>Slide 4</SwiperSlide>
+                </Swiper>
             </Box>
         </div>
     );
