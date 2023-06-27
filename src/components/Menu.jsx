@@ -32,10 +32,12 @@ const SideBar = styled.div`
 
 const Content = styled.div`
     position: absolute;
-    top: 5rem;
+    top: 4rem;
     right: 0;
     width: ${props => props.sideBar ? "80vw" : "100vw"};
+    height: calc(100vh - 4rem);
     transition: all 0.5s;
+    overflow-y: auto;
 `;
 
 const Container = styled.div`
@@ -52,7 +54,7 @@ const Menu = ({ title, Page }) => {
     return (
         <Container>
             <SideBar sideBar={sideBar}>
-                <Box margin="1rem auto">
+                <Box padding="1rem" margin="0 auto 1rem auto">
                     <img src={logo} />
                 </Box>
                 <Box padding="0">
