@@ -10,6 +10,7 @@ export const Box = styled.div`
     width: ${props => props.width || 'auto'};
     height: ${props => props.height || 'auto'};
     object-fit: cover;
+    overflow: hidden;
 `;
 
 export const BoxAbsolute = styled(Box)`
