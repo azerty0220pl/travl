@@ -34,7 +34,7 @@ export const Icon = styled(Box)`
     display: block;
     padding: ${props => props.padding || "0.5rem"};
     border-radius: ${props => props.radius || "0.5rem"};
-    width: ${props => props.width || '2rem'};
-    height: ${props => props.height || '2rem'};
-    margin: ${props => props.margin || "auto"};
+    width: ${props => props.dim || '2rem'};
+    height: ${props => props.dim || '2rem'};
+    margin: ${props => props.margin || "0"};
 `; 
