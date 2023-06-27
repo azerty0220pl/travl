@@ -6,6 +6,7 @@ import empty from "../assets/empty.png";
 import ReservationEntry from "../components/ReservationEntry";
 import KPI from "../components/KPI";
 import Swiper from "../components/Swiper";
+import Message from "../components/Message";
 
 const Page = () => {
     return (
@@ -41,7 +42,50 @@ const Page = () => {
                     last />
             </Box>
             <Box margin="1rem">
-                <Swiper data={[<div>1</div>, <div>2</div>, <div>3</div>, <div>4</div>, <div>5</div>, <div>6</div>, <div>7</div>]} direction="row" count={3} />
+                <Swiper data={[
+                    <Message
+                        name="name1"
+                        mail="mail1"
+                        subject="subject1"
+                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+                    />,
+                    <Message
+                        name="name2"
+                        mail="mail2"
+                        subject="subject2"
+                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+                    />,
+                    <Message
+                        name="name3"
+                        mail="mail3"
+                        subject="subject3"
+                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+                    />,
+                    <Message
+                        name="name4"
+                        mail="mail4"
+                        subject="subject4"
+                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+                    />,
+                    <Message
+                        name="name5"
+                        mail="mail5"
+                        subject="subject5"
+                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+                    />,
+                    <Message
+                        name="name6"
+                        mail="mail6"
+                        subject="subject6"
+                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+                    />,
+                    <Message
+                        name="name7"
+                        mail="mail7"
+                        subject="subject7"
+                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+                    />
+                ]} direction="row" count={3} />
             </Box>
         </div>
     );
