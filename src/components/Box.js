@@ -24,8 +24,8 @@ export const BoxAbsolute = styled(Box)`
 
 export const Entry = styled(Box)`
     display: flex;
-    flex-direction: row;
-    gap: 1rem;
+    flex-direction: ${props => props.direction || 'row'};
+    gap: ${props => props.gap || '1rem'};
     justify-content: ${props => props.justify || "start"};
     align-items: center;
     padding: ${props => props.padding || "1rem 2rem"};
