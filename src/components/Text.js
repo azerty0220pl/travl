@@ -6,7 +6,7 @@ const Text = styled.p`
     font-size: ${props => props.size || "1rem"};
     font-weight: ${props => props.weight || "400"};
     text-decoration: none;
-    width: 100%;
+    width:  ${props => props.width || "100%"};
     word-wrap: break-word;
 `;
 
