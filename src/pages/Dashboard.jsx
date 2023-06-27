@@ -7,13 +7,14 @@ import empty from "../assets/empty.png";
 import ReservationEntry from "../components/ReservationEntry";
 import KPI from "../components/KPI";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from "swiper";
 import 'swiper/css';
+import 'swiper/css/navigation';
 
-const Dashboard = () => {
+const Page = () => {
     return (
         <div>
-            <Menu title="Dashboard" />
-            <Entry justify="space-between" color="none" padding="1rem" margin="5rem 0 0 0">
+            <Entry justify="space-between" color="none" padding="1rem" margin="0">
                 <KPI Ico={LiaBedSolid} number="8,461" title="New Bookings" />
                 <KPI Ico={LiaCalendarCheck} number="95%" title="Scheduled Room" />
                 <KPI Ico={BiLogIn} number="753" title="Check In" />
@@ -44,20 +45,29 @@ const Dashboard = () => {
                     last />
             </Box>
 
-            <Box margin="1rem">
-                <Swiper
-                    spaceBetween={50}
-                    slidesPerView={3}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
-                >
-                    <SwiperSlide>Slide 1</SwiperSlide>
-                    <SwiperSlide>Slide 2</SwiperSlide>
-                    <SwiperSlide>Slide 3</SwiperSlide>
-                    <SwiperSlide>Slide 4</SwiperSlide>
-                </Swiper>
-            </Box>
+            <Swiper
+                navigation={true}
+                modules={[Navigation]}
+                spaceBetween={16}
+                slidesPerView={3}
+            >
+                <SwiperSlide>Slide 1</SwiperSlide>
+                <SwiperSlide>Slide 2</SwiperSlide>
+                <SwiperSlide>Slide 3</SwiperSlide>
+                <SwiperSlide>Slide 4</SwiperSlide>
+                <SwiperSlide>Slide 5</SwiperSlide>
+                <SwiperSlide>Slide 6</SwiperSlide>
+            </Swiper>
         </div>
+    );
+}
+
+const Dashboard = () => {
+    return (
+        <Menu
+            title="Dashboard"
+            Page={Page}
+        />
     );
 }
 

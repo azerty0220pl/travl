@@ -30,6 +30,14 @@ const SideBar = styled.div`
     transition: all 0.5s;
 `;
 
+const Content = styled.div`
+    position: absolute;
+    top: 5rem;
+    right: 0;
+    width: ${props => props.sideBar ? "80vw" : "100vw"};
+    transition: all 0.5s;
+`;
+
 const Container = styled.div`
     position: fixed;
     top: 0;
@@ -37,10 +45,9 @@ const Container = styled.div`
     width: 100%;
     height: 100vh;
     display: flex;
-    z-index: 10;
 `;
 
-const Menu = ({ title }) => {
+const Menu = ({ title, Page }) => {
     let [sideBar, setSidebar] = useState(false);
     return (
         <Container>
@@ -137,6 +144,9 @@ const Menu = ({ title }) => {
                     </Icon>
                 </Entry>
             </TopBar>
+            <Content sideBar={sideBar}>
+                <Page />
+            </Content>
         </Container>
     );
 }
