@@ -9,7 +9,7 @@ const ReservationEntry = ({ room, number, name, from, to, photo, last }) => {
                 <Box margin="0" padding="0" height="5rem" width="7rem" as="img" src={photo} />
                 <div>
                     <Text weight="600" size="1.25rem">{room} - {number}</Text>
-                    <Text>{name}</Text>
+                    <Text margin="1rem">{name}</Text>
                 </div>
             </Entry>
             <Text width="fit-content">{from} - {to}</Text>
