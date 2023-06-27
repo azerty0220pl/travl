@@ -2,35 +2,32 @@ import { useState } from "react";
 import { Box, Entry, Icon } from "./Box";
 import Text from "./Text";
 
-const Swiper = ({ data, direction, count }) => {
-    let [cur, setCur] = useState(0);
+export const { swiperMove } = (move, cur, setCur) => {
+    let z = data.length || 0;
+    if (z === 0)
+        return;
 
-    const move = (x) => {
-        let z = data.length || 0;
-        if (z === 0)
-            return;
+    z = Math.floor(z / count) + 1;
+    let y = cur + move;
 
-        z = Math.floor(z / count) + 1;
-        let y = cur + x;
+    if (y < 0 || y >= z)
+        return;
 
-        if (y < 0 || y >= z)
-            return;
+    setCur(y);
+};
 
-        setCur(y);
-    }
+export const { generate } = (data, cur, count) => {
+    return data.map((el, i) => {
+        if (i >= (cur + 1) * count - count && i < (cur + 1) * count)
+            return el;
+        return <></>;
+    });
+};
 
+export const { Swiper } = ({ data, count, cur, setCur }) => {
     return (
-        <div>
-            <Entry justify="space-between" gap="1rem" direction={direction}>
-                {
-                    data.map((el, i) => {
-                        if (i >= (cur + 1) * count - count && i < (cur + 1) * count)
-                            return el;
-                        return <></>;
-                    })
-                }
-            </Entry>
-            <Entry justify="end">
+        <>
+            <Entry margin="auto" justify="end" width="100%">
                 <Box
                     as="button"
                     margin="0"
@@ -54,7 +51,7 @@ const Swiper = ({ data, direction, count }) => {
                                         dim="3rem"
                                         padding="1rem"
                                         color={cur === Math.floor(i / count || 0) ? "#135846" : "transparent"}
-                                        onClick={() => {setCur(Math.floor(i / count || 0))}}
+                                        onClick={() => { setCur(Math.floor(i / count || 0)) }}
                                     >
                                         <Text
                                             align="center"
@@ -85,8 +82,6 @@ const Swiper = ({ data, direction, count }) => {
                     <Text size="1rem" color="#135846" align="center">Next</Text>
                 </Box>
             </Entry>
-        </div>
+        </>
     );
 };
-
-export default Swiper;
