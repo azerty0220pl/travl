@@ -9,6 +9,7 @@ export const Box = styled.div`
     margin: ${props => props.margin || "0"};
     width: ${props => props.width || 'auto'};
     height: ${props => props.height || 'auto'};
+    object-fit: cover;
 `;
 
 export const BoxAbsolute = styled(Box)`
