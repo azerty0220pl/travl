@@ -5,10 +5,58 @@ import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import empty from "../assets/empty.png";
 import ReservationEntry from "../components/ReservationEntry";
 import KPI from "../components/KPI";
-import Swiper from "../components/Swiper";
+import { SwiperNavigation, SwiperComponents } from "../components/Swiper";
 import Message from "../components/Message";
+import { useState } from "react";
 
 const Page = () => {
+    let data = [
+        <Message
+            name="name1"
+            mail="mail1"
+            subject="subject1"
+            message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+        />,
+        <Message
+            name="name2"
+            mail="mail2"
+            subject="subject2"
+            message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+        />,
+        <Message
+            name="name3"
+            mail="mail3"
+            subject="subject3"
+            message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+        />,
+        <Message
+            name="name4"
+            mail="mail4"
+            subject="subject4"
+            message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+        />,
+        <Message
+            name="name5"
+            mail="mail5"
+            subject="subject5"
+            message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+        />,
+        <Message
+            name="name6"
+            mail="mail6"
+            subject="subject6"
+            message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+        />,
+        <Message
+            name="name7"
+            mail="mail7"
+            subject="subject7"
+            message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+        />
+    ];
+
+    let [cur, setCur] = useState(0);
+
     return (
         <div>
             <Entry justify="space-between" color="none" padding="1rem" margin="0">
@@ -42,50 +90,10 @@ const Page = () => {
                     last />
             </Box>
             <Box margin="1rem">
-                <Swiper data={[
-                    <Message
-                        name="name1"
-                        mail="mail1"
-                        subject="subject1"
-                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
-                    />,
-                    <Message
-                        name="name2"
-                        mail="mail2"
-                        subject="subject2"
-                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
-                    />,
-                    <Message
-                        name="name3"
-                        mail="mail3"
-                        subject="subject3"
-                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
-                    />,
-                    <Message
-                        name="name4"
-                        mail="mail4"
-                        subject="subject4"
-                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
-                    />,
-                    <Message
-                        name="name5"
-                        mail="mail5"
-                        subject="subject5"
-                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
-                    />,
-                    <Message
-                        name="name6"
-                        mail="mail6"
-                        subject="subject6"
-                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
-                    />,
-                    <Message
-                        name="name7"
-                        mail="mail7"
-                        subject="subject7"
-                        message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
-                    />
-                ]} direction="row" count={3} />
+                <Entry justify="space-between" gap="1rem">
+                    <SwiperComponents data={data} cur={cur} count={3} />
+                </Entry>
+                <SwiperNavigation data={data} count={3} cur={cur} setCur={setCur} />
             </Box>
         </div>
     );
