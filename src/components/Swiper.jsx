@@ -1,22 +1,7 @@
-import { useState } from "react";
 import { Box, Entry, Icon } from "./Box";
 import Text from "./Text";
 
-export const { swiperMove } = (move, cur, setCur) => {
-    let z = data.length || 0;
-    if (z === 0)
-        return;
-
-    z = Math.floor(z / count) + 1;
-    let y = cur + move;
-
-    if (y < 0 || y >= z)
-        return;
-
-    setCur(y);
-};
-
-export const { generate } = (data, cur, count) => {
+export const { SwiperComponents } = ({ data, cur, count }) => {
     return data.map((el, i) => {
         if (i >= (cur + 1) * count - count && i < (cur + 1) * count)
             return el;
@@ -24,7 +9,21 @@ export const { generate } = (data, cur, count) => {
     });
 };
 
-export const { Swiper } = ({ data, count, cur, setCur }) => {
+export const { SwiperNavigation } = ({ data, count, cur, setCur }) => {
+    const move = (x) => {
+        let z = data.length || 0;
+        if (z === 0)
+            return;
+
+        z = Math.floor(z / count) + 1;
+        let y = cur + x;
+
+        if (y < 0 || y >= z)
+            return;
+
+        setCur(y);
+    };
+
     return (
         <>
             <Entry margin="auto" justify="end" width="100%">
