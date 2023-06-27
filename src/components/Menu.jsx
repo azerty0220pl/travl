@@ -108,10 +108,10 @@ const Menu = ({ title, Page }) => {
                     </Entry>
                 </Box>
                 <Box padding="0.5rem" margin="auto" width="80%">
-                    <Icon as="img" dim="5rem" radius="100%" margin="1rem auto" src={empty} />
+                    <Icon as="img" dim="5rem" radius="1rem" margin="1rem auto" src={empty} />
                     <Text align="middle" weight="600">Szymon Kokot</Text>
                     <Text align="middle" color="#797979" size="0.75rem">szymonekokot@gmail.com</Text>
-                    <Box width='50%' margin="1rem auto" padding="0.5rem 1rem" color="#EBF1EF">
+                    <Box width='50%' margin="1rem auto" padding="0.5rem 1rem" color="#EBF1EF" radius="0.5rem">
                         <Text weight="600" color="#135846" align="middle">Edit</Text>
                     </Box>
                 </Box>
