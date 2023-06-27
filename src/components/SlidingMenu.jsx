@@ -13,12 +13,13 @@ const Button = styled(Text)`
 const Container = styled(Entry)`
     position: relative;
     height: 3rem;
+    width: 50%;
 `;
 
 const SlidingMenu = ({ fields, handleChange }) => {
     let [cur, setCur] = useState(0);
     return (
-        <Container color="transparent" radius="0" margin="1rem" padding="1rem 0" justify="space-between" gap="0">
+        <Container color="transparent" radius="0" margin="0" padding="1rem 0" justify="space-between" gap="0">
             {
                 fields.map((el, i) => {
                     return (
