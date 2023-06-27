@@ -7,6 +7,7 @@ import { FaRegUser } from 'react-icons/fa';
 import { NavLink } from "react-router-dom";
 import Text from "./Text";
 import logo from '../assets/logo.png';
+import empty from "../assets/empty.png";
 
 const TopBar = styled.div`
     position: absolute;
@@ -100,7 +101,7 @@ const Menu = ({ title }) => {
                     </Entry>
                 </Box>
                 <Box padding="0.5rem" margin="auto" width="80%">
-                    <Icon as="img" width="5rem" height="5rem" radius="100%" margin="1rem auto" />
+                    <Icon as="img" dim="5rem" radius="100%" margin="1rem auto" src={empty} />
                     <Text align="middle" weight="600">Szymon Kokot</Text>
                     <Text align="middle" color="#797979" size="0.75rem">szymonekokot@gmail.com</Text>
                     <Box width='50%' margin="1rem auto" padding="0.5rem 1rem" color="#EBF1EF">
