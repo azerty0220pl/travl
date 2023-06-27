@@ -5,6 +5,7 @@ import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import empty from "../assets/empty.png";
 import ReservationEntry from "../components/ReservationEntry";
 import KPI from "../components/KPI";
+import Swiper from "../components/Swiper";
 
 const Page = () => {
     return (
@@ -38,6 +39,9 @@ const Page = () => {
                     from="27/07/2023"
                     to="29/07/2023"
                     last />
+            </Box>
+            <Box margin="1rem">
+                <Swiper data={[<div>1</div>, <div>2</div>, <div>3</div>, <div>4</div>, <div>5</div>, <div>6</div>, <div>7</div>]} direction="row" count={3} />
             </Box>
         </div>
     );
