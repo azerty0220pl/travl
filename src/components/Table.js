@@ -12,5 +12,5 @@ export const Row = styled.div`
 
 export const Cell = styled.div`
     display: table-cell;
-    padding: 1rem 0;
+    padding: 1rem 1rem 1rem 0;
 `;
