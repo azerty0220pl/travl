@@ -11,6 +11,7 @@ export const Box = styled.div`
     height: ${props => props.height || 'auto'};
     object-fit: cover;
     overflow: hidden;
+    vertical-align: middle;
 `;
 
 export const BoxAbsolute = styled(Box)`
