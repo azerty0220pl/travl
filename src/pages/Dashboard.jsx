@@ -91,7 +91,7 @@ const Page = () => {
             </Box>
             <Box margin="1rem">
                 <Entry justify="space-between" gap="1rem">
-                    <SwiperComponents data={data} cur={cur} count={3} />
+                    <SwiperComponents data={data} count={3} cur={cur} />
                 </Entry>
                 <SwiperNavigation data={data} count={3} cur={cur} setCur={setCur} />
             </Box>

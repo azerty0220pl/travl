@@ -1,15 +1,21 @@
 import { Box, Entry, Icon } from "./Box";
 import Text from "./Text";
 
-export const { SwiperComponents } = ({ data, cur, count }) => {
-    return data.map((el, i) => {
-        if (i >= (cur + 1) * count - count && i < (cur + 1) * count)
-            return el;
-        return <></>;
-    });
+export const SwiperComponents = ({ data, cur, count }) => {
+    return (
+        <>
+            {
+                data.map((el, i) => {
+                    if (i >= (cur + 1) * count - count && i < (cur + 1) * count)
+                        return el;
+                    return <></>;
+                })
+            }
+        </>
+    );
 };
 
-export const { SwiperNavigation } = ({ data, count, cur, setCur }) => {
+export const SwiperNavigation = ({ data, count, cur, setCur }) => {
     const move = (x) => {
         let z = data.length || 0;
         if (z === 0)
