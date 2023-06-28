@@ -32,7 +32,7 @@ export const SwiperNavigation = ({ data, count, cur, setCur }) => {
 
     return (
         <>
-            <Entry margin="auto" justify="end" width="100%">
+            <Entry color="transparent" margin="0" padding="0" justify="end" width="100%">
                 <Box
                     as="button"
                     margin="0"
