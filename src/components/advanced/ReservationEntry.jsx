@@ -1,5 +1,5 @@
-import { Entry, Box } from "./Box";
-import Text from "./Text";
+import { Entry, Box } from "../basic/Box";
+import Text from "../basic/Text";
 
 const ReservationEntry = ({ room, number, name, from, to, photo, last }) => {
 

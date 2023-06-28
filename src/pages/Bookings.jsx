@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
-import { Box, Entry } from "../components/Box";
-import Menu from "../components/Menu";
-import SlidingMenu from "../components/SlidingMenu";
-import Text from "../components/Text";
-import { Table, Row, Cell } from "../components/Table";
-import { SwiperNavigation, SwiperComponents } from "../components/Swiper";
+import { Box, Entry } from "../components/basic/Box";
+import Menu from "../components/advanced/Menu";
+import SlidingMenu from "../components/advanced/SlidingMenu";
+import Text from "../components/basic/Text";
+import { Table, Row, Cell } from "../components/basic/Table";
+import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
 import { useState } from "react";
 
 const Select = styled(Text)`

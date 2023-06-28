@@ -10,6 +10,7 @@ const Text = styled.p`
     width:  ${props => props.width || "100%"};
     word-wrap: break-word;
     margin-top: ${props => props.margin || "0"};
+    white-space: ${props => props.space || "normal"};
 `;
 
 export default Text;

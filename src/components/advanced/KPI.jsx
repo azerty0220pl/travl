@@ -1,5 +1,5 @@
-import { Entry, Icon } from "./Box";
-import Text from "./Text";
+import { Entry, Icon } from "../basic/Box";
+import Text from "../basic/Text";
 
 const KPI = ({ Ico, number, title }) => {
     return (

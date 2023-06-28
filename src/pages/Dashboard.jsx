@@ -1,12 +1,12 @@
-import Menu from "../components/Menu";
-import { Box, Entry } from "../components/Box";
+import Menu from "../components/advanced/Menu";
+import { Box, Entry } from "../components/basic/Box";
 import { LiaBedSolid, LiaCalendarCheck } from 'react-icons/lia';
 import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import empty from "../assets/empty.png";
-import ReservationEntry from "../components/ReservationEntry";
-import KPI from "../components/KPI";
-import { SwiperNavigation, SwiperComponents } from "../components/Swiper";
-import Message from "../components/Message";
+import ReservationEntry from "../components/advanced/ReservationEntry";
+import KPI from "../components/advanced/KPI";
+import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
+import Message from "../components/advanced/Message";
 import { useState } from "react";
 
 const Page = () => {

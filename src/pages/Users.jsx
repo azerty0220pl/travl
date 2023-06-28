@@ -1,24 +1,12 @@
-import { styled } from "styled-components";
-import { Box, Entry } from "../components/Box";
-import Menu from "../components/Menu";
-import SlidingMenu from "../components/SlidingMenu";
-import Text from "../components/Text";
-import { Table, Row, Cell } from "../components/Table";
-import { SwiperNavigation, SwiperComponents } from "../components/Swiper";
+import { Box, Entry } from "../components/basic/Box";
+import Menu from "../components/advanced/Menu";
+import SlidingMenu from "../components/advanced/SlidingMenu";
+import Text from "../components/basic/Text";
+import { Table, Row, Cell } from "../components/basic/Table";
+import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
 import { useState } from "react";
 import empty from '../assets/empty.png';
-
-const Select = styled(Text)`
-    border: 2px solid #135846;
-    width: auto;
-    border-radius: 0.75rem;
-    height: 3rem;
-    padding: 0.875rem;
-    weight: 500;
-    &:focus {
-        outline: none;
-    }
-`;
+import Select from "../components/basic/Select";
 
 const Page = () => {
     let data = [

@@ -1,5 +1,5 @@
-import { Box, Entry, Icon } from "./Box";
-import Text from "./Text";
+import { Box, Entry, Icon } from "../basic/Box";
+import Text from "../basic/Text";
 
 export const SwiperComponents = ({ data, cur, count }) => {
     return (
