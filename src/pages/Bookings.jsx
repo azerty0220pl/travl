@@ -23,21 +23,21 @@ const Page = () => {
     let data = [
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Refund"],
+        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "", "Deluxe Duplex Bed", "Booked"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
+        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "", "Deluxe Duplex Bed", "In Progress"],
+        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "", "Deluxe Duplex Bed", "Booked"],
+        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "", "Deluxe Duplex Bed", "Booked"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "In Progress"],
-        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
-        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
-        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
-        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "In Progress"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Refund"],
+        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "", "Deluxe Duplex Bed", "Booked"],
+        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "", "Deluxe Duplex Bed", "Refund"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
+        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "", "Deluxe Duplex Bed", "Booked"],
+        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "", "Deluxe Duplex Bed", "Refund"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Refund"],
-        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
-        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
-        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Refund"],
-        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Refund"],
-        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
+        ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "", "Deluxe Duplex Bed", "Booked"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "In Progress"]
     ];
 
@@ -82,7 +82,7 @@ const Page = () => {
                 <Cell>
                     {
                         el[4].length === 0 ?
-                            <Box margin="0 2rem" padding="1rem" height="3rem" border="2px solid #799283">
+                            <Box margin="0 2rem 0 0" padding="1rem" height="3rem" border="2px solid #799283">
                                 <Text align="center" color="#799283">View Notes</Text>
                             </Box>
                             :
