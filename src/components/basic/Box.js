@@ -17,10 +17,10 @@ export const Box = styled.div`
 
 export const BoxAbsolute = styled(Box)`
     position: absolute;
-    width: 50%;
-    height: 50%;
-    top: 0;
-    right: 0;
+    top: ${props => props.top || 'unset'};
+    bottom: ${props => props.bottom || 'unset'};
+    left: ${props => props.left || 'unset'};
+    right: ${props => props.right || 'unset'};
     border-radius: ${props => props.radius || "0.25rem"};
     padding: ${props => props.padding || "0.25rem 0rem"};
 `;
@@ -32,6 +32,7 @@ export const Entry = styled(Box)`
     justify-content: ${props => props.justify || "start"};
     align-items: center;
     padding: ${props => props.padding || "1rem 2rem"};
+    flex-wrap: ${props => props.wrap || "unset"};
 `;
 
 export const Icon = styled(Box)`
