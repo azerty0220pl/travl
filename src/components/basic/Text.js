@@ -11,6 +11,11 @@ const Text = styled.p`
     word-wrap: break-word;
     margin-top: ${props => props.margin || "0"};
     white-space: ${props => props.space || "normal"};
+
+    &::placeholder {
+        font-size: ${props => props.size || "1rem"};
+        font-family: Poppins;
+    }
 `;
 
 export default Text;
