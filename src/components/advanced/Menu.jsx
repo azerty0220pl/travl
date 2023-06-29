@@ -4,7 +4,7 @@ import { Box, BoxAbsolute, Entry, Icon } from "../basic/Box";
 import { MdOutlineDashboard, MdCalendarMonth, MdKey, MdContactSupport } from 'react-icons/md';
 import { BiEnvelope, BiLogOut, BiBell, BiRightArrowAlt, BiLeftArrowAlt } from 'react-icons/bi';
 import { FaRegUser } from 'react-icons/fa';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Text from "../basic/Text";
 import logo from '../../assets/logo.png';
 import empty from "../../assets/empty.png";
@@ -51,6 +51,11 @@ const Container = styled.div`
 
 const Menu = ({ title, Page }) => {
     let [sideBar, setSidebar] = useState(false);
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate("/users/edit");
+    }
+
     return (
         <Container>
             <SideBar sideBar={sideBar}>
@@ -113,7 +118,7 @@ const Menu = ({ title, Page }) => {
                     <Icon as="img" dim="5rem" radius="1rem" margin="1rem auto" src={empty} />
                     <Text align="middle" weight="600">Szymon Kokot</Text>
                     <Text align="middle" color="#797979" size="0.75rem">szymonekokot@gmail.com</Text>
-                    <Box width='50%' margin="1rem auto" padding="0.5rem 1rem" color="#EBF1EF" radius="0.5rem">
+                    <Box as="button" width='50%' margin="1rem auto" padding="0.5rem 1rem" color="#EBF1EF" radius="0.5rem" onClick={handleClick}>
                         <Text weight="600" color="#135846" align="middle">Edit</Text>
                     </Box>
                 </Box>
