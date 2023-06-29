@@ -7,6 +7,7 @@ import Rooms from "./pages/Rooms";
 import Contact from "./pages/Contact";
 import Users from "./pages/Users";
 import UserEdit from "./pages/UsersEdit";
+import BookingDetails from "./pages/BookingDetails";
 import './App.css';
 
 function App() {
@@ -14,7 +15,10 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<PrivateRoute Element={<Dashboard />} />} />
-      <Route path="/bookings" element={<PrivateRoute Element={<Bookings />} />} />
+      <Route path="/bookings">
+        <Route index element={<PrivateRoute Element={<Bookings />} />} />
+        <Route path="details" element={<PrivateRoute Element={<BookingDetails />} />} />
+      </Route>
       <Route path="/rooms" element={<PrivateRoute Element={<Rooms />} />} />
       <Route path="/contact" element={<PrivateRoute Element={<Contact />} />} />
       <Route path="/users" >
