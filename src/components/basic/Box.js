@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 export const Box = styled.div`
     position: relative;
+    display: block;
     border-radius: ${props => props.radius || "0.75rem"};
     background-color: ${props => props.color || "white"};
     border: ${props => props.border || "none"};
