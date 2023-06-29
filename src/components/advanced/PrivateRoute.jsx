@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 export const PrivateRoute = ({ Element, ...rest }) => {
     return (
         localStorage.getItem("session") === "admin" ?
-            <Element />
+            Element
             :
             <Navigate to="/login" />
     );
