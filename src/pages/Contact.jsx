@@ -6,7 +6,6 @@ import Message from "../components/advanced/Message";
 import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
-import Select from "../components/basic/Select";
 
 const Page = () => {
 
