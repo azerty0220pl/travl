@@ -7,6 +7,7 @@ import Rooms from "./pages/Rooms";
 import Contact from "./pages/Contact";
 import Users from "./pages/Users";
 import './App.css';
+import UserEdit from "./pages/UsersEdit";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
       <Route path="/bookings" element={<PrivateRoute Element={<Bookings />} />} />
       <Route path="/rooms" element={<PrivateRoute Element={<Rooms />} />} />
       <Route path="/contact" element={<PrivateRoute Element={<Contact />} />} />
-      <Route path="/users" element={<PrivateRoute Element={<Users />} />} />
+      <Route path="/users" element={<PrivateRoute Element={<Users />} />}>
+        <Route  path="./edit" element={<PrivateRoute Element={<UserEdit />} />} />
+      </Route>
     </Routes>
   );
 }
