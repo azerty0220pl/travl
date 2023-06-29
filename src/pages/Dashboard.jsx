@@ -74,7 +74,7 @@ const Page = () => {
                     from="27/07/2023"
                     to="29/07/2023" />
                 <ReservationEntry
-                    room="Minimal Monplex Room"
+                    room="Minimal Monoplex Room"
                     number="505"
                     photo={empty}
                     name="Amber Heard"
