@@ -46,7 +46,7 @@ const Login = () => {
                                     <></>
                             }
                             <Box as="button" color="#EEF9F2" margin="1rem auto 0 auto" padding="1rem">
-                                <Text align="center">Login</Text>
+                                <Text weight="600" align="center">Login</Text>
                             </Box>
                         </form>
                     </Box>
