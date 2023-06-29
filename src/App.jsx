@@ -6,8 +6,8 @@ import Bookings from "./pages/Bookings";
 import Rooms from "./pages/Rooms";
 import Contact from "./pages/Contact";
 import Users from "./pages/Users";
-import './App.css';
 import UserEdit from "./pages/UsersEdit";
+import './App.css';
 
 function App() {
   return (
