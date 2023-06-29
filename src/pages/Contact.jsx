@@ -100,7 +100,7 @@ const Page = () => {
                 </Box>
             </Box>
             <Entry margin="0 1rem" padding="1rem" color="transparent" justify="space-between">
-                <SlidingMenu fields={["All Comments", "Published", "Archived"]} handleChange={() => { }} />
+                <SlidingMenu fields={["All Contacts", "Archived"]} handleChange={() => { }} />
                 <Select as="select" color="#135846" weight="600" line="1.5rem">
                     <Text as='option' value="status" color="#135846" weight="400">Status</Text>
                     <Text as='option' value="ascending" color="#135846" weight="400">Price Ascending</Text>
