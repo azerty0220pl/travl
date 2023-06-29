@@ -58,7 +58,7 @@ const Page = () => {
                 </Box>
             </Box>
             <Box margin="0" padding="0" width="50%">
-                <Icon as="img" dim="25rem" src={empty} margin="auto" padding="0" />
+                <Icon as="img" dim="30rem" src={empty} margin="auto" padding="0" />
             </Box>
         </Entry>
     );
