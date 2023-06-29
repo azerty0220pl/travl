@@ -11,6 +11,9 @@ const Text = styled.p`
     word-wrap: break-word;
     margin-top: ${props => props.margin || "0"};
     white-space: ${props => props.space || "normal"};
+    font-family: Poppins;
+    height: ${props => props.height || "auto"};
+    vertical-align: middle;
 
     &::placeholder {
         font-size: ${props => props.size || "1rem"};
