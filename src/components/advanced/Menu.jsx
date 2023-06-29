@@ -142,16 +142,16 @@ const Menu = ({ title, Page }) => {
                     <Text weight="600" size="2rem">{title}</Text>
                 </Entry>
                 <Entry padding="1rem">
-                    <Icon>
+                    <Icon radius="0">
                         <BiEnvelope color="#135846" />
-                        <BoxAbsolute color="#E23428">
+                        <BoxAbsolute color="#E23428" width="50%" height="50%" top="0" right="0">
                             <Text color="white" size="0.5rem" align="center">28</Text>
                         </BoxAbsolute>
                     </Icon>
-                    <Icon>
+                    <Icon radius="0">
                         <BiBell color="#135846" />
                     </Icon>
-                    <Icon as="button" onClick={logout}>
+                    <Icon as="button" onClick={logout} radius="0">
                         <BiLogOut color="#135846" />
                     </Icon>
                 </Entry>
