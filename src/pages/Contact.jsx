@@ -69,7 +69,7 @@ const Page = () => {
                 </Entry>
             </Cell>
             <Cell>
-                <Entry padding="0" margin="0" radius="0" gap="0" width="10erm">
+                <Entry padding="0" margin="0 0 0 -0.25rem" radius="0" gap="0" width="10erm">
                     <Text space="pre" width="auto"> </Text>
                     <Box padding="0" margin="0" radius="0" height="3rem">
                         <Text line="1.5rem" width="auto" weight="600">Subject 1</Text>
@@ -100,7 +100,7 @@ const Page = () => {
                 </Box>
             </Box>
             <Entry margin="0 1rem" padding="1rem" color="transparent" justify="space-between">
-                <SlidingMenu fields={["All Rooms", "Available", "Booked"]} handleChange={() => { }} />
+                <SlidingMenu fields={["All Comments", "Published", "Archived"]} handleChange={() => { }} />
                 <Select as="select" color="#135846" weight="600" line="1.5rem">
                     <Text as='option' value="status" color="#135846" weight="400">Status</Text>
                     <Text as='option' value="ascending" color="#135846" weight="400">Price Ascending</Text>

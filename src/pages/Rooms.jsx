@@ -52,7 +52,10 @@ const Page = () => {
         return (
             <Row key={i}>
                 <Cell>
-                    <Box padding="0" margin="0" as="img" height="3rem" width="5rem" src={empty} />
+                    <Entry padding="0" margin="0 0 0 -0.25rem" radius="0" gap="0" width="10erm">
+                        <Text space="pre" width="auto"> </Text>
+                        <Box as="img" padding="0" margin="0" width="5rem" height="3rem" src={empty} />
+                    </Entry>
                 </Cell>
                 <Cell>
                     <Text>{el[1]}</Text>

@@ -1,4 +1,4 @@
-import { Box, Entry } from "../components/basic/Box";
+import { Box, Entry, Icon } from "../components/basic/Box";
 import Menu from "../components/advanced/Menu";
 import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
@@ -52,7 +52,10 @@ const Page = () => {
         return (
             <Row key={i}>
                 <Cell>
-                    <Box padding="0" margin="0" as="img" height="3rem" width="3rem" src={empty} />
+                    <Entry padding="0" margin="0 0 0 -0.25rem" radius="0" gap="0" width="10erm">
+                        <Text space="pre" width="auto"> </Text>
+                        <Icon as="img" padding="0" margin="0" dim="3rem" src={empty} />
+                    </Entry>
                 </Cell>
                 <Cell>
                     <Text>{el[1]}</Text>
