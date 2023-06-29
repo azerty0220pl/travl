@@ -1,8 +1,9 @@
 import { Navigate } from "react-router-dom";
+import { logged } from "../basic/loginLogic";
 
 export const PrivateRoute = ({ Element, ...rest }) => {
     return (
-        localStorage.getItem("session") === "admin" ?
+        logged() ?
             Element
             :
             <Navigate to="/login" />
