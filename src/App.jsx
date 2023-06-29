@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./components/advanced/PrivateRoute";
+import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Bookings from "./pages/Bookings";
 import Rooms from "./pages/Rooms";
@@ -10,7 +11,7 @@ import './App.css';
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<h1>Login</h1>} />
+      <Route path="/login" element={<Login />} />
       <Route path="/" element={<PrivateRoute Element={<Dashboard />} />} />
       <Route path="/bookings" element={<PrivateRoute Element={<Bookings />} />} />
       <Route path="/rooms" element={<PrivateRoute Element={<Rooms />} />} />
