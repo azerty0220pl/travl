@@ -46,7 +46,7 @@ const Page = () => {
                     </label>
                     <Box as="label" id="date-label" htmlFor="date" margin="0" padding="0" radius="0" height="100%" width="100%">
                         <Text weight="600">Start Date:</Text>
-                        <Text as="input" type="date" id="date" height="3rem" align="center" />
+                        <Text as="input" type="date" id="date" height="3rem" align="center" required />
                     </Box>
                 </Entry>
                 <label id="password-label" htmlFor="password">
