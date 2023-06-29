@@ -52,8 +52,13 @@ const Container = styled.div`
 const Menu = ({ title, Page }) => {
     let [sideBar, setSidebar] = useState(false);
     const navigate = useNavigate();
-    const handleClick = () => {
+    const edit = () => {
         navigate("/users/edit");
+    }
+
+    const logout = () => {
+        localStorage.removeItem("session");
+        navigate("/login");
     }
 
     return (
@@ -118,7 +123,7 @@ const Menu = ({ title, Page }) => {
                     <Icon as="img" dim="5rem" radius="1rem" margin="1rem auto" src={empty} />
                     <Text align="middle" weight="600">Szymon Kokot</Text>
                     <Text align="middle" color="#797979" size="0.75rem">szymonekokot@gmail.com</Text>
-                    <Box as="button" width='50%' margin="1rem auto" padding="0.5rem 1rem" color="#EBF1EF" radius="0.5rem" onClick={handleClick}>
+                    <Box as="button" width='50%' margin="1rem auto" padding="0.5rem 1rem" color="#EBF1EF" radius="0.5rem" onClick={edit}>
                         <Text weight="600" color="#135846" align="middle">Edit</Text>
                     </Box>
                 </Box>
@@ -146,7 +151,7 @@ const Menu = ({ title, Page }) => {
                     <Icon>
                         <BiBell color="#135846" />
                     </Icon>
-                    <Icon>
+                    <Icon as="button" onClick={logout}>
                         <BiLogOut color="#135846" />
                     </Icon>
                 </Entry>
