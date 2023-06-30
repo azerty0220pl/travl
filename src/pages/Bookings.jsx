@@ -19,7 +19,7 @@ const Select = styled(Text)`
     }
 `;
 
-const Page = () => {
+const Page = ({ modal }) => {
     let data = [
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Refund"],
@@ -82,11 +82,11 @@ const Page = () => {
                 <Cell>
                     {
                         el[4].length === 0 ?
-                            <Box margin="0 2rem 0 0" padding="1rem" height="3rem" border="2px solid #799283">
+                            <Box margin="0 2rem 0 0" padding="1rem" height="3rem" border="2px solid #799283" width="14rem">
                                 <Text align="center" color="#799283">View Notes</Text>
                             </Box>
                             :
-                            <Box margin="0 2rem 0 0" padding="1rem" height="3rem" color="#EEF9F2">
+                            <Box as="button" onClick={() => { modal(el[4]) }} margin="0 2rem 0 0" width="14rem" padding="1rem" height="3rem" color="#EEF9F2">
                                 <Text align="center">View Notes</Text>
                             </Box>
                     }
