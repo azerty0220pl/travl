@@ -18,6 +18,7 @@ const Container = styled(Entry)`
 
 const SlidingMenu = ({ fields, handleChange }) => {
     let [cur, setCur] = useState(0);
+
     return (
         <Container color="transparent" radius="0" margin="0" padding="1rem 0" justify="space-between" gap="0">
             {
@@ -30,7 +31,7 @@ const SlidingMenu = ({ fields, handleChange }) => {
                             align="center"
                             weight={cur == i ? "600" : "400"}
                             onClick={() => {
-                                handleChange(i);
+                                handleChange(fields[i]);
                                 setCur(i);
                             }}
                         >
