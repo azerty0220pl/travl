@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
 export const Box = styled.div`
-    position: ${props => props.position || "block"};
-    display: block;
+    position: relative;
+    display: ${props => props.display || "block"};
     border-radius: ${props => props.radius || "0.75rem"};
     background-color: ${props => props.color || "white"};
     border: ${props => props.border || "none"};

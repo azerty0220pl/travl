@@ -31,7 +31,7 @@ const Page = () => {
         [empty, "name19", "id19", "mail19", "date19", "Description", "123456789", "Inactive"]
     ];
 
-    let Status = (x) => {
+    let status = (x) => {
         switch (x) {
             case "Active":
                 return (
@@ -77,7 +77,7 @@ const Page = () => {
                 </Cell>
                 <Cell>
                     {
-                        Status(el[7])
+                        status(el[7])
                     }
                 </Cell>
             </Row>
