@@ -61,6 +61,8 @@ const Menu = ({ title, Page }) => {
         navigate("/login");
     }
 
+    let [modal, setModal] = useState("");
+
     return (
         <Container>
             <SideBar sideBar={sideBar}>
@@ -157,8 +159,23 @@ const Menu = ({ title, Page }) => {
                 </Entry>
             </TopBar>
             <Content sideBar={sideBar}>
-                <Page />
+                <Page modal={setModal} />
             </Content>
+            {
+                modal.length > 0 ?
+                    <BoxAbsolute width="100%" height="100%" top="0" left="0" color="rgba(0, 0, 0, 0.25)">
+                        <Entry color="transparent" width="100%" height="100%">
+                            <Box width="fit-content" margin="auto">
+                                <Text>{modal}</Text>
+                                <Box as="button" onClick={() => {setModal("")}} color="#FFEDEC" margin="1rem 0 0 0" padding="1rem">
+                                    <Text color="#E23428" alig="center">Close</Text>
+                                </Box>
+                            </Box>
+                        </Entry>
+                    </BoxAbsolute>
+                    :
+                    <></>
+            }
         </Container>
     );
 }
