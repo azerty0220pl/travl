@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { styled } from "styled-components";
-import { Box, Entry } from "../basic/Box";
+import { Entry } from "../basic/Box";
 import Text from "../basic/Text";
 
 const Button = styled(Text)`
