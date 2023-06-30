@@ -50,8 +50,8 @@ const Container = styled.div`
 `;
 
 const Menu = ({ title, Page }) => {
-    let [sideBar, setSidebar] = useState(false);
     const navigate = useNavigate();
+    
     const edit = () => {
         navigate("/users/edit");
     }
@@ -61,6 +61,7 @@ const Menu = ({ title, Page }) => {
         navigate("/login");
     }
 
+    let [sideBar, setSidebar] = useState(true);
     let [modal, setModal] = useState("");
 
     return (
@@ -139,9 +140,9 @@ const Menu = ({ title, Page }) => {
                     {
                         sideBar ?
                             <Icon as="button" dim="2rem" padding="0" onClick={() => { setSidebar(!sideBar) }}>
-                                    <BiLeftArrowAlt size="1.5rem" />
+                                <BiLeftArrowAlt size="1.5rem" />
                             </Icon>
-                            : 
+                            :
                             <Icon as="button" dim="2rem" padding="0" onClick={() => { setSidebar(!sideBar) }}>
                                 <Text size="1.5rem">
                                     <BiRightArrowAlt />
