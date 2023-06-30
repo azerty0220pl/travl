@@ -58,7 +58,7 @@ const Page = () => {
                 <Box as="img" src={empty} width="100%" height="100%" margin="0" padding="0" radius="0" />
                 <BoxAbsolute color="transparent" radius="0" margin="0" padding="2rem" bottom="2rem" width="100%">
                     <Text weight="600" color="white">Bed Room</Text>
-                    <Text color="white" margin="0.5rem" line='1.25rem'>An even more nonsensical text than before, this time around, it is due to the fact that it is supposed to describe an imaginary room.</Text>
+                    <Text color="white" margin="0.5rem" line='1.25rem'>An even more nonsensical text than before, this time around, it is due to the fact that it is supposed to describe room that doesn't even exist.</Text>
                 </BoxAbsolute>
             </Box>
         </Entry>
