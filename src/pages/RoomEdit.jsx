@@ -8,27 +8,18 @@ const Page = () => {
     return (
         <Entry margin="1rem" padding="2rem" justify="space-between">
             <Box as="form" margin="0" padding="1rem" border="1px solid #EBEBEB" width="50%">
-                <label id="user-label" htmlFor="user">
-                    <Text weight="600">Username:</Text>
-                    <Text as="input" type="text" id="user" placeholder="username" required />
-                </label>
+                <Box as="label" id="number-label" htmlFor="number" margin="0" padding="0" radius="0" height="100%" width="100%">
+                    <Text weight="600">Room Number:</Text>
+                    <Text as="input" type="text" id="number" placeholder="A - 303" required />
+                </Box>
                 <Entry margin="1rem 0 0 0" padding="0" radius="0" justify="space-between">
-                    <Box as="label" id="mail-label" htmlFor="mail" margin="0" padding="0" radius="0" height="100%" width="100%">
-                        <Text weight="600">Email:</Text>
-                        <Text as="input" type="mail" id="mail" placeholder="mail@mail.mail" required />
-                    </Box>
-                    <Box as="label" id="phone-label" htmlFor="phone" margin="0" padding="0" radius="0" height="100%" width="100%">
-                        <Text weight="600">Phone:</Text>
-                        <Text as="input" type="number" id="phone" placeholder="987654321" required />
-                    </Box>
-                </Entry>
-                <Entry margin="1rem 0 0 0" padding="0" radius="0" justify="space-between">
-                    <label id="role-label" htmlFor="role">
+                    <label id="type-label" htmlFor="type">
                         <Text weight="600">Role:</Text>
-                        <Select as="select" id="role" color="#135846" weight="600">
-                            <Text as='option' value="manager" color="#135846" weight="400">Manager</Text>
-                            <Text as='option' value="reception" color="#135846" weight="400">Reception</Text>
-                            <Text as='option' value="service" color="#135846" weight="400">Room Service</Text>
+                        <Select as="select" id="type" color="#135846" weight="600">
+                            <Text as='option' value="single" color="#135846" weight="400">Single Bed</Text>
+                            <Text as='option' value="double" color="#135846" weight="400">Double Bed</Text>
+                            <Text as='option' value="superior" color="#135846" weight="400">Double Superior</Text>
+                            <Text as='option' value="suite" color="#135846" weight="400">Suite</Text>
                         </Select>
                     </label>
                     <Box as="label" id="description-label" htmlFor="description" margin="0" padding="0" radius="0" height="100%" width="100%">
@@ -37,21 +28,24 @@ const Page = () => {
                     </Box>
                 </Entry>
                 <Entry margin="1rem 0 0 0" padding="0" radius="0" justify="space-between">
-                    <label id="status-label" htmlFor="status">
-                        <Text weight="600">Status:</Text>
-                        <Select as="select" id="status" color="#135846" weight="600">
-                            <Text as='option' value="active" color="#135846" weight="400">Active</Text>
-                            <Text as='option' value="inactive" color="#135846" weight="400">Inactive</Text>
+                    <label id="offer-label" htmlFor="offer">
+                        <Select as="select" id="offer" color="#135846" weight="600">
+                            <Text as='option' value="yes" color="#135846" weight="400">Offer</Text>
+                            <Text as='option' value="no" color="#135846" weight="400">Regular</Text>
                         </Select>
                     </label>
-                    <Box as="label" id="date-label" htmlFor="date" margin="0" padding="0" radius="0" height="100%" width="100%">
-                        <Text weight="600">Start Date:</Text>
-                        <Text as="input" type="date" id="date" height="3rem" align="center" required />
+                    <Box as="label" id="price-label" htmlFor="price" margin="0" padding="0" radius="0" height="100%" width="100%">
+                        <Text weight="600">Price:</Text>
+                        <Text as="input" type="text" id="price" align="center" required />
+                    </Box>
+                    <Box as="label" id="discount-label" htmlFor="discount" margin="0" padding="0" radius="0" height="100%" width="100%">
+                        <Text weight="600">Discount:</Text>
+                        <Text as="input" type="text" id="discount" align="center" required />
                     </Box>
                 </Entry>
-                <label id="password-label" htmlFor="password">
-                    <Text weight="600" margin="1rem">Password:</Text>
-                    <Text as="input" type="text" id="password" placeholder="9assword!" required />
+                <label id="cancellation-label" htmlFor="cancellation">
+                    <Text weight="600" margin="1rem">Cancellation policy:</Text>
+                    <Text as="textarea" id="cancellation" height="3rem" line="1.25rem" placeholder="To cancel, book the most expensive room first. Then, realize that it is impossible..." required />
                 </label>
                 <Box as="button" color="#EEF9F2" margin="1rem 0 0 0" padding="1rem 2rem">
                     <Text weight="600" align="center">Save</Text>
