@@ -23,6 +23,7 @@ export const BoxAbsolute = styled(Box)`
     right: ${props => props.right || 'unset'};
     border-radius: ${props => props.radius || "0.25rem"};
     padding: ${props => props.padding || "0.25rem 0rem"};
+    z-index: 10;
 `;
 
 export const Entry = styled(Box)`
