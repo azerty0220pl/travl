@@ -77,7 +77,7 @@ const Page = ({ modal }) => {
             <Cell>
                 <Entry padding="0" margin="0 0 0 -0.25rem" radius="0" gap="0" width="10erm">
                     <Text space="pre" width="auto"> </Text>
-                    <Box padding="0" margin="0" radius="0" height="3rem">
+                    <Box as="button" onClick={() => {modal("Very long message you probably don't wan't to read. So probably you also won't notice all the ortographic mistakes in it :)")}} padding="0" margin="0" radius="0" height="3rem">
                         <Text line="1.5rem" width="auto" weight="600">Subject 1</Text>
                         <Text line="1.5rem" width="15rem">Very long message you probably don't wan't to read. So probably you also won't notice all the ortographic mistakes in it :)</Text>
                     </Box>
