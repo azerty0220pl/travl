@@ -5,8 +5,11 @@ import Text from "../basic/Text";
 
 const dict = {
     "All Users": "none",
+    "All Rooms": "none",
     "Active Users": "active",
-    "Inactive Users": "inactive"
+    "Inactive Users": "inactive",
+    "Available": "available",
+    "Booked": "booked"
 }
 
 const Button = styled(Text)`
