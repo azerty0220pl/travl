@@ -3,18 +3,18 @@ import Text from "../basic/Text";
 import { Box } from "../basic/Box";
 
 const UserTableRow = ({ x, i }) => {
-    let status = (x) => {
-        switch (x) {
+    let status = (y) => {
+        switch (y) {
             case "Active":
                 return (
                     <Box margin="0" padding="1rem" height="3rem" color="#5AD07A">
-                        <Text align="center" color="#FFFFFF">{x}</Text>
+                        <Text align="center" color="#FFFFFF">{y}</Text>
                     </Box>
                 );
             case "Inactive":
                 return (
                     <Box margin="0" padding="1rem" height="3rem" color="#E23428">
-                        <Text align="center" color="#FFFFFF">{x}</Text>
+                        <Text align="center" color="#FFFFFF">{y}</Text>
                     </Box>
                 );
         }
