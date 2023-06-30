@@ -138,23 +138,30 @@ const Menu = ({ title, Page }) => {
                 <Entry padding="1rem">
                     {
                         sideBar ?
-                            <Icon as="button" onClick={() => { setSidebar(!sideBar) }}><BiLeftArrowAlt /></Icon>
-                            : <Icon as="button" onClick={() => { setSidebar(!sideBar) }}><BiRightArrowAlt /></Icon>
+                            <Icon as="button" dim="2rem" padding="0" onClick={() => { setSidebar(!sideBar) }}>
+                                    <BiLeftArrowAlt size="1.5rem" />
+                            </Icon>
+                            : 
+                            <Icon as="button" dim="2rem" padding="0" onClick={() => { setSidebar(!sideBar) }}>
+                                <Text size="1.5rem">
+                                    <BiRightArrowAlt />
+                                </Text>
+                            </Icon>
                     }
                     <Text weight="600" size="2rem">{title}</Text>
                 </Entry>
                 <Entry padding="1rem">
-                    <Icon radius="0">
-                        <BiEnvelope color="#135846" />
+                    <Icon radius="0" padding="0">
+                        <BiEnvelope size="1.5rem" color="#135846" />
                         <BoxAbsolute color="#E23428" width="50%" height="50%" top="0" right="0">
                             <Text color="white" size="0.5rem" align="center">28</Text>
                         </BoxAbsolute>
                     </Icon>
-                    <Icon radius="0">
-                        <BiBell color="#135846" />
+                    <Icon radius="0" padding="0">
+                        <BiBell size="1.5rem" color="#135846" />
                     </Icon>
-                    <Icon as="button" onClick={logout} radius="0">
-                        <BiLogOut color="#135846" />
+                    <Icon as="button" onClick={logout} radius="0" padding="0">
+                        <BiLogOut size="1.5rem" color="#135846" />
                     </Icon>
                 </Entry>
             </TopBar>
@@ -167,7 +174,7 @@ const Menu = ({ title, Page }) => {
                         <Entry color="transparent" width="100%" height="100%">
                             <Box width="fit-content" margin="auto">
                                 <Text>{modal}</Text>
-                                <Box as="button" onClick={() => {setModal("")}} color="#FFEDEC" margin="1rem 0 0 0" padding="1rem">
+                                <Box as="button" onClick={() => { setModal("") }} color="#FFEDEC" margin="1rem 0 0 0" padding="1rem">
                                     <Text color="#E23428" alig="center">Close</Text>
                                 </Box>
                             </Box>
