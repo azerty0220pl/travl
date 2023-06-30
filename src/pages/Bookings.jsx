@@ -29,7 +29,7 @@ const Page = ({ modal }) => {
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "In Progress"]
     ];
 
-    let Status = (x) => {
+    let status = (x) => {
         switch (x) {
             case "Booked":
                 return (
@@ -84,7 +84,7 @@ const Page = ({ modal }) => {
                 </Cell>
                 <Cell>
                     {
-                        Status(el[6])
+                        status(el[6])
                     }
                 </Cell>
             </Row>
