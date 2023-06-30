@@ -71,7 +71,7 @@ const Menu = ({ title, Page }) => {
                 </Box>
                 <Box padding="0">
                     <Entry>
-                        <MdOutlineDashboard color={title === "Dashboard" ? "#E23428" : "#799283"} />
+                        <MdOutlineDashboard size="1.5rem" color={title === "Dashboard" ? "#E23428" : "#799283"} />
                         <Text
                             as={NavLink}
                             to="/"
@@ -81,7 +81,7 @@ const Menu = ({ title, Page }) => {
                         </Text>
                     </Entry>
                     <Entry>
-                        <MdCalendarMonth color={title === "Bookings" ? "#E23428" : "#799283"} />
+                        <MdCalendarMonth size="1.5rem" color={title === "Bookings" ? "#E23428" : "#799283"} />
                         <Text
                             as={NavLink}
                             to="/bookings"
@@ -91,7 +91,7 @@ const Menu = ({ title, Page }) => {
                         </Text>
                     </Entry>
                     <Entry>
-                        <MdKey color={title === "Rooms" ? "#E23428" : "#799283"} />
+                        <MdKey size="1.5rem" color={title === "Rooms" ? "#E23428" : "#799283"} />
                         <Text
                             as={NavLink}
                             to="/rooms"
@@ -101,7 +101,7 @@ const Menu = ({ title, Page }) => {
                         </Text>
                     </Entry>
                     <Entry>
-                        <MdContactSupport color={title === "Contact" ? "#E23428" : "#799283"} />
+                        <MdContactSupport size="1.5rem" color={title === "Contact" ? "#E23428" : "#799283"} />
                         <Text
                             as={NavLink}
                             to="/contact"
@@ -111,7 +111,7 @@ const Menu = ({ title, Page }) => {
                         </Text>
                     </Entry>
                     <Entry>
-                        <FaRegUser color={title === "Users" ? "#E23428" : "#799283"} />
+                        <FaRegUser size="1.5rem" color={title === "Users" ? "#E23428" : "#799283"} />
                         <Text
                             as={NavLink}
                             to="/users"
