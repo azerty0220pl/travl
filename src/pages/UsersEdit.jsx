@@ -6,7 +6,7 @@ import Select from "../components/basic/Select";
 
 const Page = () => {
     return (
-        <Entry margin="1rem" padding="2rem" justify="space-between">
+        <Entry margin="1rem" padding="2rem" justify="space-around">
             <Box as="form" margin="0" padding="1rem" border="1px solid #EBEBEB" width="50%">
                 <label id="user-label" htmlFor="user">
                     <Text weight="600">Username:</Text>
@@ -57,9 +57,7 @@ const Page = () => {
                     <Text weight="600" align="center">Save</Text>
                 </Box>
             </Box>
-            <Box margin="0" padding="0" width="50%">
-                <Icon as="img" dim="30rem" src={empty} margin="auto" padding="0" />
-            </Box>
+            <Icon as="img" dim="30rem" src={empty} margin="0" padding="0" />
         </Entry>
     );
 }
