@@ -8,7 +8,6 @@ const Select = styled(Text)`
     border-radius: 0.75rem;
     height: 3rem;
     padding: 0 1rem;
-    weight: 500;
     &:focus {
         outline: none;
     }
