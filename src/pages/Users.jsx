@@ -7,8 +7,9 @@ import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swipe
 import { useState } from "react";
 import empty from '../assets/empty.png';
 import Select from "../components/basic/Select";
+import UserTableRow from "../components/advanced/UserTableRow";
 
-const Page = () => {
+const Page = ({ modal }) => {
     let data = [
         [empty, "name01", "id01", "mail01", "date01", "Description", "123456789", "Active"],
         [empty, "name02", "id02", "mail02", "date02", "Description", "123456789", "Active"],
@@ -31,57 +32,8 @@ const Page = () => {
         [empty, "name19", "id19", "mail19", "date19", "Description", "123456789", "Inactive"]
     ];
 
-    let status = (x) => {
-        switch (x) {
-            case "Active":
-                return (
-                    <Box margin="0" padding="1rem" height="3rem" color="#5AD07A">
-                        <Text align="center" color="#FFFFFF">{x}</Text>
-                    </Box>
-                );
-            case "Inactive":
-                return (
-                    <Box margin="0" padding="1rem" height="3rem" color="#E23428">
-                        <Text align="center" color="#FFFFFF">{x}</Text>
-                    </Box>
-                );
-        }
-    }
-
     data = data.map((el, i) => {
-        return (
-            <Row key={i}>
-                <Cell>
-                    <Entry padding="0" margin="0 0 0 -0.25rem" radius="0" gap="0" width="10erm">
-                        <Text space="pre" width="auto"> </Text>
-                        <Icon as="img" padding="0" margin="0" dim="3rem" src={empty} />
-                    </Entry>
-                </Cell>
-                <Cell>
-                    <Text>{el[1]}</Text>
-                </Cell>
-                <Cell>
-                    <Text>{el[2]}</Text>
-                </Cell>
-                <Cell>
-                    <Text>{el[3]}</Text>
-                </Cell>
-                <Cell>
-                    <Text>{el[4]}</Text>
-                </Cell>
-                <Cell>
-                    <Text>{el[5]}</Text>
-                </Cell>
-                <Cell>
-                    <Text>{el[6]}</Text>
-                </Cell>
-                <Cell>
-                    {
-                        status(el[7])
-                    }
-                </Cell>
-            </Row>
-        );
+        return <UserTableRow x={el} i={i} />
     })
 
     const title = [
