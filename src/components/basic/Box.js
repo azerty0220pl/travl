@@ -37,7 +37,9 @@ export const Entry = styled(Box)`
 `;
 
 export const Icon = styled(Box)`
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: ${props => props.padding || "0.5rem"};
     border-radius: ${props => props.radius || "0.5rem"};
     width: ${props => props.dim || '2rem'};
