@@ -107,6 +107,7 @@ const Page = () => {
             <Entry margin="0" padding="1rem" color="transparent" justify="space-between">
                 <SlidingMenu fields={["All Rooms", "Available", "Booked"]} handleChange={() => { }} />
                 <Select as="select" color="#135846" weight="600">
+                    <Text as='option' value="number" color="#135846" weight="400">Number</Text>
                     <Text as='option' value="status" color="#135846" weight="400">Status</Text>
                     <Text as='option' value="ascending" color="#135846" weight="400">Price Ascending</Text>
                     <Text as='option' value="descending" color="#135846" weight="400">Price Descending</Text>
