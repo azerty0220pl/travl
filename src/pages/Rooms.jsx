@@ -7,6 +7,7 @@ import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swipe
 import { useState } from "react";
 import empty from '../assets/empty.png';
 import Select from "../components/basic/Select";
+import RoomsTableRow from "../components/advanced/RoomsTableRow";
 
 const Page = () => {
     let data = [
@@ -31,62 +32,10 @@ const Page = () => {
         [empty, "numero19", "id19", "type19", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"]
     ];
 
-    let Status = (x) => {
-        switch (x) {
-            case "Available":
-                return (
-                    <Box margin="0" padding="1rem" height="3rem" color="#5AD07A">
-                        <Text align="center" color="#FFFFFF">{x}</Text>
-                    </Box>
-                );
-            case "Booked":
-                return (
-                    <Box margin="0" padding="1rem" height="3rem" color="#E23428">
-                        <Text align="center" color="#FFFFFF">{x}</Text>
-                    </Box>
-                );
-        }
-    }
+    let [filter, setFilter] = useState("none");
 
-    data = data.map((el, i) => {
-        return (
-            <Row key={i}>
-                <Cell>
-                        <Box display="inline" as="img" padding="0" margin="0" width="5rem" height="3rem" src={empty} />
-                </Cell>
-                <Cell>
-                    <Text>{el[1]}</Text>
-                </Cell>
-                <Cell>
-                    <Text>{el[2]}</Text>
-                </Cell>
-                <Cell>
-                    <Text>{el[3]}</Text>
-                </Cell>
-                <Cell>
-                    <Box margin="0" padding="0" radius="0">
-                        <Text line="1.25rem">{el[4]}</Text>
-                    </Box>
-                </Cell>
-                <Cell>
-                    <Entry gap="0" padding="0 1rem 0 0" radius="0">
-                        <Text width="fit-content">{el[5]}</Text>
-                        <Text size="0.75rem" color="#799283">/Night</Text>
-                    </Entry>
-                </Cell>
-                <Cell>
-                    <Entry gap="0" padding="0 1rem 0 0" radius="0">
-                        <Text width="fit-content">{el[6]}</Text>
-                        <Text size="0.75rem" color="#799283">/Night</Text>
-                    </Entry>
-                </Cell>
-                <Cell>
-                    {
-                        Status(el[7])
-                    }
-                </Cell>
-            </Row>
-        );
+    data = data.filter(el => filter === "none" || (filter === "available" && el[7] === "Available") || (filter === "booked" && el[7] === "Booked")).map((el, i) => {
+        return <RoomsTableRow x={el} i={i} />
     })
 
     const title = [
@@ -105,7 +54,7 @@ const Page = () => {
     return (
         <div>
             <Entry margin="0" padding="1rem" color="transparent" justify="space-between">
-                <SlidingMenu fields={["All Rooms", "Available", "Booked"]} handleChange={() => { }} />
+                <SlidingMenu fields={["All Rooms", "Available", "Booked"]} handleChange={setFilter} />
                 <Select as="select" color="#135846" weight="600">
                     <Text as='option' value="number" color="#135846" weight="400">Number</Text>
                     <Text as='option' value="status" color="#135846" weight="400">Status</Text>
