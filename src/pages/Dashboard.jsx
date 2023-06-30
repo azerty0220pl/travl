@@ -9,49 +9,56 @@ import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swipe
 import Message from "../components/advanced/Message";
 import { useState } from "react";
 
-const Page = () => {
+const Page = ({modal}) => {
     let data = [
         <Message
             name="name1"
             mail="mail1"
             subject="subject1"
             message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+            modal={modal}
         />,
         <Message
             name="name2"
             mail="mail2"
             subject="subject2"
             message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+            modal={modal}
         />,
         <Message
             name="name3"
             mail="mail3"
             subject="subject3"
             message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+            modal={modal}
         />,
         <Message
             name="name4"
             mail="mail4"
             subject="subject4"
             message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+            modal={modal}
         />,
         <Message
             name="name5"
             mail="mail5"
             subject="subject5"
             message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+            modal={modal}
         />,
         <Message
             name="name6"
             mail="mail6"
             subject="subject6"
             message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+            modal={modal}
         />,
         <Message
             name="name7"
             mail="mail7"
             subject="subject7"
             message="I have been there many times.Rooms ,Food and Service are excellent.we did lots of Excursions and all the places are from the Hotel reachable. we visited Long Waterfall and was very helpful and excellent"
+            modal={modal}
         />
     ];
 
