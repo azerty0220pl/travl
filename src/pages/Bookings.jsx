@@ -1,4 +1,3 @@
-import { styled } from "styled-components";
 import { Box, Entry } from "../components/basic/Box";
 import Menu from "../components/advanced/Menu";
 import SlidingMenu from "../components/advanced/SlidingMenu";
