@@ -15,19 +15,19 @@ function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<PrivateRoute Element={<Dashboard />} />} />
+      <Route path="/" element={<PrivateRoute element={<Dashboard />} />} />
       <Route path="/bookings">
-        <Route index element={<PrivateRoute Element={<Bookings />} />} />
-        <Route path="details" element={<PrivateRoute Element={<BookingDetails />} />} />
+        <Route index element={<PrivateRoute element={<Bookings />} />} />
+        <Route path="details" element={<PrivateRoute element={<BookingDetails />} />} />
       </Route>
       <Route path="/rooms" >
-        <Route index element={<PrivateRoute Element={<Rooms />} />} />
-        <Route path="edit" element={<PrivateRoute Element={<RoomEdit />} />} />
+        <Route index element={<PrivateRoute element={<Rooms />} />} />
+        <Route path="edit" element={<PrivateRoute element={<RoomEdit />} />} />
       </Route>
-      <Route path="/contact" element={<PrivateRoute Element={<Contact />} />} />
+      <Route path="/contact" element={<PrivateRoute element={<Contact />} />} />
       <Route path="/users" >
-        <Route index element={<PrivateRoute Element={<Users />} />} />
-        <Route path="edit" element={<PrivateRoute Element={<UserEdit />} />} />
+        <Route index element={<PrivateRoute element={<Users />} />} />
+        <Route path="edit" element={<PrivateRoute element={<UserEdit />} />} />
       </Route>
     </Routes>
   );

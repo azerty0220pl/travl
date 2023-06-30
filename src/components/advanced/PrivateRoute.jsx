@@ -1,10 +1,10 @@
 import { Navigate } from "react-router-dom";
 import { logged } from "../basic/loginLogic";
 
-export const PrivateRoute = ({ Element, ...rest }) => {
+export const PrivateRoute = ({ element }) => {
     return (
         logged() ?
-            Element
+            element
             :
             <Navigate to="/login" />
     );
