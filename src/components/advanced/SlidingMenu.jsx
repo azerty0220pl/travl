@@ -3,6 +3,12 @@ import { styled } from "styled-components";
 import { Entry } from "../basic/Box";
 import Text from "../basic/Text";
 
+const dict = {
+    "All Users": "none",
+    "Active Users": "active",
+    "Inactive Users": "inactive"
+}
+
 const Button = styled(Text)`
     border: none;
     border-bottom: 3px solid ${props => props.color || "#6E6E6E"};
@@ -31,7 +37,7 @@ const SlidingMenu = ({ fields, handleChange }) => {
                             align="center"
                             weight={cur == i ? "600" : "400"}
                             onClick={() => {
-                                handleChange(fields[i]);
+                                handleChange(dict[el]);
                                 setCur(i);
                             }}
                         >

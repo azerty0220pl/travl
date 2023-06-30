@@ -32,9 +32,13 @@ const Page = ({ modal }) => {
         [empty, "name19", "id19", "mail19", "date19", "Description", "123456789", "Inactive"]
     ];
 
-    data = data.map((el, i) => {
-        return <UserTableRow x={el} i={i} />
-    })
+    const [filter, setFilter] = useState("none");
+
+    data = data.filter(el => filter === "none" || (filter === "active" && el[7] === "Active") || (filter === "inactive" && el[7] === "Inactive")).map((el, i) => {
+            return <UserTableRow x={el} i={i} />
+    });
+
+    console.log(data);
 
     const title = [
         "Photo",
@@ -52,7 +56,7 @@ const Page = ({ modal }) => {
     return (
         <div>
             <Entry margin="0" padding="1rem" color="transparent" justify="space-between">
-                <SlidingMenu fields={["All Users", "Active Users", "Inactive Users"]} handleChange={() => { }} />
+                <SlidingMenu fields={["All Users", "Active Users", "Inactive Users"]} handleChange={setFilter} />
                 <Select as="select" color="#135846" weight="600">
                     <Text as='option' value="name" color="#135846" weight="400">Name</Text>
                     <Text as='option' value="date" color="#135846" weight="400">Start Date</Text>
