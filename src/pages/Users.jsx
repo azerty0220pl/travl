@@ -112,8 +112,8 @@ const Page = () => {
                         {
                             title.map((el, i) => {
                                 return (
-                                    <Cell>
-                                        <Text key={(i + 1) * - 1} weight="600">{el}</Text>
+                                    <Cell key={(i + 1) * - 1}>
+                                        <Text weight="600">{el}</Text>
                                     </Cell>
                                 );
                             })
