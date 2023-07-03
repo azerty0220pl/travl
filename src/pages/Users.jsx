@@ -1,4 +1,4 @@
-import { Box, Entry, Icon } from "../components/basic/Box";
+import { Box, Entry } from "../components/basic/Box";
 import Menu from "../components/advanced/Menu";
 import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
