@@ -4,38 +4,47 @@ import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
 import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
 import { useState } from "react";
-import empty from '../assets/empty.png';
 import Select from "../components/basic/Select";
 import RoomsTableRow from "../components/advanced/RoomsTableRow";
+import { useSelector } from "react-redux";
+
+const orderFunct = {
+    "number": (a, b) => {
+        return a.name < b.name ? -1 : 1;
+    },
+    "ascending": (a, b) => {
+        if (a.price === b.price)
+            return 0;
+        return a.price < b.price ? -1 : 1;
+    },
+    "descending": (a, b) => {
+        if (a.price === b.price)
+            return 0;
+        return a.price < b.price ? 1 : -1;
+    },
+    "status": (a, b) => {
+        if (a.status === b.status)
+            return 0;
+        return a.status === "Available" ? -1 : 1;
+    }
+};
 
 const Rooms = () => {
-    let data = [
-        [empty, "numero01", "id01", "type01", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
-        [empty, "numero02", "id02", "type02", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Available"],
-        [empty, "numero03", "id03", "type03", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
-        [empty, "numero04", "id04", "type04", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
-        [empty, "numero05", "id05", "type05", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
-        [empty, "numero06", "id06", "type06", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Available"],
-        [empty, "numero07", "id07", "type07", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Available"],
-        [empty, "numero08", "id08", "type08", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Available"],
-        [empty, "numero09", "id09", "type09", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
-        [empty, "numero10", "id10", "type10", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Available"],
-        [empty, "numero11", "id11", "type11", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
-        [empty, "numero12", "id12", "type12", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
-        [empty, "numero13", "id13", "type13", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
-        [empty, "numero14", "id14", "type14", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Available"],
-        [empty, "numero15", "id15", "type15", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
-        [empty, "numero16", "id16", "type16", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Available"],
-        [empty, "numero17", "id17", "type17", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Available"],
-        [empty, "numero18", "id18", "type18", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
-        [empty, "numero19", "id19", "type19", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"]
-    ];
+    let data = useSelector(state => state.rooms.rooms);
 
-    let [filter, setFilter] = useState("none");
+    const [filter, setFilter] = useState("none");
+    const [order, setOrder] = useState("number");
+    const [cur, setCur] = useState(0);
 
-    data = data.filter(el => filter === "none" || (filter === "available" && el[7] === "Available") || (filter === "booked" && el[7] === "Booked")).map((el, i) => {
+    data = data.filter(el =>
+        filter === "none" || (filter === "available" && el.status === "Available") || (filter === "booked" && el.status === "Booked")
+    );
+
+    data.sort(orderFunct[order]);
+
+    data = data.map((el, i) => {
         return <RoomsTableRow x={el} i={i} />
-    })
+    });
 
     const title = [
         "Photo",
@@ -48,13 +57,11 @@ const Rooms = () => {
         "Status"
     ];
 
-    let [cur, setCur] = useState(0);
-
     return (
         <div>
             <Entry margin="0" padding="1rem" color="transparent" justify="space-between">
                 <SlidingMenu fields={["All Rooms", "Available", "Booked"]} handleChange={setFilter} />
-                <Select as="select" color="#135846" weight="600">
+                <Select as="select" color="#135846" weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
                     <Text as='option' value="number" color="#135846" weight="400">Number</Text>
                     <Text as='option' value="status" color="#135846" weight="400">Status</Text>
                     <Text as='option' value="ascending" color="#135846" weight="400">Price Ascending</Text>
