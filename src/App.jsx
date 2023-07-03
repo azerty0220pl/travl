@@ -1,36 +1,46 @@
-import { Route, Routes } from "react-router-dom";
-import { PrivateRoute } from "./components/advanced/PrivateRoute";
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import Bookings from "./pages/Bookings";
-import Rooms from "./pages/Rooms";
-import Contact from "./pages/Contact";
-import Users from "./pages/Users";
-import UserEdit from "./pages/UsersEdit";
-import BookingDetails from "./pages/BookingDetails";
-import RoomEdit from "./pages/RoomEdit";
 import './App.css';
+import { createContext, useReducer } from "react";
+import Menu from "./components/advanced/Menu";
+import RoutesComponent from "./components/advanced/RoutesComponent";
+
+const reducerActions = {
+  "login": (state, action) => {
+    return { ...state, authenticated: action.success };
+  },
+  "page": (state, action) => {
+    return { ...state, page: action.page };
+  }
+}
+
+const defaultContext = {
+  authenticated: false,
+  username: "",
+  email: "",
+  page: "Dashboard"
+};
+
+const Context = createContext(defaultContext);
+
+const reducer = (state, action) => {
+  return reducerActions[action.type] === undefined ?
+    defaultContext
+    :
+    reducerActions[action.type](state, action);
+}
 
 function App() {
+  let [state, dispatch] = useReducer(reducer, defaultContext);
+
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<PrivateRoute element={<Dashboard />} />} />
-      <Route path="/bookings">
-        <Route index element={<PrivateRoute element={<Bookings />} />} />
-        <Route path="details" element={<PrivateRoute element={<BookingDetails />} />} />
-      </Route>
-      <Route path="/rooms" >
-        <Route index element={<PrivateRoute element={<Rooms />} />} />
-        <Route path="edit" element={<PrivateRoute element={<RoomEdit />} />} />
-      </Route>
-      <Route path="/contact" element={<PrivateRoute element={<Contact />} />} />
-      <Route path="/users" >
-        <Route index element={<PrivateRoute element={<Users />} />} />
-        <Route path="edit" element={<PrivateRoute element={<UserEdit />} />} />
-      </Route>
-    </Routes>
-  );
+    <Context.Provider value={state}>
+      {
+        state.authenticated ?
+          <Menu title={state.page} Page={RoutesComponent} dispatch={dispatch}/>
+          :
+          <Login dispatch={dispatch} />
+      }
+    </Context.Provider>);
 }
 
 export default App;
