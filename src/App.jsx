@@ -17,7 +17,8 @@ const defaultContext = {
   authenticated: false,
   username: "",
   email: "",
-  page: "Dashboard"
+  page: "Dashboard",
+  dispatch: null
 };
 
 export const Context = createContext(defaultContext);
@@ -31,14 +32,15 @@ const reducer = (state, action) => {
 
 const App = () => {
   let [state, dispatch] = useReducer(reducer, defaultContext);
+  defaultContext.dispatch = dispatch;
 
   return (
     <Context.Provider value={state}>
       {
         state.authenticated ?
-          <Menu title={state.page} Page={RoutesComponent} dispatch={dispatch} />
+          <Menu Page={RoutesComponent} />
           :
-          <Login dispatch={dispatch} />
+          <Login />
       }
     </Context.Provider>);
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { styled } from "styled-components";
 import { Box, BoxAbsolute, Entry, Icon } from "../basic/Box";
 import { MdOutlineDashboard, MdCalendarMonth, MdKey, MdContactSupport } from 'react-icons/md';
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Text from "../basic/Text";
 import logo from '../../assets/logo.png';
 import empty from "../../assets/empty.png";
+import { Context } from "../../App";
 
 const TopBar = styled.div`
     position: absolute;
@@ -49,8 +50,10 @@ const Container = styled.div`
     display: flex;
 `;
 
-const Menu = ({ title, Page, dispatch }) => {
+const Menu = ({ Page }) => {
     const navigate = useNavigate();
+    const title = useContext(Context).page;
+    const dispatch = useContext(Context).dispatch;
 
     const edit = () => {
         navigate("/users/edit");
