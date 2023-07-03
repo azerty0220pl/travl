@@ -1,6 +1,7 @@
 import { Row, Cell } from "../basic/Table";
 import Text from "../basic/Text";
 import { Entry, Box } from "../basic/Box";
+import empty from "../../assets/empty.png";
 
 const RoomsTableRow = ({ x, i }) => {
     let status = (y) => {
@@ -25,37 +26,37 @@ const RoomsTableRow = ({ x, i }) => {
     return (
         <Row key={i}>
             <Cell>
-                <Box display="inline" as="img" padding="0" margin="0" width="5rem" height="3rem" src={x[0]} />
+                <Box display="inline" as="img" padding="0" margin="0" width="5rem" height="3rem" src={empty} />
             </Cell>
             <Cell>
-                <Text>{x[1]}</Text>
+                <Text>{x.name}</Text>
             </Cell>
             <Cell>
-                <Text>{x[2]}</Text>
+                <Text>{x.id}</Text>
             </Cell>
             <Cell>
-                <Text>{x[3]}</Text>
+                <Text>{x.type}</Text>
             </Cell>
             <Cell>
                 <Box margin="0" padding="0" radius="0">
-                    <Text line="1.25rem">{x[4]}</Text>
+                    <Text line="1.25rem">{x.ammenities}</Text>
                 </Box>
             </Cell>
             <Cell>
                 <Entry gap="0" padding="0 1rem 0 0" radius="0">
-                    <Text width="fit-content">{x[5]}</Text>
+                    <Text width="fit-content">{x.price}</Text>
                     <Text size="0.75rem" color="#799283">/Night</Text>
                 </Entry>
             </Cell>
             <Cell>
                 <Entry gap="0" padding="0 1rem 0 0" radius="0">
-                    <Text width="fit-content">{x[6]}</Text>
+                    <Text width="fit-content">{x.price * (100 - x.offer) / 100}</Text>
                     <Text size="0.75rem" color="#799283">/Night</Text>
                 </Entry>
             </Cell>
             <Cell>
                 {
-                    status(x[7])
+                    status(x.status)
                 }
             </Cell>
         </Row>
