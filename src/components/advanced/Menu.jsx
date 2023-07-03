@@ -187,7 +187,7 @@ const Menu = ({ Page }) => {
             </Content>
             {
                 modal.length > 0 ?
-                    <BoxAbsolute width="100%" height="100%" top="0" left="0" color="rgba(0, 0, 0, 0.25)">
+                    <BoxAbsolute as="button" onClick={() => { setModal("") }} width="100%" height="100%" top="0" left="0" color="rgba(0, 0, 0, 0.25)">
                         <Entry color="transparent" width="100%" height="100%">
                             <Box width="fit-content" margin="auto">
                                 <Text>{modal}</Text>
