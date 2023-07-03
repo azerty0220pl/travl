@@ -49,17 +49,21 @@ const Container = styled.div`
     display: flex;
 `;
 
-const Menu = ({ title, Page }) => {
+const Menu = ({ title, Page, dispatch }) => {
     const navigate = useNavigate();
-    
+
     const edit = () => {
         navigate("/users/edit");
     }
 
     const logout = () => {
-        localStorage.removeItem("session");
-        navigate("/login");
+        dispatch({ type: "login", success: false });
     }
+
+    const handlePage = (x, y) => {
+        dispatch({ type: "page", page: x });
+        navigate(y);
+    };
 
     let [sideBar, setSidebar] = useState(true);
     let [modal, setModal] = useState("");
@@ -71,51 +75,56 @@ const Menu = ({ title, Page }) => {
                     <img src={logo} />
                 </Box>
                 <Box padding="0">
-                    <Entry>
+                    <Entry
+                        as="button"
+                        onClick={() => { handlePage("Dashboard", "/dashboard") }}
+                    >
                         <MdOutlineDashboard size="1.5rem" color={title === "Dashboard" ? "#E23428" : "#799283"} />
                         <Text
-                            as={NavLink}
-                            to="/"
                             weight={title === "Dashboard" ? "600" : "400"}
                             color={title === "Dashboard" ? "#E23428" : "#799283"}>
                             Dashboard
                         </Text>
                     </Entry>
-                    <Entry>
+                    <Entry
+                        as="button"
+                        onClick={() => { handlePage("Bookings", "/bookings") }}
+                    >
                         <MdCalendarMonth size="1.5rem" color={title === "Bookings" ? "#E23428" : "#799283"} />
                         <Text
-                            as={NavLink}
-                            to="/bookings"
                             weight={title === "Bookings" ? "600" : "400"}
                             color={title === "Bookings" ? "#E23428" : "#799283"}>
                             Bookings
                         </Text>
                     </Entry>
-                    <Entry>
+                    <Entry
+                        as="button"
+                        onClick={() => { handlePage("Rooms", "/rooms") }}
+                    >
                         <MdKey size="1.5rem" color={title === "Rooms" ? "#E23428" : "#799283"} />
                         <Text
-                            as={NavLink}
-                            to="/rooms"
                             weight={title === "Rooms" ? "600" : "400"}
                             color={title === "Rooms" ? "#E23428" : "#799283"}>
                             Rooms
                         </Text>
                     </Entry>
-                    <Entry>
+                    <Entry
+                        as="button"
+                        onClick={() => { handlePage("Contact", "/contact") }}
+                    >
                         <MdContactSupport size="1.5rem" color={title === "Contact" ? "#E23428" : "#799283"} />
                         <Text
-                            as={NavLink}
-                            to="/contact"
                             weight={title === "Contact" ? "600" : "400"}
                             color={title === "Contact" ? "#E23428" : "#799283"}>
                             Contact
                         </Text>
                     </Entry>
-                    <Entry>
+                    <Entry
+                        as="button"
+                        onClick={() => { handlePage("Users", "/users") }}
+                    >
                         <FaRegUser size="1.5rem" color={title === "Users" ? "#E23428" : "#799283"} />
                         <Text
-                            as={NavLink}
-                            to="/users"
                             weight={title === "Users" ? "600" : "400"}
                             color={title === "Users" ? "#E23428" : "#799283"}>
                             Users
