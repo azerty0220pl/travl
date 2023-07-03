@@ -6,10 +6,8 @@ const initialState = {
     status: "none"
 };
 
-export const fetchRooms = createAsyncThunk('getRooms', () => {
-    return setTimeout(200, () => {
-        return data;
-    })
+export const fetchRooms = createAsyncThunk('getRooms', async () => {
+    return data;
 });
 
 const roomsSlice = createSlice({
