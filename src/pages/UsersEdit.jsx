@@ -3,9 +3,11 @@ import { Icon, Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
 import Select from "../components/basic/Select";
 import { useContext } from "react";
+import { Context } from "../App";
 
 const UserEdit = () => {
-    const state = useContext();
+    const state = useContext(Context);
+
     return (
         <Entry margin="1rem" padding="2rem" justify="space-around">
             <Box as="form" margin="0" padding="1rem" border="1px solid #EBEBEB" width="50%">
