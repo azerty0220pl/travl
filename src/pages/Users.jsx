@@ -9,7 +9,7 @@ import empty from '../assets/empty.png';
 import Select from "../components/basic/Select";
 import UserTableRow from "../components/advanced/UserTableRow";
 
-const Page = ({ modal }) => {
+const Users = () => {
     let data = [
         [empty, "name01", "id01", "mail01", "date01", "Description", "123456789", "Active"],
         [empty, "name02", "id02", "mail02", "date02", "Description", "123456789", "Active"],
@@ -84,11 +84,5 @@ const Page = ({ modal }) => {
         </div>
     );
 };
-
-const Users = () => {
-    return (
-        <Menu title="Users" Page={Page} />
-    );
-}
 
 export default Users;

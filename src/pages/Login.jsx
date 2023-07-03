@@ -1,22 +1,17 @@
+import { useNavigate } from "react-router";
 import { Box, Entry } from "../components/basic/Box";
 import Text from "../components/basic/Text";
-import { useNavigate } from "react-router-dom";
-import { login, logged } from "../components/basic/loginLogic";
-import { useState, useEffect } from "react";
+import { login } from "../components/basic/loginLogic";
+import { useState } from "react";
 
-const Login = () => {
-    const navigate = useNavigate();
+const Login = ({ dispatch }) => {
     let [err, setErr] = useState(false);
-
-    useEffect(() => {
-        if (logged()) {
-            navigate("/");
-        }
-    })
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         if (login(event.target.user.value, event.target.password.value)) {
-            navigate("/");
+            dispatch({type: "login", success: true});
+            navigate("/dashboard");
             setErr(false);
         }
         else

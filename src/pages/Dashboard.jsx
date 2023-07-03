@@ -9,7 +9,7 @@ import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swipe
 import Message from "../components/advanced/Message";
 import { useState } from "react";
 
-const Page = ({modal}) => {
+const Dashboard = ({modal}) => {
     let data = [
         <Message
             name="name1"
@@ -106,15 +106,6 @@ const Page = ({modal}) => {
             </Box>
         </div>
     );
-}
-
-const Dashboard = () => {
-    return (
-        <Menu
-            title="Dashboard"
-            Page={Page}
-        />
-    );
-}
+};
 
 export default Dashboard;

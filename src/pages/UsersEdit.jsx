@@ -4,7 +4,7 @@ import { Icon, Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
 import Select from "../components/basic/Select";
 
-const Page = () => {
+const UserEdit = () => {
     return (
         <Entry margin="1rem" padding="2rem" justify="space-around">
             <Box as="form" margin="0" padding="1rem" border="1px solid #EBEBEB" width="50%">
@@ -60,12 +60,6 @@ const Page = () => {
             <Icon as="img" dim="30rem" src={empty} margin="0" padding="0" />
         </Entry>
     );
-}
-
-const UserEdit = () => {
-    return (
-        <Menu title="Edit User" Page={Page} />
-    );
-}
+};
 
 export default UserEdit;

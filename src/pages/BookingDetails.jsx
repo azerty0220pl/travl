@@ -3,7 +3,7 @@ import empty from "../assets/empty.png";
 import { Icon, Entry, Box, BoxAbsolute } from "../components/basic/Box";
 import Text from "../components/basic/Text";
 
-const Page = () => {
+const BookingDetails = () => {
     return (
         <Entry margin="1rem" padding="2rem" justify="space-between">
             <Box margin="0" padding="1rem" width="50%">
@@ -62,12 +62,6 @@ const Page = () => {
                 </BoxAbsolute>
             </Box>
         </Entry>
-    );
-}
-
-const BookingDetails = () => {
-    return (
-        <Menu title="Details" Page={Page} />
     );
 }
 

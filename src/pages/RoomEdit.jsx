@@ -4,7 +4,7 @@ import { Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
 import Select from "../components/basic/Select";
 
-const Page = () => {
+const RoomEdit = () => {
     return (
         <Entry margin="1rem" padding="2rem" justify="space-between">
             <Box as="form" margin="0" padding="1rem" border="1px solid #EBEBEB" width="50%">
@@ -56,12 +56,6 @@ const Page = () => {
             </Box>
         </Entry>
     );
-}
-
-const RoomEdit = () => {
-    return (
-        <Menu title="New Room" Page={Page} />
-    );
-}
+};
 
 export default RoomEdit;

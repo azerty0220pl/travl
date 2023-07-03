@@ -7,7 +7,7 @@ import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
 
-const Page = ({ modal }) => {
+const Contact = ({ modal }) => {
 
     let data = [
         <Message
@@ -129,14 +129,6 @@ const Page = ({ modal }) => {
             </Box>
         </>
     );
-}
-
-const Contact = () => {
-    return (
-        <div>
-            <Menu title="Contact" Page={Page} />
-        </div>
-    );
-}
+};
 
 export default Contact;

@@ -7,7 +7,7 @@ import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swipe
 import { useState } from "react";
 import Select from "../components/basic/Select";
 
-const Page = ({ modal }) => {
+const Bookings = ({ modal }) => {
     let data = [
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Refund"],
@@ -136,11 +136,5 @@ const Page = ({ modal }) => {
         </div>
     );
 };
-
-const Bookings = () => {
-    return (
-        <Menu title="Bookings" Page={Page} />
-    );
-}
 
 export default Bookings;

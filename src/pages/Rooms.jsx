@@ -9,7 +9,7 @@ import empty from '../assets/empty.png';
 import Select from "../components/basic/Select";
 import RoomsTableRow from "../components/advanced/RoomsTableRow";
 
-const Page = () => {
+const Rooms = () => {
     let data = [
         [empty, "numero01", "id01", "type01", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Booked"],
         [empty, "numero02", "id02", "type02", "AC, Shower, Double Bed, Towel, Bathtup, Coffee Set, LED TV, WiFi", "145", "145", "Available"],
@@ -84,11 +84,5 @@ const Page = () => {
         </div>
     );
 };
-
-const Rooms = () => {
-    return (
-        <Menu title="Rooms" Page={Page} />
-    );
-}
 
 export default Rooms;
