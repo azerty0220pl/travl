@@ -1,5 +1,5 @@
-{
-    "0": {
+[
+    {
         "id": 0,
         "name": "V074",
         "type": "Superior Double",
@@ -8,7 +8,7 @@
         "offer": 50,
         "status": "Booked"
     },
-    "1": {
+    {
         "id": 1,
         "name": "X948",
         "type": "Double Bed",
@@ -17,7 +17,7 @@
         "offer": 50,
         "status": "Booked"
     },
-    "2": {
+    {
         "id": 2,
         "name": "S085",
         "type": "Single Bed",
@@ -26,7 +26,7 @@
         "offer": 15,
         "status": "Available"
     },
-    "3": {
+    {
         "id": 3,
         "name": "H029",
         "type": "Double Bed",
@@ -35,7 +35,7 @@
         "offer": 20,
         "status": "Booked"
     },
-    "4": {
+    {
         "id": 4,
         "name": "T823",
         "type": "Superior Double",
@@ -44,7 +44,7 @@
         "offer": 40,
         "status": "Booked"
     },
-    "5": {
+    {
         "id": 5,
         "name": "L334",
         "type": "Superior Double",
@@ -53,7 +53,7 @@
         "offer": 0,
         "status": "Available"
     },
-    "6": {
+    {
         "id": 6,
         "name": "P202",
         "type": "Suite",
@@ -62,7 +62,7 @@
         "offer": 0,
         "status": "Booked"
     },
-    "7": {
+    {
         "id": 7,
         "name": "P507",
         "type": "Single Bed",
@@ -71,7 +71,7 @@
         "offer": 0,
         "status": "Available"
     },
-    "8": {
+    {
         "id": 8,
         "name": "T567",
         "type": "Double Bed",
@@ -80,7 +80,7 @@
         "offer": 0,
         "status": "Available"
     },
-    "9": {
+    {
         "id": 9,
         "name": "W645",
         "type": "Suite",
@@ -89,7 +89,7 @@
         "offer": 25,
         "status": "Available"
     },
-    "10": {
+    {
         "id": 10,
         "name": "S405",
         "type": "Single Bed",
@@ -98,7 +98,7 @@
         "offer": 5,
         "status": "Available"
     },
-    "11": {
+    {
         "id": 11,
         "name": "X872",
         "type": "Double Bed",
@@ -107,7 +107,7 @@
         "offer": 0,
         "status": "Available"
     },
-    "12": {
+    {
         "id": 12,
         "name": "R237",
         "type": "Single Bed",
@@ -116,7 +116,7 @@
         "offer": 20,
         "status": "Available"
     },
-    "13": {
+    {
         "id": 13,
         "name": "K578",
         "type": "Double Bed",
@@ -125,7 +125,7 @@
         "offer": 20,
         "status": "Available"
     },
-    "14": {
+    {
         "id": 14,
         "name": "T535",
         "type": "Suite",
@@ -134,7 +134,7 @@
         "offer": 25,
         "status": "Booked"
     },
-    "15": {
+    {
         "id": 15,
         "name": "T498",
         "type": "Superior Double",
@@ -143,7 +143,7 @@
         "offer": 0,
         "status": "Booked"
     },
-    "16": {
+    {
         "id": 16,
         "name": "Y479",
         "type": "Superior Double",
@@ -152,7 +152,7 @@
         "offer": 5,
         "status": "Booked"
     },
-    "17": {
+    {
         "id": 17,
         "name": "W468",
         "type": "Suite",
@@ -161,7 +161,7 @@
         "offer": 25,
         "status": "Available"
     },
-    "18": {
+    {
         "id": 18,
         "name": "I778",
         "type": "Superior Double",
@@ -170,7 +170,7 @@
         "offer": 15,
         "status": "Booked"
     },
-    "19": {
+    {
         "id": 19,
         "name": "W722",
         "type": "Suite",
@@ -179,7 +179,7 @@
         "offer": 20,
         "status": "Booked"
     },
-    "20": {
+    {
         "id": 20,
         "name": "G365",
         "type": "Double Bed",
@@ -188,7 +188,7 @@
         "offer": 20,
         "status": "Available"
     },
-    "21": {
+    {
         "id": 21,
         "name": "Y636",
         "type": "Double Bed",
@@ -197,7 +197,7 @@
         "offer": 40,
         "status": "Booked"
     },
-    "22": {
+    {
         "id": 22,
         "name": "U967",
         "type": "Superior Double",
@@ -206,7 +206,7 @@
         "offer": 5,
         "status": "Booked"
     },
-    "23": {
+    {
         "id": 23,
         "name": "Z685",
         "type": "Suite",
@@ -215,7 +215,7 @@
         "offer": 10,
         "status": "Booked"
     },
-    "24": {
+    {
         "id": 24,
         "name": "K997",
         "type": "Double Bed",
@@ -224,7 +224,7 @@
         "offer": 50,
         "status": "Booked"
     },
-    "25": {
+    {
         "id": 25,
         "name": "Y525",
         "type": "Suite",
@@ -233,7 +233,7 @@
         "offer": 40,
         "status": "Booked"
     },
-    "26": {
+    {
         "id": 26,
         "name": "O743",
         "type": "Double Bed",
@@ -242,7 +242,7 @@
         "offer": 45,
         "status": "Booked"
     },
-    "27": {
+    {
         "id": 27,
         "name": "W393",
         "type": "Suite",
@@ -251,7 +251,7 @@
         "offer": 50,
         "status": "Booked"
     },
-    "28": {
+    {
         "id": 28,
         "name": "D027",
         "type": "Double Bed",
@@ -260,7 +260,7 @@
         "offer": 40,
         "status": "Booked"
     },
-    "29": {
+    {
         "id": 29,
         "name": "S606",
         "type": "Suite",
@@ -269,7 +269,7 @@
         "offer": 0,
         "status": "Booked"
     },
-    "30": {
+    {
         "id": 30,
         "name": "G377",
         "type": "Superior Double",
@@ -278,7 +278,7 @@
         "offer": 15,
         "status": "Booked"
     },
-    "31": {
+    {
         "id": 31,
         "name": "S815",
         "type": "Double Bed",
@@ -287,7 +287,7 @@
         "offer": 40,
         "status": "Booked"
     },
-    "32": {
+    {
         "id": 32,
         "name": "N904",
         "type": "Single Bed",
@@ -296,7 +296,7 @@
         "offer": 45,
         "status": "Booked"
     },
-    "33": {
+    {
         "id": 33,
         "name": "K307",
         "type": "Superior Double",
@@ -305,7 +305,7 @@
         "offer": 10,
         "status": "Booked"
     },
-    "34": {
+    {
         "id": 34,
         "name": "M832",
         "type": "Single Bed",
@@ -314,7 +314,7 @@
         "offer": 50,
         "status": "Available"
     },
-    "35": {
+    {
         "id": 35,
         "name": "J997",
         "type": "Suite",
@@ -323,7 +323,7 @@
         "offer": 30,
         "status": "Available"
     },
-    "36": {
+    {
         "id": 36,
         "name": "Y216",
         "type": "Single Bed",
@@ -332,7 +332,7 @@
         "offer": 5,
         "status": "Available"
     },
-    "37": {
+    {
         "id": 37,
         "name": "X080",
         "type": "Single Bed",
@@ -341,7 +341,7 @@
         "offer": 35,
         "status": "Available"
     },
-    "38": {
+    {
         "id": 38,
         "name": "Z418",
         "type": "Superior Double",
@@ -350,4 +350,4 @@
         "offer": 5,
         "status": "Booked"
     }
-}
+]
