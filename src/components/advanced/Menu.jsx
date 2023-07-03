@@ -71,9 +71,13 @@ const Menu = ({ title, Page, dispatch }) => {
     return (
         <Container>
             <SideBar sideBar={sideBar}>
-                <Box padding="1rem" margin="0 auto 1rem auto">
-                    <img src={logo} />
-                </Box>
+                <Entry padding="1rem" margin="2rem auto 1rem auto" width="fit-content">
+                    <Icon as="img" padding="0" dim="3rem" src={logo} />
+                    <Box padding="0" margin="0" radius="0">
+                        <Text weight="600" size="1.5rem">travl</Text>
+                        <Text color="#5D5449" size="0.75rem">Hotel Admin Dashboard</Text>
+                    </Box>
+                </Entry>
                 <Box padding="0">
                     <Entry
                         as="button"
