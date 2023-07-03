@@ -9,6 +9,8 @@ import Text from "../basic/Text";
 import logo from '../../assets/logo.png';
 import empty from "../../assets/empty.png";
 import { Context } from "../../App";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRooms } from "../redux/roomsSlice";
 
 const TopBar = styled.div`
     position: absolute;
@@ -70,6 +72,13 @@ const Menu = ({ Page }) => {
 
     let [sideBar, setSidebar] = useState(true);
     let [modal, setModal] = useState("");
+
+    //Redux management
+    const reduxDispatch = useDispatch();
+    const roomsStatus = useSelector(state => state.rooms.status);
+
+    if(roomsStatus === 'none')
+        reduxDispatch(fetchRooms());
 
     return (
         <Container>
