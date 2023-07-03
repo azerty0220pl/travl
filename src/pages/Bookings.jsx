@@ -1,5 +1,4 @@
 import { Box, Entry } from "../components/basic/Box";
-import Menu from "../components/advanced/Menu";
 import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
@@ -49,6 +48,8 @@ const Bookings = ({ modal }) => {
                         <Text align="center" color="#dfe228">{x}</Text>
                     </Box>
                 );
+                default:
+                    return <></>;
         }
     }
 

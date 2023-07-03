@@ -4,7 +4,7 @@ import { Box, BoxAbsolute, Entry, Icon } from "../basic/Box";
 import { MdOutlineDashboard, MdCalendarMonth, MdKey, MdContactSupport } from 'react-icons/md';
 import { BiEnvelope, BiLogOut, BiBell, BiRightArrowAlt, BiLeftArrowAlt } from 'react-icons/bi';
 import { FaRegUser } from 'react-icons/fa';
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Text from "../basic/Text";
 import logo from '../../assets/logo.png';
 import empty from "../../assets/empty.png";

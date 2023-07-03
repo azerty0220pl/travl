@@ -1,4 +1,3 @@
-import Menu from "../components/advanced/Menu";
 import { Box, Entry } from "../components/basic/Box";
 import { SwiperComponents, SwiperNavigation } from "../components/advanced/Swiper";
 import { useState } from "react";

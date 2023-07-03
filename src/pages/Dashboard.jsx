@@ -1,4 +1,3 @@
-import Menu from "../components/advanced/Menu";
 import { Box, Entry } from "../components/basic/Box";
 import { LiaBedSolid, LiaCalendarCheck } from 'react-icons/lia';
 import { BiLogIn, BiLogOut } from 'react-icons/bi';

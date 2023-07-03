@@ -1,4 +1,3 @@
-import Menu from "../components/advanced/Menu";
 import empty from "../assets/empty.png";
 import { Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";

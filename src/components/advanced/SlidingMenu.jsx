@@ -36,9 +36,9 @@ const SlidingMenu = ({ fields, handleChange }) => {
                         <Button
                             as='button'
                             key={i}
-                            color={cur == i ? "#135846" : "#6E6E6E"}
+                            color={cur === i ? "#135846" : "#6E6E6E"}
                             align="center"
-                            weight={cur == i ? "600" : "400"}
+                            weight={cur === i ? "600" : "400"}
                             onClick={() => {
                                 handleChange(dict[el]);
                                 setCur(i);

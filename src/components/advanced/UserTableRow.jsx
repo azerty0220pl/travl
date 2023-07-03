@@ -17,6 +17,8 @@ const UserTableRow = ({ x, i }) => {
                         <Text align="center" color="#FFFFFF">{y}</Text>
                     </Box>
                 );
+            default:
+                return <></>;
         }
     }
 

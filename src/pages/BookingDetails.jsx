@@ -1,6 +1,5 @@
-import Menu from "../components/advanced/Menu";
 import empty from "../assets/empty.png";
-import { Icon, Entry, Box, BoxAbsolute } from "../components/basic/Box";
+import { Entry, Box, BoxAbsolute } from "../components/basic/Box";
 import Text from "../components/basic/Text";
 
 const BookingDetails = () => {
