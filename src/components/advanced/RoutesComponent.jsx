@@ -9,21 +9,21 @@ import UserEdit from "../../pages/UsersEdit";
 import BookingDetails from "../../pages/BookingDetails";
 import RoomEdit from "../../pages/RoomEdit";
 
-const RoutesComponent = () => {
+const RoutesComponent = ({ modal }) => {
     return (
         <Routes>
-            <Route path="/dashboard" element={<PrivateRoute element={<Dashboard />} />} />
+            <Route path="/dashboard" element={<PrivateRoute element={<Dashboard modal={modal} />} />} />
             <Route path="/bookings">
-                <Route index element={<PrivateRoute element={<Bookings />} />} />
+                <Route index element={<PrivateRoute element={<Bookings modal={modal} />} />} />
                 <Route path="details" element={<PrivateRoute element={<BookingDetails />} />} />
             </Route>
             <Route path="/rooms" >
                 <Route index element={<PrivateRoute element={<Rooms />} />} />
                 <Route path="edit" element={<PrivateRoute element={<RoomEdit />} />} />
             </Route>
-            <Route path="/contact" element={<PrivateRoute element={<Contact />} />} />
+            <Route path="/contact" element={<PrivateRoute element={<Contact modal={modal} />} />} />
             <Route path="/users" >
-                <Route index element={<PrivateRoute element={<Users />} />} />
+                <Route index element={<PrivateRoute element={<Users modal={modal} />} />} />
                 <Route path="edit" element={<PrivateRoute element={<UserEdit />} />} />
             </Route>
         </Routes>
