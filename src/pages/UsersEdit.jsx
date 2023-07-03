@@ -1,21 +1,22 @@
-import Menu from "../components/advanced/Menu";
 import empty from "../assets/empty.png";
 import { Icon, Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
 import Select from "../components/basic/Select";
+import { useContext } from "react";
 
 const UserEdit = () => {
+    const state = useContext();
     return (
         <Entry margin="1rem" padding="2rem" justify="space-around">
             <Box as="form" margin="0" padding="1rem" border="1px solid #EBEBEB" width="50%">
                 <label id="user-label" htmlFor="user">
                     <Text weight="600">Username:</Text>
-                    <Text as="input" type="text" id="user" placeholder="username" margin="0.5rem" required />
+                    <Text as="input" type="text" id="user" placeholder="username" margin="0.5rem" value={state.username} required />
                 </label>
                 <Entry margin="1rem 0 0 0" padding="0" radius="0" justify="space-between">
                     <Box as="label" id="mail-label" htmlFor="mail" margin="0" padding="0" radius="0" height="100%" width="100%">
                         <Text weight="600">Email:</Text>
-                        <Text as="input" type="mail" id="mail" placeholder="mail@mail.mail" margin="0.5rem" required />
+                        <Text as="input" type="mail" id="mail" placeholder="mail@mail.mail" margin="0.5rem" value={state.email} required />
                     </Box>
                     <Box as="label" id="phone-label" htmlFor="phone" margin="0" padding="0" radius="0" height="100%" width="100%">
                         <Text weight="600">Phone:</Text>
@@ -53,7 +54,7 @@ const UserEdit = () => {
                     <Text weight="600" margin="1rem">Password:</Text>
                     <Text as="input" type="text" id="password" placeholder="9assword!" margin="0.5rem" required />
                 </label>
-                <Box as="button" color="#EEF9F2" margin="1rem 0 0 0" padding="1rem 2rem">
+                <Box as="button" color="#EEF9F2" margin="1rem 0 0 0" padding="1rem 2rem" onClick="">
                     <Text weight="600" align="center">Save</Text>
                 </Box>
             </Box>

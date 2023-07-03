@@ -29,14 +29,14 @@ const reducer = (state, action) => {
     reducerActions[action.type](state, action);
 }
 
-function App() {
+const App = () => {
   let [state, dispatch] = useReducer(reducer, defaultContext);
 
   return (
     <Context.Provider value={state}>
       {
         state.authenticated ?
-          <Menu title={state.page} Page={RoutesComponent} dispatch={dispatch}/>
+          <Menu title={state.page} Page={RoutesComponent} dispatch={dispatch} />
           :
           <Login dispatch={dispatch} />
       }
