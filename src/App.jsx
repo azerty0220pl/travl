@@ -20,7 +20,7 @@ const defaultContext = {
   page: "Dashboard"
 };
 
-const Context = createContext(defaultContext);
+export const Context = createContext(defaultContext);
 
 const reducer = (state, action) => {
   return reducerActions[action.type] === undefined ?
