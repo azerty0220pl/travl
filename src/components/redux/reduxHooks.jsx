@@ -1,7 +1,18 @@
 import { useSelector } from "react-redux";
-import RoomsTableRow from "../advanced/RoomsTableRow";
 
 const orderFunct = {
+    "order":  (a, b) => {
+        return Date.parse(a.order) < Date.parse(b.order) ? -1 : 1;
+    },
+    "guest": (a, b) => {
+        return a.name < b.name ? -1 : 1;
+    },
+    "in":  (a, b) => {
+        return Date.parse(a.in) < Date.parse(b.in) ? -1 : 1;
+    },
+    "out":  (a, b) => {
+        return Date.parse(a.out) < Date.parse(b.out) ? -1 : 1;
+    },
     "number": (a, b) => {
         return a.name < b.name ? -1 : 1;
     },
@@ -24,6 +35,9 @@ const orderFunct = {
 
 const filters = {
     "none": () => true,
+    "progress": (x) => {
+        return x.status === "In Progress";
+    },
     "available": (x) => {
         return x.status === "Available";
     },
@@ -32,8 +46,8 @@ const filters = {
     }
 }
 
-export const useTable = (sel, filter, order) => {
-    let data = useSelector(state => state.rooms.rooms);
+export const useTable = (sel, filter, order, Elem) => {
+    let data = useSelector(sel);
 
     data = data.filter(el =>
         filters[filter](el)
@@ -42,6 +56,6 @@ export const useTable = (sel, filter, order) => {
     data.sort(orderFunct[order]);
 
     return data.map((el, i) => {
-        return <RoomsTableRow x={el} i={i} />
+        return <Elem x={el} i={i} />
     });
 }
