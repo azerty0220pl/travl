@@ -28,7 +28,7 @@ const SideBar = styled.div`
     top: 0;
     left: ${props => props.sideBar ? "0" : "-20vw"};
     height: 100vh;
-    width: 20vw;
+    width: 15vw;
     background-color: white;
     transition: all 0.5s;
 `;
@@ -83,8 +83,8 @@ const Menu = ({ Page }) => {
     return (
         <Container>
             <SideBar sideBar={sideBar}>
-                <Entry padding="1rem" margin="2rem auto 1rem auto" width="fit-content">
-                    <Icon as="img" padding="0" dim="3rem" src={logo} />
+                <Entry padding="0 2rem" margin="2rem 0 1rem 0" width="100%" gap="0.5rem">
+                    <Icon as="img" padding="0" dim="4rem" src={logo} radius="0" />
                     <Box padding="0" margin="0" radius="0">
                         <Text weight="600" size="1.5rem">travl</Text>
                         <Text color="#5D5449" size="0.75rem">Hotel Admin Dashboard</Text>
