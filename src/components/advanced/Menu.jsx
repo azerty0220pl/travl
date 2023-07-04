@@ -73,7 +73,7 @@ const Menu = ({ Page }) => {
     };
 
     const [sideBar, setSidebar] = useState(true);
-    const [modal, setModal] = useState("");
+    const [modal, setModal] = useState({ subject: "", message: "" });
 
     //Redux management
     const reduxDispatch = useDispatch();
@@ -209,14 +209,15 @@ const Menu = ({ Page }) => {
                 <Page />
             </Content>
             {
-                modal.length > 0 ?
+                modal.message.length > 0 ?
                     <BoxAbsolute display="flex" width="100%" height="100%" top="0" left="0" color="transparent">
-                        <BoxAbsolute as="button" onClick={() => { setModal("") }} width="100%" height="100%" top="0" left="0" color="rgba(0, 0, 0, 0.25)" radius="0" zIndex="15" />
+                        <BoxAbsolute as="button" onClick={() => { setModal({ subject: "", message: "" }) }} width="100%" height="100%" top="0" left="0" color="rgba(0, 0, 0, 0.25)" radius="0" zIndex="15" />
                         <Entry width="50%" zIndex="20" margin="auto" direction="column" align="start">
-                                <Text>{modal}</Text>
-                                <Box as="button" onClick={() => { setModal("") }} color="#FFEDEC" margin="1rem 0 0 0" padding="1rem">
-                                    <Text color="#E23428" alig="center" line="1.25rem">Close</Text>
-                                </Box>
+                            <Text margin="0.5rem" weight="600" line="1.25rem">{modal.subject}</Text>
+                            <Text margin="0.5rem">{modal.message}</Text>
+                            <Box as="button" onClick={() => { setModal({ subject: "", message: "" }) }} color="#FFEDEC" margin="1rem 0 0 0" padding="1rem">
+                                <Text color="#E23428" align="center" line="1.25rem">Close</Text>
+                            </Box>
                         </Entry>
                     </BoxAbsolute>
                     :

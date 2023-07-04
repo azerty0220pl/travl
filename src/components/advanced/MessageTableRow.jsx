@@ -11,23 +11,25 @@ const MessageTableRow = ({ x, i }) => {
     return (
         <Row>
             <Cell>
-                <Text>{x.id}</Text><Text>{dateFormat(x.date)}</Text>
-            </Cell>
-            <Cell>
-                <Box padding="0" margin="0" radius="0">
-                    <Text width="auto" weight="600">{x.name}</Text>
-                    <Entry padding="0" margin="0" radius="0">
-                        <Text width="auto">{x.email}</Text>
-                        <Text width="auto">{x.phone}</Text>
-                    </Entry>
+                <Box display="inline-block" margin="0" padding="0" radius="0">
+                    <Text line="1.25rem" >{x.id}</Text>
+                    <Text line="1.25rem" margin="0.5rem" color="#787878">{dateFormat(x.date)}</Text>
                 </Box>
             </Cell>
-            <Cell as="button" onClick={() => { modal(x.message) }}>
-                <Text line="1.5rem" width="auto" weight="600">{x.subject}</Text>
-                <Text line="1.5rem" width="15rem">{x.message}</Text>
+            <Cell>
+                <Box display="inline-block" margin="0" padding="0" radius="0">
+                    <Text line="1.25rem">{x.name}</Text>
+                    <Text line="1.25rem" margin="0.5rem" color="#787878" space="break-spaces">{x.email + " - " + x.phone}</Text>
+                </Box>
             </Cell>
             <Cell>
-                <Box padding="1rem" margin="0 1rem 0 0" color="#FFEDEC">
+                <Box as="button" onClick={() => { modal({ subject: x.subject, message: x.message }) }} display="inline-block" height="3rem" width="40vw" margin="0" padding="0" radius="0">
+                    <Text line="1.25rem" weight="600">{x.subject}</Text>
+                    <Text line="1.25rem" margin="0.5rem">{x.message}</Text>
+                </Box>
+            </Cell>
+            <Cell>
+                <Box display="inline-block" height="3rem" padding="1rem" margin="0" color="#FFEDEC">
                     <Text color="#E23428" align="center">Archive</Text>
                 </Box>
             </Cell>

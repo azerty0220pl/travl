@@ -5,14 +5,17 @@ import Menu from "./components/advanced/Menu";
 import RoutesComponent from "./components/advanced/RoutesComponent";
 
 const reducerActions = {
-  "login": (state, action) => {
+  login: (state, action) => {
     return { ...state, authenticated: action.success };
   },
-  "page": (state, action) => {
+  page: (state, action) => {
     return { ...state, page: action.page };
   },
-  "modal": (state, action) => {
+  modal: (state, action) => {
     return { ...state, modal: action.modal };
+  },
+  default: (state, action) => {
+    return state;
   }
 }
 
@@ -29,13 +32,13 @@ export const Context = createContext(defaultContext);
 
 const reducer = (state, action) => {
   return reducerActions[action.type] === undefined ?
-    defaultContext
+    reducerActions["default"](state, action)
     :
     reducerActions[action.type](state, action);
 }
 
 const App = () => {
-  let [state, dispatch] = useReducer(reducer, defaultContext);
+  const [state, dispatch] = useReducer(reducer, defaultContext);
   defaultContext.dispatch = dispatch;
 
   return (
@@ -47,7 +50,7 @@ const App = () => {
           <Login />
       }
     </Context.Provider>
-    );
+  );
 }
 
 export default App;

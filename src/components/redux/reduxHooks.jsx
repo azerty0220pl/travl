@@ -1,73 +1,71 @@
 import { useSelector } from "react-redux";
 
 const orderFunct = {
-    "order":  (a, b) => {
+    order:  (a, b) => {
         return Date.parse(a.order) < Date.parse(b.order) ? -1 : 1;
     },
-    "name": (a, b) => {
+    name: (a, b) => {
         return a.name < b.name ? -1 : 1;
     },
-    "in":  (a, b) => {
+    in:  (a, b) => {
         return Date.parse(a.in) < Date.parse(b.in) ? -1 : 1;
     },
-    "out":  (a, b) => {
+    out:  (a, b) => {
         return Date.parse(a.out) < Date.parse(b.out) ? -1 : 1;
     },
-    "number": (a, b) => {
+    number: (a, b) => {
         return a.name < b.name ? -1 : 1;
     },
-    "ascending": (a, b) => {
+    ascending: (a, b) => {
         if (a.price === b.price)
             return 0;
         return a.price < b.price ? -1 : 1;
     },
-    "descending": (a, b) => {
+    descending: (a, b) => {
         if (a.price === b.price)
             return 0;
         return a.price < b.price ? 1 : -1;
     },
-    "status": (a, b) => {
+    status: (a, b) => {
         if (a.status === b.status)
             return 0;
         return a.status === "Available" ? -1 : 1;
     },
-    "joined": (a, b) => {
+    joined: (a, b) => {
         return Date.parse(a.joined) < Date.parse(b.joined) ? -1 : 1;
     },
-    "date": (a, b) => {
+    date: (a, b) => {
         return Date.parse(a.date) < Date.parse(b.date) ? -1 : 1;
     },
 };
 
 const filters = {
-    "none": () => true,
-    "progress": (x) => {
+    none: () => true,
+    progress: (x) => {
         return x.status === "In Progress";
     },
-    "available": (x) => {
+    available: (x) => {
         return x.status === "Available";
     },
-    "booked": (x) => {
+    booked: (x) => {
         return x.status === "Booked";
     },
-    "active": (x) => {
+    active: (x) => {
         return x.status === "Active";
     },
-    "inactive": (x) => {
+    inactive: (x) => {
         return x.status === "Inactive";
     },
-    "published": (x) => {
+    published: (x) => {
         return !x.archived;
     },
-    "archived": (x) => {
+    archived: (x) => {
         return x.archived;
     }
 }
 
 export const useTable = (sel, filter, order, Elem) => {
     let data = useSelector(sel);
-
-    console.log(data)
 
     data = data.filter(el =>
         filters[filter](el)

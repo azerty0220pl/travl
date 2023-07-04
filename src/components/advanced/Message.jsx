@@ -8,8 +8,10 @@ const Message = ({ x }) => {
 
     return (
         <Box width="100%" height="100%" border='1px solid #EBEBEB'>
-            <Text weight="600">{x.subject}</Text>
-            <Box as="button" onClick={() => { modal(x.message) }} height="3.75rem" width="100%" margin="1rem 0" padding="0" radius="0">
+            <Box as="button" onClick={() => { modal({ subject: x.subject, message: x.message }) }} height="1.25rem" width="100%" margin="0" padding="0" radius="0">
+                <Text weight="600" line="1.25rem">{x.subject}</Text>
+            </Box>
+            <Box as="button" onClick={() => { modal({ subject: x.subject, message: x.message }) }} height="3.75rem" width="100%" margin="1rem 0" padding="0" radius="0">
                 <Text line="1.25rem">{x.message}</Text>
             </Box>
             <Text weight="600">{x.name}</Text>

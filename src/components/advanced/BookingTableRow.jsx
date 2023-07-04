@@ -49,11 +49,11 @@ const BookingTableRow = ({ x, i }) => {
             <Cell>
                 {
                     x.request.length === 0 ?
-                        <Box margin="0 2rem 0 0" padding="1rem" height="3rem" border="2px solid #799283" width="14rem">
+                        <Box margin="0 " padding="1rem" height="3rem" border="2px solid #799283" width="14rem">
                             <Text align="center" color="#799283">View Notes</Text>
                         </Box>
                         :
-                        <Box as="button" onClick={() => { modal(x.request) }} margin="0 2rem 0 0" width="14rem" padding="1rem" height="3rem" color="#EEF9F2">
+                        <Box as="button" onClick={() => { modal({ subject: x.name, message: x.request }) }} margin="0" width="14rem" padding="1rem" height="3rem" color="#EEF9F2">
                             <Text align="center">View Notes</Text>
                         </Box>
                 }

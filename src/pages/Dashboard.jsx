@@ -6,14 +6,12 @@ import ReservationEntry from "../components/advanced/ReservationEntry";
 import KPI from "../components/advanced/KPI";
 import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
 import Message from "../components/advanced/Message";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useRelocation } from "../components/basic/hooks";
-import { Context } from "../App";
 import { useTable } from "../components/redux/reduxHooks";
 
 const Dashboard = () => {
     useRelocation("Dashboard");
-    const modal = useContext(Context).modal;
     
     let data = useTable(state => state.messages.messages, "published", "date", Message);
 
