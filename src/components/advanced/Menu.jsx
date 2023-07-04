@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { Box, BoxAbsolute, Entry, Icon } from "../basic/Box";
 import { MdOutlineDashboard, MdCalendarMonth, MdKey, MdContactSupport } from 'react-icons/md';
@@ -11,6 +11,7 @@ import empty from "../../assets/empty.png";
 import { Context } from "../../App";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRooms } from "../redux/roomsSlice";
+import { fetchBookings } from "../redux/bookingsSlice";
 
 const TopBar = styled.div`
     position: absolute;
@@ -75,9 +76,14 @@ const Menu = ({ Page }) => {
     //Redux management
     const reduxDispatch = useDispatch();
     const roomsStatus = useSelector(state => state.rooms.status);
-
-    if(roomsStatus === 'none')
-        reduxDispatch(fetchRooms());
+    const bookingsStatus = useSelector(state => state.bookings.status);
+    useEffect(() => {
+        dispatch({ type: "modal", modal: setModal });
+        if (roomsStatus === 'none')
+            reduxDispatch(fetchRooms());
+        if (bookingsStatus === 'none')
+            reduxDispatch(fetchBookings());
+    }, [dispatch, roomsStatus, reduxDispatch, bookingsStatus])
 
     return (
         <Container>
@@ -191,16 +197,16 @@ const Menu = ({ Page }) => {
                 </Entry>
             </TopBar>
             <Content sideBar={sideBar}>
-                <Page modal={setModal} />
+                <Page />
             </Content>
             {
                 modal.length > 0 ?
                     <BoxAbsolute as="button" onClick={() => { setModal("") }} width="100%" height="100%" top="0" left="0" color="rgba(0, 0, 0, 0.25)">
                         <Entry color="transparent" width="100%" height="100%">
-                            <Box width="fit-content" margin="auto">
+                            <Box width="50%" margin="auto">
                                 <Text>{modal}</Text>
                                 <Box as="button" onClick={() => { setModal("") }} color="#FFEDEC" margin="1rem 0 0 0" padding="1rem">
-                                    <Text color="#E23428" alig="center">Close</Text>
+                                    <Text color="#E23428" alig="center" line="1.25rem">Close</Text>
                                 </Box>
                             </Box>
                         </Entry>
