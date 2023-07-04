@@ -7,12 +7,12 @@ const dict = {
     "All Bookings": "none",
     "In Progress": "progress",
     "All Rooms": "none",
-    "All Contacts": "none",
     "Available": "available",
     "Booked": "booked",
     "All Users": "none",
     "Active Users": "active",
     "Inactive Users": "inactive",
+    "All Contacts": "published",
     "Archived": "archived"
 }
 

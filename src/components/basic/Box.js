@@ -13,6 +13,7 @@ export const Box = styled.div`
     object-fit: cover;
     overflow: hidden;
     vertical-align: middle;
+    z-index: ${props => props.zIndex || 'auto'};
 `;
 
 export const BoxAbsolute = styled(Box)`
@@ -31,7 +32,7 @@ export const Entry = styled(Box)`
     flex-direction: ${props => props.direction || 'row'};
     gap: ${props => props.gap || '1rem'};
     justify-content: ${props => props.justify || "start"};
-    align-items: center;
+    align-items: ${props => props.align || "center"};
     padding: ${props => props.padding || "1rem 2rem"};
     flex-wrap: ${props => props.wrap || "unset"};
 `;
