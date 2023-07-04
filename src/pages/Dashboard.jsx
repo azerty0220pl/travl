@@ -7,8 +7,11 @@ import KPI from "../components/advanced/KPI";
 import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
 import Message from "../components/advanced/Message";
 import { useState } from "react";
+import { useRelocation } from "../components/basic/hooks";
 
 const Dashboard = ({modal}) => {
+    useRelocation("Dashboard");
+
     let data = [
         <Message
             name="name1"

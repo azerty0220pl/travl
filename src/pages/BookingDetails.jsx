@@ -1,8 +1,11 @@
 import empty from "../assets/empty.png";
 import { Entry, Box, BoxAbsolute } from "../components/basic/Box";
 import Text from "../components/basic/Text";
+import { useRelocation } from "../components/basic/hooks";
 
 const BookingDetails = () => {
+    useRelocation("Booking Details");
+
     return (
         <Entry margin="1rem" padding="2rem" justify="space-between">
             <Box margin="0" padding="1rem" width="50%">

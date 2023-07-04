@@ -7,6 +7,7 @@ import { useState } from "react";
 import Select from "../components/basic/Select";
 import RoomsTableRow from "../components/advanced/RoomsTableRow";
 import { useSelector } from "react-redux";
+import { useRelocation } from "../components/basic/hooks";
 
 const orderFunct = {
     "number": (a, b) => {
@@ -30,6 +31,8 @@ const orderFunct = {
 };
 
 const Rooms = () => {
+    useRelocation("Rooms");
+
     let data = useSelector(state => state.rooms.rooms);
 
     const [filter, setFilter] = useState("none");

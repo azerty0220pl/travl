@@ -4,8 +4,11 @@ import Text from "../components/basic/Text";
 import Select from "../components/basic/Select";
 import { useContext } from "react";
 import { Context } from "../App";
+import { useRelocation } from "../components/basic/hooks";
 
 const UserEdit = () => {
+    useRelocation("Edit User");
+
     const state = useContext(Context);
 
     return (

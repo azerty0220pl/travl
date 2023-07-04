@@ -5,8 +5,10 @@ import Message from "../components/advanced/Message";
 import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
+import { useRelocation } from "../components/basic/hooks";
 
 const Contact = ({ modal }) => {
+    useRelocation("Contact");
 
     let data = [
         <Message

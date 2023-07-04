@@ -5,8 +5,11 @@ import { Table, Row, Cell } from "../components/basic/Table";
 import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
 import { useState } from "react";
 import Select from "../components/basic/Select";
+import { useRelocation } from "../components/basic/hooks";
 
 const Bookings = ({ modal }) => {
+    useRelocation("Bookings");
+
     let data = [
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Booked"],
         ["Orlando Bloom", "18/07/2023", "27/07/2023", "29/07/2023", "hello", "Deluxe Duplex Bed", "Refund"],
