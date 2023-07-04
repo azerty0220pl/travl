@@ -3,7 +3,7 @@ import Text from "../basic/Text";
 import { Box } from "../basic/Box";
 
 const UserTableRow = ({ x, i }) => {
-    let status = (y) => {
+    const status = (y) => {
         switch (y) {
             case "Active":
                 return (
