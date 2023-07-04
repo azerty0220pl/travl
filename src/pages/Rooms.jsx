@@ -6,7 +6,6 @@ import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swipe
 import { useState } from "react";
 import Select from "../components/basic/Select";
 import RoomsTableRow from "../components/advanced/RoomsTableRow";
-import { useSelector } from "react-redux";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/reduxHooks";
 
@@ -14,12 +13,11 @@ import { useTable } from "../components/redux/reduxHooks";
 const Rooms = () => {
     useRelocation("Rooms");
 
-
     const [filter, setFilter] = useState("none");
     const [order, setOrder] = useState("number");
     const [cur, setCur] = useState(0);
 
-    const data = useTable(state => state.rooms.rooms, filter, order);
+    const data = useTable(state => state.rooms.rooms, filter, order, RoomsTableRow);
 
     const title = [
         "Photo",

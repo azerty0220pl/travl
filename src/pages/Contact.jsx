@@ -1,14 +1,16 @@
 import { Box, Entry } from "../components/basic/Box";
 import { SwiperComponents, SwiperNavigation } from "../components/advanced/Swiper";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Message from "../components/advanced/Message";
 import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
 import { useRelocation } from "../components/basic/hooks";
+import { Context } from "../App";
 
-const Contact = ({ modal }) => {
+const Contact = () => {
     useRelocation("Contact");
+    const modal = useContext(Context).modal;
 
     let data = [
         <Message

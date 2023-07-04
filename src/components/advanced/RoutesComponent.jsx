@@ -8,22 +8,22 @@ import UserEdit from "../../pages/UsersEdit";
 import BookingDetails from "../../pages/BookingDetails";
 import RoomEdit from "../../pages/RoomEdit";
 
-const RoutesComponent = ({ modal }) => {
+const RoutesComponent = () => {
     return (
         <Routes>
             <Route path="/" element={<Navigate to="/dashboard" />} />
-            <Route path="/dashboard" element={<Dashboard modal={modal} />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/bookings">
-                <Route index element={<Bookings modal={modal} />} />
+                <Route index element={<Bookings />} />
                 <Route path="details" element={<BookingDetails />} />
             </Route>
             <Route path="/rooms" >
                 <Route index element={<Rooms />} />
                 <Route path="edit" element={<RoomEdit />} />
             </Route>
-            <Route path="/contact" element={<Contact modal={modal} />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/users" >
-                <Route index element={<Users modal={modal} />} />
+                <Route index element={<Users />} />
                 <Route path="edit" element={<UserEdit />} />
             </Route>
         </Routes>

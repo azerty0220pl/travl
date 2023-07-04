@@ -6,12 +6,14 @@ import ReservationEntry from "../components/advanced/ReservationEntry";
 import KPI from "../components/advanced/KPI";
 import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
 import Message from "../components/advanced/Message";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useRelocation } from "../components/basic/hooks";
+import { Context } from "../App";
 
-const Dashboard = ({modal}) => {
+const Dashboard = () => {
     useRelocation("Dashboard");
-
+    const modal = useContext(Context).modal;
+    
     let data = [
         <Message
             name="name1"

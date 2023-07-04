@@ -10,6 +10,9 @@ const reducerActions = {
   },
   "page": (state, action) => {
     return { ...state, page: action.page };
+  },
+  "modal": (state, action) => {
+    return { ...state, modal: action.modal };
   }
 }
 
@@ -18,7 +21,8 @@ const defaultContext = {
   username: "",
   email: "",
   page: "Dashboard",
-  dispatch: null
+  dispatch: null,
+  modal: null
 };
 
 export const Context = createContext(defaultContext);
