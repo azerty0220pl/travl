@@ -65,9 +65,8 @@ const Menu = ({ Page }) => {
         dispatch({ type: "login", success: false });
     }
 
-    const handlePage = (x, y) => {
-        dispatch({ type: "page", page: x });
-        navigate(y);
+    const handlePage = (x) => {
+        navigate(x);
     };
 
     let [sideBar, setSidebar] = useState(true);
@@ -93,7 +92,7 @@ const Menu = ({ Page }) => {
                 <Box padding="0">
                     <Entry
                         as="button"
-                        onClick={() => { handlePage("Dashboard", "/dashboard") }}
+                        onClick={() => { handlePage("/dashboard") }}
                     >
                         <MdOutlineDashboard size="1.5rem" color={title === "Dashboard" ? "#E23428" : "#799283"} />
                         <Text
@@ -104,7 +103,7 @@ const Menu = ({ Page }) => {
                     </Entry>
                     <Entry
                         as="button"
-                        onClick={() => { handlePage("Bookings", "/bookings") }}
+                        onClick={() => { handlePage("/bookings") }}
                     >
                         <MdCalendarMonth size="1.5rem" color={title === "Bookings" ? "#E23428" : "#799283"} />
                         <Text
@@ -115,7 +114,7 @@ const Menu = ({ Page }) => {
                     </Entry>
                     <Entry
                         as="button"
-                        onClick={() => { handlePage("Rooms", "/rooms") }}
+                        onClick={() => { handlePage("/rooms") }}
                     >
                         <MdKey size="1.5rem" color={title === "Rooms" ? "#E23428" : "#799283"} />
                         <Text
@@ -126,7 +125,7 @@ const Menu = ({ Page }) => {
                     </Entry>
                     <Entry
                         as="button"
-                        onClick={() => { handlePage("Contact", "/contact") }}
+                        onClick={() => { handlePage("/contact") }}
                     >
                         <MdContactSupport size="1.5rem" color={title === "Contact" ? "#E23428" : "#799283"} />
                         <Text
@@ -137,7 +136,7 @@ const Menu = ({ Page }) => {
                     </Entry>
                     <Entry
                         as="button"
-                        onClick={() => { handlePage("Users", "/users") }}
+                        onClick={() => { handlePage("/users") }}
                     >
                         <FaRegUser size="1.5rem" color={title === "Users" ? "#E23428" : "#799283"} />
                         <Text
