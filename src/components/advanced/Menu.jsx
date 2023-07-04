@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRooms } from "../redux/roomsSlice";
 import { fetchBookings } from "../redux/bookingsSlice";
 import { fetchUsers } from "../redux/usersSlice";
+import { fetchMessages } from "../redux/messagesSlice";
 
 const TopBar = styled.div`
     position: absolute;
@@ -79,6 +80,7 @@ const Menu = ({ Page }) => {
     const roomsStatus = useSelector(state => state.rooms.status);
     const bookingsStatus = useSelector(state => state.bookings.status);
     const usersStatus = useSelector(state => state.users.status);
+    const messagesStatus = useSelector(state => state.messages.status);
 
     useEffect(() => {
         dispatch({ type: "modal", modal: setModal });
@@ -88,7 +90,9 @@ const Menu = ({ Page }) => {
             reduxDispatch(fetchBookings());
         if (usersStatus === 'none')
             reduxDispatch(fetchUsers());
-    }, [dispatch, roomsStatus, reduxDispatch, bookingsStatus, usersStatus])
+        if (messagesStatus === 'none')
+            reduxDispatch(fetchMessages());
+    }, [dispatch, roomsStatus, reduxDispatch, bookingsStatus, usersStatus, messagesStatus])
 
     return (
         <Container>

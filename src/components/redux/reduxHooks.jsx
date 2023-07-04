@@ -31,9 +31,12 @@ const orderFunct = {
             return 0;
         return a.status === "Available" ? -1 : 1;
     },
-    "joined":   (a, b) => {
+    "joined": (a, b) => {
         return Date.parse(a.joined) < Date.parse(b.joined) ? -1 : 1;
-    }
+    },
+    "date": (a, b) => {
+        return Date.parse(a.date) < Date.parse(b.date) ? -1 : 1;
+    },
 };
 
 const filters = {
@@ -52,11 +55,19 @@ const filters = {
     },
     "inactive": (x) => {
         return x.status === "Inactive";
+    },
+    "published": (x) => {
+        return !x.archived;
+    },
+    "archived": (x) => {
+        return x.archived;
     }
 }
 
 export const useTable = (sel, filter, order, Elem) => {
     let data = useSelector(sel);
+
+    console.log(data)
 
     data = data.filter(el =>
         filters[filter](el)
