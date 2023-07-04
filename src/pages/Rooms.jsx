@@ -60,7 +60,7 @@ const Rooms = () => {
     return (
         <div>
             <Entry margin="0" padding="1rem" color="transparent" justify="space-between">
-                <SlidingMenu fields={["All Rooms", "Available", "Booked"]} handleChange={setFilter} />
+                <SlidingMenu fields={["All Rooms", "Available", "Booked"]} handleChange={(x) => { setCur(0); setFilter(x); }} />
                 <Select as="select" color="#135846" weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
                     <Text as='option' value="number" color="#135846" weight="400">Number</Text>
                     <Text as='option' value="status" color="#135846" weight="400">Status</Text>
