@@ -4,7 +4,7 @@ import { Entry, Box } from "../basic/Box";
 import empty from "../../assets/empty.png";
 
 const RoomsTableRow = ({ x, i }) => {
-    let status = (y) => {
+    const status = (y) => {
         switch (y) {
             case "Available":
                 return (
