@@ -8,46 +8,18 @@ import Select from "../components/basic/Select";
 import RoomsTableRow from "../components/advanced/RoomsTableRow";
 import { useSelector } from "react-redux";
 import { useRelocation } from "../components/basic/hooks";
+import { useTable } from "../components/redux/reduxHooks";
 
-const orderFunct = {
-    "number": (a, b) => {
-        return a.name < b.name ? -1 : 1;
-    },
-    "ascending": (a, b) => {
-        if (a.price === b.price)
-            return 0;
-        return a.price < b.price ? -1 : 1;
-    },
-    "descending": (a, b) => {
-        if (a.price === b.price)
-            return 0;
-        return a.price < b.price ? 1 : -1;
-    },
-    "status": (a, b) => {
-        if (a.status === b.status)
-            return 0;
-        return a.status === "Available" ? -1 : 1;
-    }
-};
 
 const Rooms = () => {
     useRelocation("Rooms");
 
-    let data = useSelector(state => state.rooms.rooms);
 
     const [filter, setFilter] = useState("none");
     const [order, setOrder] = useState("number");
     const [cur, setCur] = useState(0);
 
-    data = data.filter(el =>
-        filter === "none" || (filter === "available" && el.status === "Available") || (filter === "booked" && el.status === "Booked")
-    );
-
-    data.sort(orderFunct[order]);
-
-    data = data.map((el, i) => {
-        return <RoomsTableRow x={el} i={i} />
-    });
+    const data = useTable(state => state.rooms.rooms, filter, order);
 
     const title = [
         "Photo",
