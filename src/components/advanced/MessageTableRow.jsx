@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Box, Entry } from "../basic/Box";
+import { Box } from "../basic/Box";
 import { Cell, Row } from "../basic/Table";
 import Text from "../basic/Text";
 import { Context } from "../../App";
@@ -23,7 +23,18 @@ const MessageTableRow = ({ x, i }) => {
                 </Box>
             </Cell>
             <Cell>
-                <Box as="button" onClick={() => { modal({ subject: x.subject, message: x.message }) }} display="inline-block" height="3rem" width="40vw" margin="0" padding="0" radius="0">
+                <Box
+                    as="button"
+                    onClick={() => {
+                        modal({ subject: x.subject, message: x.message })
+                    }}
+                    display="inline-block"
+                    height="3rem"
+                    width="40vw"
+                    margin="0"
+                    padding="0"
+                    radius="0"
+                >
                     <Text line="1.25rem" weight="600">{x.subject}</Text>
                     <Text line="1.25rem" margin="0.5rem">{x.message}</Text>
                 </Box>
