@@ -19,7 +19,7 @@ const TopBar = styled.div`
     position: absolute;
     top: 0;
     right: 0;
-    width: ${props => props.sideBar ? "85vw" : "100vw"};
+    width: ${props => props.sidebar ? "85vw" : "100vw"};
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -29,7 +29,7 @@ const TopBar = styled.div`
 const SideBar = styled.div`
     position: absolute;
     top: 0;
-    left: ${props => props.sideBar ? "0" : "-20vw"};
+    left: ${props => props.sidebar ? "0" : "-15vw"};
     height: 100vh;
     width: 15vw;
     background-color: white;
@@ -40,7 +40,7 @@ const Content = styled.div`
     position: absolute;
     top: 4rem;
     right: 0;
-    width: ${props => props.sideBar ? "85vw" : "100vw"};
+    width: ${props => props.sidebar ? "85vw" : "100vw"};
     height: calc(100vh - 4rem);
     transition: all 0.5s;
     overflow-y: auto;
@@ -96,7 +96,7 @@ const Menu = ({ Page }) => {
 
     return (
         <Container>
-            <SideBar sideBar={sideBar}>
+            <SideBar sidebar={sideBar}>
                 <Entry padding="0 2rem" margin="2rem 0 1rem 0" width="100%" gap="0.5rem">
                     <Icon as="img" padding="0" dim="4rem" src={logo} radius="0" />
                     <Box padding="0" margin="0" radius="0">
@@ -174,7 +174,7 @@ const Menu = ({ Page }) => {
                     <Text color="#797979" size="0.75rem"> 2020 All Rights Reserved</Text>
                 </Box>
             </SideBar>
-            <TopBar sideBar={sideBar}>
+            <TopBar sidebar={sideBar}>
                 <Entry padding="1rem">
                     {
                         sideBar ?
@@ -205,14 +205,14 @@ const Menu = ({ Page }) => {
                     </Icon>
                 </Entry>
             </TopBar>
-            <Content sideBar={sideBar}>
+            <Content sidebar={sideBar}>
                 <Page />
             </Content>
             {
                 modal.message.length > 0 ?
                     <BoxAbsolute display="flex" width="100%" height="100%" top="0" left="0" color="transparent">
-                        <BoxAbsolute as="button" onClick={() => { setModal({ subject: "", message: "" }) }} width="100%" height="100%" top="0" left="0" color="rgba(0, 0, 0, 0.25)" radius="0" zIndex="15" />
-                        <Entry width="50%" zIndex="20" margin="auto" direction="column" align="start">
+                        <BoxAbsolute as="button" onClick={() => { setModal({ subject: "", message: "" }) }} width="100%" height="100%" top="0" left="0" color="rgba(0, 0, 0, 0.25)" radius="0" zindex="15" />
+                        <Entry width="50%" zindex="20" margin="auto" direction="column" align="start">
                             <Text margin="0.5rem" weight="600" line="1.25rem">{modal.subject}</Text>
                             <Text margin="0.5rem">{modal.message}</Text>
                             <Box as="button" onClick={() => { setModal({ subject: "", message: "" }) }} color="#FFEDEC" margin="1rem 0 0 0" padding="1rem">

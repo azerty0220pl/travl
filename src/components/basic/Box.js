@@ -13,7 +13,7 @@ export const Box = styled.div`
     object-fit: cover;
     overflow: hidden;
     vertical-align: middle;
-    z-index: ${props => props.zIndex || 'auto'};
+    z-index: ${props => props.zindex || 'auto'};
 `;
 
 export const BoxAbsolute = styled(Box)`
