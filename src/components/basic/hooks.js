@@ -6,6 +6,6 @@ export const useRelocation = (x) => {
 
     useEffect(() => {
         dispatch({ type: "page", page: x });
-    });
+    }, [dispatch, x]);
 
 }
