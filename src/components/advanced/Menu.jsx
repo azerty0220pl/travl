@@ -16,7 +16,7 @@ const TopBar = styled.div`
     position: absolute;
     top: 0;
     right: 0;
-    width: ${props => props.sideBar ? "80vw" : "100vw"};
+    width: ${props => props.sideBar ? "85vw" : "100vw"};
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -37,7 +37,7 @@ const Content = styled.div`
     position: absolute;
     top: 4rem;
     right: 0;
-    width: ${props => props.sideBar ? "80vw" : "100vw"};
+    width: ${props => props.sideBar ? "85vw" : "100vw"};
     height: calc(100vh - 4rem);
     transition: all 0.5s;
     overflow-y: auto;
