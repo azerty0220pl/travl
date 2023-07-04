@@ -71,8 +71,8 @@ const Menu = ({ Page }) => {
         navigate(x);
     };
 
-    let [sideBar, setSidebar] = useState(true);
-    let [modal, setModal] = useState("");
+    const [sideBar, setSidebar] = useState(true);
+    const [modal, setModal] = useState("");
 
     //Redux management
     const reduxDispatch = useDispatch();
@@ -88,7 +88,7 @@ const Menu = ({ Page }) => {
             reduxDispatch(fetchBookings());
         if (usersStatus === 'none')
             reduxDispatch(fetchUsers());
-    }, [dispatch, roomsStatus, reduxDispatch, bookingsStatus])
+    }, [dispatch, roomsStatus, reduxDispatch, bookingsStatus, usersStatus])
 
     return (
         <Container>

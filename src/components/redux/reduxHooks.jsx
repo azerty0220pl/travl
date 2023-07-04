@@ -4,7 +4,7 @@ const orderFunct = {
     "order":  (a, b) => {
         return Date.parse(a.order) < Date.parse(b.order) ? -1 : 1;
     },
-    "guest": (a, b) => {
+    "name": (a, b) => {
         return a.name < b.name ? -1 : 1;
     },
     "in":  (a, b) => {
@@ -30,6 +30,9 @@ const orderFunct = {
         if (a.status === b.status)
             return 0;
         return a.status === "Available" ? -1 : 1;
+    },
+    "joined":   (a, b) => {
+        return Date.parse(a.joined) < Date.parse(b.joined) ? -1 : 1;
     }
 };
 
@@ -43,6 +46,12 @@ const filters = {
     },
     "booked": (x) => {
         return x.status === "Booked";
+    },
+    "active": (x) => {
+        return x.status === "Active";
+    },
+    "inactive": (x) => {
+        return x.status === "Inactive";
     }
 }
 

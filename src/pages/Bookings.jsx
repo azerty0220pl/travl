@@ -36,7 +36,7 @@ const Bookings = () => {
                 <SlidingMenu fields={["All Bookings", "In Progress"]} handleChange={(x) => {  setCur(0); setFilter(x);  }} />
                 <Select as="select" color="#135846" weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
                     <Text as='option' value="order" color="#135846" weight="400">Order Date</Text>
-                    <Text as='option' value="guest" color="#135846" weight="400">Guest</Text>
+                    <Text as='option' value="name" color="#135846" weight="400">Guest</Text>
                     <Text as='option' value="in" color="#135846" weight="400">Check In</Text>
                     <Text as='option' value="out" color="#135846" weight="400">Check Out</Text>
                 </Select>

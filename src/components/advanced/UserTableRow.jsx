@@ -1,8 +1,14 @@
 import { Row, Cell } from "../basic/Table";
 import Text from "../basic/Text";
 import { Box } from "../basic/Box";
+import empty from '../../assets/empty.png'
+import dateFormat from "../basic/dateFormat";
+import { useContext } from "react";
+import { Context } from "../../App";
 
 const UserTableRow = ({ x, i }) => {
+    const modal = useContext(Context).modal;
+
     const status = (y) => {
         switch (y) {
             case "Active":
@@ -25,29 +31,38 @@ const UserTableRow = ({ x, i }) => {
     return (
         <Row key={i}>
             <Cell>
-                <Box as="img" display="inline" padding="0" margin="0" width="3rem" height="3rem" src={x[0]} />
+                <Box as="img" display="inline" padding="0" margin="0" width="3rem" height="3rem" src={empty} />
             </Cell>
             <Cell>
-                <Text>{x[1]}</Text>
+                <Text>{x.name}</Text>
             </Cell>
             <Cell>
-                <Text>{x[2]}</Text>
+                <Text>{x.id}</Text>
             </Cell>
             <Cell>
-                <Text>{x[3]}</Text>
+                <Text>{x.email}</Text>
             </Cell>
             <Cell>
-                <Text>{x[4]}</Text>
-            </Cell>
-            <Cell>
-                <Text>{x[5]}</Text>
-            </Cell>
-            <Cell>
-                <Text>{x[6]}</Text>
+                <Text>{dateFormat(x.joined)}</Text>
             </Cell>
             <Cell>
                 {
-                    status(x[7])
+                    x.description.length === 0 ?
+                        <Box margin="0 2rem 0 0" padding="1rem" height="3rem" border="2px solid #799283" width="14rem">
+                            <Text align="center" color="#799283">View Description</Text>
+                        </Box>
+                        :
+                        <Box as="button" onClick={() => { modal(x.description) }} margin="0 2rem 0 0" width="14rem" padding="1rem" height="3rem" color="#EEF9F2">
+                            <Text align="center">View Description</Text>
+                        </Box>
+                }
+            </Cell>
+            <Cell>
+                <Text>{x.phone}</Text>
+            </Cell>
+            <Cell>
+                {
+                    status(x.status)
                 }
             </Cell>
         </Row>

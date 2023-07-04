@@ -4,43 +4,19 @@ import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
 import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
 import { useState } from "react";
-import empty from '../assets/empty.png';
 import Select from "../components/basic/Select";
 import UserTableRow from "../components/advanced/UserTableRow";
 import { useRelocation } from "../components/basic/hooks";
+import { useTable } from "../components/redux/reduxHooks";
 
 const Users = () => {
     useRelocation("Users");
 
-    let data = [
-        [empty, "name01", "id01", "mail01", "date01", "Description", "123456789", "Active"],
-        [empty, "name02", "id02", "mail02", "date02", "Description", "123456789", "Active"],
-        [empty, "name03", "id03", "mail03", "date03", "Description", "123456789", "Inactive"],
-        [empty, "name04", "id04", "mail04", "date04", "Description", "123456789", "Active"],
-        [empty, "name05", "id05", "mail05", "date05", "Description", "123456789", "Active"],
-        [empty, "name06", "id06", "mail06", "date06", "Description", "123456789", "Active"],
-        [empty, "name07", "id07", "mail07", "date07", "Description", "123456789", "Inactive"],
-        [empty, "name08", "id08", "mail08", "date08", "Description", "123456789", "Active"],
-        [empty, "name09", "id09", "mail09", "date09", "Description", "123456789", "Active"],
-        [empty, "name10", "id10", "mail10", "date10", "Description", "123456789", "Active"],
-        [empty, "name11", "id11", "mail11", "date11", "Description", "123456789", "Inactive"],
-        [empty, "name12", "id12", "mail12", "date12", "Description", "123456789", "Inactive"],
-        [empty, "name13", "id13", "mail13", "date13", "Description", "123456789", "Active"],
-        [empty, "name14", "id14", "mail14", "date14", "Description", "123456789", "Inactive"],
-        [empty, "name15", "id15", "mail15", "date15", "Description", "123456789", "Active"],
-        [empty, "name16", "id16", "mail16", "date16", "Description", "123456789", "Active"],
-        [empty, "name17", "id17", "mail17", "date17", "Description", "123456789", "Active"],
-        [empty, "name18", "id18", "mail18", "date18", "Description", "123456789", "Active"],
-        [empty, "name19", "id19", "mail19", "date19", "Description", "123456789", "Inactive"]
-    ];
-
     const [filter, setFilter] = useState("none");
+    const [order, setOrder] = useState("number");
+    const [cur, setCur] = useState(0);
 
-    data = data.filter(el => filter === "none" || (filter === "active" && el[7] === "Active") || (filter === "inactive" && el[7] === "Inactive")).map((el, i) => {
-            return <UserTableRow x={el} i={i} />
-    });
-
-    console.log(data);
+    const data = useTable(state => state.users.users, filter, order, UserTableRow);
 
     const title = [
         "Photo",
@@ -53,13 +29,12 @@ const Users = () => {
         "Status"
     ];
 
-    let [cur, setCur] = useState(0);
 
     return (
         <div>
             <Entry margin="0" padding="1rem" color="transparent" justify="space-between">
-                <SlidingMenu fields={["All Users", "Active Users", "Inactive Users"]} handleChange={setFilter} />
-                <Select as="select" color="#135846" weight="600">
+                <SlidingMenu fields={["All Users", "Active Users", "Inactive Users"]} handleChange={(x) => { setCur(0); setFilter(x); }} />
+                <Select as="select" color="#135846" weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
                     <Text as='option' value="name" color="#135846" weight="400">Name</Text>
                     <Text as='option' value="date" color="#135846" weight="400">Start Date</Text>
                 </Select>
