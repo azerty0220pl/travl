@@ -12,6 +12,7 @@ import { Context } from "../../App";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRooms } from "../redux/roomsSlice";
 import { fetchBookings } from "../redux/bookingsSlice";
+import { fetchUsers } from "../redux/usersSlice";
 
 const TopBar = styled.div`
     position: absolute;
@@ -77,12 +78,16 @@ const Menu = ({ Page }) => {
     const reduxDispatch = useDispatch();
     const roomsStatus = useSelector(state => state.rooms.status);
     const bookingsStatus = useSelector(state => state.bookings.status);
+    const usersStatus = useSelector(state => state.users.status);
+
     useEffect(() => {
         dispatch({ type: "modal", modal: setModal });
         if (roomsStatus === 'none')
             reduxDispatch(fetchRooms());
         if (bookingsStatus === 'none')
             reduxDispatch(fetchBookings());
+        if (usersStatus === 'none')
+            reduxDispatch(fetchUsers());
     }, [dispatch, roomsStatus, reduxDispatch, bookingsStatus])
 
     return (
