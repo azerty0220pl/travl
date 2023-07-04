@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import data from "../../data/rooms.json";
 
 const initialState = {
-    rooms: {},
+    rooms: [],
     status: "none"
 };
 
