@@ -31,21 +31,21 @@ const Users = () => {
 
     return (
         <div>
-            <Entry margin="0" padding="1rem" color="transparent" justify="space-between">
+            <Entry $margin="0" $padding="1rem" $color="transparent" $justify="space-between">
                 <SlidingMenu fields={["All Users", "Active Users", "Inactive Users"]} handleChange={(x) => { setCur(0); setFilter(x); }} />
-                <Select as="select" color="#135846" weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
-                    <Text as='option' value="name" color="#135846" weight="400">Name</Text>
-                    <Text as='option' value="date" color="#135846" weight="400">Start Date</Text>
+                <Select as="select" $color="#135846" $weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
+                    <Text as='option' value="name" $color="#135846" $weight="400">Name</Text>
+                    <Text as='option' value="date" $color="#135846" $weight="400">Start Date</Text>
                 </Select>
             </Entry>
-            <Box margin="0 1rem">
+            <Box $margin="0 1rem">
                 <Table>
                     <Row>
                         {
                             title.map((el, i) => {
                                 return (
                                     <Cell key={(i + 1) * - 1}>
-                                        <Text weight="600">{el}</Text>
+                                        <Text $weight="600">{el}</Text>
                                     </Cell>
                                 );
                             })
@@ -54,7 +54,7 @@ const Users = () => {
                     <SwiperComponents data={data} cur={cur} count={10} />
                 </Table>
             </Box>
-            <Box margin="1rem" color="transparent" padding="0">
+            <Box $margin="1rem" $color="transparent" $padding="0">
                 <SwiperNavigation cur={cur} setCur={setCur} count={10} data={data} />
             </Box>
         </div>

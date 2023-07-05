@@ -42,15 +42,15 @@ export const SwiperNavigation = ({ data, count, cur, setCur }) => {
                 <Icon
                     as="button"
                     key={"snav" + i}
-                    dim="3rem"
-                    padding="1rem"
-                    color={cur === i ? "#135846" : "transparent"}
+                    $dim="3rem"
+                    $padding="1rem"
+                    $color={cur === i ? "#135846" : "transparent"}
                     onClick={() => { setCur(i) }}
                 >
                     <Text
-                        align="center"
+                        $align="center"
                         key={"snav" + i + "t1"}
-                        color={cur === i
+                        $color={cur === i
                             ?
                             "white"
                             :
@@ -66,20 +66,20 @@ export const SwiperNavigation = ({ data, count, cur, setCur }) => {
 
     return (
         <>
-            <Entry color="transparent" margin="0" padding="0" justify="end" width="100%">
+            <Entry $color="transparent" $margin="0" $padding="0" $justify="end" $width="100%">
                 <Box
                     as="button"
-                    margin="0"
-                    width="5rem"
-                    height="3rem"
-                    padding="0.875rem"
-                    color="white"
-                    border="2px solid #135846"
+                    $margin="0"
+                    $width="5rem"
+                    $height="3rem"
+                    $padding="0.875rem"
+                    $color="white"
+                    $border="2px solid #135846"
                     onClick={() => { move(-1) }}
                 >
-                    <Text color="#135846" align="center">Prev</Text>
+                    <Text $color="#135846" $align="center">Prev</Text>
                 </Box>
-                <Entry margin="0" gap="0" padding="0" color="#F5F5F5">
+                <Entry $margin="0" $gap="0" $padding="0" $color="#F5F5F5">
                     {
                         printNav().map((el) => {
                             return el;
@@ -88,15 +88,15 @@ export const SwiperNavigation = ({ data, count, cur, setCur }) => {
                 </Entry>
                 <Box
                     as="button"
-                    margin="0"
-                    width="5rem"
-                    height="3rem"
-                    padding="0.875rem"
-                    color="white"
-                    border="2px solid #135846"
+                    $margin="0"
+                    $width="5rem"
+                    $height="3rem"
+                    $padding="0.875rem"
+                    $color="white"
+                    $border="2px solid #135846"
                     onClick={() => { move(1) }}
                 >
-                    <Text size="1rem" color="#135846" align="center">Next</Text>
+                    <Text $size="1rem" $color="#135846" $align="center">Next</Text>
                 </Box>
             </Entry>
         </>

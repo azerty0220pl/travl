@@ -1,13 +1,11 @@
 import { Box, Entry } from "../components/basic/Box";
 import { SwiperComponents, SwiperNavigation } from "../components/advanced/Swiper";
 import { useState } from "react";
-import Message from "../components/advanced/Message";
 import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/reduxHooks";
-import MessageTableRow from "../components/advanced/MessageTableRow";
 
 const Contact = () => {
     useRelocation("Contact");
@@ -24,25 +22,25 @@ const Contact = () => {
 
     return (
         <>
-            <Box margin="1rem">
-                <Entry padding="0" justify="space-between" gap="1rem">
+            <Box $margin="1rem">
+                <Entry $padding="0" $justify="space-between" $gap="1rem">
                     <SwiperComponents data={data1} count={3} cur={cur1} />
                 </Entry>
-                <Box padding="0" margin="1rem 0 0 0">
+                <Box $padding="0" $margin="1rem 0 0 0">
                     <SwiperNavigation data={data1} count={3} cur={cur1} setCur={setCur1} />
                 </Box>
             </Box>
-            <Entry margin="0 1rem" padding="1rem" color="transparent" justify="space-between">
+            <Entry $margin="0 1rem" $padding="1rem" $color="transparent" $justify="space-between">
                 <SlidingMenu fields={["All Contacts", "Archived"]} handleChange={(x) => { setCur2(0); setFilter(x); }} />
             </Entry>
-            <Box margin="0 1rem">
+            <Box $margin="0 1rem">
                 <Table>
                     <Row>
                         {
                             title.map((el, i) => {
                                 return (
                                     <Cell key={"tc" + ((i + 1) * - 1)}>
-                                        <Text key={"tc" + ((i + 1) * - 1) + "t1"} weight="600">{el}</Text>
+                                        <Text key={"tc" + ((i + 1) * - 1) + "t1"} $weight="600">{el}</Text>
                                     </Cell>
                                 );
                             })
@@ -51,7 +49,7 @@ const Contact = () => {
                     <SwiperComponents data={data2} cur={cur2} count={10} />
                 </Table>
             </Box>
-            <Box margin="1rem" color="transparent" padding="0">
+            <Box $margin="1rem" $color="transparent" $padding="0">
                 <SwiperNavigation cur={cur2} setCur={setCur2} count={10} data={data2} />
             </Box>
         </>

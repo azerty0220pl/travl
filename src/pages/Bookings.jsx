@@ -29,23 +29,23 @@ const Bookings = () => {
 
     return (
         <div>
-            <Entry margin="0" padding="1rem" color="transparent" justify="space-between">
+            <Entry $margin="0" $padding="1rem" $color="transparent" $justify="space-between">
                 <SlidingMenu fields={["All Bookings", "In Progress"]} handleChange={(x) => {  setCur(0); setFilter(x);  }} />
-                <Select as="select" color="#135846" weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
-                    <Text as='option' value="order" color="#135846" weight="400">Order Date</Text>
-                    <Text as='option' value="name" color="#135846" weight="400">Guest</Text>
-                    <Text as='option' value="in" color="#135846" weight="400">Check In</Text>
-                    <Text as='option' value="out" color="#135846" weight="400">Check Out</Text>
+                <Select as="select" $color="#135846" $weight="600" $value={order} onChange={(e) => { setOrder(e.target.value) }}>
+                    <Text as='option' value="order" $color="#135846" $weight="400">Order Date</Text>
+                    <Text as='option' value="name" $color="#135846" $weight="400">Guest</Text>
+                    <Text as='option' value="in" $color="#135846" $weight="400">Check In</Text>
+                    <Text as='option' value="out" $color="#135846" $weight="400">Check Out</Text>
                 </Select>
             </Entry>
-            <Box margin="0 1rem">
+            <Box $margin="0 1rem">
                 <Table>
                     <Row>
                         {
                             title.map((el, i) => {
                                 return (
                                     <Cell key={"tc" + ((i + 1) * - 1)}>
-                                        <Text key={"tc" + ((i + 1) * - 1) + "t1"} weight="600">{el}</Text>
+                                        <Text key={"tc" + ((i + 1) * - 1) + "t1"} $weight="600">{el}</Text>
                                     </Cell>
                                 );
                             })
@@ -54,7 +54,7 @@ const Bookings = () => {
                     <SwiperComponents data={data} cur={cur} count={10} />
                 </Table>
             </Box>
-            <Box margin="1rem" color="transparent" padding="0">
+            <Box $margin="1rem" $color="transparent" $padding="0">
                 <SwiperNavigation cur={cur} setCur={setCur} count={10} data={data} />
             </Box>
         </div>

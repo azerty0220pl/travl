@@ -18,13 +18,13 @@ const Dashboard = () => {
 
     return (
         <div>
-            <Entry justify="space-between" color="none" padding="1rem" margin="0">
+            <Entry $justify="space-between" $color="none" $padding="1rem" $margin="0">
                 <KPI Ico={LiaBedSolid} number="8,461" title="New Bookings" />
                 <KPI Ico={LiaCalendarCheck} number="95%" title="Scheduled Room" />
                 <KPI Ico={BiLogIn} number="753" title="Check In" />
                 <KPI Ico={BiLogOut} number="516" title="Check Out" />
             </Entry>
-            <Box margin="0 1rem">
+            <Box $margin="0 1rem">
                 <ReservationEntry
                     room="Deluxe Duplex Room"
                     number="001"
@@ -48,11 +48,11 @@ const Dashboard = () => {
                     to="29/07/2023"
                     last />
             </Box>
-            <Box margin="1rem">
-                <Entry padding="0" justify="space-between" gap="1rem">
+            <Box $margin="1rem">
+                <Entry $padding="0" $justify="space-between" $gap="1rem">
                     <SwiperComponents data={data} count={3} cur={cur} />
                 </Entry>
-                <Box padding="0" margin="1rem 0">
+                <Box $padding="0" $margin="1rem 0">
                     <SwiperNavigation data={data} count={3} cur={cur} setCur={setCur} />
                 </Box>
             </Box>

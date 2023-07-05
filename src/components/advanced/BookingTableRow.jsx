@@ -11,20 +11,20 @@ const BookingTableRow = ({ x, i }) => {
         switch (x) {
             case "Booked":
                 return (
-                    <Box margin="0" padding="1rem" height="3rem" color="#E8FFEE">
-                        <Text align="center" color="#5AD07A">{x}</Text>
+                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#E8FFEE">
+                        <Text $align="center" $color="#5AD07A">{x}</Text>
                     </Box>
                 );
             case "Refund":
                 return (
-                    <Box margin="0" padding="1rem" height="3rem" color="#FFEDEC">
-                        <Text align="center" color="#E23428">{x}</Text>
+                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#FFEDEC">
+                        <Text $align="center" $color="#E23428">{x}</Text>
                     </Box>
                 );
             case "In Progress":
                 return (
-                    <Box margin="0" padding="1rem" height="3rem" color="#FFFEEC">
-                        <Text align="center" color="#dfe228">{x}</Text>
+                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#FFFEEC">
+                        <Text $align="center" $color="#dfe228">{x}</Text>
                     </Box>
                 );
             default:
@@ -35,7 +35,7 @@ const BookingTableRow = ({ x, i }) => {
     return (
         <Row key={i}>
             <Cell>
-                <Text weight="600">{x.name}</Text>
+                <Text $weight="600">{x.name}</Text>
             </Cell>
             <Cell>
                 <Text>{dateFormat(x.order)}</Text>
@@ -49,12 +49,12 @@ const BookingTableRow = ({ x, i }) => {
             <Cell>
                 {
                     x.request.length === 0 ?
-                        <Box margin="0 " padding="1rem" height="3rem" border="2px solid #799283" width="14rem">
-                            <Text align="center" color="#799283">View Notes</Text>
+                        <Box $margin="0" $padding="1rem" $height="3rem" $border="2px solid #799283" $width="14rem">
+                            <Text $align="center" $color="#799283">View Notes</Text>
                         </Box>
                         :
-                        <Box as="button" onClick={() => { modal({ subject: x.name, message: x.request }) }} margin="0" width="14rem" padding="1rem" height="3rem" color="#EEF9F2">
-                            <Text align="center">View Notes</Text>
+                        <Box as="button" onClick={() => { modal({ subject: x.name, message: x.request }) }} $margin="0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
+                            <Text $align="center">View Notes</Text>
                         </Box>
                 }
             </Cell>

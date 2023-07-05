@@ -13,14 +13,14 @@ const UserTableRow = ({ x, i }) => {
         switch (y) {
             case "Active":
                 return (
-                    <Box margin="0" padding="1rem" height="3rem" color="#5AD07A">
-                        <Text align="center" color="#FFFFFF">{y}</Text>
+                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#5AD07A">
+                        <Text $align="center" $color="#FFFFFF">{y}</Text>
                     </Box>
                 );
             case "Inactive":
                 return (
-                    <Box margin="0" padding="1rem" height="3rem" color="#E23428">
-                        <Text align="center" color="#FFFFFF">{y}</Text>
+                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#E23428">
+                        <Text $align="center" $color="#FFFFFF">{y}</Text>
                     </Box>
                 );
             default:
@@ -31,7 +31,7 @@ const UserTableRow = ({ x, i }) => {
     return (
         <Row key={i}>
             <Cell>
-                <Box as="img" display="inline" padding="0" margin="0" width="3rem" height="3rem" src={empty} />
+                <Box as="img" $display="inline" $padding="0" $margin="0" $width="3rem" $height="3rem" src={empty} />
             </Cell>
             <Cell>
                 <Text>{x.name}</Text>
@@ -48,12 +48,12 @@ const UserTableRow = ({ x, i }) => {
             <Cell>
                 {
                     x.description.length === 0 ?
-                        <Box margin="0 2rem 0 0" padding="1rem" height="3rem" border="2px solid #799283" width="14rem">
-                            <Text align="center" color="#799283">View Description</Text>
+                        <Box $margin="0 2rem 0 0" $padding="1rem" $height="3rem" $border="2px solid #799283" $width="14rem">
+                            <Text $align="center" $color="#799283">View Description</Text>
                         </Box>
                         :
-                        <Box as="button" onClick={() => { modal({ subject: x.name, message: x.description }) }} margin="0 2rem 0 0" width="14rem" padding="1rem" height="3rem" color="#EEF9F2">
-                            <Text align="center">View Description</Text>
+                        <Box as="button" onClick={() => { modal({ subject: x.name, message: x.description }) }} $margin="0 2rem 0 0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
+                            <Text $align="center">View Description</Text>
                         </Box>
                 }
             </Cell>

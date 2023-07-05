@@ -33,16 +33,16 @@ const SlidingMenu = ({ fields, handleChange }) => {
     let [cur, setCur] = useState(0);
 
     return (
-        <Container color="transparent" radius="0" margin="0" padding="1rem 0" justify="space-between" gap="0">
+        <Container $color="transparent" $radius="0" $margin="0" $padding="1rem 0" $justify="space-between" $gap="0">
             {
                 fields.map((el, i) => {
                     return (
                         <Button
                             as='button'
                             key={i}
-                            color={cur === i ? "#135846" : "#6E6E6E"}
-                            align="center"
-                            weight={cur === i ? "600" : "400"}
+                            $color={cur === i ? "#135846" : "#6E6E6E"}
+                            $align="center"
+                            $weight={cur === i ? "600" : "400"}
                             onClick={() => {
                                 handleChange(dict[el]);
                                 setCur(i);

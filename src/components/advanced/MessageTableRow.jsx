@@ -11,15 +11,15 @@ const MessageTableRow = ({ x, i }) => {
     return (
         <Row>
             <Cell>
-                <Box display="inline-block" margin="0" padding="0" radius="0">
-                    <Text line="1.25rem" >{x.id}</Text>
-                    <Text line="1.25rem" margin="0.5rem" color="#787878">{dateFormat(x.date)}</Text>
+                <Box $display="inline-block" $margin="0" $padding="0" $radius="0">
+                    <Text $line="1.25rem" >{x.id}</Text>
+                    <Text $line="1.25rem" $margin="0.5rem" $color="#787878">{dateFormat(x.date)}</Text>
                 </Box>
             </Cell>
             <Cell>
-                <Box display="inline-block" margin="0" padding="0" radius="0">
-                    <Text line="1.25rem">{x.name}</Text>
-                    <Text line="1.25rem" margin="0.5rem" color="#787878" space="break-spaces">{x.email + " - " + x.phone}</Text>
+                <Box $display="inline-block" $margin="0" $padding="0" $radius="0">
+                    <Text $line="1.25rem">{x.name}</Text>
+                    <Text $line="1.25rem" $margin="0.5rem" $color="#787878" $space="break-spaces">{x.email + " - " + x.phone}</Text>
                 </Box>
             </Cell>
             <Cell>
@@ -28,20 +28,20 @@ const MessageTableRow = ({ x, i }) => {
                     onClick={() => {
                         modal({ subject: x.subject, message: x.message })
                     }}
-                    display="inline-block"
-                    height="3rem"
-                    width="40vw"
-                    margin="0"
-                    padding="0"
-                    radius="0"
+                    $display="inline-block"
+                    $height="3rem"
+                    $width="40vw"
+                    $margin="0"
+                    $padding="0"
+                    $radius="0"
                 >
-                    <Text line="1.25rem" weight="600">{x.subject}</Text>
-                    <Text line="1.25rem" margin="0.5rem">{x.message}</Text>
+                    <Text $line="1.25rem" $weight="600">{x.subject}</Text>
+                    <Text $line="1.25rem" $margin="0.5rem">{x.message}</Text>
                 </Box>
             </Cell>
             <Cell>
-                <Box display="inline-block" height="3rem" padding="1rem" margin="0" color="#FFEDEC">
-                    <Text color="#E23428" align="center">Archive</Text>
+                <Box $display="inline-block" $height="3rem" $padding="1rem" $margin="0" $color="#FFEDEC">
+                    <Text $color="#E23428" $align="center">Archive</Text>
                 </Box>
             </Cell>
         </Row>
