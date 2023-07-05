@@ -6,7 +6,7 @@ import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swipe
 import { useState } from "react";
 import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
-import { useTable } from "../components/redux/reduxHooks";
+import { useTable } from "../components/redux/useTable";
 
 const Users = () => {
     useRelocation("Users");
@@ -35,7 +35,7 @@ const Users = () => {
                 <SlidingMenu fields={["All Users", "Active Users", "Inactive Users"]} handleChange={(x) => { setCur(0); setFilter(x); }} />
                 <Select as="select" $color="#135846" $weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
                     <Text as='option' value="name" $color="#135846" $weight="400">Name</Text>
-                    <Text as='option' value="date" $color="#135846" $weight="400">Start Date</Text>
+                    <Text as='option' value="joined" $color="#135846" $weight="400">Start Date</Text>
                 </Select>
             </Entry>
             <Box $margin="0 1rem">

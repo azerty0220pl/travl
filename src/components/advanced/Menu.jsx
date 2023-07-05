@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRooms } from "../redux/roomsSlice";
 import { fetchBookings } from "../redux/bookingsSlice";
 import { fetchUsers } from "../redux/usersSlice";
-import { fetchMessages } from "../redux/messagesSlice";
+import { fetchMessages } from "../redux/messages/messagesSlice";
 
 const TopBar = styled.div`
     position: absolute;
@@ -92,7 +92,7 @@ const Menu = ({ Page }) => {
             reduxDispatch(fetchUsers());
         if (messagesStatus === 'none')
             reduxDispatch(fetchMessages());
-    }, [dispatch, roomsStatus, reduxDispatch, bookingsStatus, usersStatus, messagesStatus])
+    }, [dispatch, roomsStatus, reduxDispatch, bookingsStatus, usersStatus, messagesStatus]);
 
     return (
         <Container>

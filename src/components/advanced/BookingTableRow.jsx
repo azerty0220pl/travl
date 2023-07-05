@@ -7,6 +7,7 @@ import dateFormat from "../basic/dateFormat";
 
 const BookingTableRow = ({ x, i }) => {
     const modal = useContext(Context).modal;
+    
     const status = (x) => {
         switch (x) {
             case "Booked":

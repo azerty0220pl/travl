@@ -66,6 +66,9 @@ const filters = {
     },
     archived: (x) => {
         return x.archived;
+    },
+    read: (x) => {
+        return !x.read && !x.archived;
     }
 }
 
@@ -87,6 +90,10 @@ const elems = {
 
 export const useTable = (sel, filter, order) => {
     let data = useSelector(selectors[sel]);
+
+    data = Object.keys(data).map((key) => {
+        return data[key];
+    });;
 
     data = data.filter(el =>
         filters[filter](el)

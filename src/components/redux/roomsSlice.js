@@ -6,7 +6,7 @@ const initialState = {
     status: "none"
 };
 
-export const fetchRooms = createAsyncThunk('getRooms', async () => {
+export const fetchRooms = createAsyncThunk('getRooms', () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(data);

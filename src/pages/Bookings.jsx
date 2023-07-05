@@ -6,7 +6,7 @@ import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swipe
 import { useState } from "react";
 import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
-import { useTable } from "../components/redux/reduxHooks";
+import { useTable } from "../components/redux/useTable";
 
 const Bookings = () => {
     useRelocation("Bookings");

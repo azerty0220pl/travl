@@ -7,12 +7,12 @@ import KPI from "../components/advanced/KPI";
 import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
 import { useState } from "react";
 import { useRelocation } from "../components/basic/hooks";
-import { useTable } from "../components/redux/reduxHooks";
+import { useTable } from "../components/redux/useTable";
 
 const Dashboard = () => {
     useRelocation("Dashboard");
     
-    let data = useTable("messages", "published", "date");
+    let data = useTable("messages", "read", "date");
 
     let [cur, setCur] = useState(0);
 

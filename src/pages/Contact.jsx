@@ -5,21 +5,20 @@ import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
 import { useRelocation } from "../components/basic/hooks";
-import { useTable } from "../components/redux/reduxHooks";
+import { useTable } from "../components/redux/useTable";
 
 const Contact = () => {
     useRelocation("Contact");
 
-    const [filter, setFilter] = useState("none");
+    const [filter, setFilter] = useState("published");
     const [cur1, setCur1] = useState(0);
     const [cur2, setCur2] = useState(0);
 
-    const data1 = useTable("messages", "published", "date");
+    const data1 = useTable("messages", "read", "date");
     const data2 = useTable("messagesAlt", filter, "date");
     
     const title = ["ID & Date", "Customer", "Comment", "Action"];
-
-
+    
     return (
         <>
             <Box $margin="1rem">
