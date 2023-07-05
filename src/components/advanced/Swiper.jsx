@@ -21,7 +21,7 @@ export const SwiperNavigation = ({ data, count, cur, setCur }) => {
         if (z === 0)
             return;
 
-        z = Math.floor(z / count) + 1;
+        z = Math.ceil(z / count);
         let y = cur + x;
 
         if (y < 0 || y >= z)
