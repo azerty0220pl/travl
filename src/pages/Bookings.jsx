@@ -3,22 +3,19 @@ import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
 import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/reduxHooks";
-import BookingTableRow from "../components/advanced/BookingTableRow";
-import { Context } from "../App";
 
 const Bookings = () => {
     useRelocation("Bookings");
-    const modal =  useContext(Context).modal
 
     const [filter, setFilter] = useState("none");
     const [order, setOrder] = useState("order");
     const [cur, setCur] = useState(0);
 
-    const data = useTable(s => s.bookings.bookings, filter, order, BookingTableRow, modal);
+    const data = useTable("bookings", filter, order);
 
     const title = [
         "Guest",
@@ -47,8 +44,8 @@ const Bookings = () => {
                         {
                             title.map((el, i) => {
                                 return (
-                                    <Cell>
-                                        <Text key={(i + 1) * - 1} weight="600">{el}</Text>
+                                    <Cell key={"tc" + ((i + 1) * - 1)}>
+                                        <Text key={"tc" + ((i + 1) * - 1) + "t1"} weight="600">{el}</Text>
                                     </Cell>
                                 );
                             })

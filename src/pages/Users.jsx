@@ -5,7 +5,6 @@ import { Table, Row, Cell } from "../components/basic/Table";
 import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
 import { useState } from "react";
 import Select from "../components/basic/Select";
-import UserTableRow from "../components/advanced/UserTableRow";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/reduxHooks";
 
@@ -16,7 +15,7 @@ const Users = () => {
     const [order, setOrder] = useState("number");
     const [cur, setCur] = useState(0);
 
-    const data = useTable(state => state.users.users, filter, order, UserTableRow);
+    const data = useTable("users", filter, order);
 
     const title = [
         "Photo",

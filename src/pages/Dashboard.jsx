@@ -5,7 +5,6 @@ import empty from "../assets/empty.png";
 import ReservationEntry from "../components/advanced/ReservationEntry";
 import KPI from "../components/advanced/KPI";
 import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
-import Message from "../components/advanced/Message";
 import { useState } from "react";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/reduxHooks";
@@ -13,7 +12,7 @@ import { useTable } from "../components/redux/reduxHooks";
 const Dashboard = () => {
     useRelocation("Dashboard");
     
-    let data = useTable(state => state.messages.messages, "published", "date", Message);
+    let data = useTable("messages", "published", "date");
 
     let [cur, setCur] = useState(0);
 

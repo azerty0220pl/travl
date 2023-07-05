@@ -96,7 +96,7 @@ const Menu = ({ Page }) => {
 
     return (
         <Container>
-            <SideBar sidebar={sideBar}>
+            <SideBar sidebar={sideBar ? "true" : undefined}>
                 <Entry padding="0 2rem" margin="2rem 0 1rem 0" width="100%" gap="0.5rem">
                     <Icon as="img" padding="0" dim="4rem" src={logo} radius="0" />
                     <Box padding="0" margin="0" radius="0">
@@ -174,7 +174,7 @@ const Menu = ({ Page }) => {
                     <Text color="#797979" size="0.75rem"> 2020 All Rights Reserved</Text>
                 </Box>
             </SideBar>
-            <TopBar sidebar={sideBar}>
+            <TopBar sidebar={sideBar ? "true" : undefined}>
                 <Entry padding="1rem">
                     {
                         sideBar ?
@@ -205,7 +205,7 @@ const Menu = ({ Page }) => {
                     </Icon>
                 </Entry>
             </TopBar>
-            <Content sidebar={sideBar}>
+            <Content sidebar={sideBar ? "true" : undefined}>
                 <Page />
             </Content>
             {

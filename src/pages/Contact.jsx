@@ -16,8 +16,8 @@ const Contact = () => {
     const [cur1, setCur1] = useState(0);
     const [cur2, setCur2] = useState(0);
 
-    const data1 = useTable(state => state.messages.messages, "published", "date", Message);
-    const data2 = useTable(state => state.messages.messages, filter, "date", MessageTableRow);
+    const data1 = useTable("messages", "published", "date");
+    const data2 = useTable("messagesAlt", filter, "date");
     
     const title = ["ID & Date", "Customer", "Comment", "Action"];
 
@@ -41,8 +41,8 @@ const Contact = () => {
                         {
                             title.map((el, i) => {
                                 return (
-                                    <Cell>
-                                        <Text key={(i + 1) * - 1} weight="600">{el}</Text>
+                                    <Cell key={"tc" + ((i + 1) * - 1)}>
+                                        <Text key={"tc" + ((i + 1) * - 1) + "t1"} weight="600">{el}</Text>
                                     </Cell>
                                 );
                             })

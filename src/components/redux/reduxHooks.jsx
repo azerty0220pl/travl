@@ -1,6 +1,11 @@
 import { useSelector } from "react-redux";
+import RoomsTableRow from "../advanced/RoomsTableRow";
+import BookingTableRow from "../advanced/BookingTableRow";
+import UserTableRow from "../advanced/UserTableRow";
+import Message from "../advanced/Message";
+import MessageTableRow from "../advanced/MessageTableRow";
 
-const orderFunct = {
+const orders = {
     order:  (a, b) => {
         return Date.parse(a.order) < Date.parse(b.order) ? -1 : 1;
     },
@@ -64,16 +69,33 @@ const filters = {
     }
 }
 
+const selectors = {
+    rooms: state => state.rooms.rooms,
+    bookings: state => state.bookings.bookings,
+    users: state => state.users.users,
+    messages: state => state.messages.messages,
+    messagesAlt: state => state.messages.messages
+}
+
+const elems = {
+    rooms: RoomsTableRow,
+    bookings: BookingTableRow,
+    users: UserTableRow,
+    messages: Message,
+    messagesAlt: MessageTableRow
+}
+
 export const useTable = (sel, filter, order, Elem) => {
-    let data = useSelector(sel);
+    let data = useSelector(selectors[sel]);
 
     data = data.filter(el =>
         filters[filter](el)
     );
 
-    data.sort(orderFunct[order]);
+    data.sort(orders[order]);
 
+    const X = elems[sel];
     return data.map((el, i) => {
-        return <Elem x={el} i={i} />
+        return <X key={sel + el.id} x={el} i={i} />
     });
 }
