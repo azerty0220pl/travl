@@ -7,7 +7,11 @@ const initialState = {
 };
 
 export const fetchMessages = createAsyncThunk('getMessages', async () => {
-    return data;
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(data);
+        }, 200);
+    });
 });
 
 const messagesSlice = createSlice({

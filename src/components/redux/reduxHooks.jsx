@@ -85,7 +85,7 @@ const elems = {
     messagesAlt: MessageTableRow
 }
 
-export const useTable = (sel, filter, order, Elem) => {
+export const useTable = (sel, filter, order) => {
     let data = useSelector(selectors[sel]);
 
     data = data.filter(el =>

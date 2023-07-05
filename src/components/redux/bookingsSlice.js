@@ -7,7 +7,11 @@ const initialState = {
 };
 
 export const fetchBookings = createAsyncThunk('getBookings', async () => {
-    return data;
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(data);
+        }, 200);
+    });
 });
 
 const bookingsSlice = createSlice({

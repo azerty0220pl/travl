@@ -7,7 +7,11 @@ const initialState = {
 };
 
 export const fetchRooms = createAsyncThunk('getRooms', async () => {
-    return data;
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(data);
+        }, 200);
+    });
 });
 
 const roomsSlice = createSlice({
