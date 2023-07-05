@@ -7,6 +7,7 @@ import { useState } from "react";
 import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
+import { useNavigate } from "react-router-dom";
 
 const Users = () => {
     useRelocation("Users");
@@ -28,15 +29,21 @@ const Users = () => {
         "Status"
     ];
 
+    const navigate = useNavigate();
 
     return (
         <div>
             <Entry $margin="0" $padding="1rem" $color="transparent" $justify="space-between">
                 <SlidingMenu fields={["All Users", "Active Users", "Inactive Users"]} handleChange={(x) => { setCur(0); setFilter(x); }} />
-                <Select as="select" $color="#135846" $weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
-                    <Text as='option' value="name" $color="#135846" $weight="400">Name</Text>
-                    <Text as='option' value="joined" $color="#135846" $weight="400">Start Date</Text>
-                </Select>
+                <Entry $margin="0" $padding="0" $radius="0" $color="transparent">
+                    <Box as="button" onClick={() => { navigate("/users/new") }} $padding="1rem" $margin="0" $radius="0.75rem" $color="#135846">
+                        <Text $color="white">+ New User</Text>
+                    </Box>
+                    <Select as="select" $color="#135846" $weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
+                        <Text as='option' value="name" $color="#135846" $weight="400">Name</Text>
+                        <Text as='option' value="joined" $color="#135846" $weight="400">Start Date</Text>
+                    </Select>
+                </Entry>
             </Entry>
             <Box $margin="0 1rem">
                 <Table>

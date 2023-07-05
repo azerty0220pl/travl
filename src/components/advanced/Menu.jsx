@@ -10,9 +10,9 @@ import logo from '../../assets/logo.png';
 import empty from "../../assets/empty.png";
 import { Context } from "../../App";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRooms } from "../redux/roomsSlice";
+import { fetchRooms } from "../redux/rooms/roomsSlice";
 import { fetchBookings } from "../redux/bookingsSlice";
-import { fetchUsers } from "../redux/usersSlice";
+import { fetchUsers } from "../redux/users/usersSlice";
 import { fetchMessages } from "../redux/messages/messagesSlice";
 
 const TopBar = styled.div`
@@ -168,8 +168,8 @@ const Menu = ({ Page }) => {
                 </Box>
                 <Box $padding="0.5rem" $margin="auto" $width="80%">
                     <Icon as="img" $dim="5rem" $radius="1rem" $margin="1rem auto" src={empty} />
-                    <Text $align="middle" $weight="600">Szymon Kokot</Text>
-                    <Text $align="middle" $color="#797979" $size="0.75rem">szymonekokot@gmail.com</Text>
+                    <Text $align="center" $weight="600">Szymon Kokot</Text>
+                    <Text $align="center" $color="#797979" $size="0.75rem">szymonekokot@gmail.com</Text>
                     <Box as="button" $width='50%' $margin="1rem auto" $padding="0.5rem 1rem" $color="#EBF1EF" $radius="0.5rem" onClick={edit}>
                         <Text $weight="600" $color="#135846" $align="middle">Edit</Text>
                     </Box>

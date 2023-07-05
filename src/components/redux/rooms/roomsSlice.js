@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import data from "../../data/rooms.json";
+import data from "../../../data/rooms.json";
 
 const initialState = {
     rooms: [],
@@ -14,6 +14,14 @@ export const fetchRooms = createAsyncThunk('getRooms', () => {
     });
 });
 
+export const newRoom = createAsyncThunk('newRoom', (room) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(room);
+        }, 200);
+    });
+});
+
 const roomsSlice = createSlice({
     name: "rooms",
     initialState,
@@ -21,15 +29,12 @@ const roomsSlice = createSlice({
     },
     extraReducers(builder) {
         builder
-            .addCase(fetchRooms.pending, (state, action) => {
-                state.status = "loading";
-            })
             .addCase(fetchRooms.fulfilled, (state, action) => {
                 state.status = "success";
                 state.rooms = action.payload;
             })
-            .addCase(fetchRooms.rejected, (state, action) => {
-                state.status = "error";
+            .addCase(newRoom.fulfilled, (state, action) => {
+                state.rooms.push(action.payload);
             });
     }
 });

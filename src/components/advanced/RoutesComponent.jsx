@@ -7,6 +7,7 @@ import Users from "../../pages/Users";
 import UserEdit from "../../pages/UsersEdit";
 import BookingDetails from "../../pages/BookingDetails";
 import RoomEdit from "../../pages/RoomEdit";
+import UserNew from "../../pages/UserNew";
 
 const RoutesComponent = () => {
     return (
@@ -19,12 +20,13 @@ const RoutesComponent = () => {
             </Route>
             <Route path="/rooms" >
                 <Route index element={<Rooms />} />
-                <Route path="edit" element={<RoomEdit />} />
+                <Route path="new" element={<RoomEdit />} />
             </Route>
             <Route path="/contact" element={<Contact />} />
             <Route path="/users" >
                 <Route index element={<Users />} />
                 <Route path="edit" element={<UserEdit />} />
+                <Route path="new" element={<UserNew />} />
             </Route>
         </Routes>
     );

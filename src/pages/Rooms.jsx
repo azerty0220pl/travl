@@ -7,6 +7,7 @@ import { useState } from "react";
 import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
+import { useNavigate } from "react-router";
 
 
 const Rooms = () => {
@@ -29,16 +30,23 @@ const Rooms = () => {
         "Status"
     ];
 
+    const navigate = useNavigate();
+
     return (
         <div>
             <Entry $margin="0" $padding="1rem" $color="transparent" $justify="space-between">
                 <SlidingMenu fields={["All Rooms", "Available", "Booked"]} handleChange={(x) => { setCur(0); setFilter(x); }} />
-                <Select as="select" $color="#135846" $weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
-                    <Text as='option' value="number" $color="#135846" $weight="400">Number</Text>
-                    <Text as='option' value="status" $color="#135846" $weight="400">Status</Text>
-                    <Text as='option' value="ascending" $color="#135846" $weight="400">Price Ascending</Text>
-                    <Text as='option' value="descending" $color="#135846" $weight="400">Price Descending</Text>
-                </Select>
+                <Entry $margin="0" $padding="0" $radius="0" $color="transparent">
+                    <Box as="button" onClick={() => { navigate("/rooms/new") }} $padding="1rem" $margin="0" $radius="0.75rem" $color="#135846">
+                        <Text $color="white">+ New Room</Text>
+                    </Box>
+                    <Select as="select" $color="#135846" $weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
+                        <Text as='option' value="number" $color="#135846" $weight="400">Number</Text>
+                        <Text as='option' value="status" $color="#135846" $weight="400">Status</Text>
+                        <Text as='option' value="ascending" $color="#135846" $weight="400">Price Ascending</Text>
+                        <Text as='option' value="descending" $color="#135846" $weight="400">Price Descending</Text>
+                    </Select>
+                </Entry>
             </Entry>
             <Box $margin="0 1rem">
                 <Table>

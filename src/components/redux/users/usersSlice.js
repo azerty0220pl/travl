@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import data from "../../data/users.json";
+import data from "../../../data/users.json";
 
 const initialState = {
     users: [],
@@ -14,6 +14,14 @@ export const fetchUsers = createAsyncThunk('getUsers', () => {
     });
 });
 
+export const newUser = createAsyncThunk('newUser', (user) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(user);
+        }, 200);
+    });
+});
+
 const usersSlice = createSlice({
     name: "users",
     initialState,
@@ -21,15 +29,12 @@ const usersSlice = createSlice({
     },
     extraReducers(builder) {
         builder
-            .addCase(fetchUsers.pending, (state, action) => {
-                state.status = "loading";
-            })
             .addCase(fetchUsers.fulfilled, (state, action) => {
                 state.status = "success";
                 state.users = action.payload;
             })
-            .addCase(fetchUsers.rejected, (state, action) => {
-                state.status = "error";
+            .addCase(newUser.fulfilled, (state, action) => {
+                state.users.push(action.payload);
             });
     }
 });
