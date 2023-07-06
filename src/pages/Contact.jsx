@@ -22,8 +22,8 @@ const Contact = () => {
     return (
         <>
             <Box $margin="1rem">
-                <Entry $padding="0" $justify="space-between" $gap="1rem" $height="14rem">
-                    <SwiperNavigationAlt data={data1} count={3} cur={cur1} setCur={setCur1} margin="0 -1rem" colors={["#575757", "#135846", "#BEBEBE", "#FFF"]} />
+                <Entry $padding="0" $justify="space-between" $height="14rem">
+                    <SwiperNavigationAlt data={data1} count={3} cur={cur1} setCur={setCur1} margin="-2rem" colors={["#575757", "#135846", "#BEBEBE", "#FFF"]} />
                 </Entry>
             </Box>
             <Entry $margin="0 1rem" $padding="1rem" $color="transparent" $justify="space-between">
