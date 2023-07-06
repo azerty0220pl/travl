@@ -5,3 +5,15 @@ img {
 button:hover {
     cursor: pointer;
 }
+
+.kpi:hover {
+    box-shadow: 0px 16px 30px #00000014;
+}
+
+.kpi:hover div:first-child {
+    background-color: #E23428;
+}
+
+.kpi:hover svg {
+    fill: white;
+}

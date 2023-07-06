@@ -3,7 +3,7 @@ import Text from "../basic/Text";
 
 const KPI = ({ Ico, number, title }) => {
     return (
-        <Entry $width="100%">
+        <Entry $width="100%" className="kpi">
             <Icon $dim="4rem" $padding="1rem" $color="#FFEDEC">
                 <Ico size="2rem" color="#E23428" />
             </Icon>

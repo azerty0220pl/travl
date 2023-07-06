@@ -24,6 +24,7 @@ const TopBar = styled.div`
     display: flex;
     justify-content: space-between;
     transition: all 0.5s;
+    box-shadow: 0px 3px 10px #00000005;
 `;
 
 const SideBar = styled.div`
@@ -34,6 +35,7 @@ const SideBar = styled.div`
     width: 15vw;
     background-color: white;
     transition: all 0.5s;
+    box-shadow: 0px 3px 10px #00000005;
 `;
 
 const Content = styled.div`
