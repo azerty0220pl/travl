@@ -55,6 +55,16 @@ const Container = styled.div`
     display: flex;
 `;
 
+const Red = styled.div`
+    position: absolute;
+    background-color: #E23428;
+    border-radius: 0 0.5rem 0.5rem 0;
+    height: 100%;
+    width: 0.5rem;
+    top: 0;
+    left: 0;
+`;
+
 const Menu = ({ Page }) => {
     const navigate = useNavigate();
     const title = useContext(Context).page;
@@ -104,11 +114,18 @@ const Menu = ({ Page }) => {
                         <Text $color="#5D5449" $size="0.75rem">Hotel Admin Dashboard</Text>
                     </Box>
                 </Entry>
-                <Box $padding="0">
+                <Box $padding="0" $radius="0">
                     <Entry
                         as="button"
                         onClick={() => { handlePage("/dashboard") }}
+                        $radius="0"
                     >
+                        {
+                            title === "Dashboard" ?
+                                <Red />
+                                :
+                                <></>
+                        }
                         <MdOutlineDashboard size="1.5rem" color={title === "Dashboard" ? "#E23428" : "#799283"} />
                         <Text
                             $weight={title === "Dashboard" ? "600" : "400"}
@@ -120,48 +137,76 @@ const Menu = ({ Page }) => {
                     <Entry
                         as="button"
                         onClick={() => { handlePage("/bookings") }}
+                        $radius="0"
                     >
+                        {
+                            title === "Bookings" ?
+                                <Red />
+                                :
+                                <></>
+                        }
                         <MdCalendarMonth size="1.5rem" color={title === "Bookings" ? "#E23428" : "#799283"} />
                         <Text
                             $weight={title === "Bookings" ? "600" : "400"}
                             $color={title === "Bookings" ? "#E23428" : "#799283"}
-                            >
+                        >
                             Bookings
                         </Text>
                     </Entry>
                     <Entry
                         as="button"
                         onClick={() => { handlePage("/rooms") }}
+                        $radius="0"
                     >
+                        {
+                            title === "Rooms" ?
+                                <Red />
+                                :
+                                <></>
+                        }
                         <MdKey size="1.5rem" color={title === "Rooms" ? "#E23428" : "#799283"} />
                         <Text
                             $weight={title === "Rooms" ? "600" : "400"}
                             $color={title === "Rooms" ? "#E23428" : "#799283"}
-                            >
+                        >
                             Rooms
                         </Text>
                     </Entry>
                     <Entry
                         as="button"
                         onClick={() => { handlePage("/contact") }}
+                        $radius="0"
                     >
+                        {
+                            title === "Contact" ?
+                                <Red />
+                                :
+                                <></>
+                        }
                         <MdContactSupport size="1.5rem" color={title === "Contact" ? "#E23428" : "#799283"} />
                         <Text
                             $weight={title === "Contact" ? "600" : "400"}
                             $color={title === "Contact" ? "#E23428" : "#799283"}
-                            >
+                        >
                             Contact
                         </Text>
                     </Entry>
                     <Entry
                         as="button"
                         onClick={() => { handlePage("/users") }}
+                        $radius="0"
                     >
+                        {
+                            title === "Users" ?
+                                <Red />
+                                :
+                                <></>
+                        }
                         <FaRegUser size="1.5rem" color={title === "Users" ? "#E23428" : "#799283"} />
                         <Text
                             $weight={title === "Users" ? "600" : "400"}
                             $color={title === "Users" ? "#E23428" : "#799283"}
-                            >
+                        >
                             Users
                         </Text>
                     </Entry>
