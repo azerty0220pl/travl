@@ -10,7 +10,7 @@ const orders = {
         return Date.parse(a.order) < Date.parse(b.order) ? -1 : 1;
     },
     name: (a, b) => {
-        return a.name < b.name ? -1 : 1;
+        return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
     },
     in:  (a, b) => {
         return Date.parse(a.in) < Date.parse(b.in) ? -1 : 1;
@@ -19,7 +19,7 @@ const orders = {
         return Date.parse(a.out) < Date.parse(b.out) ? -1 : 1;
     },
     number: (a, b) => {
-        return a.name < b.name ? -1 : 1;
+        return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
     },
     ascending: (a, b) => {
         if (a.price === b.price)
@@ -91,9 +91,7 @@ const elems = {
 export const useTable = (sel, filter, order) => {
     let data = useSelector(selectors[sel]);
 
-    data = Object.keys(data).map((key) => {
-        return data[key];
-    });;
+    data = Object.values(data)
 
     data = data.filter(el =>
         filters[filter](el)
