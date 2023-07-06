@@ -8,6 +8,7 @@ import { useChangeRead } from "../redux/messages/messageHooks";
 const Message = ({ x }) => {
     const modal = useContext(Context).modal;
     const handleClick = useChangeRead(x.id);
+    
     return (
         <Box key={"msg" + x.id} $width="100%" $height="100%" $border='1px solid #EBEBEB'>
             <Box key={"msg" + x.id + "b1"} as="button" onClick={() => { modal({ subject: x.subject, message: x.message }) }} $height="1.25rem" $width="100%" $margin="0" $padding="0" $radius="0">
