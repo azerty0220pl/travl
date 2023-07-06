@@ -6,13 +6,13 @@ import { useContext, useState } from "react";
 import { Context } from "../App";
 
 const Login = () => {
-    let [err, setErr] = useState(false);
+    const [err, setErr] = useState(false);
     const navigate = useNavigate();
     const dispatch = useContext(Context).dispatch;
 
     const handleSubmit = (event) => {
         if (login(event.target.user.value, event.target.password.value)) {
-            dispatch({ type: "login", success: true });
+            dispatch({ type: "login", success: true, user: event.target.user.value });
             navigate("/dashboard");
             setErr(false);
         }

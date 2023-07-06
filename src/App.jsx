@@ -6,13 +6,16 @@ import RoutesComponent from "./components/advanced/RoutesComponent";
 
 const reducerActions = {
   login: (state, action) => {
-    return { ...state, authenticated: action.success };
+    return { ...state, authenticated: action.success, username: action.user };
   },
   page: (state, action) => {
     return { ...state, page: action.page };
   },
   modal: (state, action) => {
     return { ...state, modal: action.modal };
+  },
+  user: (state, action) => {
+    return {...state, username: action.user, email: action.mail}
   },
   default: (state, action) => {
     return state;

@@ -2,21 +2,38 @@ import empty from "../assets/empty.png";
 import { Icon, Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
 import Select from "../components/basic/Select";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../App";
 import { useRelocation } from "../components/basic/hooks";
+import { useNavigate } from "react-router";
 
 const UserEdit = () => {
     useRelocation("Edit User");
 
     const state = useContext(Context);
+    const navigate = useNavigate();
+    const dispatch = state.dispatch;
+
+    const [username, setUsername] = useState(state.username);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        dispatch({
+            type: "user",
+            user: username,
+            mail: e.target.mail.value
+        });
+
+        navigate("/dashboard");
+    };
 
     return (
         <Entry $margin="1rem" $padding="2rem" $justify="space-around">
-            <Box as="form" $margin="0" $padding="1rem" $border="1px solid #EBEBEB" $width="50%">
+            <Box as="form" onSubmit={handleSubmit} $margin="0" $padding="1rem" $border="1px solid #EBEBEB" $width="50%">
                 <label id="user-label" htmlFor="user">
-                    <Text $weight="600">Username:</Text>
-                    <Text as="input" type="text" id="user" placeholder="username" $margin="0.5rem" value={state.username} required />
+                    <Text $weight="600">Full Name:</Text>
+                    <Text as="input" type="text" id="user" placeholder="username" $margin="0.5rem" value={username} onChange={(e) => { setUsername(e.target.value) }} required />
                 </label>
                 <Entry $margin="1rem 0 0 0" $padding="0" $radius="0" $justify="space-between">
                     <Box as="label" id="mail-label" htmlFor="mail" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
