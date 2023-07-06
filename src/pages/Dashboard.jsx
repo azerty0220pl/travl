@@ -50,7 +50,7 @@ const Dashboard = () => {
             </Box>
             <Box $margin="1rem">
                 <Entry $padding="0" $justify="space-between" $gap="1rem" $radius="0" $height="14rem">
-                    <SwiperNavigationAlt data={data} count={3} cur={cur} setCur={setCur} margin="0 -1rem" colors={["#575757", "#135846", "#BEBEBE", "#FFF"]} />
+                    <SwiperNavigationAlt data={data} count={3} cur={cur} setCur={setCur} margin="-2rem" colors={["#575757", "#135846", "#BEBEBE", "#FFF"]} />
                 </Entry>
             </Box>
         </div>
