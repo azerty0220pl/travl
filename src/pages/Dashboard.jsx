@@ -4,7 +4,7 @@ import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import empty from "../assets/empty.png";
 import ReservationEntry from "../components/advanced/ReservationEntry";
 import KPI from "../components/advanced/KPI";
-import { SwiperNavigation, SwiperComponents } from "../components/advanced/Swiper";
+import { SwiperNavigationAlt } from "../components/advanced/Swiper";
 import { useState } from "react";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
@@ -49,12 +49,9 @@ const Dashboard = () => {
                     last />
             </Box>
             <Box $margin="1rem">
-                <Entry $padding="0" $justify="space-between" $gap="1rem">
-                    <SwiperComponents data={data} count={3} cur={cur} />
+                <Entry $padding="0" $justify="space-between" $gap="1rem" $radius="0" $height="14rem">
+                    <SwiperNavigationAlt data={data} count={3} cur={cur} setCur={setCur} margin="0 -1rem" colors={["#575757", "#135846", "#BEBEBE", "#FFF"]} />
                 </Entry>
-                <Box $padding="0" $margin="1rem 0">
-                    <SwiperNavigation data={data} count={3} cur={cur} setCur={setCur} />
-                </Box>
             </Box>
         </div>
     );

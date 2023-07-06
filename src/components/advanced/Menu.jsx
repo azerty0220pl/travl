@@ -62,7 +62,7 @@ const Red = styled.div`
     background-color: #E23428;
     border-radius: 0 0.5rem 0.5rem 0;
     height: 100%;
-    width: 0.5rem;
+    width: 0.25rem;
     top: 0;
     left: 0;
 `;
@@ -121,6 +121,8 @@ const Menu = ({ Page }) => {
                         as="button"
                         onClick={() => { handlePage("/dashboard") }}
                         $radius="0"
+                        $margin="0.5rem 0"
+                        $padding="0.5rem 2rem"
                     >
                         {
                             title === "Dashboard" ?
@@ -128,7 +130,7 @@ const Menu = ({ Page }) => {
                                 :
                                 <></>
                         }
-                        <MdOutlineDashboard size="1.5rem" color={title === "Dashboard" ? "#E23428" : "#799283"} />
+                        <MdOutlineDashboard size="2.5rem" color={title === "Dashboard" ? "#E23428" : "#799283"} />
                         <Text
                             $weight={title === "Dashboard" ? "600" : "400"}
                             $color={title === "Dashboard" ? "#E23428" : "#799283"}
@@ -140,6 +142,8 @@ const Menu = ({ Page }) => {
                         as="button"
                         onClick={() => { handlePage("/bookings") }}
                         $radius="0"
+                        $margin="0.5rem 0"
+                        $padding="0.5rem 2rem"
                     >
                         {
                             title === "Bookings" ?
@@ -147,7 +151,7 @@ const Menu = ({ Page }) => {
                                 :
                                 <></>
                         }
-                        <MdCalendarMonth size="1.5rem" color={title === "Bookings" ? "#E23428" : "#799283"} />
+                        <MdCalendarMonth size="2.5rem" color={title === "Bookings" ? "#E23428" : "#799283"} />
                         <Text
                             $weight={title === "Bookings" ? "600" : "400"}
                             $color={title === "Bookings" ? "#E23428" : "#799283"}
@@ -159,6 +163,8 @@ const Menu = ({ Page }) => {
                         as="button"
                         onClick={() => { handlePage("/rooms") }}
                         $radius="0"
+                        $margin="0.5rem 0"
+                        $padding="0.5rem 2rem"
                     >
                         {
                             title === "Rooms" ?
@@ -166,7 +172,7 @@ const Menu = ({ Page }) => {
                                 :
                                 <></>
                         }
-                        <MdKey size="1.5rem" color={title === "Rooms" ? "#E23428" : "#799283"} />
+                        <MdKey size="2.5rem" color={title === "Rooms" ? "#E23428" : "#799283"} />
                         <Text
                             $weight={title === "Rooms" ? "600" : "400"}
                             $color={title === "Rooms" ? "#E23428" : "#799283"}
@@ -178,6 +184,8 @@ const Menu = ({ Page }) => {
                         as="button"
                         onClick={() => { handlePage("/contact") }}
                         $radius="0"
+                        $margin="0.5rem 0"
+                        $padding="0.5rem 2rem"
                     >
                         {
                             title === "Contact" ?
@@ -185,7 +193,7 @@ const Menu = ({ Page }) => {
                                 :
                                 <></>
                         }
-                        <MdContactSupport size="1.5rem" color={title === "Contact" ? "#E23428" : "#799283"} />
+                        <MdContactSupport size="2.5rem" color={title === "Contact" ? "#E23428" : "#799283"} />
                         <Text
                             $weight={title === "Contact" ? "600" : "400"}
                             $color={title === "Contact" ? "#E23428" : "#799283"}
@@ -197,6 +205,8 @@ const Menu = ({ Page }) => {
                         as="button"
                         onClick={() => { handlePage("/users") }}
                         $radius="0"
+                        $margin="0.5rem 0"
+                        $padding="0.5rem 2rem"
                     >
                         {
                             title === "Users" ?
@@ -204,7 +214,7 @@ const Menu = ({ Page }) => {
                                 :
                                 <></>
                         }
-                        <FaRegUser size="1.5rem" color={title === "Users" ? "#E23428" : "#799283"} />
+                        <FaRegUser size="2.5rem" color={title === "Users" ? "#E23428" : "#799283"} />
                         <Text
                             $weight={title === "Users" ? "600" : "400"}
                             $color={title === "Users" ? "#E23428" : "#799283"}

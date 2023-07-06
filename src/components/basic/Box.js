@@ -35,6 +35,7 @@ export const Entry = styled(Box)`
     align-items: ${props => props.$align || "center"};
     padding: ${props => props.$padding || "1rem 2rem"};
     flex-wrap: ${props => props.$wrap || "unset"};
+    overflow: unset;
 `;
 
 export const Icon = styled(Box)`

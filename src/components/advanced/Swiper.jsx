@@ -1,5 +1,7 @@
+import { styled } from "styled-components";
 import { Box, Entry, Icon } from "../basic/Box";
 import Text from "../basic/Text";
+import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 
 export const SwiperComponents = ({ data, cur, count }) => {
 
@@ -12,18 +14,17 @@ export const SwiperComponents = ({ data, cur, count }) => {
             }
         </>
     );
-};
+}
 
 export const SwiperNavigation = ({ data, count, cur, setCur }) => {
+    const pages = Math.ceil((data.length || 0) / count);
     const move = (x) => {
-        let z = data.length || 0;
-        if (z === 0)
+        if (pages === 0)
             return;
 
-        z = Math.ceil(z / count);
         let y = cur + x;
 
-        if (y < 0 || y >= z)
+        if (y < 0 || y >= pages)
             return;
 
         setCur(y);
@@ -101,4 +102,58 @@ export const SwiperNavigation = ({ data, count, cur, setCur }) => {
             </Entry>
         </>
     );
-};
+}
+
+const Container = styled.div`
+    position: absolute;
+    top: ${props => props.$top || "0"};
+    left: ${props => props.left || "0"};
+    height: 100%;
+    weigth: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+`;
+
+export const SwiperNavigationAlt = ({ data, count, cur, setCur, margin, colors }) => {
+    const pages = Math.ceil((data.length || 0) / count);
+    const move = (x) => {
+        if (pages === 0)
+            return;
+
+        let y = cur + x;
+
+        if (y < 0 || y >= pages)
+            return;
+
+        setCur(y);
+    };
+
+    return (
+        <>
+            <Container>
+                <SwiperComponents data={data} cur={cur} count={count} />
+            </Container>
+            <Icon
+                as="button"
+                $margin={margin}
+                $dim="2rem"
+                $padding="0.45rem"
+                $color={cur - 1 < 0 ? colors[0] : colors[1]}
+                onClick={() => { move(-1) }}
+            >
+                <HiArrowLeft size="2rem" color={cur - 1 < 0 ? colors[2] : colors[3]} />
+            </Icon>
+            <Icon
+                as="button"
+                $margin={margin}
+                $dim="2rem"
+                $padding="0.45rem"
+                $color={cur + 1 >= pages ? colors[0] :colors[1]}
+                onClick={() => { move(1) }}
+            >
+                <HiArrowRight size="2rem" color={cur + 1 >= pages ? colors[2] : colors[3]} />
+            </Icon>
+        </>
+    );
+}

@@ -1,5 +1,5 @@
 import { Box, Entry } from "../components/basic/Box";
-import { SwiperComponents, SwiperNavigation } from "../components/advanced/Swiper";
+import { SwiperComponents, SwiperNavigation, SwiperNavigationAlt } from "../components/advanced/Swiper";
 import { useState } from "react";
 import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
@@ -22,12 +22,9 @@ const Contact = () => {
     return (
         <>
             <Box $margin="1rem">
-                <Entry $padding="0" $justify="space-between" $gap="1rem">
-                    <SwiperComponents data={data1} count={3} cur={cur1} />
+                <Entry $padding="0" $justify="space-between" $gap="1rem" $height="14rem">
+                    <SwiperNavigationAlt data={data1} count={3} cur={cur1} setCur={setCur1} margin="0 -1rem" colors={["#575757", "#135846", "#BEBEBE", "#FFF"]} />
                 </Entry>
-                <Box $padding="0" $margin="1rem 0 0 0">
-                    <SwiperNavigation data={data1} count={3} cur={cur1} setCur={setCur1} />
-                </Box>
             </Box>
             <Entry $margin="0 1rem" $padding="1rem" $color="transparent" $justify="space-between">
                 <SlidingMenu fields={["All Contacts", "Archived"]} handleChange={(x) => { setCur2(0); setFilter(x); }} />

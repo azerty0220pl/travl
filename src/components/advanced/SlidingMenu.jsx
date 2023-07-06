@@ -18,7 +18,7 @@ const dict = {
 
 const Button = styled(Text)`
     border: none;
-    border-bottom: ${props => props.$border || "3px solid #6E6E6E"};
+    border-bottom: ${props => props.$border || "2px solid #DDD"};
     padding: 1rem 0;
     background-color: transparent;
 `;
@@ -41,7 +41,7 @@ const SlidingMenu = ({ fields, handleChange }) => {
                             as='button'
                             key={i}
                             $color={cur === i ? "#135846" : "#6E6E6E"}
-                            $border={cur === i ? "4px solid #135846" : "3px solid #6E6E6E"}
+                            $border={cur === i ? "2px solid #135846" : "2px solid #DDD"}
                             $align="center"
                             $weight={cur === i ? "600" : "400"}
                             onClick={() => {
