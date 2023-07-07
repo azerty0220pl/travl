@@ -8,10 +8,12 @@ import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useNavigate } from "react-router";
+import { useLoad } from "../components/redux/useLoad";
 
 
 const Rooms = () => {
     useRelocation("Rooms");
+    useLoad("rooms")
 
     const [filter, setFilter] = useState("none");
     const [order, setOrder] = useState("number");

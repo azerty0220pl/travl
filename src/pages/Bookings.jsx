@@ -7,9 +7,11 @@ import { useState } from "react";
 import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
+import { useLoad } from "../components/redux/useLoad";
 
 const Bookings = () => {
     useRelocation("Bookings");
+    useLoad('bookings');
 
     const [filter, setFilter] = useState("none");
     const [order, setOrder] = useState("order");

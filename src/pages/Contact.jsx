@@ -6,9 +6,11 @@ import Text from "../components/basic/Text";
 import { Table, Row, Cell } from "../components/basic/Table";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
+import { useLoad } from "../components/redux/useLoad";
 
 const Contact = () => {
     useRelocation("Contact");
+    useLoad('messages');
 
     const [filter, setFilter] = useState("published");
     const [cur1, setCur1] = useState(0);

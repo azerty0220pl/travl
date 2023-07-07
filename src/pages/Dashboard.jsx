@@ -8,9 +8,11 @@ import { SwiperNavigationAlt } from "../components/advanced/Swiper";
 import { useState } from "react";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
+import { useLoad } from "../components/redux/useLoad";
 
 const Dashboard = () => {
     useRelocation("Dashboard");
+    useLoad("messages");
     
     let data = useTable("messages", "read", "date");
 

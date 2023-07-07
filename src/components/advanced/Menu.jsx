@@ -9,11 +9,6 @@ import Text from "../basic/Text";
 import logo from '../../assets/logo.png';
 import empty from "../../assets/empty.png";
 import { Context } from "../../App";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchRooms } from "../redux/rooms/roomsSlice";
-import { fetchBookings } from "../redux/bookingsSlice";
-import { fetchUsers } from "../redux/users/usersSlice";
-import { fetchMessages } from "../redux/messages/messagesSlice";
 
 const TopBar = styled.div`
     position: absolute;
@@ -87,24 +82,9 @@ const Menu = ({ Page }) => {
     const [sideBar, setSidebar] = useState(true);
     const [modal, setModal] = useState({ subject: "", message: "" });
 
-    //Redux management
-    const reduxDispatch = useDispatch();
-    const roomsStatus = useSelector(state => state.rooms.status);
-    const bookingsStatus = useSelector(state => state.bookings.status);
-    const usersStatus = useSelector(state => state.users.status);
-    const messagesStatus = useSelector(state => state.messages.status);
-
     useEffect(() => {
         dispatch({ type: "modal", modal: setModal });
-        if (roomsStatus === 'none')
-            reduxDispatch(fetchRooms());
-        if (bookingsStatus === 'none')
-            reduxDispatch(fetchBookings());
-        if (usersStatus === 'none')
-            reduxDispatch(fetchUsers());
-        if (messagesStatus === 'none')
-            reduxDispatch(fetchMessages());
-    }, [dispatch, roomsStatus, reduxDispatch, bookingsStatus, usersStatus, messagesStatus]);
+    }, [dispatch]);
 
     return (
         <Container>

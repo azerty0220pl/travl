@@ -8,9 +8,11 @@ import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useNavigate } from "react-router-dom";
+import { useLoad } from "../components/redux/useLoad";
 
 const Users = () => {
     useRelocation("Users");
+    useLoad("users");
 
     const [filter, setFilter] = useState("none");
     const [order, setOrder] = useState("number");
