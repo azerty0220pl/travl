@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { Box, Entry, Icon } from "../basic/Box";
 import Text from "../basic/Text";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const SwiperComponents = ({ data, cur, count }) => {
 
@@ -19,6 +19,7 @@ export const SwiperComponents = ({ data, cur, count }) => {
 
 export const SwiperNavigation = ({ data, count, cur, setCur }) => {
     const pages = Math.ceil((data.length || 0) / count);
+    
     const move = (x) => {
         if (pages === 0)
             return;
@@ -65,6 +66,13 @@ export const SwiperNavigation = ({ data, count, cur, setCur }) => {
         }
         return x;
     }
+
+    const mv = useCallback(move, [pages, cur, setCur]);
+    useEffect(() => {
+        if (cur > 0 && cur === pages) {
+            mv(-1);
+        }
+    }, [cur, pages, mv]);
 
     return (
         <>
@@ -161,6 +169,13 @@ export const SwiperNavigationAlt = ({ data, count, cur, setCur, margin, colors }
             setPos2("100%");
         }, 260);
     };
+
+    const mv = useCallback(move, [pages, cur, setAux, setTran, setPos1, setPos2, setCur]);
+    useEffect(() => {
+        if (cur > 0 && cur === pages) {
+            mv(-1);
+        }
+    }, [cur, pages, mv]);
 
     return (
         <>
