@@ -47,7 +47,7 @@ const App = () => {
   return (
     <Context.Provider value={state}>
       {
-        !state.authenticated ?
+        state.authenticated ?
           <Menu Page={RoutesComponent} />
           :
           <Login />

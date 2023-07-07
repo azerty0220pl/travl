@@ -2,17 +2,17 @@ import { useDispatch } from "react-redux"
 import { changeArchive, changeRead } from "./messagesSlice";
 
 export const useChangeRead = (id) => {
-    const dispacht = useDispatch();
+    const dispatch = useDispatch();
 
     return () => {
-        dispacht(changeRead(id));
+        dispatch(changeRead(id));
     }
 }
 
 export const useChangeArchive = (id) => {
-    const dispacht = useDispatch();
+    const dispatch = useDispatch();
     
     return () => {
-        dispacht(changeArchive(id));
+        dispatch(changeArchive(id));
     }
 }
