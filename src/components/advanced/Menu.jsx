@@ -87,7 +87,7 @@ const Menu = ({ Page }) => {
     }, [dispatch]);
 
     return (
-        <Container>
+        <Container data-cy="menu">
             <SideBar $sidebar={sideBar ? "true" : undefined}>
                 <Entry $padding="0 2rem" $margin="2rem 0 1rem 0" $width="100%" $gap="0.5rem">
                     <Icon as="img" $padding="0" $dim="4rem" src={logo} $radius="0" />
