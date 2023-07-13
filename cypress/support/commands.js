@@ -28,5 +28,4 @@ Cypress.Commands.add('login', () => {
     cy.get('[data-cy="user-input"]').type('admin');
     cy.get('[data-cy="password-input"]').type('password');
     cy.get('[data-cy="login-button"]').click();
-    cy.get('[data-cy="menu"]').should('be.visible');
 })

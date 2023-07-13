@@ -3,16 +3,20 @@ describe('login', () => {
     cy.visit('localhost:3000');
   });
 
-  it("user input exists", () => {
+  it("user input visible", () => {
     cy.get('[data-cy="user-input"]').should("be.visible");
   });
 
-  it("password input exists", () => {
+  it("password input visible", () => {
     cy.get('[data-cy="password-input"]').should("be.visible");
   });
 
-  it("login button exists", () => {
+  it("login button visible", () => {
     cy.get('[data-cy="login-button"]').should("be.visible");
+  });
+
+  it("error message not visible", () => {
+    cy.get('[data-cy="login-error"]').should("not.exist");
   });
 
   it("no error on empty inputs", () => {
