@@ -30,7 +30,7 @@ const Bookings = () => {
     ];
 
     return (
-        <div>
+        <div data-cy="page-bookings">
             <Entry $margin="0" $padding="1rem" $color="transparent" $justify="space-between">
                 <SlidingMenu fields={["All Bookings", "In Progress"]} handleChange={(x) => {  setCur(0); setFilter(x);  }} />
                 <Select as="select" $color="#135846" $weight="600" $value={order} onChange={(e) => { setOrder(e.target.value) }}>

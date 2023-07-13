@@ -29,7 +29,7 @@ const UserEdit = () => {
     };
 
     return (
-        <Entry $margin="1rem" $padding="2rem" $justify="space-around">
+        <Entry $margin="1rem" $padding="2rem" $justify="space-around" data-cy="page-userEdit">
             <Box as="form" onSubmit={handleSubmit} $margin="0" $padding="1rem" $border="1px solid #EBEBEB" $width="50%">
                 <label id="user-label" htmlFor="user">
                     <Text $weight="600">Full Name:</Text>

@@ -52,7 +52,7 @@ const UserTableRow = ({ x, i }) => {
                             <Text $align="center" $color="#799283">View Description</Text>
                         </Box>
                         :
-                        <Box as="button" onClick={() => { modal({ subject: x.name, message: x.description }) }} $margin="0 2rem 0 0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
+                        <Box data-cy={"users-" + x.id + "description"} as="button" onClick={() => { modal({ subject: x.name, message: x.description }) }} $margin="0 2rem 0 0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
                             <Text $align="center">View Description</Text>
                         </Box>
                 }

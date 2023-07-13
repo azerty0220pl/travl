@@ -19,7 +19,7 @@ const Dashboard = () => {
     let [cur, setCur] = useState(0);
 
     return (
-        <div>
+        <div data-cy="page-dashboard">
             <Entry $justify="space-between" $color="none" $padding="1rem" $margin="0">
                 <KPI Ico={LiaBedSolid} number="8,461" title="New Bookings" />
                 <KPI Ico={LiaCalendarCheck} number="95%" title="Scheduled Room" />

@@ -29,7 +29,7 @@ const RoomsTableRow = ({ x, i }) => {
                 <Box $display="inline" as="img" $padding="0" $margin="0" $width="5rem" $height="3rem" src={empty} />
             </Cell>
             <Cell>
-                <Text>{x.name}</Text>
+                <Text data-cy={"room-" + x.id + "name"}>{x.name}</Text>
             </Cell>
             <Cell>
                 <Text>{x.id}</Text>

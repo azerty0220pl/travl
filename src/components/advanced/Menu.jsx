@@ -88,7 +88,7 @@ const Menu = ({ Page }) => {
 
     return (
         <Container data-cy="menu">
-            <SideBar $sidebar={sideBar ? "true" : undefined}>
+            <SideBar data-cy="sidebar" $sidebar={sideBar ? "true" : undefined}>
                 <Entry $padding="0 2rem" $margin="2rem 0 1rem 0" $width="100%" $gap="0.5rem">
                     <Icon as="img" $padding="0" $dim="4rem" src={logo} $radius="0" />
                     <Box $padding="0" $margin="0" $radius="0">
@@ -100,6 +100,7 @@ const Menu = ({ Page }) => {
                     <Entry
                         as="button"
                         onClick={() => { handlePage("/dashboard") }}
+                        data-cy="menu-dashboard"
                         $radius="0"
                         $margin="0.5rem 0"
                         $padding="0.5rem 2rem"
@@ -121,6 +122,7 @@ const Menu = ({ Page }) => {
                     <Entry
                         as="button"
                         onClick={() => { handlePage("/bookings") }}
+                        data-cy="menu-bookings"
                         $radius="0"
                         $margin="0.5rem 0"
                         $padding="0.5rem 2rem"
@@ -142,6 +144,7 @@ const Menu = ({ Page }) => {
                     <Entry
                         as="button"
                         onClick={() => { handlePage("/rooms") }}
+                        data-cy="menu-rooms"
                         $radius="0"
                         $margin="0.5rem 0"
                         $padding="0.5rem 2rem"
@@ -163,6 +166,7 @@ const Menu = ({ Page }) => {
                     <Entry
                         as="button"
                         onClick={() => { handlePage("/contact") }}
+                        data-cy="menu-contact"
                         $radius="0"
                         $margin="0.5rem 0"
                         $padding="0.5rem 2rem"
@@ -184,6 +188,7 @@ const Menu = ({ Page }) => {
                     <Entry
                         as="button"
                         onClick={() => { handlePage("/users") }}
+                        data-cy="menu-users"
                         $radius="0"
                         $margin="0.5rem 0"
                         $padding="0.5rem 2rem"
@@ -220,11 +225,11 @@ const Menu = ({ Page }) => {
                 <Entry $padding="1rem">
                     {
                         sideBar ?
-                            <Icon as="button" $dim="2rem" $padding="0" onClick={() => { setSidebar(!sideBar) }}>
+                            <Icon data-cy="hide-sidebar" as="button" $dim="2rem" $padding="0" onClick={() => { setSidebar(!sideBar) }}>
                                 <BiLeftArrowAlt size="1.5rem" />
                             </Icon>
                             :
-                            <Icon as="button" $dim="2rem" $padding="0" onClick={() => { setSidebar(!sideBar) }}>
+                            <Icon data-cy="show-sidebar" as="button" $dim="2rem" $padding="0" onClick={() => { setSidebar(!sideBar) }}>
                                 <Text $size="1.5rem">
                                     <BiRightArrowAlt />
                                 </Text>
@@ -252,12 +257,12 @@ const Menu = ({ Page }) => {
             </Content>
             {
                 modal.message.length > 0 ?
-                    <BoxAbsolute $display="flex" $width="100%" $height="100%" $top="0" $left="0" $color="transparent">
+                    <BoxAbsolute  data-cy="modal" $display="flex" $width="100%" $height="100%" $top="0" $left="0" $color="transparent">
                         <BoxAbsolute as="button" onClick={() => { setModal({ subject: "", message: "" }) }} $width="100%" $height="100%" $top="0" $left="0" $color="rgba(0, 0, 0, 0.25)" radius="0" zindex="15" />
                         <Entry $width="50%" $zindex="20" $margin="auto" $direction="column" $align="start">
-                            <Text $margin="0.5rem" $weight="600" $line="1.25rem">{modal.subject}</Text>
-                            <Text $margin="0.5rem">{modal.message}</Text>
-                            <Box as="button" onClick={() => { setModal({ subject: "", message: "" }) }} $color="#FFEDEC" $margin="1rem 0 0 0" $padding="1rem">
+                            <Text data-cy="modal-subject" $margin="0.5rem" $weight="600" $line="1.25rem">{modal.subject}</Text>
+                            <Text data-cy="modal-message" $margin="0.5rem">{modal.message}</Text>
+                            <Box data-cy="modal-close" as="button" onClick={() => { setModal({ subject: "", message: "" }) }} $color="#FFEDEC" $margin="1rem 0 0 0" $padding="1rem">
                                 <Text $color="#E23428" $align="center" $line="1.25rem">Close</Text>
                             </Box>
                         </Entry>

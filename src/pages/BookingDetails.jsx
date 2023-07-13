@@ -7,7 +7,7 @@ const BookingDetails = () => {
     useRelocation("Booking Details");
 
     return (
-        <Entry $margin="1rem" $padding="2rem" $justify="space-between">
+        <Entry $margin="1rem" $padding="2rem" $justify="space-between"  data-cy="page-bookingsDetails">
             <Box $margin="0" $padding="1rem" $width="50%">
                 <Text $weight="600">Full Name Here</Text>
                 <Text $color="#799283" $size="0.75rem" $margin="0.5rem">#idididid</Text>
