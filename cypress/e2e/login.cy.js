@@ -21,7 +21,6 @@ describe('login', () => {
 
   it("no error on empty inputs", () => {
     cy.get('[data-cy="login-form"]').invoke('submit', (e) => {
-      e.preventDefault();
       throw new Error('submitted when should not');
     });
     cy.get('[data-cy="login-button"]').click();
@@ -32,7 +31,6 @@ describe('login', () => {
 
   it("no error on empty password", () => {
     cy.get('[data-cy="login-form"]').invoke('submit', (e) => {
-      e.preventDefault();
       throw new Error('submitted when should not');
     });
     cy.get('[data-cy="user-input"]').type("wrong");
