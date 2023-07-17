@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { SyntheticEvent } from "react";
 import empty from "../assets/empty.png";
 import { Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
@@ -6,6 +6,7 @@ import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
 import { useNewRoom } from "../components/redux/rooms/roomsHooks";
 import { useNavigate } from "react-router";
+import { RoomType } from "../components/redux/rooms/roomsSlice";
 
 const RoomEdit = (): React.JSX.Element => {
     useRelocation("New Room");
@@ -13,16 +14,16 @@ const RoomEdit = (): React.JSX.Element => {
     const navigate = useNavigate();
     const newRoom = useNewRoom();
 
-    const handleSubmit = (form): void => {
+    const handleSubmit = (form: SyntheticEvent): void => {
         form.preventDefault();
         newRoom({
-            "name": form.target.name.value,
-            "type": form.target.type.value,
-            "price": form.target.price.value,
-            "offer": form.target.offer.value,
+            "name": (document.getElementById("name") as HTMLInputElement).value,
+            "type": (document.getElementById("type") as HTMLInputElement).value as RoomType,
+            "price": parseInt((document.getElementById("price") as HTMLInputElement).value),
+            "offer": parseInt((document.getElementById("offer") as HTMLInputElement).value),
             "status": "Available",
-            "cancel": form.target.cancel.value,
-            "description": form.target.description.value
+            "cancel": (document.getElementById("cancel") as HTMLInputElement).value,
+            "description": (document.getElementById("description") as HTMLInputElement).value
         });
         navigate("/rooms");
     }

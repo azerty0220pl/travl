@@ -4,7 +4,8 @@ import { styled } from "styled-components";
 import { Entry } from "../basic/Box";
 import Text from "../basic/Text";
 
-const dict = {
+interface Dict {[index: string]: string};
+const dict: Dict = {
     "All Bookings": "none",
     "In Progress": "progress",
     "All Rooms": "none",

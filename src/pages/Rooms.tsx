@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { Box, Entry } from "../components/basic/Box";
 import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
@@ -38,12 +38,12 @@ const Rooms = () => {
     return (
         <div data-cy="page-rooms">
             <Entry $margin="0" $padding="1rem" $color="transparent" $justify="space-between">
-                <SlidingMenu fields={["All Rooms", "Available", "Booked"]} handleChange={(x) => { setCur(0); setFilter(x); }} />
+                <SlidingMenu fields={["All Rooms", "Available", "Booked"]} handleChange={(x: string) => { setCur(0); setFilter(x); }} />
                 <Entry $margin="0" $padding="0" $radius="0" $color="transparent">
                     <Box as="button" onClick={() => { navigate("/rooms/new") }} $padding="1rem" $margin="0" $radius="0.75rem" $color="#135846">
                         <Text data-cy="rooms-newroom" $color="white">+ New Room</Text>
                     </Box>
-                    <Select data-cy="rooms-order" as="select" $color="#135846" $weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
+                    <Select data-cy="rooms-order" as="select" $color="#135846" $weight="600" value={order} onChange={(e: ChangeEvent<HTMLSelectElement>) => { setOrder(e.target.value) }}>
                         <Text as='option' value="number" $color="#135846" $weight="400">Number</Text>
                         <Text as='option' value="status" $color="#135846" $weight="400">Status</Text>
                         <Text as='option' value="ascending" $color="#135846" $weight="400">Price Ascending</Text>

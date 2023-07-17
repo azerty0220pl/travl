@@ -6,7 +6,7 @@ import empty from "../../assets/empty.png";
 import { Room } from "../redux/rooms/roomsSlice";
 
 const RoomsTableRow = ({ x, i }: {x: Partial<Room>, i: number}) : React.JSX.Element => {
-    const status = (y) => {
+    const status = (y: string) => {
         switch (y) {
             case "Available":
                 return (
@@ -58,7 +58,7 @@ const RoomsTableRow = ({ x, i }: {x: Partial<Room>, i: number}) : React.JSX.Elem
             </Cell>
             <Cell>
                 {
-                    status(x.status)
+                    status(x.status!)
                 }
             </Cell>
         </Row>

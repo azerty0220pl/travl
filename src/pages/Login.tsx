@@ -1,5 +1,4 @@
-import React from "react";
-import { useNavigate } from "react-router";
+import React, { SyntheticEvent } from "react";
 import { Box, Entry } from "../components/basic/Box";
 import Text from "../components/basic/Text";
 import { login } from "../components/basic/loginLogic";
@@ -10,11 +9,13 @@ const Login = (): React.JSX.Element => {
     const [err, setErr] = useState(false);
     const dispatch = useContext(Context).dispatch;
 
-    const handleSubmit = (event): void => {
+    const handleSubmit = (event: SyntheticEvent): void => {
         event.preventDefault();
+        const nameEl = document.getElementById("user") as HTMLInputElement;
+        const passEl = document.getElementById("password") as HTMLInputElement;
 
-        if (login(event.target.user.value, event.target.password.value)) {
-            dispatch!({ type: "login", success: true, user: event.target.user.value });
+        if (login(nameEl.value, passEl.value)) {
+            dispatch!({ type: "login", success: true, user: nameEl.value });
             setErr(false);
         }
         else

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, SyntheticEvent } from "react";
 import empty from "../assets/empty.png";
 import { Icon, Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
@@ -17,13 +17,13 @@ const UserEdit = (): React.JSX.Element => {
 
     const [username, setUsername] = useState(state.username);
 
-    const handleSubmit = (e): void => {
+    const handleSubmit = (e: SyntheticEvent): void => {
         e.preventDefault();
 
         dispatch!({
             type: "user",
             user: username,
-            mail: e.target.mail.value
+            mail: (document.getElementById("mail") as HTMLInputElement).value
         });
 
         navigate("/dashboard");
@@ -34,7 +34,7 @@ const UserEdit = (): React.JSX.Element => {
             <Box as="form" onSubmit={handleSubmit} $margin="0" $padding="1rem" $border="1px solid #EBEBEB" $width="50%">
                 <label id="user-label" htmlFor="user">
                     <Text $weight="600">Full Name:</Text>
-                    <Text as="input" type="text" id="user" placeholder="username" $margin="0.5rem" value={username} onChange={(e) => { setUsername(e.target.value) }} required />
+                    <Text as="input" type="text" id="user" placeholder="username" $margin="0.5rem" value={username} onChange={(e: ChangeEvent<HTMLInputElement>) => { setUsername(e.target.value) }} required />
                 </label>
                 <Entry $margin="1rem 0 0 0" $padding="0" $radius="0" $justify="space-between">
                     <Box as="label" id="mail-label" htmlFor="mail" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">

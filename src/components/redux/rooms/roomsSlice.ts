@@ -2,10 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import data from "../../../data/rooms.json";
 import { Status } from "../store";
 
+export type RoomType = "Single Bed" | "Double Bed" | "Superior Double" | "Suite";
+
 export interface Room  {
     id: number,
     name: string,
-    type: "Single Bed" | "Double Bed" | "Superior Double" | "Suite",
+    type: RoomType,
     ammenities: string,
     price: number,
     offer: number,
@@ -14,7 +16,7 @@ export interface Room  {
     status: "Booked" | "Available"
 };
 
-interface RoomState {
+export interface RoomState {
     rooms: Partial<Room>[],
     status: Status
 };

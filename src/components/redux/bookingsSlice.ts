@@ -13,7 +13,7 @@ export interface Book {
     status: "Booked" | "Refund" | "In Progress"
 };
 
-interface BookingsState {
+export interface BookingsState {
     bookings: Partial<Book>[],
     status: Status
 }

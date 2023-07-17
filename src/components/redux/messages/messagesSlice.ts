@@ -14,8 +14,20 @@ export interface Message {
     date: string
 };
 
-interface MsgState {
-    messages: Object,
+interface Msg {
+    id: number,
+    name: string,
+    email: string,
+    phone: string,
+    subject: string,
+    message: string,
+    archived: boolean,
+    read: boolean,
+    date: string
+};
+interface Msgs { [index: string]: Msg };
+export interface MsgState {
+    messages: Msgs,
     status: Status
 };
 
@@ -57,7 +69,7 @@ const messagesSlice = createSlice({
         builder
             .addCase(fetchMessages.fulfilled, (state, action) => {
                 state.status = "success";
-                state.messages = action.payload;
+                state.messages = action.payload as Msgs;
             })
             .addCase(changeRead.fulfilled, (state, action) => {
                 state.messages[action.payload].read = true;

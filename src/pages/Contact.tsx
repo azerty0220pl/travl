@@ -30,7 +30,7 @@ const Contact = (): React.JSX.Element => {
                 </Entry>
             </Box>
             <Entry $margin="0 1rem" $padding="1rem" $color="transparent" $justify="space-between">
-                <SlidingMenu fields={["All Contacts", "Archived"]} handleChange={(x) => { setCur2(0); setFilter(x); }} />
+                <SlidingMenu fields={["All Contacts", "Archived"]} handleChange={(x: string) => { setCur2(0); setFilter(x); }} />
             </Entry>
             <Box $margin="0 1rem">
                 <Table>

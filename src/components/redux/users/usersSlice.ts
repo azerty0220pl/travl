@@ -13,7 +13,7 @@ export interface User {
     password: string
 };
 
-interface UserState {
+export interface UserState {
     users: Partial<User>[],
     status: Status
 };

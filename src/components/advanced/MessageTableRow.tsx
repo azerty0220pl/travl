@@ -11,7 +11,7 @@ import { Message } from "../redux/messages/messagesSlice";
 const MessageTableRow = ({ x, i } : {x: Partial<Message>, i: number}) : React.JSX.Element => {
     const modal = useContext(Context).modal;
 
-    const handleArchive = useChangeArchive(x.id);
+    const handleArchive = useChangeArchive(x.id!);
 
     return (
         <Row>

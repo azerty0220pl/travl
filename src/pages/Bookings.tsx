@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { Box, Entry } from "../components/basic/Box";
 import SlidingMenu from "../components/advanced/SlidingMenu";
 import Text from "../components/basic/Text";
@@ -33,8 +33,8 @@ const Bookings = (): React.JSX.Element => {
     return (
         <div data-cy="page-bookings">
             <Entry $margin="0" $padding="1rem" $color="transparent" $justify="space-between">
-                <SlidingMenu fields={["All Bookings", "In Progress"]} handleChange={(x) => {  setCur(0); setFilter(x);  }} />
-                <Select as="select" $color="#135846" $weight="600" value={order} onChange={(e) => { setOrder(e.target.value) }}>
+                <SlidingMenu fields={["All Bookings", "In Progress"]} handleChange={(x: string): void => {  setCur(0); setFilter(x);  }} />
+                <Select as="select" $color="#135846" $weight="600" value={order} onChange={(e: ChangeEvent<HTMLSelectElement>) => { setOrder(e.target.value) }}>
                     <Text as='option' value="order" $color="#135846" $weight="400">Order Date</Text>
                     <Text as='option' value="name" $color="#135846" $weight="400">Guest</Text>
                     <Text as='option' value="in" $color="#135846" $weight="400">Check In</Text>

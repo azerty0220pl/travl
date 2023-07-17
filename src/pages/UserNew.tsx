@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import empty from "../assets/empty.png";
 import { Icon, Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
@@ -12,16 +12,16 @@ const UserNew = () => {
     const navigate = useNavigate();
     const newUser = useNewUser();
 
-    const handleSubmit = (form): void => {
+    const handleSubmit = (form: SyntheticEvent): void => {
         form.preventDefault();
         newUser({
-            "name": form.target.name.value,
-            "email": form.target.email.value,
-            "phone": form.target.phone.value,
-            "joined": form.target.joined.value,
-            "description": form.target.description.value,
-            "status": form.target.status.value,
-            "password": form.target.password.value
+            "name": (document.getElementById("name") as HTMLInputElement).value,
+            "email": (document.getElementById("email") as HTMLInputElement).value,
+            "phone": (document.getElementById("phone") as HTMLInputElement).value,
+            "joined": (document.getElementById("joined") as HTMLInputElement).value,
+            "description": (document.getElementById("description") as HTMLInputElement).value,
+            "status": (document.getElementById("status") as HTMLInputElement).value as "Active" | "Inactive",
+            "password": (document.getElementById("password") as HTMLInputElement).value
         });
         navigate("/users");
     }

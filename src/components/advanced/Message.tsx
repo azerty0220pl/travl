@@ -7,7 +7,7 @@ import { FaRegCircleXmark } from 'react-icons/fa6'
 import { useChangeRead } from "../redux/messages/messageHooks";
 import { Message } from "../redux/messages/messagesSlice";
 
-const Message = ({ x }: {x: Partial<Message>}) : React.JSX.Element => {
+const MessageElement = ({ x }: {x: Partial<Message>}) : React.JSX.Element => {
     const modal = useContext(Context).modal;
     const handleClick = useChangeRead(x.id!);
     
@@ -32,4 +32,4 @@ const Message = ({ x }: {x: Partial<Message>}) : React.JSX.Element => {
     );
 };
 
-export default Message;
+export default MessageElement;

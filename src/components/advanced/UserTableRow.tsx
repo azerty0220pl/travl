@@ -11,7 +11,7 @@ import { User } from "../redux/users/usersSlice";
 const UserTableRow = ({ x, i }: {x: Partial<User>, i: number}): React.JSX.Element => {
     const modal = useContext(Context).modal;
 
-    const status = (y) => {
+    const status = (y: string) => {
         switch (y) {
             case "Active":
                 return (
@@ -64,7 +64,7 @@ const UserTableRow = ({ x, i }: {x: Partial<User>, i: number}): React.JSX.Elemen
             </Cell>
             <Cell>
                 {
-                    status(x.status)
+                    status(x.status!)
                 }
             </Cell>
         </Row>

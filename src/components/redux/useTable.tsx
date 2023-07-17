@@ -2,90 +2,104 @@ import React from "react";
 import RoomsTableRow from "../advanced/RoomsTableRow";
 import BookingTableRow from "../advanced/BookingTableRow";
 import UserTableRow from "../advanced/UserTableRow";
-import Message from "../advanced/Message";
 import MessageTableRow from "../advanced/MessageTableRow";
-import { useAppSelector } from "./store";
+import { RootState, useAppSelector } from "./store";
+import { Book } from "./bookingsSlice";
+import { User } from "./users/usersSlice";
+import { Room } from "./rooms/roomsSlice";
+import { Message } from "./messages/messagesSlice";
+import MessageElement from "../advanced/Message";
 
-const orders = {
-    order:  (a, b) => {
+interface Orders {[index: string]: (a: any, b: any) => number};
+const orders: Orders = {
+    order: (a: Book, b: Book) => {
         return Date.parse(a.order) < Date.parse(b.order) ? -1 : 1;
     },
-    name: (a, b) => {
+    name: (a: Room | Book | User | Message, b: Room | Book | User | Message) => {
         return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
     },
-    in:  (a, b) => {
+    in: (a: Book, b: Book) => {
         return Date.parse(a.in) < Date.parse(b.in) ? -1 : 1;
     },
-    out:  (a, b) => {
+    out: (a: Book, b: Book) => {
         return Date.parse(a.out) < Date.parse(b.out) ? -1 : 1;
     },
-    number: (a, b) => {
+    number: (a: Room | Book | User | Message, b: Room | Book | User | Message) => {
         return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
     },
-    ascending: (a, b) => {
+    ascending: (a: Room, b: Room) => {
         if (a.price === b.price)
             return 0;
         return a.price < b.price ? -1 : 1;
     },
-    descending: (a, b) => {
+    descending: (a: Room, b: Room) => {
         if (a.price === b.price)
             return 0;
         return a.price < b.price ? 1 : -1;
     },
-    status: (a, b) => {
+    status: (a: Room, b: Room) => {
         if (a.status === b.status)
             return 0;
         return a.status === "Available" ? -1 : 1;
     },
-    joined: (a, b) => {
+    joined: (a: User, b: User) => {
         return Date.parse(a.joined) < Date.parse(b.joined) ? -1 : 1;
     },
-    date: (a, b) => {
+    date: (a: Message, b: Message) => {
         return Date.parse(a.date) < Date.parse(b.date) ? -1 : 1;
     },
 };
 
-const filters = {
+interface Filters {[index: string]: Function};
+const filters: Filters = {
     none: () => true,
-    progress: (x) => {
+    progress: (x: Book) => {
         return x.status === "In Progress";
     },
-    available: (x) => {
+    available: (x: Room) => {
         return x.status === "Available";
     },
-    booked: (x) => {
+    booked: (x: Room) => {
         return x.status === "Booked";
     },
-    active: (x) => {
+    active: (x: User) => {
         return x.status === "Active";
     },
-    inactive: (x) => {
+    inactive: (x: User) => {
         return x.status === "Inactive";
     },
-    published: (x) => {
+    published: (x: Message) => {
         return !x.archived;
     },
-    archived: (x) => {
+    archived: (x: Message) => {
         return x.archived;
     },
-    read: (x) => {
+    read: (x: Message) => {
         return !x.read && !x.archived;
     }
 }
 
-const selectors = {
-    rooms: state => state.rooms.rooms,
-    bookings: state => state.bookings.bookings,
-    users: state => state.users.users,
-    messages: state => state.messages.messages,
-    messagesAlt: state => state.messages.messages
+interface Selector {
+    [index: string]: (state: RootState) =>
+        Partial<Room>[] |
+        Partial<Book>[] |
+        Partial<User>[] |
+        Object
+};
+const selectors: Selector = {
+    rooms: (state: RootState) => state.rooms.rooms,
+    bookings: (state: RootState) => state.bookings.bookings,
+    users: (state: RootState) => state.users.users,
+    messages: (state: RootState) => state.messages.messages,
+    messagesAlt: (state: RootState) => state.messages.messages
 }
 
-const elems = {
+interface Elems { [index: string]: Function }
+const elems: Elems = {
     rooms: RoomsTableRow,
     bookings: BookingTableRow,
     users: UserTableRow,
-    messages: Message,
+    messages: MessageElement,
     messagesAlt: MessageTableRow
 }
 
@@ -100,7 +114,7 @@ export const useTable = (sel: string, filter: string, order: string): React.JSX.
 
     data.sort(orders[order]);
 
-    const Elem = elems[sel];
+    const Elem = elems[sel] as ({x, i}: {x: any, i: number}) => React.JSX.Element;
     return data.map((el, i) => {
         return <Elem key={sel + el.id} x={el} i={i} />;
     });

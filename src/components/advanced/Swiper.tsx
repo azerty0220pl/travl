@@ -39,7 +39,7 @@ export const SwiperNavigation = ({
 }): React.JSX.Element => {
     const pages = Math.ceil((data.length || 0) / count);
 
-    const move = (x) => {
+    const move = (x: number) => {
         if (pages === 0)
             return;
 
@@ -183,7 +183,7 @@ export const SwiperNavigationAlt = ({
 
     const pages = Math.ceil((data.length || 0) / count);
 
-    const move = (x) => {
+    const move = (x: number) => {
         if (pages === 0)
             return;
 

@@ -9,7 +9,7 @@ export const useChangeRead = (id: number) => {
     };
 }
 
-export const useChangeArchive = (id) => {
+export const useChangeArchive = (id: number) => {
     const dispatch = useAppDispatch();
     
     return () => {

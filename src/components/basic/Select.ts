@@ -1,11 +1,7 @@
 import Text from "./Text";
 import { styled } from "styled-components";
 
-interface Props {
-    $margin?: string
-}
-
-const Select = styled(Text)<Props>`
+const Select = styled(Text)`
     background-color: white;
     margin: ${props => props.$margin || "0"};
     border: 2px solid #135846;

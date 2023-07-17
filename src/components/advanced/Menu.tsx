@@ -79,7 +79,7 @@ const Menu = ({ Page } : {Page: () => React.JSX.Element}) : React.JSX.Element =>
         dispatch!({ type: "login", success: false });
     }
 
-    const handlePage = (x) => {
+    const handlePage = (x: string) => {
         navigate(x);
     };
 
