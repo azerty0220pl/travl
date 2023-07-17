@@ -1,6 +1,28 @@
 import { styled } from "styled-components";
 
-export const Box = styled.div`
+interface Props {
+    $display?: string,
+    $radius?: string,
+    $color?: string,
+    $border?: string,
+    $padding?: string,
+    $margin?: string,
+    $width?: string,
+    $height?: string,
+    $zindex?: string,
+    $top?: string,
+    $bottom?: string,
+    $left?: string,
+    $right?: string,
+    $direction?: string,
+    $gap?: string,
+    $justify?: string,
+    $align?: string,
+    $wrap?: string,
+    $dim?: string
+}
+
+export const Box = styled.div<Props>`
     position: relative;
     display: ${props => props.$display || "block"};
     border-radius: ${props => props.$radius || "0.75rem"};
@@ -16,7 +38,7 @@ export const Box = styled.div`
     z-index: ${props => props.$zindex || 'auto'};
 `;
 
-export const BoxAbsolute = styled(Box)`
+export const BoxAbsolute = styled(Box)<Props>`
     position: absolute;
     top: ${props => props.$top || 'unset'};
     bottom: ${props => props.$bottom || 'unset'};
@@ -27,7 +49,7 @@ export const BoxAbsolute = styled(Box)`
     z-index: 10;
 `;
 
-export const Entry = styled(Box)`
+export const Entry = styled(Box)<Props>`
     display: flex;
     flex-direction: ${props => props.$direction || 'row'};
     gap: ${props => props.$gap || '1rem'};
@@ -38,7 +60,7 @@ export const Entry = styled(Box)`
     overflow: unset;
 `;
 
-export const Icon = styled(Box)`
+export const Icon = styled(Box)<Props>`
     display: flex;
     justify-content: center;
     align-items: center;
