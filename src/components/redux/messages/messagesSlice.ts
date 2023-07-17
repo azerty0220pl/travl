@@ -1,29 +1,35 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import data from "../../../data/messages.json";
+import { Status } from "../store";
 
-const initialState = {
+interface MsgState {
+    messages: Object,
+    status: Status
+};
+
+const initialState: MsgState = {
     messages: {},
     status: "none"
 };
 
 export const fetchMessages = createAsyncThunk('getMessages', () => {
-    return new Promise((resolve) => {
+    return new Promise<Object>((resolve) => {
         setTimeout(() => {
             resolve(data);
         }, 200);
     });
 });
 
-export const changeRead = createAsyncThunk('setRead', (id) => {
-    return new Promise((resolve) => {
+export const changeRead = createAsyncThunk('setRead', (id: number) => {
+    return new Promise<number>((resolve) => {
         setTimeout(() => {
             resolve(id);
         }, 200);
     });
 });
 
-export const changeArchive = createAsyncThunk('setArchive', (id) => {
-    return new Promise((resolve) => {
+export const changeArchive = createAsyncThunk('setArchive', (id: number) => {
+    return new Promise<number>((resolve) => {
         setTimeout(() => {
             resolve(id);
         }, 200);
@@ -35,7 +41,7 @@ const messagesSlice = createSlice({
     initialState,
     reducers: {
     },
-    extraReducers(builder) {
+    extraReducers: builder => {
         builder
             .addCase(fetchMessages.fulfilled, (state, action) => {
                 state.status = "success";
@@ -46,7 +52,7 @@ const messagesSlice = createSlice({
             })
             .addCase(changeArchive.fulfilled, (state, action) => {
                 state.messages[action.payload].archived = !state.messages[action.payload].archived;
-            })
+            });
     }
 });
 

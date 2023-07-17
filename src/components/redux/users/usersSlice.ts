@@ -1,21 +1,37 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import data from "../../../data/users.json";
+import { Status } from "../store";
 
-const initialState = {
+export interface User {
+    name: string,
+    id: number,
+    email: string,
+    joined: string,
+    description: string,
+    phone: string,
+    status: "Inactive" | "Active"
+};
+
+interface UserState {
+    users: Partial<User>[],
+    status: Status
+};
+
+const initialState : UserState = {
     users: [],
     status: "none"
 };
 
 export const fetchUsers = createAsyncThunk('getUsers', () => {
-    return new Promise((resolve) => {
+    return new Promise<Partial<User>[]>((resolve) => {
         setTimeout(() => {
-            resolve(data);
+            resolve(data as Partial<User>[]);
         }, 200);
     });
 });
 
-export const newUser = createAsyncThunk('newUser', (user) => {
-    return new Promise((resolve) => {
+export const newUser = createAsyncThunk('newUser', (user: Partial<User>) => {
+    return new Promise<Partial<User>>((resolve) => {
         setTimeout(() => {
             resolve(user);
         }, 200);
@@ -27,7 +43,7 @@ const usersSlice = createSlice({
     initialState,
     reducers: {
     },
-    extraReducers(builder) {
+    extraReducers: builder => {
         builder
             .addCase(fetchUsers.fulfilled, (state, action) => {
                 state.status = "success";

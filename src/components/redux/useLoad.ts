@@ -3,7 +3,7 @@ import { fetchRooms } from "./rooms/roomsSlice";
 import { fetchMessages } from "./messages/messagesSlice";
 import { fetchUsers } from "./users/usersSlice";
 import { fetchBookings } from "./bookingsSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "./store";
 
 const slices = {
     rooms: { sel: state => state.rooms.status, fetch: fetchRooms },
@@ -13,9 +13,9 @@ const slices = {
 }
 
 export const useLoad = (s) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const slice = slices[s];
-    const status = useSelector(slice.sel);
+    const status = useAppSelector(slice.sel);
 
     useEffect(() => {
         if (status === 'none')

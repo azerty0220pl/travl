@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
+import React from "react";
 import RoomsTableRow from "../advanced/RoomsTableRow";
 import BookingTableRow from "../advanced/BookingTableRow";
 import UserTableRow from "../advanced/UserTableRow";
 import Message from "../advanced/Message";
 import MessageTableRow from "../advanced/MessageTableRow";
+import { useAppSelector } from "./store";
 
 const orders = {
     order:  (a, b) => {
@@ -89,9 +90,9 @@ const elems = {
 }
 
 export const useTable = (sel, filter, order) => {
-    let data = useSelector(selectors[sel]);
+    const aux = useAppSelector(selectors[sel]) as Object | Array<any>;
+    let data = Object.values(aux);
 
-    data = Object.values(data)
 
     data = data.filter(el =>
         filters[filter](el)
@@ -99,8 +100,8 @@ export const useTable = (sel, filter, order) => {
 
     data.sort(orders[order]);
 
-    const X = elems[sel];
+    const Elem = elems[sel];
     return data.map((el, i) => {
-        return <X key={sel + el.id} x={el} i={i} />
+        return <Elem key={sel + el.id} x={el} i={i} />;
     });
 }
