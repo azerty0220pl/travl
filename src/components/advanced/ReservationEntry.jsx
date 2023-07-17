@@ -1,3 +1,4 @@
+import React from "react";
 import { Entry, Box } from "../basic/Box";
 import Text from "../basic/Text";
 

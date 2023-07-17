@@ -1,14 +1,17 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Box } from "../basic/Box";
 import { Cell, Row } from "../basic/Table";
 import Text from "../basic/Text";
 import { Context } from "../../App";
 import dateFormat from "../basic/dateFormat";
+import { Book } from "../redux/bookingsSlice";
 
-const BookingTableRow = ({ x, i }) => {
+type Status = "Booked" | "Refund" | "In Progress"
+
+const BookingTableRow = ({ x, i } : {x: Partial<Book>, i: number}) : React.JSX.Element => {
     const modal = useContext(Context).modal;
     
-    const status = (x) => {
+    const status = (x: Status): React.JSX.Element => {
         switch (x) {
             case "Booked":
                 return (
@@ -36,20 +39,20 @@ const BookingTableRow = ({ x, i }) => {
     return (
         <Row key={i}>
             <Cell>
-                <Text $weight="600">{x.name}</Text>
+                <Text $weight="600">{x.name as string}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.order)}</Text>
+                <Text>{dateFormat(x.order as string)}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.in)}</Text>
+                <Text>{dateFormat(x.in as string)}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.out)}</Text>
+                <Text>{dateFormat(x.out as string)}</Text>
             </Cell>
             <Cell>
                 {
-                    x.request.length === 0 ?
+                    (x.request as string).length === 0 ?
                         <Box $margin="0" $padding="1rem" $height="3rem" $border="2px solid #799283" $width="14rem">
                             <Text $align="center" $color="#799283">View Notes</Text>
                         </Box>
@@ -64,7 +67,7 @@ const BookingTableRow = ({ x, i }) => {
             </Cell>
             <Cell>
                 {
-                    status(x.status)
+                    status(x.status as Status)
                 }
             </Cell>
         </Row>

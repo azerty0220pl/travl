@@ -1,9 +1,11 @@
+import React from "react";
 import { Row, Cell } from "../basic/Table";
 import Text from "../basic/Text";
 import { Entry, Box } from "../basic/Box";
 import empty from "../../assets/empty.png";
+import { Room } from "../redux/rooms/roomsSlice";
 
-const RoomsTableRow = ({ x, i }) => {
+const RoomsTableRow = ({ x, i }: {x: Partial<Room>, i: number}) : React.JSX.Element => {
     const status = (y) => {
         switch (y) {
             case "Available":
@@ -50,7 +52,7 @@ const RoomsTableRow = ({ x, i }) => {
             </Cell>
             <Cell>
                 <Entry $gap="0" $padding="0 1rem 0 0" $radius="0">
-                    <Text $width="fit-content">{x.price * (100 - x.offer) / 100}</Text>
+                    <Text $width="fit-content">{(x.price as number) * (100 - (x.offer as number)) / 100}</Text>
                     <Text $size="0.75rem" $color="#799283">/Night</Text>
                 </Entry>
             </Cell>

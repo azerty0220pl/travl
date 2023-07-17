@@ -1,3 +1,4 @@
+import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "../../pages/Dashboard";
 import Bookings from "../../pages/Bookings";
@@ -9,7 +10,7 @@ import BookingDetails from "../../pages/BookingDetails";
 import RoomEdit from "../../pages/RoomEdit";
 import UserNew from "../../pages/UserNew";
 
-const RoutesComponent = () => {
+const RoutesComponent = () : React.JSX.Element => {
     return (
         <Routes>
             <Route path="/" element={<Navigate to="/dashboard" />} />

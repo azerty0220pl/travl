@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { Box, BoxAbsolute, Entry, Icon } from "../basic/Box";
 import { MdOutlineDashboard, MdCalendarMonth, MdKey, MdContactSupport } from 'react-icons/md';
@@ -10,7 +10,11 @@ import logo from '../../assets/logo.png';
 import empty from "../../assets/empty.png";
 import { Context } from "../../App";
 
-const TopBar = styled.div`
+interface Props {
+    $sidebar: string | undefined
+}
+
+const TopBar = styled.div<Props>`
     position: absolute;
     top: 0;
     right: 0;
@@ -22,7 +26,7 @@ const TopBar = styled.div`
     box-shadow: 0px 3px 10px #00000005;
 `;
 
-const SideBar = styled.div`
+const SideBar = styled.div<Props>`
     position: absolute;
     top: 0;
     left: ${props => props.$sidebar ? "0" : "-15vw"};
@@ -33,7 +37,7 @@ const SideBar = styled.div`
     box-shadow: 0px 3px 10px #00000005;
 `;
 
-const Content = styled.div`
+const Content = styled.div<Props>`
     position: absolute;
     top: 4rem;
     right: 0;
@@ -62,7 +66,7 @@ const Red = styled.div`
     left: 0;
 `;
 
-const Menu = ({ Page }) => {
+const Menu = ({ Page } : {Page: () => React.JSX.Element}) : React.JSX.Element => {
     const navigate = useNavigate();
     const title = useContext(Context).page;
     const dispatch = useContext(Context).dispatch;
@@ -258,7 +262,7 @@ const Menu = ({ Page }) => {
             {
                 modal.message.length > 0 ?
                     <BoxAbsolute  data-cy="modal" $display="flex" $width="100%" $height="100%" $top="0" $left="0" $color="transparent">
-                        <BoxAbsolute as="button" onClick={() => { setModal({ subject: "", message: "" }) }} $width="100%" $height="100%" $top="0" $left="0" $color="rgba(0, 0, 0, 0.25)" radius="0" zindex="15" />
+                        <BoxAbsolute as="button" onClick={() => { setModal({ subject: "", message: "" }) }} $width="100%" $height="100%" $top="0" $left="0" $color="rgba(0, 0, 0, 0.25)" $radius="0" $zindex="15" />
                         <Entry $width="50%" $zindex="20" $margin="auto" $direction="column" $align="start">
                             <Text data-cy="modal-subject" $margin="0.5rem" $weight="600" $line="1.25rem">{modal.subject}</Text>
                             <Text data-cy="modal-message" $margin="0.5rem">{modal.message}</Text>

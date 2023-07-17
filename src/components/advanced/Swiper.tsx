@@ -1,10 +1,19 @@
+import React from "react";
 import { styled } from "styled-components";
 import { Box, Entry, Icon } from "../basic/Box";
 import Text from "../basic/Text";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import { useCallback, useEffect, useState } from "react";
 
-export const SwiperComponents = ({ data, cur, count }) => {
+export const SwiperComponents = ({
+    data,
+    cur,
+    count
+}: {
+    data: React.JSX.Element[],
+    cur: number,
+    count: number
+}): React.JSX.Element => {
 
     return (
         <>
@@ -17,9 +26,19 @@ export const SwiperComponents = ({ data, cur, count }) => {
     );
 }
 
-export const SwiperNavigation = ({ data, count, cur, setCur }) => {
+export const SwiperNavigation = ({
+    data,
+    count,
+    cur,
+    setCur
+}: {
+    data: React.JSX.Element[],
+    cur: number,
+    count: number,
+    setCur: Function
+}): React.JSX.Element => {
     const pages = Math.ceil((data.length || 0) / count);
-    
+
     const move = (x) => {
         if (pages === 0)
             return;
@@ -32,8 +51,8 @@ export const SwiperNavigation = ({ data, count, cur, setCur }) => {
         setCur(y);
     };
 
-    const printNav = () => {
-        let x = [];
+    const printNav = (): React.JSX.Element[] => {
+        let x: React.JSX.Element[] = [];
         let z = data.length || 0;
         if (z === 0)
             return x;
@@ -68,7 +87,7 @@ export const SwiperNavigation = ({ data, count, cur, setCur }) => {
     }
 
     const mv = useCallback(move, [pages, cur, setCur]);
-    useEffect(() => {
+    useEffect((): void => {
         if (cur > 0 && cur === pages) {
             mv(-1);
         }
@@ -113,7 +132,14 @@ export const SwiperNavigation = ({ data, count, cur, setCur }) => {
     );
 }
 
-const Container = styled.div`
+interface Props {
+    $top?: string,
+    $left?: string,
+    $transition?: string,
+    $margin?: string
+};
+
+const Container = styled.div<Props>`
     position: absolute;
     top: ${props => props.$top || "0"};
     left: ${props => props.$left || "0"};
@@ -125,7 +151,7 @@ const Container = styled.div`
     transition: ${props => props.$transition || "all 0.25s"};
 `;
 
-const Mask = styled.div`
+const Mask = styled.div<Props>`
     position: relative;
     width: 100%;
     height: 14rem;
@@ -134,7 +160,22 @@ const Mask = styled.div`
     margin-right: ${props => props.$margin || "0"};
 `;
 
-export const SwiperNavigationAlt = ({ data, count, cur, setCur, margin, colors }) => {
+export const SwiperNavigationAlt = ({
+    data,
+    count,
+    cur,
+    setCur,
+    margin,
+    colors
+}: {
+    data: React.JSX.Element[],
+    cur: number,
+    count: number,
+    setCur: Function,
+    margin: string,
+    colors: string
+}
+): React.JSX.Element => {
     const [pos1, setPos1] = useState("0");
     const [pos2, setPos2] = useState("100%");
     const [tran, setTran] = useState("0")

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { styled } from "styled-components";
 import { Entry } from "../basic/Box";
@@ -16,7 +17,11 @@ const dict = {
     "Archived": "archived"
 }
 
-const Button = styled(Text)`
+interface Props {
+    $border: string
+}
+
+const Button = styled(Text)<Props>`
     border: none;
     border-bottom: ${props => props.$border || "2px solid #DDD"};
     padding: 1rem 0;
@@ -29,7 +34,7 @@ const Container = styled(Entry)`
     width: 50%;
 `;
 
-const SlidingMenu = ({ fields, handleChange }) => {
+const SlidingMenu = ({ fields, handleChange } : {fields: string[], handleChange: Function}) : React.JSX.Element => {
     let [cur, setCur] = useState(0);
 
     return (

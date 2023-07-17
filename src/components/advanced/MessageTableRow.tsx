@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext } from "react";
 import { Box } from "../basic/Box";
 import { Cell, Row } from "../basic/Table";
@@ -5,8 +6,9 @@ import Text from "../basic/Text";
 import { Context } from "../../App";
 import dateFormat from "../basic/dateFormat";
 import { useChangeArchive } from "../redux/messages/messageHooks";
+import { Message } from "../redux/messages/messagesSlice";
 
-const MessageTableRow = ({ x, i }) => {
+const MessageTableRow = ({ x, i } : {x: Partial<Message>, i: number}) : React.JSX.Element => {
     const modal = useContext(Context).modal;
 
     const handleArchive = useChangeArchive(x.id);
@@ -16,7 +18,7 @@ const MessageTableRow = ({ x, i }) => {
             <Cell>
                 <Box $display="inline-block" $margin="0" $padding="0" $radius="0">
                     <Text $line="1.25rem" >{x.id}</Text>
-                    <Text $line="1.25rem" $margin="0.5rem" $color="#787878">{dateFormat(x.date)}</Text>
+                    <Text $line="1.25rem" $margin="0.5rem" $color="#787878">{dateFormat(x.date as string)}</Text>
                 </Box>
             </Cell>
             <Cell>

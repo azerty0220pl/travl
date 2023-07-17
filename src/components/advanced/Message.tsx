@@ -1,13 +1,15 @@
+import React from "react";
 import { Context } from "../../App";
 import { Box, Entry, Icon } from "../basic/Box";
 import Text from "../basic/Text";
 import { useContext } from "react";
 import { FaRegCircleXmark } from 'react-icons/fa6'
 import { useChangeRead } from "../redux/messages/messageHooks";
+import { Message } from "../redux/messages/messagesSlice";
 
-const Message = ({ x }) => {
+const Message = ({ x }: {x: Partial<Message>}) : React.JSX.Element => {
     const modal = useContext(Context).modal;
-    const handleClick = useChangeRead(x.id);
+    const handleClick = useChangeRead(x.id as number);
     
     return (
         <Box key={"msg" + x.id} $width="100%" $height="100%" $border='1px solid #EBEBEB'>

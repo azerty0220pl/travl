@@ -1,3 +1,4 @@
+import React from "react";
 import { Row, Cell } from "../basic/Table";
 import Text from "../basic/Text";
 import { Box } from "../basic/Box";
@@ -5,8 +6,9 @@ import empty from '../../assets/empty.png'
 import dateFormat from "../basic/dateFormat";
 import { useContext } from "react";
 import { Context } from "../../App";
+import { User } from "../redux/users/usersSlice";
 
-const UserTableRow = ({ x, i }) => {
+const UserTableRow = ({ x, i }: {x: Partial<User>, i: number}): React.JSX.Element => {
     const modal = useContext(Context).modal;
 
     const status = (y) => {
@@ -43,11 +45,11 @@ const UserTableRow = ({ x, i }) => {
                 <Text>{x.email}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.joined)}</Text>
+                <Text>{dateFormat(x.joined as string)}</Text>
             </Cell>
             <Cell>
                 {
-                    x.description.length === 0 ?
+                    (x.description as string).length === 0 ?
                         <Box $margin="0 2rem 0 0" $padding="1rem" $height="3rem" $border="2px solid #799283" $width="14rem">
                             <Text $align="center" $color="#799283">View Description</Text>
                         </Box>

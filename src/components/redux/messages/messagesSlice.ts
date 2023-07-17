@@ -2,6 +2,18 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import data from "../../../data/messages.json";
 import { Status } from "../store";
 
+export interface Message {
+    id: number,
+    name: string,
+    email: string,
+    phone: string,
+    subject: string,
+    message: string,
+    archived: boolean,
+    read: boolean,
+    date: string
+};
+
 interface MsgState {
     messages: Object,
     status: Status
