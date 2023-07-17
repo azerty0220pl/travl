@@ -1,3 +1,4 @@
+import React, { FormEvent } from "react";
 import empty from "../assets/empty.png";
 import { Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
@@ -6,13 +7,13 @@ import { useRelocation } from "../components/basic/hooks";
 import { useNewRoom } from "../components/redux/rooms/roomsHooks";
 import { useNavigate } from "react-router";
 
-const RoomEdit = () => {
+const RoomEdit = (): React.JSX.Element => {
     useRelocation("New Room");
 
     const navigate = useNavigate();
     const newRoom = useNewRoom();
 
-    const handleSubmit = (form) => {
+    const handleSubmit = (form): void => {
         form.preventDefault();
         newRoom({
             "name": form.target.name.value,

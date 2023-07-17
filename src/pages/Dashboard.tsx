@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, Entry } from "../components/basic/Box";
 import { LiaBedSolid, LiaCalendarCheck } from 'react-icons/lia';
 import { BiLogIn, BiLogOut } from 'react-icons/bi';
@@ -10,10 +11,10 @@ import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useLoad } from "../components/redux/useLoad";
 
-const Dashboard = () => {
+const Dashboard = (): React.JSX.Element => {
     useRelocation("Dashboard");
     useLoad("messages");
-    
+
     let data = useTable("messages", "read", "date");
 
     let [cur, setCur] = useState(0);
@@ -52,7 +53,14 @@ const Dashboard = () => {
             </Box>
             <Box $margin="1rem">
                 <Entry $padding="0" $justify="space-between" $gap="1rem" $radius="0" $height="14rem">
-                    <SwiperNavigationAlt data={data} count={3} cur={cur} setCur={setCur} margin="-2rem" colors={["#575757", "#135846", "#BEBEBE", "#FFF"]} />
+                    <SwiperNavigationAlt
+                        data={data}
+                        count={3}
+                        cur={cur}
+                        setCur={setCur}
+                        margin="-2rem"
+                        colors={["#575757", "#135846", "#BEBEBE", "#FFF"]}
+                    />
                 </Entry>
             </Box>
         </div>

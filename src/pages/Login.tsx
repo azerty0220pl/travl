@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router";
 import { Box, Entry } from "../components/basic/Box";
 import Text from "../components/basic/Text";
@@ -5,16 +6,15 @@ import { login } from "../components/basic/loginLogic";
 import { useContext, useState } from "react";
 import { Context } from "../App";
 
-const Login = () => {
+const Login = (): React.JSX.Element => {
     const [err, setErr] = useState(false);
-    const navigate = useNavigate();
     const dispatch = useContext(Context).dispatch;
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event): void => {
         event.preventDefault();
 
         if (login(event.target.user.value, event.target.password.value)) {
-            dispatch({ type: "login", success: true, user: event.target.user.value });
+            dispatch!({ type: "login", success: true, user: event.target.user.value });
             setErr(false);
         }
         else

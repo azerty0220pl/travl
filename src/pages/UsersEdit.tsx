@@ -1,3 +1,4 @@
+import React from "react";
 import empty from "../assets/empty.png";
 import { Icon, Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
@@ -7,7 +8,7 @@ import { Context } from "../App";
 import { useRelocation } from "../components/basic/hooks";
 import { useNavigate } from "react-router";
 
-const UserEdit = () => {
+const UserEdit = (): React.JSX.Element => {
     useRelocation("Edit User");
 
     const state = useContext(Context);
@@ -16,10 +17,10 @@ const UserEdit = () => {
 
     const [username, setUsername] = useState(state.username);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e): void => {
         e.preventDefault();
 
-        dispatch({
+        dispatch!({
             type: "user",
             user: username,
             mail: e.target.mail.value
@@ -38,7 +39,7 @@ const UserEdit = () => {
                 <Entry $margin="1rem 0 0 0" $padding="0" $radius="0" $justify="space-between">
                     <Box as="label" id="mail-label" htmlFor="mail" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
                         <Text $weight="600">Email:</Text>
-                        <Text as="input" type="mail" id="mail" placeholder="mail@mail.mail" $margin="0.5rem" $value={state.email} required />
+                        <Text as="input" type="mail" id="mail" placeholder="mail@mail.mail" $margin="0.5rem" value={state.email} required />
                     </Box>
                     <Box as="label" id="phone-label" htmlFor="phone" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
                         <Text $weight="600">Phone:</Text>
@@ -49,9 +50,9 @@ const UserEdit = () => {
                     <label id="role-label" htmlFor="role">
                         <Text $weight="600">Role:</Text>
                         <Select as="select" id="role" $color="#135846" $weight="600" $margin="0.5rem 0 0 0">
-                            <Text as='option' $value="manager" $color="#135846" $weight="400">Manager</Text>
-                            <Text as='option' $value="reception" $color="#135846" $weight="400">Reception</Text>
-                            <Text as='option' $value="service" $color="#135846" $weight="400">Room Service</Text>
+                            <Text as='option' value="manager" $color="#135846" $weight="400">Manager</Text>
+                            <Text as='option' value="reception" $color="#135846" $weight="400">Reception</Text>
+                            <Text as='option' value="service" $color="#135846" $weight="400">Room Service</Text>
                         </Select>
                     </label>
                     <Box as="label" id="description-label" htmlFor="description" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">

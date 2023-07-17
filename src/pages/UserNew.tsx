@@ -1,3 +1,4 @@
+import React from "react";
 import empty from "../assets/empty.png";
 import { Icon, Entry, Box } from "../components/basic/Box";
 import Text from "../components/basic/Text";
@@ -11,7 +12,7 @@ const UserNew = () => {
     const navigate = useNavigate();
     const newUser = useNewUser();
 
-    const handleSubmit = (form) => {
+    const handleSubmit = (form): void => {
         form.preventDefault();
         newUser({
             "name": form.target.name.value,

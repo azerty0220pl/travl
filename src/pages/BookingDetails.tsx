@@ -1,9 +1,10 @@
+import React from "react";
 import empty from "../assets/empty.png";
 import { Entry, Box, BoxAbsolute } from "../components/basic/Box";
 import Text from "../components/basic/Text";
 import { useRelocation } from "../components/basic/hooks";
 
-const BookingDetails = () => {
+const BookingDetails = (): React.JSX.Element => {
     useRelocation("Booking Details");
 
     return (
@@ -42,7 +43,7 @@ const BookingDetails = () => {
                     <Box $margin="0" $padding="1rem" $color="#E8FFEE">
                         <Text $color="#5AD07A">3 Bed Space</Text>
                     </Box>
-                    <Box $bottommargin="0" $padding="1rem" $color="#E8FFEE">
+                    <Box $margin="0" $padding="1rem" $color="#E8FFEE">
                         <Text $color="#5AD07A">3 Bed Space</Text>
                     </Box>
                     <Box $margin="0" $padding="1rem" $color="#E8FFEE">
