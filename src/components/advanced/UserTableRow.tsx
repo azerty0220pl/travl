@@ -45,16 +45,16 @@ const UserTableRow = ({ x, i }: {x: Partial<User>, i: number}): React.JSX.Elemen
                 <Text>{x.email}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.joined as string)}</Text>
+                <Text>{dateFormat(x.joined!)}</Text>
             </Cell>
             <Cell>
                 {
-                    (x.description as string).length === 0 ?
+                    x.description!.length === 0 ?
                         <Box $margin="0 2rem 0 0" $padding="1rem" $height="3rem" $border="2px solid #799283" $width="14rem">
                             <Text $align="center" $color="#799283">View Description</Text>
                         </Box>
                         :
-                        <Box data-cy={"users-" + x.id + "description"} as="button" onClick={() => { (modal as Function)({ subject: x.name, message: x.description }) }} $margin="0 2rem 0 0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
+                        <Box data-cy={"users-" + x.id + "description"} as="button" onClick={() => { modal!({ subject: x.name, message: x.description }) }} $margin="0 2rem 0 0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
                             <Text $align="center">View Description</Text>
                         </Box>
                 }

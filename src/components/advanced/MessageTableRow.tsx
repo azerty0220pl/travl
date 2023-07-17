@@ -18,7 +18,7 @@ const MessageTableRow = ({ x, i } : {x: Partial<Message>, i: number}) : React.JS
             <Cell>
                 <Box $display="inline-block" $margin="0" $padding="0" $radius="0">
                     <Text $line="1.25rem" >{x.id}</Text>
-                    <Text $line="1.25rem" $margin="0.5rem" $color="#787878">{dateFormat(x.date as string)}</Text>
+                    <Text $line="1.25rem" $margin="0.5rem" $color="#787878">{dateFormat(x.date!)}</Text>
                 </Box>
             </Cell>
             <Cell>
@@ -31,7 +31,7 @@ const MessageTableRow = ({ x, i } : {x: Partial<Message>, i: number}) : React.JS
                 <Box
                     as="button"
                     onClick={() => {
-                        (modal as Function)({ subject: x.subject, message: x.message })
+                        modal!({ subject: x.subject, message: x.message })
                     }}
                     $display="inline-block"
                     $height="3rem"

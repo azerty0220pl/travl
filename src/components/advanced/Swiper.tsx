@@ -173,7 +173,7 @@ export const SwiperNavigationAlt = ({
     count: number,
     setCur: Function,
     margin: string,
-    colors: string
+    colors: string[]
 }
 ): React.JSX.Element => {
     const [pos1, setPos1] = useState("0");

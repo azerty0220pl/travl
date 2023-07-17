@@ -9,6 +9,8 @@ export interface Room  {
     ammenities: string,
     price: number,
     offer: number,
+    cancel: string,
+    description: string,
     status: "Booked" | "Available"
 };
 

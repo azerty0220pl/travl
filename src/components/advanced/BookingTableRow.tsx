@@ -39,25 +39,25 @@ const BookingTableRow = ({ x, i } : {x: Partial<Book>, i: number}) : React.JSX.E
     return (
         <Row key={i}>
             <Cell>
-                <Text $weight="600">{x.name as string}</Text>
+                <Text $weight="600">{x.name!}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.order as string)}</Text>
+                <Text>{dateFormat(x.order!)}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.in as string)}</Text>
+                <Text>{dateFormat(x.in!)}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.out as string)}</Text>
+                <Text>{dateFormat(x.out!)}</Text>
             </Cell>
             <Cell>
                 {
-                    (x.request as string).length === 0 ?
+                    (x.request!).length === 0 ?
                         <Box $margin="0" $padding="1rem" $height="3rem" $border="2px solid #799283" $width="14rem">
                             <Text $align="center" $color="#799283">View Notes</Text>
                         </Box>
                         :
-                        <Box as="button" onClick={() => { (modal as Function)({ subject: x.name, message: x.request }) }} $margin="0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
+                        <Box as="button" onClick={() => { modal!({ subject: x.name, message: x.request }) }} $margin="0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
                             <Text $align="center">View Notes</Text>
                         </Box>
                 }
@@ -67,7 +67,7 @@ const BookingTableRow = ({ x, i } : {x: Partial<Book>, i: number}) : React.JSX.E
             </Cell>
             <Cell>
                 {
-                    status(x.status as Status)
+                    status(x.status!)
                 }
             </Cell>
         </Row>

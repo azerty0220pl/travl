@@ -9,7 +9,8 @@ export interface User {
     joined: string,
     description: string,
     phone: string,
-    status: "Inactive" | "Active"
+    status: "Inactive" | "Active",
+    password: string
 };
 
 interface UserState {

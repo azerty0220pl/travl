@@ -3,7 +3,7 @@ import { Entry, Icon } from "../basic/Box";
 import Text from "../basic/Text";
 import { IconType } from "react-icons";
 
-const KPI = ({ Ico, number, title }: {Ico: IconType, number: number, title: string}) : React.JSX.Element => {
+const KPI = ({ Ico, number, title }: {Ico: IconType, number: string, title: string}) : React.JSX.Element => {
     return (
         <Entry $width="100%" className="kpi">
             <Icon $dim="4rem" $padding="1rem" $color="#FFEDEC">

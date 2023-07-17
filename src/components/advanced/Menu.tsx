@@ -76,7 +76,7 @@ const Menu = ({ Page } : {Page: () => React.JSX.Element}) : React.JSX.Element =>
     }
 
     const logout = () => {
-        (dispatch as Function)({ type: "login", success: false });
+        dispatch!({ type: "login", success: false });
     }
 
     const handlePage = (x) => {
@@ -87,7 +87,7 @@ const Menu = ({ Page } : {Page: () => React.JSX.Element}) : React.JSX.Element =>
     const [modal, setModal] = useState({ subject: "", message: "" });
 
     useEffect(() => {
-        (dispatch as Function)({ type: "modal", modal: setModal });
+        dispatch!({ type: "modal", modal: setModal });
     }, [dispatch]);
 
     return (

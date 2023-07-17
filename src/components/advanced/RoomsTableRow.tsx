@@ -52,7 +52,7 @@ const RoomsTableRow = ({ x, i }: {x: Partial<Room>, i: number}) : React.JSX.Elem
             </Cell>
             <Cell>
                 <Entry $gap="0" $padding="0 1rem 0 0" $radius="0">
-                    <Text $width="fit-content">{(x.price as number) * (100 - (x.offer as number)) / 100}</Text>
+                    <Text $width="fit-content">{x.price! * (100 - x.offer!) / 100}</Text>
                     <Text $size="0.75rem" $color="#799283">/Night</Text>
                 </Entry>
             </Cell>
