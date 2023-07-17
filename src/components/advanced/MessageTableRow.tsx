@@ -31,7 +31,7 @@ const MessageTableRow = ({ x, i } : {x: Partial<Message>, i: number}) : React.JS
                 <Box
                     as="button"
                     onClick={() => {
-                        modal({ subject: x.subject, message: x.message })
+                        (modal as Function)({ subject: x.subject, message: x.message })
                     }}
                     $display="inline-block"
                     $height="3rem"

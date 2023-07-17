@@ -57,7 +57,7 @@ const BookingTableRow = ({ x, i } : {x: Partial<Book>, i: number}) : React.JSX.E
                             <Text $align="center" $color="#799283">View Notes</Text>
                         </Box>
                         :
-                        <Box as="button" onClick={() => { modal({ subject: x.name, message: x.request }) }} $margin="0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
+                        <Box as="button" onClick={() => { (modal as Function)({ subject: x.name, message: x.request }) }} $margin="0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
                             <Text $align="center">View Notes</Text>
                         </Box>
                 }

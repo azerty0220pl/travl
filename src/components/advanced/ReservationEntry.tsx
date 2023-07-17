@@ -2,8 +2,23 @@ import React from "react";
 import { Entry, Box } from "../basic/Box";
 import Text from "../basic/Text";
 
-const ReservationEntry = ({ room, number, name, from, to, photo, last }) => {
-
+const ReservationEntry = ({
+    room,
+    number,
+    name,
+    from,
+    to,
+    photo,
+    last
+}: {
+    room: string,
+    number: number,
+    name: string,
+    from: string,
+    to: string,
+    photo: string,
+    last: string
+}) : React.JSX.Element => {
     return (
         <Entry $padding="0" $margin={last ? "0" : "0 0 1rem 0"} $justify="space-between">
             <Entry $padding="0" $margin="0">
