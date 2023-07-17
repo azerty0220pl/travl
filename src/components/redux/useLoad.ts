@@ -12,7 +12,7 @@ const slices = {
     messages: { sel: state => state.messages.status, fetch: fetchMessages }
 }
 
-export const useLoad = (s) => {
+export const useLoad = (s: number): void => {
     const dispatch = useAppDispatch();
     const slice = slices[s];
     const status = useAppSelector(slice.sel);

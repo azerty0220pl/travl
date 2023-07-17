@@ -89,7 +89,7 @@ const elems = {
     messagesAlt: MessageTableRow
 }
 
-export const useTable = (sel, filter, order) => {
+export const useTable = (sel: string, filter: string, order: string): React.JSX.Element[] => {
     const aux = useAppSelector(selectors[sel]) as Object | Array<any>;
     let data = Object.values(aux);
 
