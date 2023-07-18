@@ -5,11 +5,11 @@ import { login } from "../components/basic/loginLogic";
 import { useContext, useState } from "react";
 import { Context } from "../App";
 
-const Login = (): React.JSX.Element => {
+const Login = () => {
     const [err, setErr] = useState(false);
     const dispatch = useContext(Context).dispatch;
 
-    const handleSubmit = (event: SyntheticEvent): void => {
+    const handleSubmit = (event: SyntheticEvent) => {
         event.preventDefault();
         const nameEl = document.getElementById("user") as HTMLInputElement;
         const passEl = document.getElementById("password") as HTMLInputElement;
@@ -26,14 +26,37 @@ const Login = (): React.JSX.Element => {
         <Entry data-cy="login" $justify="center" $margin="0" $padding="0" $color="transparent" $height="100vh" $width="100%">
             <Box $margin="auto" $width="fit-content">
                 <Text $weight="600">Login:</Text>
-                <Box data-cy="login-form" $margin="1rem 0 0 0" $padding="1rem" $border="1px solid #EBEBEB" as="form" onSubmit={handleSubmit}>
+                <Box
+                    data-cy="login-form"
+                    $margin="1rem 0 0 0"
+                    $padding="1rem"
+                    $border="1px solid #EBEBEB"
+                    as="form"
+                    onSubmit={handleSubmit}
+                >
                     <label id="user-label" htmlFor="user">
                         <Text>Username:</Text>
-                        <Text as="input" data-cy="user-input" $margin="0.5rem" type="text" id="user" placeholder="admin" required />
+                        <Text
+                            as="input"
+                            data-cy="user-input"
+                            $margin="0.5rem"
+                            type="text"
+                            id="user"
+                            placeholder="admin"
+                            required
+                        />
                     </label>
                     <label id="password-label" htmlFor="password">
                         <Text $margin="1rem">Password:</Text>
-                        <Text as="input" data-cy="password-input" $margin="0.5rem" type="password" id="password" placeholder="password" required />
+                        <Text
+                            as="input"
+                            data-cy="password-input"
+                            $margin="0.5rem"
+                            type="password"
+                            id="password"
+                            placeholder="password"
+                            required
+                        />
                     </label>
                     {
                         err ?

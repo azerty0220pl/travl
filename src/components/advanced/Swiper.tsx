@@ -13,7 +13,7 @@ export const SwiperComponents = ({
     data: React.JSX.Element[],
     cur: number,
     count: number
-}): React.JSX.Element => {
+}) => {
 
     return (
         <>
@@ -36,7 +36,7 @@ export const SwiperNavigation = ({
     cur: number,
     count: number,
     setCur: Function
-}): React.JSX.Element => {
+}) => {
     const pages = Math.ceil((data.length || 0) / count);
 
     const move = (x: number) => {
@@ -51,7 +51,7 @@ export const SwiperNavigation = ({
         setCur(y);
     };
 
-    const printNav = (): React.JSX.Element[] => {
+    const printNav = () => {
         let x: React.JSX.Element[] = [];
         let z = data.length || 0;
         if (z === 0)
@@ -87,7 +87,7 @@ export const SwiperNavigation = ({
     }
 
     const mv = useCallback(move, [pages, cur, setCur]);
-    useEffect((): void => {
+    useEffect(() => {
         if (cur > 0 && cur === pages) {
             mv(-1);
         }
@@ -175,10 +175,10 @@ export const SwiperNavigationAlt = ({
     margin: string,
     colors: string[]
 }
-): React.JSX.Element => {
+) => {
     const [pos1, setPos1] = useState("0");
     const [pos2, setPos2] = useState("100%");
-    const [tran, setTran] = useState("0")
+    const [tran, setTran] = useState("0");
     const [aux, setAux] = useState(0);
 
     const pages = Math.ceil((data.length || 0) / count);

@@ -10,7 +10,7 @@ import BookingDetails from "../../pages/BookingDetails";
 import RoomEdit from "../../pages/RoomEdit";
 import UserNew from "../../pages/UserNew";
 
-const RoutesComponent = () : React.JSX.Element => {
+const RoutesComponent = () => {
     return (
         <Routes>
             <Route path="/" element={<Navigate to="/dashboard" />} />

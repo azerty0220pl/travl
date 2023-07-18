@@ -8,13 +8,13 @@ import { useNewRoom } from "../components/redux/rooms/roomsHooks";
 import { useNavigate } from "react-router";
 import { RoomType } from "../components/redux/rooms/roomsSlice";
 
-const RoomEdit = (): React.JSX.Element => {
+const RoomEdit = () => {
     useRelocation("New Room");
 
     const navigate = useNavigate();
     const newRoom = useNewRoom();
 
-    const handleSubmit = (form: SyntheticEvent): void => {
+    const handleSubmit = (form: SyntheticEvent) => {
         form.preventDefault();
         newRoom({
             "name": (document.getElementById("name") as HTMLInputElement).value,
@@ -33,21 +33,53 @@ const RoomEdit = (): React.JSX.Element => {
             <Box as="form" $margin="0" $padding="1rem" $border="1px solid #EBEBEB" $width="50%" onSubmit={handleSubmit}>
                 <Box as="label" id="name-label" htmlFor="name" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
                     <Text $weight="600">Room Number:</Text>
-                    <Text data-cy="newroom-number" as="input" type="text" id="name" placeholder="A - 303" $margin="0.5rem" required />
+                    <Text
+                        data-cy="newroom-number"
+                        as="input"
+                        type="text"
+                        id="name"
+                        placeholder="A - 303"
+                        $margin="0.5rem"
+                        required
+                    />
                 </Box>
                 <Entry $margin="1rem 0 0 0" $padding="0" $radius="0" $justify="space-between">
                     <label id="type-label" htmlFor="type">
                         <Text $weight="600">Type:</Text>
-                        <Select data-cy="newroom-type" as="select" id="type" $color="#135846" $weight="600" $margin="0.5rem 0 0 0">
+                        <Select
+                            data-cy="newroom-type"
+                            as="select"
+                            id="type"
+                            $color="#135846"
+                            $weight="600"
+                            $margin="0.5rem 0 0 0"
+                        >
                             <Text as='option' value="Single Bed" $color="#135846" $weight="400">Single Bed</Text>
                             <Text as='option' value="Double Bed" $color="#135846" $weight="400">Double Bed</Text>
                             <Text as='option' value="Double Superior" $color="#135846" $weight="400">Double Superior</Text>
                             <Text as='option' value="Suite" $color="#135846" $weight="400">Suite</Text>
                         </Select>
                     </label>
-                    <Box as="label" id="description-label" htmlFor="description" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
+                    <Box
+                        as="label"
+                        id="description-label"
+                        htmlFor="description"
+                        $margin="0"
+                        $padding="0"
+                        $radius="0"
+                        $height="100%"
+                        $width="100%"
+                    >
                         <Text $weight="600">Description:</Text>
-                        <Text data-cy="newroom-description" as="textarea" id="description" $margin="0.5rem" placeholder="Short description..." $height="3rem" $line="1.25rem" />
+                        <Text
+                            data-cy="newroom-description"
+                            as="textarea"
+                            id="description"
+                            $margin="0.5rem"
+                            placeholder="Short description..."
+                            $height="3rem"
+                            $line="1.25rem"
+                        />
                     </Box>
                 </Entry>
                 <Entry $margin="1rem 0 0 0" $padding="0" $radius="0" $justify="space-between">
@@ -57,18 +89,60 @@ const RoomEdit = (): React.JSX.Element => {
                             <Text as='option' value="no" $color="#135846" $weight="400">Regular</Text>
                         </Select>
                     </label>
-                    <Box as="label" id="price-label" htmlFor="price" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
+                    <Box
+                        as="label"
+                        id="price-label"
+                        htmlFor="price"
+                        $margin="0"
+                        $padding="0"
+                        $radius="0"
+                        $height="100%"
+                        $width="100%"
+                    >
                         <Text $weight="600">Price:</Text>
-                        <Text data-cy="newroom-price" as="input" type="number" id="price" placeholder="145.01" required $margin="0.5rem" />
+                        <Text data-cy="newroom-price"
+                            as="input"
+                            type="number"
+                            id="price"
+                            placeholder="145.01"
+                            required
+                            $margin="0.5rem"
+                        />
                     </Box>
-                    <Box as="label" id="offer-label" htmlFor="offer" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
+                    <Box
+                        as="label"
+                        id="offer-label"
+                        htmlFor="offer"
+                        $margin="0"
+                        $padding="0"
+                        $radius="0"
+                        $height="100%"
+                        $width="100%"
+                    >
                         <Text $weight="600">Discount:</Text>
-                        <Text data-cy="newroom-discount" as="input" type="number" id="offer" placeholder="49.99%" $margin="0.5rem" required />
+                        <Text
+                            data-cy="newroom-discount"
+                            as="input"
+                            type="number"
+                            id="offer"
+                            placeholder="49.99%"
+                            $margin="0.5rem"
+                            required
+                        />
                     </Box>
                 </Entry>
                 <label id="cancel-label" htmlFor="cancel">
                     <Text $weight="600" $margin="1rem">Cancellation policy:</Text>
-                    <Text data-cy="newroom-policy" as="textarea" id="cancel" $margin="0.5rem" $height="3rem" $line="1.25rem" placeholder="To cancel, book the most expensive room first. Then, realize that it is impossible..." required />
+                    <Text
+                        data-cy="newroom-policy"
+                        as="textarea"
+                        id="cancel"
+                        $margin="0.5rem"
+                        $height="3rem"
+                        $line="1.25rem"
+                        placeholder="To cancel, book the most expensive room first. Then, realize that it is impossible..."
+                        required
+                    />
                 </label>
                 <Box data-cy="newroom-submit" as="button" $color="#EEF9F2" $margin="1rem 0 0 0" $padding="1rem 2rem">
                     <Text $weight="600" $align="center">Save</Text>

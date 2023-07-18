@@ -8,7 +8,7 @@ import { Context } from "../App";
 import { useRelocation } from "../components/basic/hooks";
 import { useNavigate } from "react-router";
 
-const UserEdit = (): React.JSX.Element => {
+const UserEdit = () => {
     useRelocation("Edit User");
 
     const state = useContext(Context);
@@ -34,14 +34,49 @@ const UserEdit = (): React.JSX.Element => {
             <Box as="form" onSubmit={handleSubmit} $margin="0" $padding="1rem" $border="1px solid #EBEBEB" $width="50%">
                 <label id="user-label" htmlFor="user">
                     <Text $weight="600">Full Name:</Text>
-                    <Text as="input" type="text" id="user" placeholder="username" $margin="0.5rem" value={username} onChange={(e: ChangeEvent<HTMLInputElement>) => { setUsername(e.target.value) }} required />
+                    <Text
+                        as="input"
+                        type="text"
+                        id="user"
+                        placeholder="username"
+                        $margin="0.5rem"
+                        value={username}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => { setUsername(e.target.value) }}
+                        required
+                    />
                 </label>
                 <Entry $margin="1rem 0 0 0" $padding="0" $radius="0" $justify="space-between">
-                    <Box as="label" id="mail-label" htmlFor="mail" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
+                    <Box
+                        as="label"
+                        id="mail-label"
+                        htmlFor="mail"
+                        $margin="0"
+                        $padding="0"
+                        $radius="0"
+                        $height="100%"
+                        $width="100%"
+                    >
                         <Text $weight="600">Email:</Text>
-                        <Text as="input" type="mail" id="mail" placeholder="mail@mail.mail" $margin="0.5rem" value={state.email} required />
+                        <Text
+                            as="input"
+                            type="mail"
+                            id="mail"
+                            placeholder="mail@mail.mail"
+                            $margin="0.5rem"
+                            value={state.email}
+                            required
+                        />
                     </Box>
-                    <Box as="label" id="phone-label" htmlFor="phone" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
+                    <Box
+                        as="label"
+                        id="phone-label"
+                        htmlFor="phone"
+                        $margin="0"
+                        $padding="0"
+                        $radius="0"
+                        $height="100%"
+                        $width="100%"
+                    >
                         <Text $weight="600">Phone:</Text>
                         <Text as="input" type="number" id="phone" placeholder="987654321" $margin="0.5rem" required />
                     </Box>
@@ -55,9 +90,24 @@ const UserEdit = (): React.JSX.Element => {
                             <Text as='option' value="service" $color="#135846" $weight="400">Room Service</Text>
                         </Select>
                     </label>
-                    <Box as="label" id="description-label" htmlFor="description" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
+                    <Box
+                        as="label"
+                        id="description-label"
+                        htmlFor="description"
+                        $margin="0"
+                        $padding="0"
+                        $radius="0"
+                        $height="100%"
+                        $width="100%"
+                    >
                         <Text $weight="600">Description:</Text>
-                        <Text as="textarea" id="description" placeholder="Short description..." $height="3rem" $line="1.25rem" $margin="0.5rem" />
+                        <Text
+                            as="textarea"
+                            id="description"
+                            placeholder="Short description..."
+                            $height="3rem"
+                            $line="1.25rem"
+                            $margin="0.5rem" />
                     </Box>
                 </Entry>
                 <Entry $margin="1rem 0 0 0" $padding="0" $radius="0" $justify="space-between">
@@ -68,7 +118,16 @@ const UserEdit = (): React.JSX.Element => {
                             <Text as='option' value="inactive" $color="#135846" $weight="400">Inactive</Text>
                         </Select>
                     </label>
-                    <Box as="label" id="date-label" htmlFor="date" $margin="0" $padding="0" $radius="0" $height="100%" $width="100%">
+                    <Box
+                        as="label"
+                        id="date-label"
+                        htmlFor="date"
+                        $margin="0"
+                        $padding="0"
+                        $radius="0"
+                        $height="100%"
+                        $width="100%"
+                    >
                         <Text $weight="600">Start Date:</Text>
                         <Text as="input" type="date" id="date" $height="3rem" $align="center" $margin="0.5rem" required />
                     </Box>

@@ -37,12 +37,30 @@ const Users = () => {
     return (
         <div data-cy="page-users">
             <Entry $margin="0" $padding="1rem" $color="transparent" $justify="space-between">
-                <SlidingMenu fields={["All Users", "Active Users", "Inactive Users"]} handleChange={(x: string) => { setCur(0); setFilter(x); }} />
+                <SlidingMenu
+                    fields={["All Users", "Active Users", "Inactive Users"]}
+                    handleChange={(x: string) => { setCur(0); setFilter(x); }}
+                />
                 <Entry $margin="0" $padding="0" $radius="0" $color="transparent">
-                    <Box data-cy="users-newuser" as="button" onClick={() => { navigate("/users/new") }} $padding="1rem" $margin="0" $radius="0.75rem" $color="#135846">
+                    <Box
+                        data-cy="users-newuser"
+                        as="button"
+                        onClick={() => { navigate("/users/new") }}
+                        $padding="1rem"
+                        $margin="0"
+                        $radius="0.75rem"
+                        $color="#135846"
+                    >
                         <Text $color="white">+ New User</Text>
                     </Box>
-                    <Select data-cy="users-order" as="select" $color="#135846" $weight="600" value={order} onChange={(e: ChangeEvent<HTMLSelectElement>) => { setOrder(e.target.value) }}>
+                    <Select
+                        data-cy="users-order"
+                        as="select"
+                        $color="#135846"
+                        $weight="600"
+                        value={order}
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) => { setOrder(e.target.value) }}
+                    >
                         <Text as='option' value="name" $color="#135846" $weight="400">Name</Text>
                         <Text as='option' value="joined" $color="#135846" $weight="400">Start Date</Text>
                     </Select>

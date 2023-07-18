@@ -9,7 +9,7 @@ import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useLoad } from "../components/redux/useLoad";
 
-const Contact = (): React.JSX.Element => {
+const Contact = () => {
     useRelocation("Contact");
     useLoad('messages');
 
@@ -19,14 +19,21 @@ const Contact = (): React.JSX.Element => {
 
     const data1 = useTable("messages", "read", "date");
     const data2 = useTable("messagesAlt", filter, "date");
-    
+
     const title = ["ID & Date", "Customer", "Comment", "Action"];
-    
+
     return (
         <div data-cy="page-contact">
             <Box $margin="1rem">
                 <Entry $padding="0" $justify="space-between" $height="14rem">
-                    <SwiperNavigationAlt data={data1} count={3} cur={cur1} setCur={setCur1} margin="-2rem" colors={["#575757", "#135846", "#BEBEBE", "#FFF"]} />
+                    <SwiperNavigationAlt
+                        data={data1}
+                        count={3}
+                        cur={cur1}
+                        setCur={setCur1}
+                        margin="-2rem"
+                        colors={["#575757", "#135846", "#BEBEBE", "#FFF"]}
+                    />
                 </Entry>
             </Box>
             <Entry $margin="0 1rem" $padding="1rem" $color="transparent" $justify="space-between">

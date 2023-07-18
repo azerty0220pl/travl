@@ -5,7 +5,7 @@ import { Entry, Box } from "../basic/Box";
 import empty from "../../assets/empty.png";
 import { Room } from "../redux/rooms/roomsSlice";
 
-const RoomsTableRow = ({ x, i }: {x: Partial<Room>, i: number}) : React.JSX.Element => {
+const RoomsTableRow = ({ x, i }: {x: Partial<Room>, i: number}) => {
     const status = (y: string) => {
         switch (y) {
             case "Available":

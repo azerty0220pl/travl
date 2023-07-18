@@ -7,5 +7,4 @@ export const useRelocation = (x: string) => {
     useEffect(() => {
         dispatch!({ type: "page", page: x });
     }, [dispatch, x]);
-
 }

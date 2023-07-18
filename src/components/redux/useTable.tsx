@@ -10,7 +10,7 @@ import { Room } from "./rooms/roomsSlice";
 import { Message } from "./messages/messagesSlice";
 import MessageElement from "../advanced/Message";
 
-interface Orders {[index: string]: (a: any, b: any) => number};
+interface Orders { [index: string]: (a: any, b: any) => number };
 const orders: Orders = {
     order: (a: Book, b: Book) => {
         return Date.parse(a.order) < Date.parse(b.order) ? -1 : 1;
@@ -50,7 +50,7 @@ const orders: Orders = {
     },
 };
 
-interface Filters {[index: string]: Function};
+interface Filters { [index: string]: Function };
 const filters: Filters = {
     none: () => true,
     progress: (x: Book) => {
@@ -79,13 +79,7 @@ const filters: Filters = {
     }
 }
 
-interface Selector {
-    [index: string]: (state: RootState) =>
-        Partial<Room>[] |
-        Partial<Book>[] |
-        Partial<User>[] |
-        Object
-};
+interface Selector { [index: string]: (state: RootState) => any };
 const selectors: Selector = {
     rooms: (state: RootState) => state.rooms.rooms,
     bookings: (state: RootState) => state.bookings.bookings,
@@ -94,7 +88,7 @@ const selectors: Selector = {
     messagesAlt: (state: RootState) => state.messages.messages
 }
 
-interface Elems { [index: string]: Function }
+interface Elems { [index: string]: Function };
 const elems: Elems = {
     rooms: RoomsTableRow,
     bookings: BookingTableRow,
@@ -114,7 +108,7 @@ export const useTable = (sel: string, filter: string, order: string): React.JSX.
 
     data.sort(orders[order]);
 
-    const Elem = elems[sel] as ({x, i}: {x: any, i: number}) => React.JSX.Element;
+    const Elem = elems[sel] as ({ x, i }: { x: any, i: number }) => React.JSX.Element;
     return data.map((el, i) => {
         return <Elem key={sel + el.id} x={el} i={i} />;
     });

@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { Context } from "../../App";
 import { User } from "../redux/users/usersSlice";
 
-const UserTableRow = ({ x, i }: {x: Partial<User>, i: number}): React.JSX.Element => {
+const UserTableRow = ({ x, i }: { x: Partial<User>, i: number }) => {
     const modal = useContext(Context).modal;
 
     const status = (y: string) => {
@@ -54,7 +54,16 @@ const UserTableRow = ({ x, i }: {x: Partial<User>, i: number}): React.JSX.Elemen
                             <Text $align="center" $color="#799283">View Description</Text>
                         </Box>
                         :
-                        <Box data-cy={"users-" + x.id + "description"} as="button" onClick={() => { modal!({ subject: x.name, message: x.description }) }} $margin="0 2rem 0 0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
+                        <Box
+                            data-cy={"users-" + x.id + "description"}
+                            as="button"
+                            onClick={() => { modal!({ subject: x.name, message: x.description }) }}
+                            $margin="0 2rem 0 0"
+                            $width="14rem"
+                            $padding="1rem"
+                            $height="3rem"
+                            $color="#EEF9F2"
+                        >
                             <Text $align="center">View Description</Text>
                         </Box>
                 }

@@ -14,19 +14,9 @@ interface ActionInterface {
   mail?: string
 }
 
-interface ContextInterface {
-  authenticated: boolean,
-  username: string,
-  email: string,
-  page: string,
-  dispatch?: React.Dispatch<ActionInterface>,
-  modal?: Function
-};
-
 interface ReducerInterface {
   [index: string]: (state: ContextInterface, action: ActionInterface) => ContextInterface
 }
-
 const reducerActions: ReducerInterface = {
   login: (state: ContextInterface, action: ActionInterface): ContextInterface => {
     return { ...state, authenticated: action.success as boolean, username: action.user as string };
@@ -45,6 +35,15 @@ const reducerActions: ReducerInterface = {
   }
 }
 
+
+interface ContextInterface {
+  authenticated: boolean,
+  username: string,
+  email: string,
+  page: string,
+  dispatch?: React.Dispatch<ActionInterface>,
+  modal?: Function
+};
 const defaultContext: ContextInterface = {
   authenticated: false,
   username: "",
@@ -54,14 +53,14 @@ const defaultContext: ContextInterface = {
 
 export const Context = createContext<ContextInterface>(defaultContext);
 
-const reducer = (state: ContextInterface, action: ActionInterface): ContextInterface => {
+const reducer = (state: ContextInterface, action: ActionInterface) => {
   return reducerActions[action.type] === undefined ?
     reducerActions["default"](state, action)
     :
     reducerActions[action.type as keyof ReducerInterface](state, action);
 }
 
-const App = (): React.JSX.Element => {
+const App = () => {
   const [state, dispatch] = useReducer(reducer, defaultContext);
   defaultContext.dispatch = dispatch;
 

@@ -66,7 +66,7 @@ const Red = styled.div`
     left: 0;
 `;
 
-const Menu = ({ Page } : {Page: () => React.JSX.Element}) : React.JSX.Element => {
+const Menu = ({ Page }: { Page: () => React.JSX.Element }) => {
     const navigate = useNavigate();
     const title = useContext(Context).page;
     const dispatch = useContext(Context).dispatch;
@@ -215,8 +215,22 @@ const Menu = ({ Page } : {Page: () => React.JSX.Element}) : React.JSX.Element =>
                 <Box $padding="0.5rem" $margin="auto" $width="80%">
                     <Icon as="img" $dim="5rem" $radius="1rem" $margin="1rem auto" src={empty} />
                     <Text $align="center" $weight="600">Szymon Kokot</Text>
-                    <Text $align="center" $color="#797979" $size="0.75rem">szymonekokot@gmail.com</Text>
-                    <Box as="button" $width='50%' $margin="1rem auto" $padding="0.5rem 1rem" $color="#EBF1EF" $radius="0.5rem" onClick={edit}>
+                    <Text
+                        $align="center"
+                        $color="#797979"
+                        $size="0.75rem"
+                    >
+                        szymonekokot@gmail.com
+                    </Text>
+                    <Box
+                        as="button"
+                        $width='50%'
+                        $margin="1rem auto"
+                        $padding="0.5rem 1rem"
+                        $color="#EBF1EF"
+                        $radius="0.5rem"
+                        onClick={edit}
+                    >
                         <Text $weight="600" $color="#135846" $align="middle">Edit</Text>
                     </Box>
                 </Box>
@@ -229,11 +243,23 @@ const Menu = ({ Page } : {Page: () => React.JSX.Element}) : React.JSX.Element =>
                 <Entry $padding="1rem">
                     {
                         sideBar ?
-                            <Icon data-cy="hide-sidebar" as="button" $dim="2rem" $padding="0" onClick={() => { setSidebar(!sideBar) }}>
+                            <Icon
+                                data-cy="hide-sidebar"
+                                as="button"
+                                $dim="2rem"
+                                $padding="0"
+                                onClick={() => { setSidebar(!sideBar) }}
+                            >
                                 <BiLeftArrowAlt size="1.5rem" />
                             </Icon>
                             :
-                            <Icon data-cy="show-sidebar" as="button" $dim="2rem" $padding="0" onClick={() => { setSidebar(!sideBar) }}>
+                            <Icon
+                                data-cy="show-sidebar"
+                                as="button"
+                                $dim="2rem"
+                                $padding="0"
+                                onClick={() => { setSidebar(!sideBar) }}
+                            >
                                 <Text $size="1.5rem">
                                     <BiRightArrowAlt />
                                 </Text>
@@ -261,12 +287,37 @@ const Menu = ({ Page } : {Page: () => React.JSX.Element}) : React.JSX.Element =>
             </Content>
             {
                 modal.message.length > 0 ?
-                    <BoxAbsolute  data-cy="modal" $display="flex" $width="100%" $height="100%" $top="0" $left="0" $color="transparent">
-                        <BoxAbsolute as="button" onClick={() => { setModal({ subject: "", message: "" }) }} $width="100%" $height="100%" $top="0" $left="0" $color="rgba(0, 0, 0, 0.25)" $radius="0" $zindex="15" />
+                    <BoxAbsolute
+                        data-cy="modal"
+                        $display="flex"
+                        $width="100%"
+                        $height="100%"
+                        $top="0"
+                        $left="0"
+                        $color="transparent"
+                    >
+                        <BoxAbsolute
+                            as="button"
+                            onClick={() => { setModal({ subject: "", message: "" }) }}
+                            $width="100%"
+                            $height="100%"
+                            $top="0"
+                            $left="0"
+                            $color="rgba(0, 0, 0, 0.25)"
+                            $radius="0"
+                            $zindex="15"
+                        />
                         <Entry $width="50%" $zindex="20" $margin="auto" $direction="column" $align="start">
                             <Text data-cy="modal-subject" $margin="0.5rem" $weight="600" $line="1.25rem">{modal.subject}</Text>
                             <Text data-cy="modal-message" $margin="0.5rem">{modal.message}</Text>
-                            <Box data-cy="modal-close" as="button" onClick={() => { setModal({ subject: "", message: "" }) }} $color="#FFEDEC" $margin="1rem 0 0 0" $padding="1rem">
+                            <Box
+                                data-cy="modal-close"
+                                as="button"
+                                onClick={() => { setModal({ subject: "", message: "" }) }}
+                                $color="#FFEDEC"
+                                $margin="1rem 0 0 0"
+                                $padding="1rem"
+                            >
                                 <Text $color="#E23428" $align="center" $line="1.25rem">Close</Text>
                             </Box>
                         </Entry>

@@ -8,7 +8,7 @@ import dateFormat from "../basic/dateFormat";
 import { useChangeArchive } from "../redux/messages/messageHooks";
 import { Message } from "../redux/messages/messagesSlice";
 
-const MessageTableRow = ({ x, i } : {x: Partial<Message>, i: number}) : React.JSX.Element => {
+const MessageTableRow = ({ x, i }: { x: Partial<Message>, i: number }) => {
     const modal = useContext(Context).modal;
 
     const handleArchive = useChangeArchive(x.id!);
@@ -24,7 +24,14 @@ const MessageTableRow = ({ x, i } : {x: Partial<Message>, i: number}) : React.JS
             <Cell>
                 <Box $display="inline-block" $margin="0" $padding="0" $radius="0">
                     <Text $line="1.25rem">{x.name}</Text>
-                    <Text $line="1.25rem" $margin="0.5rem" $color="#787878" $space="break-spaces">{x.email + " - " + x.phone}</Text>
+                    <Text
+                        $line="1.25rem"
+                        $margin="0.5rem"
+                        $color="#787878"
+                        $space="break-spaces"
+                    >
+                        {x.email + " - " + x.phone}
+                    </Text>
                 </Box>
             </Cell>
             <Cell>
@@ -47,11 +54,27 @@ const MessageTableRow = ({ x, i } : {x: Partial<Message>, i: number}) : React.JS
             <Cell>
                 {
                     x.archived ?
-                        <Box as="button" onClick={handleArchive} $display="inline-block" $height="3rem" $padding="1rem" $margin="0" $color="#E8FFEE">
+                        <Box
+                            as="button"
+                            onClick={handleArchive}
+                            $display="inline-block"
+                            $height="3rem"
+                            $padding="1rem"
+                            $margin="0"
+                            $color="#E8FFEE"
+                        >
                             <Text $color="#5AD07A" $align="center">Unarchive</Text>
                         </Box>
                         :
-                        <Box as="button" onClick={handleArchive} $display="inline-block" $height="3rem" $padding="1rem" $margin="0" $color="#FFEDEC">
+                        <Box
+                            as="button"
+                            onClick={handleArchive}
+                            $display="inline-block"
+                            $height="3rem"
+                            $padding="1rem"
+                            $margin="0"
+                            $color="#FFEDEC"
+                        >
                             <Text $color="#E23428" $align="center">Archive</Text>
                         </Box>
                 }

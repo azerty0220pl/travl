@@ -27,7 +27,7 @@ interface Msg {
 };
 interface Msgs { [index: string]: Msg };
 export interface MsgState {
-    messages: Msgs,
+    messages: Partial<Msgs>,
     status: Status
 };
 
@@ -72,10 +72,10 @@ const messagesSlice = createSlice({
                 state.messages = action.payload as Msgs;
             })
             .addCase(changeRead.fulfilled, (state, action) => {
-                state.messages[action.payload].read = true;
+                state.messages[action.payload]!.read = true;
             })
             .addCase(changeArchive.fulfilled, (state, action) => {
-                state.messages[action.payload].archived = !state.messages[action.payload].archived;
+                state.messages[action.payload]!.archived = !state.messages[action.payload]!.archived;
             });
     }
 });

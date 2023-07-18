@@ -6,11 +6,11 @@ import { Context } from "../../App";
 import dateFormat from "../basic/dateFormat";
 import { Book } from "../redux/bookingsSlice";
 
-type Status = "Booked" | "Refund" | "In Progress"
+type Status = "Booked" | "Refund" | "In Progress";
 
-const BookingTableRow = ({ x, i } : {x: Partial<Book>, i: number}) : React.JSX.Element => {
+const BookingTableRow = ({ x, i }: { x: Partial<Book>, i: number }) => {
     const modal = useContext(Context).modal;
-    
+
     const status = (x: Status): React.JSX.Element => {
         switch (x) {
             case "Booked":
@@ -57,7 +57,15 @@ const BookingTableRow = ({ x, i } : {x: Partial<Book>, i: number}) : React.JSX.E
                             <Text $align="center" $color="#799283">View Notes</Text>
                         </Box>
                         :
-                        <Box as="button" onClick={() => { modal!({ subject: x.name, message: x.request }) }} $margin="0" $width="14rem" $padding="1rem" $height="3rem" $color="#EEF9F2">
+                        <Box
+                            as="button"
+                            onClick={() => { modal!({ subject: x.name, message: x.request }) }}
+                            $margin="0"
+                            $width="14rem"
+                            $padding="1rem"
+                            $height="3rem"
+                            $color="#EEF9F2"
+                        >
                             <Text $align="center">View Notes</Text>
                         </Box>
                 }

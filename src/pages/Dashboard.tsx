@@ -11,7 +11,7 @@ import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useLoad } from "../components/redux/useLoad";
 
-const Dashboard = (): React.JSX.Element => {
+const Dashboard = () => {
     useRelocation("Dashboard");
     useLoad("messages");
 

@@ -35,7 +35,7 @@ const Container = styled(Entry)`
     width: 50%;
 `;
 
-const SlidingMenu = ({ fields, handleChange } : {fields: string[], handleChange: Function}) : React.JSX.Element => {
+const SlidingMenu = ({ fields, handleChange } : {fields: string[], handleChange: Function}) => {
     let [cur, setCur] = useState(0);
 
     return (

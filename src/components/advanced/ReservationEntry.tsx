@@ -18,7 +18,7 @@ const ReservationEntry = ({
     to: string,
     photo: string,
     last?: boolean
-}) : React.JSX.Element => {
+}) => {
     return (
         <Entry $padding="0" $margin={last ? "0" : "0 0 1rem 0"} $justify="space-between">
             <Entry $padding="0" $margin="0">
