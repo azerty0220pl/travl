@@ -35,7 +35,7 @@ const Container = styled(Entry)`
     width: 50%;
 `;
 
-const SlidingMenu = ({ fields, handleChange } : {fields: string[], handleChange: Function}) => {
+const SlidingMenu = ({ fields, handleChange } : {fields: string[], handleChange: (x: string) => void}) => {
     let [cur, setCur] = useState(0);
 
     return (
