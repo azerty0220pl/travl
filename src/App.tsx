@@ -5,7 +5,7 @@ import { createContext, useReducer } from "react";
 import Menu from "./components/advanced/Menu";
 import RoutesComponent from "./components/advanced/RoutesComponent";
 
-interface ActionInterface {
+export interface ActionInterface {
   type: string,
   success?: boolean,
   user?: string,

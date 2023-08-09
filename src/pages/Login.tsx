@@ -14,12 +14,13 @@ const Login = () => {
         const nameEl = document.getElementById("user") as HTMLInputElement;
         const passEl = document.getElementById("password") as HTMLInputElement;
 
-        if (login(nameEl.value, passEl.value)) {
-            dispatch!({ type: "login", success: true, user: nameEl.value });
-            setErr(false);
-        }
-        else
-            setErr(true);
+        login(nameEl.value, passEl.value, dispatch!).then(res => {
+            if (res === "Logged in") {
+                setErr(false);
+            }
+            else
+                setErr(true);
+        })
     }
 
     return (
