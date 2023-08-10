@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "./pages/Login";
 import './App.css';
 import { createContext, useReducer } from "react";
 import Menu from "./components/advanced/Menu";
 import RoutesComponent from "./components/advanced/RoutesComponent";
+import { logged } from "./components/basic/loginLogic";
 
 export interface ActionInterface {
   type: string,
@@ -22,13 +23,13 @@ const reducerActions: ReducerInterface = {
     return { ...state, authenticated: action.success as boolean, username: action.user as string };
   },
   page: (state: ContextInterface, action: ActionInterface): ContextInterface => {
-    return { ...state, page: action.page as string};
+    return { ...state, page: action.page as string };
   },
   modal: (state: ContextInterface, action: ActionInterface): ContextInterface => {
     return { ...state, modal: action.modal };
   },
   user: (state: ContextInterface, action: ActionInterface): ContextInterface => {
-    return {...state, username: action.user as string, email: action.mail as string}
+    return { ...state, username: action.user as string, email: action.mail as string }
   },
   default: (state: ContextInterface, action: ActionInterface): ContextInterface => {
     return state;
@@ -63,6 +64,10 @@ const reducer = (state: ContextInterface, action: ActionInterface) => {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, defaultContext);
   defaultContext.dispatch = dispatch;
+
+  useEffect(() => {
+    logged(dispatch);
+  }, [dispatch]);
 
   return (
     <Context.Provider value={state}>
