@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 import { Context } from "../App";
 import { useRelocation } from "../components/basic/hooks";
 import { useNavigate } from "react-router";
+import { useUpdateUser } from "../components/redux/users/userHooks";
 
 const UserEdit = () => {
     useRelocation("Edit User");
@@ -14,17 +15,31 @@ const UserEdit = () => {
     const state = useContext(Context);
     const navigate = useNavigate();
     const dispatch = state.dispatch;
+    const update = useUpdateUser();
 
-    const [username, setUsername] = useState(state.username);
+    const [username, setUsername] = useState(state.user!.name);
+    const [email, setEmail] = useState(state.user!.email);
+    const [phone, setPhone] = useState(state.user!.phone);
+    const [role, setRole] = useState(state.user!.role);
+    const [description, setDescription] = useState(state.user!.description);
+    const [status, setStatus] = useState(state.user!.status);
+    const [joined, setJoined] = useState(dateFormat(state.user!.joined));
+    const [password, setPassword] = useState(state.user!.password);
 
     const handleSubmit = (e: SyntheticEvent): void => {
         e.preventDefault();
 
-        dispatch!({
-            type: "user",
-            user: username,
-            mail: (document.getElementById("mail") as HTMLInputElement).value
-        });
+        update({
+            _id: state.user!._id,
+            name: username,
+            email: email,
+            phone: phone,
+            role: role,
+            description: description,
+            status: status,
+            joined: joined,
+            password: password
+        }, dispatch!);
 
         navigate("/dashboard");
     };
@@ -63,7 +78,8 @@ const UserEdit = () => {
                             id="mail"
                             placeholder="mail@mail.mail"
                             $margin="0.5rem"
-                            value={state.email}
+                            value={email}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) }}
                             required
                         />
                     </Box>
@@ -78,16 +94,33 @@ const UserEdit = () => {
                         $width="100%"
                     >
                         <Text $weight="600">Phone:</Text>
-                        <Text as="input" type="number" id="phone" placeholder="987654321" $margin="0.5rem" required />
+                        <Text
+                            as="input"
+                            type="number"
+                            id="phone"
+                            placeholder="987654321"
+                            $margin="0.5rem"
+                            value={phone}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => { setPhone(e.target.value) }}
+                            required
+                        />
                     </Box>
                 </Entry>
                 <Entry $margin="1rem 0 0 0" $padding="0" $radius="0" $justify="space-between">
                     <label id="role-label" htmlFor="role">
                         <Text $weight="600">Role:</Text>
-                        <Select as="select" id="role" $color="#135846" $weight="600" $margin="0.5rem 0 0 0">
-                            <Text as='option' value="manager" $color="#135846" $weight="400">Manager</Text>
-                            <Text as='option' value="reception" $color="#135846" $weight="400">Reception</Text>
-                            <Text as='option' value="service" $color="#135846" $weight="400">Room Service</Text>
+                        <Select
+                            as="select"
+                            id="role"
+                            $color="#135846"
+                            $weight="600"
+                            $margin="0.5rem 0 0 0"
+                            value={role}
+                            onChange={(e: ChangeEvent<HTMLSelectElement>) => { setRole(parseInt(e.target.value)) }}
+                        >
+                            <Text as='option' value="2" $color="#135846" $weight="400">Manager</Text>
+                            <Text as='option' value="1" $color="#135846" $weight="400">Reception</Text>
+                            <Text as='option' value="0" $color="#135846" $weight="400">Room Service</Text>
                         </Select>
                     </label>
                     <Box
@@ -107,15 +140,26 @@ const UserEdit = () => {
                             placeholder="Short description..."
                             $height="3rem"
                             $line="1.25rem"
-                            $margin="0.5rem" />
+                            $margin="0.5rem"
+                            value={description}
+                            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => { setDescription(e.target.value) }}
+                        />
                     </Box>
                 </Entry>
                 <Entry $margin="1rem 0 0 0" $padding="0" $radius="0" $justify="space-between">
                     <label id="status-label" htmlFor="status">
                         <Text $weight="600">Status:</Text>
-                        <Select as="select" id="status" $color="#135846" $weight="600" $margin="0.5rem 0 0 0">
-                            <Text as='option' value="active" $color="#135846" $weight="400">Active</Text>
-                            <Text as='option' value="inactive" $color="#135846" $weight="400">Inactive</Text>
+                        <Select
+                            as="select"
+                            id="status"
+                            $color="#135846"
+                            $weight="600"
+                            $margin="0.5rem 0 0 0"
+                            value={status ? "1" : "0"}
+                            onChange={(e: ChangeEvent<HTMLSelectElement>) => { setStatus(e.target.value === "1") }}
+                        >
+                            <Text as='option' value="1" $color="#135846" $weight="400">Active</Text>
+                            <Text as='option' value="0" $color="#135846" $weight="400">Inactive</Text>
                         </Select>
                     </label>
                     <Box
@@ -129,12 +173,31 @@ const UserEdit = () => {
                         $width="100%"
                     >
                         <Text $weight="600">Start Date:</Text>
-                        <Text as="input" type="date" id="date" $height="3rem" $align="center" $margin="0.5rem" required />
+                        <Text
+                            as="input"
+                            type="date"
+                            id="date"
+                            $height="3rem"
+                            $align="center"
+                            $margin="0.5rem"
+                            value={joined}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => { setJoined(e.target.value) }}
+                            required
+                        />
                     </Box>
                 </Entry>
                 <label id="password-label" htmlFor="password">
                     <Text $weight="600" $margin="1rem">Password:</Text>
-                    <Text as="input" type="text" id="password" placeholder="9assword!" $margin="0.5rem" required />
+                    <Text
+                        as="input"
+                        type="password"
+                        id="password"
+                        placeholder="9assword!"
+                        $margin="0.5rem"
+                        value={password}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => { setPassword(e.target.value) }}
+                        required
+                    />
                 </label>
                 <Box as="button" $color="#EEF9F2" $margin="1rem 0 0 0" $padding="1rem 2rem">
                     <Text $weight="600" $align="center">Save</Text>
@@ -144,5 +207,10 @@ const UserEdit = () => {
         </Entry>
     );
 };
+
+const dateFormat = (x: string) => {
+    const date = new Date(x);
+    return date.getFullYear() + "-" + (date.getMonth() <= 8 ? "0" : "") + (date.getMonth() + 1) + "-" + (date.getDate() <= 9 ? "0" : "") + date.getDate();
+}
 
 export default UserEdit;

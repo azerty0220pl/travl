@@ -10,14 +10,18 @@ import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useNavigate } from "react-router-dom";
 import { useLoad } from "../components/redux/useLoad";
+import { useAppDispatch } from "../components/redux/store";
+import { changeStatus } from "../components/redux/users/usersSlice";
 
 const Users = () => {
+    const dispatch = useAppDispatch();
     useRelocation("Users");
-    useLoad("users");
 
     const [filter, setFilter] = useState("none");
-    const [order, setOrder] = useState("number");
+    const [order, setOrder] = useState("name");
     const [cur, setCur] = useState(0);
+
+    useLoad("users", cur, 10, filter, order);
 
     const data = useTable("users", filter, order);
 
@@ -59,7 +63,12 @@ const Users = () => {
                         $color="#135846"
                         $weight="600"
                         value={order}
-                        onChange={(e: ChangeEvent<HTMLSelectElement>) => { setOrder(e.target.value) }}
+                        onChange={
+                            (e: ChangeEvent<HTMLSelectElement>) => {
+                                setOrder(e.target.value);
+                                dispatch({ type: changeStatus, payload: "idle" });
+                            }
+                        }
                     >
                         <Text as='option' value="name" $color="#135846" $weight="400">Name</Text>
                         <Text as='option' value="joined" $color="#135846" $weight="400">Start Date</Text>

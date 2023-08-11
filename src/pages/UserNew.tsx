@@ -18,9 +18,10 @@ const UserNew = () => {
             "name": (document.getElementById("name") as HTMLInputElement).value,
             "email": (document.getElementById("email") as HTMLInputElement).value,
             "phone": (document.getElementById("phone") as HTMLInputElement).value,
-            "joined": (document.getElementById("joined") as HTMLInputElement).value,
+            "role": parseInt((document.getElementById("role") as HTMLInputElement).value),
             "description": (document.getElementById("description") as HTMLInputElement).value,
-            "status": (document.getElementById("status") as HTMLInputElement).value as "Active" | "Inactive",
+            "status": (document.getElementById("status") as HTMLInputElement).value === "1",
+            "joined": (document.getElementById("joined") as HTMLInputElement).value,
             "password": (document.getElementById("password") as HTMLInputElement).value
         });
         navigate("/users");
@@ -96,9 +97,9 @@ const UserNew = () => {
                             $weight="600"
                             $margin="0.5rem 0 0 0"
                         >
-                            <Text as='option' value="manager" $color="#135846" $weight="400">Manager</Text>
-                            <Text as='option' value="reception" $color="#135846" $weight="400">Reception</Text>
-                            <Text as='option' value="service" $color="#135846" $weight="400">Room Service</Text>
+                            <Text as='option' value="0" $color="#135846" $weight="400">Manager</Text>
+                            <Text as='option' value="1" $color="#135846" $weight="400">Reception</Text>
+                            <Text as='option' value="2" $color="#135846" $weight="400">Room Service</Text>
                         </Select>
                     </label>
                     <Box
@@ -134,8 +135,8 @@ const UserNew = () => {
                             $weight="600"
                             $margin="0.5rem 0 0 0"
                         >
-                            <Text as='option' value="Active" $color="#135846" $weight="400">Active</Text>
-                            <Text as='option' value="Inactive" $color="#135846" $weight="400">Inactive</Text>
+                            <Text as='option' value="1" $color="#135846" $weight="400">Active</Text>
+                            <Text as='option' value="0" $color="#135846" $weight="400">Inactive</Text>
                         </Select>
                     </label>
                     <Box
@@ -166,7 +167,7 @@ const UserNew = () => {
                     <Text
                         data-cy="newuser-password"
                         as="input"
-                        type="text"
+                        type="password"
                         id="password"
                         placeholder="9assword!"
                         $margin="0.5rem"
