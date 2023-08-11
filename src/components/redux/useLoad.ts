@@ -6,7 +6,7 @@ import { fetchBookings } from "./bookingsSlice";
 import { RootState, useAppDispatch, useAppSelector } from "./store";
 import { AsyncThunk } from "@reduxjs/toolkit";
 
-interface Slices {[index: string]: {sel: (state: RootState) => any, fetch: AsyncThunk<any, void, any>}};
+interface Slices {[index: string]: {sel: (state: RootState) => any, fetch: AsyncThunk<any, any, any>}};
 const slices: Slices = {
     rooms: { sel: (state: RootState) => state.rooms.status, fetch: fetchRooms },
     bookings: { sel: (state: RootState) => state.bookings.status, fetch: fetchBookings },
@@ -14,13 +14,13 @@ const slices: Slices = {
     messages: { sel: (state: RootState) => state.messages.status, fetch: fetchMessages }
 }
 
-export const useLoad = (s: string): void => {
+export const useLoad = (s: string, page: number, limit: number, filter: string, order: string): void => {
     const dispatch = useAppDispatch();
     const slice = slices[s];
     const status = useAppSelector(slice.sel);
 
     useEffect(() => {
-        if (status === 'none')
-            dispatch(slice.fetch());
-    }, [status, slice, dispatch]);
+        if (status === 'idle' || status === 'rejected')
+            dispatch(slice.fetch({page: page, limit: limit, filter: filter, order: order}));
+    }, [status, slice, dispatch, page, limit, filter, order]);
 }
