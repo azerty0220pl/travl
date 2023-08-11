@@ -5,14 +5,14 @@ import { createContext, useReducer } from "react";
 import Menu from "./components/advanced/Menu";
 import RoutesComponent from "./components/advanced/RoutesComponent";
 import { logged } from "./components/basic/loginLogic";
+import { User } from "./components/redux/users/usersSlice";
 
 export interface ActionInterface {
   type: string,
   success?: boolean,
-  user?: string,
+  user?: User,
   page?: string,
-  modal?: Function,
-  mail?: string
+  modal?: Function
 }
 
 interface ReducerInterface {
@@ -20,7 +20,9 @@ interface ReducerInterface {
 }
 const reducerActions: ReducerInterface = {
   login: (state: ContextInterface, action: ActionInterface): ContextInterface => {
-    return { ...state, authenticated: action.success as boolean, username: action.user as string };
+    if (!action.success)
+      localStorage.clear();
+    return { ...state, authenticated: action.success!, user: action.user! };
   },
   page: (state: ContextInterface, action: ActionInterface): ContextInterface => {
     return { ...state, page: action.page as string };
@@ -29,9 +31,9 @@ const reducerActions: ReducerInterface = {
     return { ...state, modal: action.modal };
   },
   user: (state: ContextInterface, action: ActionInterface): ContextInterface => {
-    return { ...state, username: action.user as string, email: action.mail as string }
+    return { ...state, user: action.user as User }
   },
-  default: (state: ContextInterface, action: ActionInterface): ContextInterface => {
+  default: (state: ContextInterface, _action: ActionInterface): ContextInterface => {
     return state;
   }
 }
@@ -39,16 +41,14 @@ const reducerActions: ReducerInterface = {
 
 interface ContextInterface {
   authenticated: boolean,
-  username: string,
-  email: string,
+  user?: User,
   page: string,
   dispatch?: React.Dispatch<ActionInterface>,
   modal?: Function
 };
 const defaultContext: ContextInterface = {
   authenticated: false,
-  username: "",
-  email: "",
+  user: undefined,
   page: "Dashboard"
 };
 
