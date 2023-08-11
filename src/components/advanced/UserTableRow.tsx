@@ -11,23 +11,20 @@ import { User } from "../redux/users/usersSlice";
 const UserTableRow = ({ x, i }: { x: Partial<User>, i: number }) => {
     const modal = useContext(Context).modal;
 
-    const status = (y: string) => {
-        switch (y) {
-            case "Active":
-                return (
-                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#5AD07A">
-                        <Text $align="center" $color="#FFFFFF">{y}</Text>
-                    </Box>
-                );
-            case "Inactive":
-                return (
-                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#E23428">
-                        <Text $align="center" $color="#FFFFFF">{y}</Text>
-                    </Box>
-                );
-            default:
-                return <></>;
+    const status = (y: boolean) => {
+        if (y) {
+            return (
+                <Box $margin="0" $padding="1rem" $height="3rem" $color="#5AD07A">
+                    <Text $align="center" $color="#FFFFFF">Active</Text>
+                </Box>
+            );
         }
+
+        return (
+            <Box $margin="0" $padding="1rem" $height="3rem" $color="#E23428">
+                <Text $align="center" $color="#FFFFFF">Inactive</Text>
+            </Box>
+        );
     }
 
     return (
@@ -39,7 +36,7 @@ const UserTableRow = ({ x, i }: { x: Partial<User>, i: number }) => {
                 <Text>{x.name}</Text>
             </Cell>
             <Cell>
-                <Text>{x.id}</Text>
+                <Text>{x._id}</Text>
             </Cell>
             <Cell>
                 <Text>{x.email}</Text>
@@ -55,7 +52,7 @@ const UserTableRow = ({ x, i }: { x: Partial<User>, i: number }) => {
                         </Box>
                         :
                         <Box
-                            data-cy={"users-" + x.id + "description"}
+                            data-cy={"users-" + x._id + "description"}
                             as="button"
                             onClick={() => { modal!({ subject: x.name, message: x.description }) }}
                             $margin="0 2rem 0 0"
