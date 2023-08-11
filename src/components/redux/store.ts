@@ -16,7 +16,13 @@ const store = configureStore({
     }
 });
 
-export type Status = "none" | "error" | "success";
+export type Status = "idle" | "fulfilled" | "pending" | "rejected";
+export interface Options {
+    page: string,
+    limit: string,
+    filter: string,
+    order: string
+}
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch: () => AppDispatch = useDispatch;
