@@ -13,16 +13,19 @@ import MessageElement from "../advanced/Message";
 interface Orders { [index: string]: (a: any, b: any) => number };
 const orders: Orders = {
     order: (a: Book, b: Book) => {
-        return Date.parse(a.order) < Date.parse(b.order) ? -1 : 1;
+        //return Date.parse(a.order) < Date.parse(b.order) ? -1 : 1;
+        return 1;
     },
     name: (a: Room | Book | User | Message, b: Room | Book | User | Message) => {
         return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
     },
     in: (a: Book, b: Book) => {
-        return Date.parse(a.in) < Date.parse(b.in) ? -1 : 1;
+        //return Date.parse(a.in) < Date.parse(b.in) ? -1 : 1;
+        return 1;
     },
     out: (a: Book, b: Book) => {
-        return Date.parse(a.out) < Date.parse(b.out) ? -1 : 1;
+        //return Date.parse(a.out) < Date.parse(b.out) ? -1 : 1;
+        return 1;
     },
     number: (a: Room | Book | User | Message, b: Room | Book | User | Message) => {
         return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
@@ -50,11 +53,12 @@ const orders: Orders = {
     },
 };
 
-interface Filters { [index: string]: Function };
+interface Filters { [index: string]: (x: any) => boolean };
 const filters: Filters = {
     none: () => true,
     progress: (x: Book) => {
-        return x.status === "In Progress";
+        //return x.status === "In Progress";
+        return true;
     },
     available: (x: Room) => {
         return x.status === "Available";
@@ -63,10 +67,10 @@ const filters: Filters = {
         return x.status === "Booked";
     },
     active: (x: User) => {
-        return x.status === "Active";
+        return x.status === true //"Active";
     },
     inactive: (x: User) => {
-        return x.status === "Inactive";
+        return x.status === false //"Inactive";
     },
     published: (x: Message) => {
         return !x.archived;
@@ -101,15 +105,8 @@ export const useTable = (sel: string, filter: string, order: string): React.JSX.
     const aux = useAppSelector(selectors[sel]) as Object | Array<any>;
     let data = Object.values(aux);
 
-
-    data = data.filter(el =>
-        filters[filter](el)
-    );
-
-    data.sort(orders[order]);
-
     const Elem = elems[sel] as ({ x, i }: { x: any, i: number }) => React.JSX.Element;
     return data.map((el, i) => {
-        return <Elem key={sel + el.id} x={el} i={i} />;
+        return <Elem key={sel + el._id} x={el} i={i} />;
     });
 }
