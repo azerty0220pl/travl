@@ -17,7 +17,6 @@ export const logged = async (dispatch: React.Dispatch<ActionInterface>) => {
         const data = await res.json();
         if (!data.error) {
             dispatch({ type: "login", success: true, user: data.user });
-            localStorage.setItem("token", data.token);
             return true;
         }
     } catch { }
