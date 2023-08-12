@@ -83,13 +83,18 @@ const filters: Filters = {
     }
 }
 
-interface Selector { [index: string]: (state: RootState) => any };
+interface Selector {
+    [index: string]: {
+        data: (state: RootState) => any,
+        count: (state: RootState) => any
+    }
+};
+
 const selectors: Selector = {
-    rooms: (state: RootState) => state.rooms.rooms,
-    bookings: (state: RootState) => state.bookings.bookings,
-    users: (state: RootState) => state.users.users,
-    messages: (state: RootState) => state.messages.messages,
-    messagesAlt: (state: RootState) => state.messages.messages
+    users: {
+        data: (state: RootState) => state.users.users,
+        count: (state: RootState) => state.users.count
+    }
 }
 
 interface Elems { [index: string]: Function };
@@ -101,12 +106,16 @@ const elems: Elems = {
     messagesAlt: MessageTableRow
 }
 
-export const useTable = (sel: string, filter: string, order: string): React.JSX.Element[] => {
-    const aux = useAppSelector(selectors[sel]) as Object | Array<any>;
+export const useTable = (sel: string): { data: React.JSX.Element[], count: number } => {
+    const aux = useAppSelector(selectors[sel].data) as Object | Array<any>;
+    const count = useAppSelector(selectors[sel].count);
     let data = Object.values(aux);
 
     const Elem = elems[sel] as ({ x, i }: { x: any, i: number }) => React.JSX.Element;
-    return data.map((el, i) => {
-        return <Elem key={sel + el._id} x={el} i={i} />;
-    });
+    return {
+        data: data.map((el, i) => {
+            return <Elem key={sel + el._id} x={el} i={i} />;
+        }),
+        count: count
+    }
 }

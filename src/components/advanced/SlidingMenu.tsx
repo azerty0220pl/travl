@@ -6,12 +6,12 @@ import Text from "../basic/Text";
 
 interface Dict {[index: string]: string};
 const dict: Dict = {
-    "All Bookings": "none",
+    "All Bookings": "all",
     "In Progress": "progress",
     "All Rooms": "none",
     "Available": "available",
     "Booked": "booked",
-    "All Users": "none",
+    "All Users": "all",
     "Active Users": "active",
     "Inactive Users": "inactive",
     "All Contacts": "published",

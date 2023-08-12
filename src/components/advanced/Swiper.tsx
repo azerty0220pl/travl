@@ -4,40 +4,36 @@ import { Box, Entry, Icon } from "../basic/Box";
 import Text from "../basic/Text";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import { useCallback, useEffect, useState } from "react";
+import { useAppDispatch } from "../redux/store";
+import { changeStatus } from "../redux/users/usersSlice";
 
 export const SwiperComponents = ({
-    data,
-    cur,
-    count
+    data
 }: {
-    data: React.JSX.Element[],
-    cur: number,
-    count: number
+    data: React.JSX.Element[]
 }) => {
 
     return (
         <>
             {
-                data.filter((el, i) => {
-                    return (i >= (cur + 1) * count - count && i < (cur + 1) * count);
-                })
+                data
             }
         </>
     );
 }
 
 export const SwiperNavigation = ({
-    data,
     count,
+    limit,
     cur,
     setCur
 }: {
-    data: React.JSX.Element[],
-    cur: number,
     count: number,
+    cur: number,
+    limit: number,
     setCur: Function
 }) => {
-    const pages = Math.ceil((data.length || 0) / count);
+    const pages = Math.ceil((count || 0) / limit);
 
     const move = (x: number) => {
         if (pages === 0)
@@ -53,11 +49,11 @@ export const SwiperNavigation = ({
 
     const printNav = () => {
         let x: React.JSX.Element[] = [];
-        let z = data.length || 0;
+        let z = count || 0;
         if (z === 0)
             return x;
 
-        z = Math.ceil(z / count);
+        z = Math.ceil(z / limit);
 
         for (let i = 0; i < z; i++) {
             x.push(
@@ -93,6 +89,8 @@ export const SwiperNavigation = ({
         }
     }, [cur, pages, mv]);
 
+    const dispatch = useAppDispatch();
+
     return (
         <>
             <Entry $color="transparent" $margin="0" $padding="0" $justify="end" $width="100%">
@@ -104,7 +102,10 @@ export const SwiperNavigation = ({
                     $padding="0.875rem"
                     $color="white"
                     $border="2px solid #135846"
-                    onClick={() => { move(-1) }}
+                    onClick={() => {
+                        move(-1);
+                        dispatch({ type: changeStatus, payload: "idle" });
+                    }}
                 >
                     <Text $color="#135846" $align="center">Prev</Text>
                 </Box>
@@ -123,7 +124,10 @@ export const SwiperNavigation = ({
                     $padding="0.875rem"
                     $color="white"
                     $border="2px solid #135846"
-                    onClick={() => { move(1) }}
+                    onClick={() => {
+                        move(1);
+                        dispatch({ type: changeStatus, payload: "idle" });
+                    }}
                 >
                     <Text $size="1rem" $color="#135846" $align="center">Next</Text>
                 </Box>
@@ -174,8 +178,7 @@ export const SwiperNavigationAlt = ({
     setCur: Function,
     margin: string,
     colors: string[]
-}
-) => {
+}) => {
     const [pos1, setPos1] = useState("0");
     const [pos2, setPos2] = useState("100%");
     const [tran, setTran] = useState("0");

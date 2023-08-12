@@ -17,13 +17,13 @@ const Users = () => {
     const dispatch = useAppDispatch();
     useRelocation("Users");
 
-    const [filter, setFilter] = useState("none");
+    const [filter, setFilter] = useState("all");
     const [order, setOrder] = useState("name");
-    const [cur, setCur] = useState(0);
+    const [cur, setCur] = useState(1);
 
     useLoad("users", cur, 10, filter, order);
 
-    const data = useTable("users", filter, order);
+    const { data, count } = useTable("users");
 
     const title = [
         "Photo",
@@ -43,7 +43,11 @@ const Users = () => {
             <Entry $margin="0" $padding="1rem" $color="transparent" $justify="space-between">
                 <SlidingMenu
                     fields={["All Users", "Active Users", "Inactive Users"]}
-                    handleChange={(x: string) => { setCur(0); setFilter(x); }}
+                    handleChange={(x: string) => {
+                        setCur(0);
+                        setFilter(x);
+                        dispatch({ type: changeStatus, payload: "idle" });
+                    }}
                 />
                 <Entry $margin="0" $padding="0" $radius="0" $color="transparent">
                     <Box
@@ -88,11 +92,11 @@ const Users = () => {
                             })
                         }
                     </Row>
-                    <SwiperComponents data={data} cur={cur} count={10} />
+                    <SwiperComponents data={data} />
                 </Table>
             </Box>
             <Box $margin="1rem" $color="transparent" $padding="0">
-                <SwiperNavigation cur={cur} setCur={setCur} count={10} data={data} />
+                <SwiperNavigation cur={cur} setCur={setCur} limit={10} count={count} />
             </Box>
         </div>
     );
