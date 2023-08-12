@@ -1,9 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import data from "../../../data/messages.json";
-import { Status } from "../store";
+import { Options, Status } from "../store";
 
 export interface Message {
-    id: number,
+    _id?: string,
     name: string,
     email: string,
     phone: string,
@@ -14,70 +13,74 @@ export interface Message {
     date: string
 };
 
-interface Msg {
-    id: number,
-    name: string,
-    email: string,
-    phone: string,
-    subject: string,
-    message: string,
-    archived: boolean,
-    read: boolean,
-    date: string
-};
-interface Msgs { [index: string]: Msg };
 export interface MsgState {
-    messages: Partial<Msgs>,
-    status: Status
+    messages: Message[],
+    status: Status,
+    count: number
 };
 
 const initialState: MsgState = {
-    messages: {},
-    status: "none"
+    messages: [],
+    status: "idle",
+    count: 0
 };
 
-export const fetchMessages = createAsyncThunk('getMessages', () => {
-    return new Promise<Object>((resolve) => {
-        setTimeout(() => {
-            resolve(data);
-        }, 200);
-    });
+export const fetchMessages = createAsyncThunk('getMessages', async (options: Options) => {
+    const res = await fetch(
+        process.env.REACT_APP_API +
+        "/messages?page=" + options.page +
+        "&limit=" + options.limit +
+        "&filter=" + options.filter +
+        "&order=" + options.order,
+        {
+            method: "GET",
+            headers: {
+                Authorization: localStorage.getItem("token") || ""
+            }
+        });
+
+    return res.json();
 });
 
-export const changeRead = createAsyncThunk('setRead', (id: number) => {
-    return new Promise<number>((resolve) => {
-        setTimeout(() => {
-            resolve(id);
-        }, 200);
-    });
-});
+export const updateMessage = createAsyncThunk('updateMessage', async (message: Message) => {
+    const res = await fetch(
+        process.env.REACT_APP_API + "/messages",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: localStorage.getItem("token") || ""
+            },
+            body: JSON.stringify({ message: message })
+        });
 
-export const changeArchive = createAsyncThunk('setArchive', (id: number) => {
-    return new Promise<number>((resolve) => {
-        setTimeout(() => {
-            resolve(id);
-        }, 200);
-    });
+    return res.json();
 });
 
 const messagesSlice = createSlice({
     name: "messages",
     initialState,
     reducers: {
+        changeStatus: (state, action) => {
+            state.status = action.payload;
+        }
     },
     extraReducers: builder => {
         builder
             .addCase(fetchMessages.fulfilled, (state, action) => {
-                state.status = "success";
-                state.messages = action.payload as Msgs;
+                state.status = "fulfilled";
+                state.messages = action.payload.messages;
             })
-            .addCase(changeRead.fulfilled, (state, action) => {
-                state.messages[action.payload]!.read = true;
+            .addCase(fetchMessages.pending, (state, action) => {
+                state.status = "pending";
             })
-            .addCase(changeArchive.fulfilled, (state, action) => {
-                state.messages[action.payload]!.archived = !state.messages[action.payload]!.archived;
+            .addCase(fetchMessages.rejected, (state, action) => {
+                state.status = "rejected";
+                state.messages = [];
+                state.count = 0;
             });
     }
 });
 
+export const { changeStatus } = messagesSlice.actions;
 export default messagesSlice.reducer;

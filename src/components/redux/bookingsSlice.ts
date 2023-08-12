@@ -1,34 +1,43 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import data from "../../data/bookings.json";
-import { Status } from "./store";
+import { Options, Status } from "./store";
 
 export interface Book {
-    id: number,
+    _id?: string,
     name: string,
-    order: string,
-    in: string,
-    out: string,
+    order: Date,
+    in: Date,
+    out: Date,
     request: string,
-    room:  "Single Bed" | "Double Bed" | "Superior Double" | "Suite",
-    status: "Booked" | "Refund" | "In Progress"
+    status: number,
+    room: string
 };
 
 export interface BookingsState {
-    bookings: Partial<Book>[],
-    status: Status
+    status: Status,
+    bookings: Book[],
+    count: number
 }
 
 const initialState: BookingsState = {
+    status: "idle",
     bookings: [],
-    status: "none"
+    count: 0
 };
 
-export const fetchBookings = createAsyncThunk('getBookings', () => {
-    return new Promise<Partial<Book>[]>((resolve) => {
-        setTimeout(() => {
-            resolve(data as Partial<Book>[]);
-        }, 200);
-    });
+export const fetchBookings = createAsyncThunk('getBookings', async (options: Options) => {
+    const res = await fetch(
+        process.env.REACT_APP_API +
+        "/bookings?page=" + options.page +
+        "&limit=" + options.limit +
+        "&filter=" + options.filter +
+        "&order=" + options.order,
+        {
+            method: "GET",
+            headers: {
+                Authorization: localStorage.getItem("token") || ""
+            }
+        });
+    return res.json();
 });
 
 const bookingsSlice = createSlice({
@@ -39,8 +48,17 @@ const bookingsSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(fetchBookings.fulfilled, (state, action) => {
-                state.status = "success";
-                state.bookings = action.payload;
+                state.status = "fulfilled";
+                state.bookings = action.payload.booking;
+                state.count = action.payload.count;
+            })
+            .addCase(fetchBookings.pending, (state) => {
+                state.status = "pending";
+            })
+            .addCase(fetchBookings.rejected, (state) => {
+                state.status = "rejected";
+                state.bookings = [];
+                state.count = 0;
             });
     }
 });

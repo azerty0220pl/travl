@@ -1,18 +1,30 @@
-import { changeArchive, changeRead } from "./messagesSlice";
+import { Message, changeStatus } from "./messagesSlice";
 import { useAppDispatch } from "../store";
 
-export const useChangeRead = (id: number) => {
-    const dispatch = useAppDispatch();
+const reduxDispatch = useAppDispatch();
 
-    return () => {
-        dispatch(changeRead(id));
-    };
-}
+export const useUpdateMessage = () => {
+    return async (message: Message) => {
+        let res: Response;
+        try {
+            res = await fetch(
+                process.env.REACT_APP_API +
+                "/messages/" + message._id,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: localStorage.getItem("token") || ""
+                    },
+                    body: JSON.stringify({ message: message })
+                }
+            );
 
-export const useChangeArchive = (id: number) => {
-    const dispatch = useAppDispatch();
-    
-    return () => {
-        dispatch(changeArchive(id));
+            const data = await res.json();
+
+            if (!data.error) {
+                reduxDispatch({ type: changeStatus, payload: "idle" });
+            }
+        } catch { }
     };
 }
