@@ -2,11 +2,11 @@ import React, { SyntheticEvent } from "react";
 import { Box, Entry } from "../components/basic/Box";
 import Text from "../components/basic/Text";
 import { login } from "../components/basic/loginLogic";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Context } from "../App";
+import { toast } from "react-toastify";
 
 const Login = () => {
-    const [err, setErr] = useState(false);
     const dispatch = useContext(Context).dispatch;
 
     const handleSubmit = (event: SyntheticEvent) => {
@@ -15,11 +15,10 @@ const Login = () => {
         const passEl = document.getElementById("password") as HTMLInputElement;
 
         login(nameEl.value, passEl.value, dispatch!).then(res => {
-            if (res === "Logged in") {
-                setErr(false);
-            }
+            if (res === "Logged in")
+                toast.success("Login successful.");
             else
-                setErr(true);
+                toast.error("Login failed.");
         })
     }
 
@@ -59,12 +58,6 @@ const Login = () => {
                             required
                         />
                     </label>
-                    {
-                        err ?
-                            <Text data-cy="login-error" $color="red" $size="0.75rem" $margin="0.5rem">Incorrect password</Text>
-                            :
-                            <></>
-                    }
                     <Box as="button" data-cy="login-button" $color="#EEF9F2" $margin="1rem auto 0 auto" $padding="1rem">
                         <Text $weight="600" $align="center">Login</Text>
                     </Box>
