@@ -1,10 +1,11 @@
 import { User, changeStatus, newUser } from "./usersSlice";
 import { useAppDispatch } from "../store";
 import { ActionInterface } from "../../../App";
-
-const reduxDispatch = useAppDispatch();
+import { toast } from "react-toastify";
 
 export const useNewUser = () => {
+    const reduxDispatch = useAppDispatch();
+
     return (data: User) => {
         reduxDispatch(newUser(data));
         reduxDispatch({ type: changeStatus, payload: "idle" });
@@ -12,6 +13,8 @@ export const useNewUser = () => {
 }
 
 export const useUpdateUser = () => {
+    const reduxDispatch = useAppDispatch();
+
     return async (user: User, dispatch: React.Dispatch<ActionInterface>) => {
         let res: Response;
         try {
@@ -37,7 +40,10 @@ export const useUpdateUser = () => {
                 });
 
                 reduxDispatch({ type: changeStatus, payload: "idle" });
+                toast.success("User updated succesfully.");
             }
-        } catch { }
+        } catch {
+            toast.error("Couldn't update user...");
+        }
     };
 }
