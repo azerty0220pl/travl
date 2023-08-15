@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { Options, Status } from "./store";
+import { toast } from "react-toastify";
 
 export interface Book {
     _id?: string,
@@ -59,6 +60,7 @@ const bookingsSlice = createSlice({
                 state.status = "rejected";
                 state.bookings = [];
                 state.count = 0;
+                toast.error("Couldn't load bookings list...");
             });
     }
 });

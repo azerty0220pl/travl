@@ -6,29 +6,27 @@ import { Context } from "../../App";
 import dateFormat from "../basic/dateFormat";
 import { Book } from "../redux/bookingsSlice";
 
-type Status = "Booked" | "Refund" | "In Progress";
-
-const BookingTableRow = ({ x, i }: { x: Partial<Book>, i: number }) => {
+const BookingTableRow = ({ x, i }: { x: Book, i: number }) => {
     const modal = useContext(Context).modal;
 
-    const status = (x: Status): React.JSX.Element => {
+    const status = (x: number): React.JSX.Element => {
         switch (x) {
-            case "Booked":
+            case 0:
                 return (
                     <Box $margin="0" $padding="1rem" $height="3rem" $color="#E8FFEE">
-                        <Text $align="center" $color="#5AD07A">{x}</Text>
+                        <Text $align="center" $color="#5AD07A">Booked</Text>
                     </Box>
                 );
-            case "Refund":
+            case 1:
                 return (
                     <Box $margin="0" $padding="1rem" $height="3rem" $color="#FFEDEC">
-                        <Text $align="center" $color="#E23428">{x}</Text>
+                        <Text $align="center" $color="#E23428">Refund</Text>
                     </Box>
                 );
-            case "In Progress":
+            case 2:
                 return (
                     <Box $margin="0" $padding="1rem" $height="3rem" $color="#FFFEEC">
-                        <Text $align="center" $color="#dfe228">{x}</Text>
+                        <Text $align="center" $color="#dfe228">In Progress</Text>
                     </Box>
                 );
             default:
@@ -42,13 +40,13 @@ const BookingTableRow = ({ x, i }: { x: Partial<Book>, i: number }) => {
                 <Text $weight="600">{x.name!}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.order!)}</Text>
+                <Text>{dateFormat(x.order.toString())}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.in!)}</Text>
+                <Text>{dateFormat(x.in.toString())}</Text>
             </Cell>
             <Cell>
-                <Text>{dateFormat(x.out!)}</Text>
+                <Text>{dateFormat(x.out.toString())}</Text>
             </Cell>
             <Cell>
                 {
@@ -75,7 +73,7 @@ const BookingTableRow = ({ x, i }: { x: Partial<Book>, i: number }) => {
             </Cell>
             <Cell>
                 {
-                    status(x.status!)
+                    status(x.status)
                 }
             </Cell>
         </Row>

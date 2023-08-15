@@ -12,13 +12,14 @@ import { useLoad } from "../components/redux/useLoad";
 
 const Bookings = () => {
     useRelocation("Bookings");
-    useLoad('bookings');
 
-    const [filter, setFilter] = useState("none");
+    const [filter, setFilter] = useState("all");
     const [order, setOrder] = useState("order");
     const [cur, setCur] = useState(0);
 
-    const data = useTable("bookings", filter, order);
+    useLoad("bookings", cur, 10, filter, order);
+
+    const { data, count } = useTable("bookings");
 
     const title = [
         "Guest",
@@ -63,11 +64,11 @@ const Bookings = () => {
                             })
                         }
                     </Row>
-                    <SwiperComponents data={data} cur={cur} count={10} />
+                    <SwiperComponents data={data} />
                 </Table>
             </Box>
             <Box $margin="1rem" $color="transparent" $padding="0">
-                <SwiperNavigation cur={cur} setCur={setCur} count={10} data={data} />
+                <SwiperNavigation cur={cur} setCur={setCur} limit={10} count={count} />
             </Box>
         </div>
     );
