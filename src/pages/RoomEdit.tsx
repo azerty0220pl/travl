@@ -21,7 +21,8 @@ const RoomEdit = () => {
             "type": (document.getElementById("type") as HTMLInputElement).value as RoomType,
             "price": parseInt((document.getElementById("price") as HTMLInputElement).value),
             "offer": parseInt((document.getElementById("offer") as HTMLInputElement).value),
-            "status": "Available",
+            "ammenities": [],
+            "status": true,
             "cancel": (document.getElementById("cancel") as HTMLInputElement).value,
             "description": (document.getElementById("description") as HTMLInputElement).value
         });

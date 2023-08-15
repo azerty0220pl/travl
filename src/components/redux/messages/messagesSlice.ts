@@ -89,7 +89,7 @@ const messagesSlice = createSlice({
         builder
             .addCase(fetchMessages.fulfilled, (state, action) => {
                 state.status = "fulfilled";
-                state.messages = action.payload.messages;
+                state.messages = action.payload.message;
                 state.count = action.payload.count;
             })
             .addCase(fetchMessages.pending, (state, _action) => {
@@ -103,7 +103,7 @@ const messagesSlice = createSlice({
             })
             .addCase(fetchMessagesAlt.fulfilled, (state, action) => {
                 state.status = "fulfilled";
-                state.messagesAlt = action.payload.messages;
+                state.messagesAlt = action.payload.message;
                 state.count = action.payload.count;
             })
             .addCase(fetchMessagesAlt.pending, (state, _action) => {

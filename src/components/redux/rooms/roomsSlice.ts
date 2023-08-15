@@ -72,7 +72,7 @@ const roomsSlice = createSlice({
         builder
             .addCase(fetchRooms.fulfilled, (state, action) => {
                 state.status = "fulfilled";
-                state.rooms = action.payload.rooms;
+                state.rooms = action.payload.room;
                 state.count = action.payload.count;
             })
             .addCase(fetchRooms.pending, (state) => {
