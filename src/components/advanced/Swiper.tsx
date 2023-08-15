@@ -166,14 +166,16 @@ const Mask = styled.div<Props>`
 
 export const SwiperNavigationAlt = ({
     data,
-    count,
     cur,
+    limit,
+    count,
     setCur,
     margin,
     colors
 }: {
     data: React.JSX.Element[],
     cur: number,
+    limit: number,
     count: number,
     setCur: Function,
     margin: string,
@@ -184,7 +186,7 @@ export const SwiperNavigationAlt = ({
     const [tran, setTran] = useState("0");
     const [aux, setAux] = useState(0);
 
-    const pages = Math.ceil((data.length || 0) / count);
+    const pages = Math.ceil((count || 0) / limit);
 
     const move = (x: number) => {
         if (pages === 0)
@@ -235,10 +237,10 @@ export const SwiperNavigationAlt = ({
             </Icon>
             <Mask $margin={margin}>
                 <Container $left={pos1} $transition={tran}>
-                    <SwiperComponents data={data} cur={cur} count={count} />
+                    <SwiperComponents data={data} />
                 </Container>
                 <Container $left={pos2} $transition={tran}>
-                    <SwiperComponents data={data} cur={aux} count={count} />
+                    <SwiperComponents data={data} />
                 </Container>
             </Mask>
             <Icon
