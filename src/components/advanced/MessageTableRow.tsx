@@ -5,19 +5,19 @@ import { Cell, Row } from "../basic/Table";
 import Text from "../basic/Text";
 import { Context } from "../../App";
 import dateFormat from "../basic/dateFormat";
-import { useChangeArchive } from "../redux/messages/messageHooks";
 import { Message } from "../redux/messages/messagesSlice";
+import { useUpdateMessage } from "../redux/messages/messageHooks";
 
-const MessageTableRow = ({ x, i }: { x: Partial<Message>, i: number }) => {
+const MessageTableRow = ({ x, i }: { x: Message, i: number }) => {
     const modal = useContext(Context).modal;
 
-    const handleArchive = useChangeArchive(x.id!);
+    const handleArchive = useUpdateMessage();
 
     return (
         <Row>
             <Cell>
                 <Box $display="inline-block" $margin="0" $padding="0" $radius="0">
-                    <Text $line="1.25rem" >{x.id}</Text>
+                    <Text $line="1.25rem" >{x._id}</Text>
                     <Text $line="1.25rem" $margin="0.5rem" $color="#787878">{dateFormat(x.date!)}</Text>
                 </Box>
             </Cell>
@@ -56,7 +56,7 @@ const MessageTableRow = ({ x, i }: { x: Partial<Message>, i: number }) => {
                     x.archived ?
                         <Box
                             as="button"
-                            onClick={handleArchive}
+                            onClick={() => { x.archived = false; handleArchive(x) }}
                             $display="inline-block"
                             $height="3rem"
                             $padding="1rem"
@@ -68,7 +68,7 @@ const MessageTableRow = ({ x, i }: { x: Partial<Message>, i: number }) => {
                         :
                         <Box
                             as="button"
-                            onClick={handleArchive}
+                            onClick={() => { x.archived = true; handleArchive(x) }}
                             $display="inline-block"
                             $height="3rem"
                             $padding="1rem"

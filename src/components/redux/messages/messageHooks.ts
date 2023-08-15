@@ -1,9 +1,9 @@
 import { Message, changeStatus } from "./messagesSlice";
 import { useAppDispatch } from "../store";
 
-const reduxDispatch = useAppDispatch();
-
 export const useUpdateMessage = () => {
+    const reduxDispatch = useAppDispatch();
+
     return async (message: Message) => {
         let res: Response;
         try {

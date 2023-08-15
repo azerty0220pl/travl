@@ -11,14 +11,17 @@ import { useLoad } from "../components/redux/useLoad";
 
 const Contact = () => {
     useRelocation("Contact");
-    useLoad('messages');
 
-    const [filter, setFilter] = useState("published");
+    const [filter, setFilter] = useState("archived");
+    const order = "date";
     const [cur1, setCur1] = useState(0);
     const [cur2, setCur2] = useState(0);
 
-    const data1 = useTable("messages", "read", "date");
-    const data2 = useTable("messagesAlt", filter, "date");
+    useLoad("messages", cur1, 10, filter, order);
+    useLoad("messagesAlt", cur2, 3, "read", order);
+
+    const mes1 = useTable("messages");
+    const mes2 = useTable("messagesAlt");
 
     const title = ["ID & Date", "Customer", "Comment", "Action"];
 
@@ -27,8 +30,9 @@ const Contact = () => {
             <Box $margin="1rem">
                 <Entry $padding="0" $justify="space-between" $height="14rem">
                     <SwiperNavigationAlt
-                        data={data1}
-                        count={3}
+                        data={mes2.data}
+                        limit={3}
+                        count={mes2.count}
                         cur={cur1}
                         setCur={setCur1}
                         margin="-2rem"
@@ -37,7 +41,7 @@ const Contact = () => {
                 </Entry>
             </Box>
             <Entry $margin="0 1rem" $padding="1rem" $color="transparent" $justify="space-between">
-                <SlidingMenu fields={["All Contacts", "Archived"]} handleChange={(x: string) => { setCur2(0); setFilter(x); }} />
+                <SlidingMenu fields={["All Contacts", "Archived"]} handleChange={(x: string) => { setCur1(0); setFilter(x); }} />
             </Entry>
             <Box $margin="0 1rem">
                 <Table>
@@ -52,11 +56,11 @@ const Contact = () => {
                             })
                         }
                     </Row>
-                    <SwiperComponents data={data2} cur={cur2} count={10} />
+                    <SwiperComponents data={mes1.data} />
                 </Table>
             </Box>
             <Box $margin="1rem" $color="transparent" $padding="0">
-                <SwiperNavigation cur={cur2} setCur={setCur2} count={10} data={data2} />
+                <SwiperNavigation cur={cur2} setCur={setCur2} count={mes1.count} limit={10} />
             </Box>
         </div>
     );

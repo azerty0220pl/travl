@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { Options, Status } from "../store";
+import { toast } from "react-toastify";
 
 export interface Message {
     _id?: string,
@@ -15,17 +16,36 @@ export interface Message {
 
 export interface MsgState {
     messages: Message[],
+    messagesAlt: Message[],
     status: Status,
     count: number
 };
 
 const initialState: MsgState = {
     messages: [],
+    messagesAlt: [],
     status: "idle",
     count: 0
 };
 
 export const fetchMessages = createAsyncThunk('getMessages', async (options: Options) => {
+    const res = await fetch(
+        process.env.REACT_APP_API +
+        "/messages?page=" + options.page +
+        "&limit=" + options.limit +
+        "&filter=" + options.filter +
+        "&order=" + options.order,
+        {
+            method: "GET",
+            headers: {
+                Authorization: localStorage.getItem("token") || ""
+            }
+        });
+
+    return res.json();
+});
+
+export const fetchMessagesAlt = createAsyncThunk('getMessagesAlt', async (options: Options) => {
     const res = await fetch(
         process.env.REACT_APP_API +
         "/messages?page=" + options.page +
@@ -70,14 +90,30 @@ const messagesSlice = createSlice({
             .addCase(fetchMessages.fulfilled, (state, action) => {
                 state.status = "fulfilled";
                 state.messages = action.payload.messages;
+                state.count = action.payload.count;
             })
-            .addCase(fetchMessages.pending, (state, action) => {
+            .addCase(fetchMessages.pending, (state, _action) => {
                 state.status = "pending";
             })
-            .addCase(fetchMessages.rejected, (state, action) => {
+            .addCase(fetchMessages.rejected, (state, _action) => {
                 state.status = "rejected";
                 state.messages = [];
                 state.count = 0;
+                toast.error("Couldn't load messages list...");
+            })
+            .addCase(fetchMessagesAlt.fulfilled, (state, action) => {
+                state.status = "fulfilled";
+                state.messagesAlt = action.payload.messages;
+                state.count = action.payload.count;
+            })
+            .addCase(fetchMessagesAlt.pending, (state, _action) => {
+                state.status = "pending";
+            })
+            .addCase(fetchMessagesAlt.rejected, (state, _action) => {
+                state.status = "rejected";
+                state.messagesAlt = [];
+                state.count = 0;
+                toast.error("Couldn't load messages list...");
             });
     }
 });

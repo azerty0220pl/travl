@@ -13,11 +13,12 @@ import { useLoad } from "../components/redux/useLoad";
 
 const Dashboard = () => {
     useRelocation("Dashboard");
-    useLoad("messages");
-
-    let data = useTable("messages", "read", "date");
 
     let [cur, setCur] = useState(0);
+
+    useLoad("messagesAlt", cur, 3, "read", "date");
+
+    const { data, count } = useTable("messagesAlt");
 
     return (
         <div data-cy="page-dashboard">
@@ -55,7 +56,8 @@ const Dashboard = () => {
                 <Entry $padding="0" $justify="space-between" $gap="1rem" $radius="0" $height="14rem">
                     <SwiperNavigationAlt
                         data={data}
-                        count={3}
+                        count={count}
+                        limit={3}
                         cur={cur}
                         setCur={setCur}
                         margin="-2rem"
