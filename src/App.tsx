@@ -6,6 +6,8 @@ import Menu from "./components/advanced/Menu";
 import RoutesComponent from "./components/advanced/RoutesComponent";
 import { logged } from "./components/basic/loginLogic";
 import { User } from "./components/redux/users/usersSlice";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.min.css';
 
 export interface ActionInterface {
   type: string,
@@ -70,14 +72,28 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Context.Provider value={state}>
-      {
-        state.authenticated ?
-          <Menu Page={RoutesComponent} />
-          :
-          <Login />
-      }
-    </Context.Provider>
+    <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <Context.Provider value={state}>
+        {
+          state.authenticated ?
+            <Menu Page={RoutesComponent} />
+            :
+            <Login />
+        }
+      </Context.Provider>
+    </>
   );
 }
 
