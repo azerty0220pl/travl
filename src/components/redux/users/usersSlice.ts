@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { Options, Status } from "../store";
+import { toast } from "react-toastify";
 
 export interface User {
     _id?: string,
@@ -79,6 +80,13 @@ const usersSlice = createSlice({
                 state.status = "rejected";
                 state.users = [];
                 state.count = 0;
+                toast.error("Couldn't load users list...");
+            })
+            .addCase(newUser.fulfilled, (_state, _action) => {
+                toast.success("User added.");
+            })
+            .addCase(newUser.rejected, (_state, _action) => {
+                toast.error("Couldn't add user...");
             })
     }
 });

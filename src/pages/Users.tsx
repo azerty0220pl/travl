@@ -19,7 +19,7 @@ const Users = () => {
 
     const [filter, setFilter] = useState("all");
     const [order, setOrder] = useState("name");
-    const [cur, setCur] = useState(1);
+    const [cur, setCur] = useState(0);
 
     useLoad("users", cur, 10, filter, order);
 

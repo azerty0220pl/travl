@@ -4,10 +4,6 @@ import BookingTableRow from "../advanced/BookingTableRow";
 import UserTableRow from "../advanced/UserTableRow";
 import MessageTableRow from "../advanced/MessageTableRow";
 import { RootState, useAppSelector } from "./store";
-import { Book } from "./bookingsSlice";
-import { User } from "./users/usersSlice";
-import { Room } from "./rooms/roomsSlice";
-import { Message } from "./messages/messagesSlice";
 import MessageElement from "../advanced/Message";
 
 interface Selector {
@@ -20,6 +16,10 @@ interface Selector {
 const selectors: Selector = {
     messages: {
         data: (state: RootState) => state.messages.messages,
+        count: (state: RootState) => state.messages.count
+    },
+    messagesAlt: {
+        data: (state: RootState) => state.messages.messagesAlt,
         count: (state: RootState) => state.messages.count
     },
     rooms: {
@@ -41,14 +41,13 @@ const elems: Elems = {
     rooms: RoomsTableRow,
     bookings: BookingTableRow,
     users: UserTableRow,
-    messages: MessageElement,
-    messagesAlt: MessageTableRow
+    messages: MessageTableRow,
+    messagesAlt: MessageElement
 }
 
 export const useTable = (sel: string): { data: React.JSX.Element[], count: number } => {
-    const aux = useAppSelector(selectors[sel].data) as Object | Array<any>;
+    const data = useAppSelector(selectors[sel].data) as Array<any> || [];
     const count = useAppSelector(selectors[sel].count);
-    let data = Object.values(aux);
 
     const Elem = elems[sel] as ({ x, i }: { x: any, i: number }) => React.JSX.Element;
     return {
