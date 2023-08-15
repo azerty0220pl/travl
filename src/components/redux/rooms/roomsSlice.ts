@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { Options, Status } from "../store";
+import { toast } from "react-toastify";
 
 export type RoomType = "Single Bed" | "Double Bed" | "Superior Double" | "Suite";
 
-export interface Room  {
+export interface Room {
     _id?: string,
     name: string,
     type: RoomType,
-    ammenities: string,
+    ammenities: string[],
     price: number,
     offer: number,
     cancel: string,
@@ -69,19 +70,26 @@ const roomsSlice = createSlice({
     },
     extraReducers: builder => {
         builder
-        .addCase(fetchRooms.fulfilled, (state, action) => {
-            state.status = "fulfilled";
-            state.rooms = action.payload.rooms;
-            state.count = action.payload.count;
-        })
-        .addCase(fetchRooms.pending, (state) => {
-            state.status = "pending";
-        })
-        .addCase(fetchRooms.rejected, (state) => {
-            state.status = "rejected";
-            state.rooms = [];
-            state.count = 0;
-        })
+            .addCase(fetchRooms.fulfilled, (state, action) => {
+                state.status = "fulfilled";
+                state.rooms = action.payload.rooms;
+                state.count = action.payload.count;
+            })
+            .addCase(fetchRooms.pending, (state) => {
+                state.status = "pending";
+            })
+            .addCase(fetchRooms.rejected, (state) => {
+                state.status = "rejected";
+                state.rooms = [];
+                state.count = 0;
+                toast.error("Couldn't load rooms list...");
+            })
+            .addCase(newRoom.fulfilled, (_state, _action) => {
+                toast.success("Room added.");
+            })
+            .addCase(newRoom.rejected, (_state, _action) => {
+                toast.error("Couldn't add room...");
+            })
     }
 });
 

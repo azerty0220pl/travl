@@ -5,64 +5,60 @@ import { Entry, Box } from "../basic/Box";
 import empty from "../../assets/empty.png";
 import { Room } from "../redux/rooms/roomsSlice";
 
-const RoomsTableRow = ({ x, i }: {x: Partial<Room>, i: number}) => {
-    const status = (y: string) => {
-        switch (y) {
-            case "Available":
-                return (
-                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#5AD07A">
-                        <Text $align="center" $color="#FFFFFF">{y}</Text>
-                    </Box>
-                );
-            case "Booked":
-                return (
-                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#E23428">
-                        <Text $align="center" $color="#FFFFFF">{y}</Text>
-                    </Box>
-                );
-                default:
-                    return <></>;
-        }
+const RoomsTableRow = ({ x, i }: { x: Room, i: number }) => {
+    const status = (y: boolean) => {
+        if (y)
+            return (
+                <Box $margin="0" $padding="1rem" $height="3rem" $color="#5AD07A">
+                    <Text $align="center" $color="#FFFFFF">{y}</Text>
+                </Box>
+            );
+        else
+            return (
+                <Box $margin="0" $padding="1rem" $height="3rem" $color="#E23428">
+                    <Text $align="center" $color="#FFFFFF">{y}</Text>
+                </Box>
+            );
     }
 
-    return (
-        <Row key={i}>
-            <Cell>
-                <Box $display="inline" as="img" $padding="0" $margin="0" $width="5rem" $height="3rem" src={empty} />
-            </Cell>
-            <Cell>
-                <Text data-cy={"room-" + x.id + "name"}>{x.name}</Text>
-            </Cell>
-            <Cell>
-                <Text>{x.id}</Text>
-            </Cell>
-            <Cell>
-                <Text>{x.type}</Text>
-            </Cell>
-            <Cell>
-                <Box $margin="0" $padding="0" $radius="0">
-                    <Text $line="1.25rem">{x.ammenities}</Text>
-                </Box>
-            </Cell>
-            <Cell>
-                <Entry $gap="0" $padding="0 1rem 0 0" $radius="0">
-                    <Text $width="fit-content">{x.price}</Text>
-                    <Text $size="0.75rem" $color="#799283">/Night</Text>
-                </Entry>
-            </Cell>
-            <Cell>
-                <Entry $gap="0" $padding="0 1rem 0 0" $radius="0">
-                    <Text $width="fit-content">{x.price! * (100 - x.offer!) / 100}</Text>
-                    <Text $size="0.75rem" $color="#799283">/Night</Text>
-                </Entry>
-            </Cell>
-            <Cell>
-                {
-                    status(x.status!)
-                }
-            </Cell>
-        </Row>
-    );
+return (
+    <Row key={i}>
+        <Cell>
+            <Box $display="inline" as="img" $padding="0" $margin="0" $width="5rem" $height="3rem" src={empty} />
+        </Cell>
+        <Cell>
+            <Text data-cy={"room-" + x._id + "name"}>{x.name}</Text>
+        </Cell>
+        <Cell>
+            <Text>{x._id}</Text>
+        </Cell>
+        <Cell>
+            <Text>{x.type}</Text>
+        </Cell>
+        <Cell>
+            <Box $margin="0" $padding="0" $radius="0">
+                <Text $line="1.25rem">{x.ammenities}</Text>
+            </Box>
+        </Cell>
+        <Cell>
+            <Entry $gap="0" $padding="0 1rem 0 0" $radius="0">
+                <Text $width="fit-content">{x.price}</Text>
+                <Text $size="0.75rem" $color="#799283">/Night</Text>
+            </Entry>
+        </Cell>
+        <Cell>
+            <Entry $gap="0" $padding="0 1rem 0 0" $radius="0">
+                <Text $width="fit-content">{x.price! * (100 - x.offer!) / 100}</Text>
+                <Text $size="0.75rem" $color="#799283">/Night</Text>
+            </Entry>
+        </Cell>
+        <Cell>
+            {
+                status(x.status)
+            }
+        </Cell>
+    </Row>
+);
 }
 
 export default RoomsTableRow;
