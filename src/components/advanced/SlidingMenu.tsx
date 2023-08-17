@@ -14,7 +14,7 @@ const dict: Dict = {
     "All Users": "all",
     "Active Users": "active",
     "Inactive Users": "inactive",
-    "All Contacts": "published",
+    "All Contacts": "all",
     "Archived": "archived"
 }
 
