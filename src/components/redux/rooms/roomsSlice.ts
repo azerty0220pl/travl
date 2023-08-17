@@ -70,7 +70,7 @@ const roomsSlice = createSlice({
     name: "rooms",
     initialState,
     reducers: {
-        changeRoomStatus: (state, action) => {
+        changeRoomStatus(state, action) {
             state.status = action.payload;
         }
     },

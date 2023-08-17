@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useLoad } from "../components/redux/useLoad";
+import { changeMessagesStatus } from "../components/redux/messages/messagesSlice";
 
 const Dashboard = () => {
     useRelocation("Dashboard");
@@ -62,6 +63,7 @@ const Dashboard = () => {
                         setCur={setCur}
                         margin="-2rem"
                         colors={["#575757", "#135846", "#BEBEBE", "#FFF"]}
+                        action={changeMessagesStatus}
                     />
                 </Entry>
             </Box>

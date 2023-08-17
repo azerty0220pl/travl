@@ -10,10 +10,12 @@ import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useNavigate } from "react-router";
 import { useLoad } from "../components/redux/useLoad";
+import { useAppDispatch } from "../components/redux/store";
 import { changeRoomStatus } from "../components/redux/rooms/roomsSlice";
 
 
 const Rooms = () => {
+    const dispatch = useAppDispatch();
     useRelocation("Rooms");
 
     const [filter, setFilter] = useState("all");
@@ -42,8 +44,12 @@ const Rooms = () => {
             <Entry $margin="0" $padding="1rem" $color="transparent" $justify="space-between">
                 <SlidingMenu
                     fields={["All Rooms", "Available", "Booked"]}
-                    handleChange={(x: string) => { setCur(0); setFilter(x); }}
-                    />
+                    handleChange={(x: string) => {
+                        setCur(0);
+                        setFilter(x);
+                        dispatch(changeRoomStatus("idle"));
+                    }}
+                />
                 <Entry $margin="0" $padding="0" $radius="0" $color="transparent">
                     <Box
                         as="button"
@@ -61,7 +67,10 @@ const Rooms = () => {
                         $color="#135846"
                         $weight="600"
                         value={order}
-                        onChange={(e: ChangeEvent<HTMLSelectElement>) => { setOrder(e.target.value) }}
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+                            setOrder(e.target.value);
+                            dispatch(changeRoomStatus("idle"));
+                        }}
                     >
                         <Text as='option' value="number" $color="#135846" $weight="400">Number</Text>
                         <Text as='option' value="status" $color="#135846" $weight="400">Status</Text>
@@ -87,7 +96,7 @@ const Rooms = () => {
                 </Table>
             </Box>
             <Box $margin="1rem" $color="transparent" $padding="0">
-                <SwiperNavigation cur={cur} setCur={setCur} count={count} limit={10} action={{type: changeRoomStatus, payload: "idle"}} />
+                <SwiperNavigation cur={cur} setCur={setCur} count={count} limit={10} action={changeRoomStatus} />
             </Box>
         </div>
     );

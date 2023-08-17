@@ -68,7 +68,7 @@ const usersSlice = createSlice({
     name: "users",
     initialState,
     reducers: {
-        changeUserStatus: (state, action) => {
+        changeUserStatus(state, action) {
             state.status = action.payload;
         }
     },

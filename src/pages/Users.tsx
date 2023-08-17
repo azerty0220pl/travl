@@ -46,7 +46,7 @@ const Users = () => {
                     handleChange={(x: string) => {
                         setCur(0);
                         setFilter(x);
-                        dispatch({ type: changeUserStatus, payload: "idle" });
+                        dispatch(changeUserStatus("idle"));
                     }}
                 />
                 <Entry $margin="0" $padding="0" $radius="0" $color="transparent">
@@ -70,7 +70,7 @@ const Users = () => {
                         onChange={
                             (e: ChangeEvent<HTMLSelectElement>) => {
                                 setOrder(e.target.value);
-                                dispatch({ type: changeUserStatus, payload: "idle" });
+                                dispatch(changeUserStatus("idle"));
                             }
                         }
                     >
@@ -96,7 +96,7 @@ const Users = () => {
                 </Table>
             </Box>
             <Box $margin="1rem" $color="transparent" $padding="0">
-                <SwiperNavigation cur={cur} setCur={setCur} limit={10} count={count} action={{ type: changeUserStatus, payload: "idle" }} />
+                <SwiperNavigation cur={cur} setCur={setCur} limit={10} count={count} action={changeUserStatus} />
             </Box>
         </div>
     );
