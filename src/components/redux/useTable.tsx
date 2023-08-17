@@ -20,7 +20,7 @@ const selectors: Selector = {
     },
     messagesAlt: {
         data: (state: RootState) => state.messages.messagesAlt,
-        count: (state: RootState) => state.messages.count
+        count: (state: RootState) => state.messages.countAlt
     },
     rooms: {
         data: (state: RootState) => state.rooms.rooms,

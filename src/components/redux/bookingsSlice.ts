@@ -49,7 +49,7 @@ const bookingsSlice = createSlice({
     name: "bookings",
     initialState,
     reducers: {
-        changeBookingsStatus: (state, action) => {
+        changeBookingsStatus(state, action) {
             state.status = action.payload;
         }
     },
