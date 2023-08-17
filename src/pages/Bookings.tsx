@@ -9,6 +9,7 @@ import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useLoad } from "../components/redux/useLoad";
+import { changeBookingsStatus } from "../components/redux/bookingsSlice";
 
 const Bookings = () => {
     useRelocation("Bookings");
@@ -68,7 +69,7 @@ const Bookings = () => {
                 </Table>
             </Box>
             <Box $margin="1rem" $color="transparent" $padding="0">
-                <SwiperNavigation cur={cur} setCur={setCur} limit={10} count={count} />
+                <SwiperNavigation cur={cur} setCur={setCur} limit={10} count={count} action={{type: changeBookingsStatus, payload: "idle"}} />
             </Box>
         </div>
     );

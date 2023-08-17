@@ -38,13 +38,20 @@ export const fetchBookings = createAsyncThunk('getBookings', async (options: Opt
                 Authorization: localStorage.getItem("token") || ""
             }
         });
-    return res.json();
+
+    if (!res.ok)
+        throw new Error(await res.json());
+    else
+        return res.json();
 });
 
 const bookingsSlice = createSlice({
     name: "bookings",
     initialState,
     reducers: {
+        changeBookingsStatus: (state, action) => {
+            state.status = action.payload;
+        }
     },
     extraReducers: builder => {
         builder
@@ -65,5 +72,6 @@ const bookingsSlice = createSlice({
     }
 });
 
+export const { changeBookingsStatus } = bookingsSlice.actions;
 export default bookingsSlice.reducer;
 
