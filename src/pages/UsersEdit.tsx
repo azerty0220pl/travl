@@ -24,7 +24,7 @@ const UserEdit = () => {
     const [description, setDescription] = useState(state.user!.description);
     const [status, setStatus] = useState(state.user!.status);
     const [joined, setJoined] = useState(dateFormat(state.user!.joined));
-    const [password, setPassword] = useState(state.user!.password);
+    const [password, setPassword] = useState("");
 
     const handleSubmit = (e: SyntheticEvent): void => {
         e.preventDefault();
