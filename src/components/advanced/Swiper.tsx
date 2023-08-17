@@ -5,7 +5,7 @@ import Text from "../basic/Text";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch } from "../redux/store";
-import { changeStatus } from "../redux/users/usersSlice";
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
 export const SwiperComponents = ({
     data
@@ -26,13 +26,17 @@ export const SwiperNavigation = ({
     count,
     limit,
     cur,
-    setCur
+    setCur,
+    action
 }: {
     count: number,
     cur: number,
     limit: number,
-    setCur: Function
+    setCur: Function,
+    action: ActionCreatorWithPayload<any, any>
 }) => {
+    const dispatch = useAppDispatch();
+
     const pages = Math.ceil((count || 0) / limit);
 
     const move = (x: number) => {
@@ -63,7 +67,10 @@ export const SwiperNavigation = ({
                     $dim="3rem"
                     $padding="1rem"
                     $color={cur === i ? "#135846" : "transparent"}
-                    onClick={() => { setCur(i) }}
+                    onClick={() => {
+                        setCur(i);
+                        dispatch(action("idle"));
+                    }}
                 >
                     <Text
                         $align="center"
@@ -86,10 +93,9 @@ export const SwiperNavigation = ({
     useEffect(() => {
         if (cur > 0 && cur === pages) {
             mv(-1);
+            dispatch(action);
         }
     }, [cur, pages, mv]);
-
-    const dispatch = useAppDispatch();
 
     return (
         <>
@@ -104,7 +110,7 @@ export const SwiperNavigation = ({
                     $border="2px solid #135846"
                     onClick={() => {
                         move(-1);
-                        dispatch({ type: changeStatus, payload: "idle" });
+                        dispatch(action("idle"));
                     }}
                 >
                     <Text $color="#135846" $align="center">Prev</Text>
@@ -126,7 +132,7 @@ export const SwiperNavigation = ({
                     $border="2px solid #135846"
                     onClick={() => {
                         move(1);
-                        dispatch({ type: changeStatus, payload: "idle" });
+                        dispatch(action("idle"));
                     }}
                 >
                     <Text $size="1rem" $color="#135846" $align="center">Next</Text>
@@ -171,7 +177,8 @@ export const SwiperNavigationAlt = ({
     count,
     setCur,
     margin,
-    colors
+    colors,
+    action
 }: {
     data: React.JSX.Element[],
     cur: number,
@@ -179,12 +186,12 @@ export const SwiperNavigationAlt = ({
     count: number,
     setCur: Function,
     margin: string,
-    colors: string[]
+    colors: string[],
+    action: ActionCreatorWithPayload<any, any>
 }) => {
     const [pos1, setPos1] = useState("0");
     const [pos2, setPos2] = useState("100%");
     const [tran, setTran] = useState("0");
-    const [aux, setAux] = useState(0);
 
     const pages = Math.ceil((count || 0) / limit);
 
@@ -197,7 +204,8 @@ export const SwiperNavigationAlt = ({
         if (y < 0 || y >= pages)
             return;
 
-        setAux(y);
+        setCur(y);
+        
         setTran("none");
         setPos1("0%");
         setPos2((100 * x) + "%");
@@ -209,19 +217,20 @@ export const SwiperNavigationAlt = ({
         }, 10);
 
         setTimeout(() => {
-            setCur(y);
             setTran("none");
             setPos1("0%");
             setPos2("100%");
         }, 260);
     };
 
-    const mv = useCallback(move, [pages, cur, setAux, setTran, setPos1, setPos2, setCur]);
+    const mv = useCallback(move, [pages, cur, setTran, setPos1, setPos2, setCur]);
     useEffect(() => {
         if (cur > 0 && cur === pages) {
             mv(-1);
         }
     }, [cur, pages, mv]);
+
+    const dispatch = useAppDispatch();
 
     return (
         <>
@@ -230,7 +239,10 @@ export const SwiperNavigationAlt = ({
                 $dim="2rem"
                 $padding="0.45rem"
                 $color={cur - 1 < 0 ? colors[0] : colors[1]}
-                onClick={() => { move(-1) }}
+                onClick={() => {
+                    move(-1);
+                    dispatch(action("idle"));
+                }}
                 $zindex="10"
             >
                 <HiArrowLeft size="2rem" color={cur - 1 < 0 ? colors[2] : colors[3]} />
@@ -248,7 +260,10 @@ export const SwiperNavigationAlt = ({
                 $dim="2rem"
                 $padding="0.45rem"
                 $color={cur + 1 >= pages ? colors[0] : colors[1]}
-                onClick={() => { move(1) }}
+                onClick={() => {
+                    move(1);
+                    dispatch(action("idle"));
+                }}
             >
                 <HiArrowRight size="2rem" color={cur + 1 >= pages ? colors[2] : colors[3]} />
             </Icon>
