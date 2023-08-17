@@ -1,12 +1,12 @@
-import { Room, changeStatus, newRoom } from "./roomsSlice";
+import { Room, changeRoomStatus, newRoom } from "./roomsSlice";
 import { useAppDispatch } from "../store";
 
 export const useNewRoom = () => {
     const reduxDispatch = useAppDispatch();
     const dispatch = useAppDispatch();
 
-    return (data: Room) => {
+    return (data: Partial<Room>) => {
         dispatch(newRoom(data));
-        reduxDispatch({type: changeStatus, payload: "idle"});
+        reduxDispatch({type: changeRoomStatus, payload: "idle"});
     };
 }

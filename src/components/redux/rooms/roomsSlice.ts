@@ -7,13 +7,13 @@ export type RoomType = "Single Bed" | "Double Bed" | "Superior Double" | "Suite"
 export interface Room {
     _id?: string,
     name: string,
-    type: RoomType,
+    type: number,
     ammenities: string[],
     price: number,
     offer: number,
     cancel: string,
     description: string,
-    status: boolean
+    bookings: []
 };
 
 export interface RoomState {
@@ -42,10 +42,13 @@ export const fetchRooms = createAsyncThunk('getRooms', async (options: Options) 
             }
         });
 
-    return res.json();
+    if (!res.ok)
+        throw new Error(await res.json());
+    else
+        return res.json();
 });
 
-export const newRoom = createAsyncThunk('newRoom', async (room: Room) => {
+export const newRoom = createAsyncThunk('newRoom', async (room: Partial<Room>) => {
     const res = await fetch(
         process.env.REACT_APP_API + "/rooms",
         {
@@ -57,14 +60,17 @@ export const newRoom = createAsyncThunk('newRoom', async (room: Room) => {
             body: JSON.stringify({ room: room })
         });
 
-    return res.json();
+    if (!res.ok)
+        throw new Error(await res.json());
+    else
+        return res.json();
 });
 
 const roomsSlice = createSlice({
     name: "rooms",
     initialState,
     reducers: {
-        changeStatus: (state, action) => {
+        changeRoomStatus: (state, action) => {
             state.status = action.payload;
         }
     },
@@ -88,11 +94,12 @@ const roomsSlice = createSlice({
                 toast.success("Room added.");
             })
             .addCase(newRoom.rejected, (_state, _action) => {
+
                 toast.error("Couldn't add room...");
             })
     }
 });
 
-export const { changeStatus } = roomsSlice.actions;
+export const { changeRoomStatus } = roomsSlice.actions;
 export default roomsSlice.reducer;
 

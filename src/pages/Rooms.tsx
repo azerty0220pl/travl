@@ -10,6 +10,7 @@ import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useNavigate } from "react-router";
 import { useLoad } from "../components/redux/useLoad";
+import { changeRoomStatus } from "../components/redux/rooms/roomsSlice";
 
 
 const Rooms = () => {
@@ -86,7 +87,7 @@ const Rooms = () => {
                 </Table>
             </Box>
             <Box $margin="1rem" $color="transparent" $padding="0">
-                <SwiperNavigation cur={cur} setCur={setCur} count={count} limit={10} />
+                <SwiperNavigation cur={cur} setCur={setCur} count={count} limit={10} action={{type: changeRoomStatus, payload: "idle"}} />
             </Box>
         </div>
     );
