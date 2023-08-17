@@ -6,7 +6,6 @@ import Select from "../components/basic/Select";
 import { useRelocation } from "../components/basic/hooks";
 import { useNewRoom } from "../components/redux/rooms/roomsHooks";
 import { useNavigate } from "react-router";
-import { RoomType } from "../components/redux/rooms/roomsSlice";
 
 const RoomEdit = () => {
     useRelocation("New Room");
@@ -18,12 +17,12 @@ const RoomEdit = () => {
         form.preventDefault();
         newRoom({
             "name": (document.getElementById("name") as HTMLInputElement).value,
-            "type": (document.getElementById("type") as HTMLInputElement).value as RoomType,
+            "type": parseInt((document.getElementById("type") as HTMLInputElement).value),
+            "ammenities": [],
             "price": parseInt((document.getElementById("price") as HTMLInputElement).value),
             "offer": parseInt((document.getElementById("offer") as HTMLInputElement).value),
-            "ammenities": [],
-            "status": true,
             "cancel": (document.getElementById("cancel") as HTMLInputElement).value,
+            "bookings": [],
             "description": (document.getElementById("description") as HTMLInputElement).value
         });
         navigate("/rooms");
@@ -55,10 +54,10 @@ const RoomEdit = () => {
                             $weight="600"
                             $margin="0.5rem 0 0 0"
                         >
-                            <Text as='option' value="Single Bed" $color="#135846" $weight="400">Single Bed</Text>
-                            <Text as='option' value="Double Bed" $color="#135846" $weight="400">Double Bed</Text>
-                            <Text as='option' value="Double Superior" $color="#135846" $weight="400">Double Superior</Text>
-                            <Text as='option' value="Suite" $color="#135846" $weight="400">Suite</Text>
+                            <Text as='option' value="0" $color="#135846" $weight="400">Single Bed</Text>
+                            <Text as='option' value="1" $color="#135846" $weight="400">Double Bed</Text>
+                            <Text as='option' value="2" $color="#135846" $weight="400">Double Superior</Text>
+                            <Text as='option' value="3" $color="#135846" $weight="400">Suite</Text>
                         </Select>
                     </label>
                     <Box
