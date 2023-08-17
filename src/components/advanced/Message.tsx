@@ -50,7 +50,11 @@ const MessageElement = ({ x }: { x: Message }) => {
                         {x.email}
                     </Text>
                 </Box>
-                <Icon as="button" $padding="0.25rem" onClick={() => { x.read = false; handleClick(x) }}>
+                <Icon as="button" $padding="0.25rem" onClick={() => {
+                    const aux = { ...x, read: true };
+                    console.log(aux)
+                    handleClick(aux);
+                }}>
                     <FaRegCircleXmark size="1.5rem" color="#E23428" />
                 </Icon>
             </Entry>

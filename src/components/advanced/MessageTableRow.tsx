@@ -56,7 +56,10 @@ const MessageTableRow = ({ x, i }: { x: Message, i: number }) => {
                     x.archived ?
                         <Box
                             as="button"
-                            onClick={() => { x.archived = false; handleArchive(x) }}
+                            onClick={() => {
+                                const aux = { ...x, archived: false };
+                                handleArchive(aux);
+                            }}
                             $display="inline-block"
                             $height="3rem"
                             $padding="1rem"
@@ -68,7 +71,10 @@ const MessageTableRow = ({ x, i }: { x: Message, i: number }) => {
                         :
                         <Box
                             as="button"
-                            onClick={() => { x.archived = true; handleArchive(x) }}
+                            onClick={() => {
+                                const aux = { ...x, archived: true };
+                                handleArchive(aux);
+                            }}
                             $display="inline-block"
                             $height="3rem"
                             $padding="1rem"

@@ -1,5 +1,6 @@
 import { Message, changeMessagesStatus } from "./messagesSlice";
 import { useAppDispatch } from "../store";
+import { toast } from "react-toastify";
 
 export const useUpdateMessage = () => {
     const reduxDispatch = useAppDispatch();
@@ -23,8 +24,13 @@ export const useUpdateMessage = () => {
             const data = await res.json();
 
             if (!data.error) {
-                reduxDispatch({ type: changeMessagesStatus, payload: "idle" });
+                toast.success("Message updated.");
+                reduxDispatch(changeMessagesStatus("idle"));
+            } else {
+                toast.error("Couldn't update message...");
             }
-        } catch { }
+        } catch {
+            toast.error("Couldn't update message...");
+        }
     };
 }

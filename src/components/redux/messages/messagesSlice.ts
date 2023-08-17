@@ -67,24 +67,6 @@ export const fetchMessagesAlt = createAsyncThunk('getMessagesAlt', async (option
         return res.json();
 });
 
-export const updateMessage = createAsyncThunk('updateMessage', async (message: Message) => {
-    const res = await fetch(
-        process.env.REACT_APP_API + "/messages",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: localStorage.getItem("token") || ""
-            },
-            body: JSON.stringify({ message: message })
-        });
-
-    if (!res.ok)
-        throw new Error(await res.json());
-    else
-        return res.json();
-});
-
 const messagesSlice = createSlice({
     name: "messages",
     initialState,
