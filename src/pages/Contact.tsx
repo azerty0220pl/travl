@@ -8,11 +8,14 @@ import { Table, Row, Cell } from "../components/basic/Table";
 import { useRelocation } from "../components/basic/hooks";
 import { useTable } from "../components/redux/useTable";
 import { useLoad } from "../components/redux/useLoad";
+import { useAppDispatch } from "../components/redux/store";
+import { changeMessagesStatus } from "../components/redux/messages/messagesSlice";
 
 const Contact = () => {
+    const dispatch = useAppDispatch();
     useRelocation("Contact");
 
-    const [filter, setFilter] = useState("archived");
+    const [filter, setFilter] = useState("all");
     const order = "date";
     const [cur1, setCur1] = useState(0);
     const [cur2, setCur2] = useState(0);
@@ -33,15 +36,20 @@ const Contact = () => {
                         data={mes2.data}
                         limit={3}
                         count={mes2.count}
-                        cur={cur1}
-                        setCur={setCur1}
+                        cur={cur2}
+                        setCur={setCur2}
                         margin="-2rem"
                         colors={["#575757", "#135846", "#BEBEBE", "#FFF"]}
+                        action={changeMessagesStatus}
                     />
                 </Entry>
             </Box>
             <Entry $margin="0 1rem" $padding="1rem" $color="transparent" $justify="space-between">
-                <SlidingMenu fields={["All Contacts", "Archived"]} handleChange={(x: string) => { setCur1(0); setFilter(x); }} />
+                <SlidingMenu fields={["All Contacts", "Archived"]} handleChange={(x: string) => {
+                    setCur1(0);
+                    setFilter(x);
+                    dispatch(changeMessagesStatus("idle"));
+                }} />
             </Entry>
             <Box $margin="0 1rem">
                 <Table>
@@ -60,7 +68,7 @@ const Contact = () => {
                 </Table>
             </Box>
             <Box $margin="1rem" $color="transparent" $padding="0">
-                <SwiperNavigation cur={cur2} setCur={setCur2} count={mes1.count} limit={10} />
+                <SwiperNavigation cur={cur1} setCur={setCur1} count={mes1.count} limit={10} action={changeMessagesStatus} />
             </Box>
         </div>
     );

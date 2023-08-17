@@ -18,14 +18,16 @@ export interface MsgState {
     messages: Message[],
     messagesAlt: Message[],
     status: Status,
-    count: number
+    count: number,
+    countAlt: number
 };
 
 const initialState: MsgState = {
     messages: [],
     messagesAlt: [],
     status: "idle",
-    count: 0
+    count: 0,
+    countAlt: 0
 };
 
 export const fetchMessages = createAsyncThunk('getMessages', async (options: Options) => {
@@ -59,7 +61,10 @@ export const fetchMessagesAlt = createAsyncThunk('getMessagesAlt', async (option
             }
         });
 
-    return res.json();
+    if (!res.ok)
+        throw new Error(res.status.toString());
+    else
+        return res.json();
 });
 
 export const updateMessage = createAsyncThunk('updateMessage', async (message: Message) => {
@@ -74,14 +79,17 @@ export const updateMessage = createAsyncThunk('updateMessage', async (message: M
             body: JSON.stringify({ message: message })
         });
 
-    return res.json();
+    if (!res.ok)
+        throw new Error(await res.json());
+    else
+        return res.json();
 });
 
 const messagesSlice = createSlice({
     name: "messages",
     initialState,
     reducers: {
-        changeStatus: (state, action) => {
+        changeMessagesStatus(state, action) {
             state.status = action.payload;
         }
     },
@@ -104,7 +112,7 @@ const messagesSlice = createSlice({
             .addCase(fetchMessagesAlt.fulfilled, (state, action) => {
                 state.status = "fulfilled";
                 state.messagesAlt = action.payload.message;
-                state.count = action.payload.count;
+                state.countAlt = action.payload.count;
             })
             .addCase(fetchMessagesAlt.pending, (state, _action) => {
                 state.status = "pending";
@@ -112,11 +120,11 @@ const messagesSlice = createSlice({
             .addCase(fetchMessagesAlt.rejected, (state, _action) => {
                 state.status = "rejected";
                 state.messagesAlt = [];
-                state.count = 0;
+                state.countAlt = 0;
                 toast.error("Couldn't load messages list...");
             });
     }
 });
 
-export const { changeStatus } = messagesSlice.actions;
+export const { changeMessagesStatus } = messagesSlice.actions;
 export default messagesSlice.reducer;

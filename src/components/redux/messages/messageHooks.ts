@@ -1,4 +1,4 @@
-import { Message, changeStatus } from "./messagesSlice";
+import { Message, changeMessagesStatus } from "./messagesSlice";
 import { useAppDispatch } from "../store";
 
 export const useUpdateMessage = () => {
@@ -23,7 +23,7 @@ export const useUpdateMessage = () => {
             const data = await res.json();
 
             if (!data.error) {
-                reduxDispatch({ type: changeStatus, payload: "idle" });
+                reduxDispatch({ type: changeMessagesStatus, payload: "idle" });
             }
         } catch { }
     };
