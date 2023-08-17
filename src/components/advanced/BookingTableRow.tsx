@@ -73,7 +73,6 @@ const BookingTableRow = ({ x, i }: { x: Book, i: number }) => {
             </Cell>
             <Cell>
                 {
-                    status(x.status)
                 }
             </Cell>
         </Row>

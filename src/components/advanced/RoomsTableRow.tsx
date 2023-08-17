@@ -10,13 +10,13 @@ const RoomsTableRow = ({ x, i }: { x: Room, i: number }) => {
         if (y)
             return (
                 <Box $margin="0" $padding="1rem" $height="3rem" $color="#5AD07A">
-                    <Text $align="center" $color="#FFFFFF">{y}</Text>
+                    <Text $align="center" $color="#FFFFFF">Available</Text>
                 </Box>
             );
         else
             return (
                 <Box $margin="0" $padding="1rem" $height="3rem" $color="#E23428">
-                    <Text $align="center" $color="#FFFFFF">{y}</Text>
+                    <Text $align="center" $color="#FFFFFF">Booked</Text>
                 </Box>
             );
     }
@@ -54,7 +54,6 @@ return (
         </Cell>
         <Cell>
             {
-                status(x.status)
             }
         </Cell>
     </Row>
