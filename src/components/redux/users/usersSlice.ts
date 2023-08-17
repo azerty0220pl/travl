@@ -40,7 +40,10 @@ export const fetchUsers = createAsyncThunk('getUsers', async (options: Options) 
             }
         });
 
-    return res.json();
+    if (!res.ok)
+        throw new Error(await res.json());
+    else
+        return res.json();
 });
 
 export const newUser = createAsyncThunk('newUser', async (user: User) => {
@@ -55,14 +58,17 @@ export const newUser = createAsyncThunk('newUser', async (user: User) => {
             body: JSON.stringify({ user: user })
         });
 
-    return res.json();
+    if (!res.ok)
+        throw new Error(await res.json());
+    else
+        return res.json();
 });
 
 const usersSlice = createSlice({
     name: "users",
     initialState,
     reducers: {
-        changeStatus: (state, action) => {
+        changeUserStatus: (state, action) => {
             state.status = action.payload;
         }
     },
@@ -91,5 +97,5 @@ const usersSlice = createSlice({
     }
 });
 
-export const { changeStatus } = usersSlice.actions;
+export const { changeUserStatus } = usersSlice.actions;
 export default usersSlice.reducer;

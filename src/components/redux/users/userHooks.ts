@@ -1,4 +1,4 @@
-import { User, changeStatus, newUser } from "./usersSlice";
+import { User, changeUserStatus, newUser } from "./usersSlice";
 import { useAppDispatch } from "../store";
 import { ActionInterface } from "../../../App";
 import { toast } from "react-toastify";
@@ -8,7 +8,7 @@ export const useNewUser = () => {
 
     return (data: User) => {
         reduxDispatch(newUser(data));
-        reduxDispatch({ type: changeStatus, payload: "idle" });
+        reduxDispatch({ type: changeUserStatus, payload: "idle" });
     };
 }
 
@@ -39,7 +39,7 @@ export const useUpdateUser = () => {
                     user: user
                 });
 
-                reduxDispatch({ type: changeStatus, payload: "idle" });
+                reduxDispatch({ type: changeUserStatus, payload: "idle" });
                 toast.success("User updated succesfully.");
             }
         } catch {

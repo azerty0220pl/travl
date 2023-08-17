@@ -11,7 +11,7 @@ import { useTable } from "../components/redux/useTable";
 import { useNavigate } from "react-router-dom";
 import { useLoad } from "../components/redux/useLoad";
 import { useAppDispatch } from "../components/redux/store";
-import { changeStatus } from "../components/redux/users/usersSlice";
+import { changeUserStatus } from "../components/redux/users/usersSlice";
 
 const Users = () => {
     const dispatch = useAppDispatch();
@@ -46,7 +46,7 @@ const Users = () => {
                     handleChange={(x: string) => {
                         setCur(0);
                         setFilter(x);
-                        dispatch({ type: changeStatus, payload: "idle" });
+                        dispatch({ type: changeUserStatus, payload: "idle" });
                     }}
                 />
                 <Entry $margin="0" $padding="0" $radius="0" $color="transparent">
@@ -70,7 +70,7 @@ const Users = () => {
                         onChange={
                             (e: ChangeEvent<HTMLSelectElement>) => {
                                 setOrder(e.target.value);
-                                dispatch({ type: changeStatus, payload: "idle" });
+                                dispatch({ type: changeUserStatus, payload: "idle" });
                             }
                         }
                     >
@@ -96,7 +96,7 @@ const Users = () => {
                 </Table>
             </Box>
             <Box $margin="1rem" $color="transparent" $padding="0">
-                <SwiperNavigation cur={cur} setCur={setCur} limit={10} count={count} />
+                <SwiperNavigation cur={cur} setCur={setCur} limit={10} count={count} action={{ type: changeUserStatus, payload: "idle" }} />
             </Box>
         </div>
     );
