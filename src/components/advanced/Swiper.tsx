@@ -95,7 +95,7 @@ export const SwiperNavigation = ({
             mv(-1);
             dispatch(action);
         }
-    }, [cur, pages, mv]);
+    }, [cur, pages, mv, dispatch, action]);
 
     return (
         <>
