@@ -79,6 +79,7 @@ const RoomEdit = () => {
                             placeholder="Short description..."
                             $height="3rem"
                             $line="1.25rem"
+                            required
                         />
                     </Box>
                 </Entry>
