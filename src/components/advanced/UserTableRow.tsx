@@ -36,7 +36,7 @@ const UserTableRow = ({ x, i }: { x: Partial<User>, i: number }) => {
                 <Text>{x.name}</Text>
             </Cell>
             <Cell>
-                <Text>{x._id}</Text>
+                <Text>{x._id?.slice(-6)}</Text>
             </Cell>
             <Cell>
                 <Text>{x.email}</Text>
