@@ -17,7 +17,7 @@ const MessageTableRow = ({ x, i }: { x: Message, i: number }) => {
         <Row>
             <Cell>
                 <Box $display="inline-block" $margin="0" $padding="0" $radius="0">
-                    <Text $line="1.25rem" >{x._id}</Text>
+                    <Text $line="1.25rem" >{x._id!.slice(-6)}</Text>
                     <Text $line="1.25rem" $margin="0.5rem" $color="#787878">{dateFormat(x.date!)}</Text>
                 </Box>
             </Cell>
