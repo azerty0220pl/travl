@@ -9,29 +9,19 @@ import { Book } from "../redux/bookingsSlice";
 const BookingTableRow = ({ x, i }: { x: Book, i: number }) => {
     const modal = useContext(Context).modal;
 
-    const status = (x: number): React.JSX.Element => {
-        switch (x) {
-            case 0:
-                return (
-                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#E8FFEE">
-                        <Text $align="center" $color="#5AD07A">Booked</Text>
-                    </Box>
-                );
-            case 1:
-                return (
-                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#FFEDEC">
-                        <Text $align="center" $color="#E23428">Refund</Text>
-                    </Box>
-                );
-            case 2:
-                return (
-                    <Box $margin="0" $padding="1rem" $height="3rem" $color="#FFFEEC">
-                        <Text $align="center" $color="#dfe228">In Progress</Text>
-                    </Box>
-                );
-            default:
-                return <></>;
-        }
+    const status = (x: Date, y: Date): React.JSX.Element => {
+        if (new Date(x) <= new Date() && new Date(y) > new Date())
+            return (
+                <Box $margin="0" $padding="1rem" $height="3rem" $color="#FFFEEC">
+                    <Text $align="center" $color="#dfe228">In Progress</Text>
+                </Box>
+            );
+        else
+            return (
+                <Box $margin="0" $padding="1rem" $height="3rem" $color="#E8FFEE">
+                    <Text $align="center" $color="#5AD07A">Booked</Text>
+                </Box>
+            );
     }
 
     return (
@@ -73,6 +63,7 @@ const BookingTableRow = ({ x, i }: { x: Book, i: number }) => {
             </Cell>
             <Cell>
                 {
+                    status(x.in, x.out)
                 }
             </Cell>
         </Row>

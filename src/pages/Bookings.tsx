@@ -30,7 +30,7 @@ const Bookings = () => {
         "Check In",
         "Check Out",
         "Special Request",
-        "Room Type",
+        "Room Number",
         "Status"
     ];
 
