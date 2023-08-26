@@ -30,7 +30,7 @@ return (
             <Text data-cy={"room-" + x._id + "name"}>{x.name}</Text>
         </Cell>
         <Cell>
-            <Text>{x._id}</Text>
+            <Text>{x._id!.slice(-6)}</Text>
         </Cell>
         <Cell>
             <Text>{x.type}</Text>
