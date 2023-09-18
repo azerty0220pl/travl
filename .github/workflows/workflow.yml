@@ -14,13 +14,10 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
     - name: Install dependecies
       run: npm ci
-    - name: Make .env
-      uses: SpicyPizza/create-envfile@v2.0
-      with:
-        envkey_REACT_APP_API: ${{ secrets.REACT_APP_API }}
-        directory: ./
-        file_name: .env
-        fail_on_empty: false
+      - name: Create .env file
+        uses: ozaytsev86/create-env-file@v1
+        with:
+          INPUT_ENV_REACT_APP_API: ${{ secrets.REACT_APP_API }}
     - name: Build app
       run: npm run build
     - uses: jakejarvis/s3-sync-action@master
