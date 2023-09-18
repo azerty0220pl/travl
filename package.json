@@ -2,7 +2,6 @@
   "name": "travl",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://azerty0220pl.github.io/travl",
   "dependencies": {
     "@babel/preset-react": "^7.22.5",
     "@reduxjs/toolkit": "^1.9.5",
