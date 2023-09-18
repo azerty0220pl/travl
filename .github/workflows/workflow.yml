@@ -8,6 +8,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: Install dependecies
+      uses: npm ci
+    - name: Make .env
+      uses: SpicyPizza/create-envfile@v2.0
+      with:
+        envkey_REACT_APP_API: ${{ secrets.REACT_APP_API }}
+        directory: /
+        file_name: .env
+        fail_on_empty: false
+    - name: Build app
+      uses: npm run build
     - uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
