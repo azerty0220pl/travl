@@ -2,6 +2,7 @@ on:
   push:
     branches:
     - TypeScript
+  workflow_dispatch:
 
 jobs:
   deploy:
