@@ -18,7 +18,7 @@ jobs:
       uses: SpicyPizza/create-envfile@v2.0
       with:
         envkey_REACT_APP_API: ${{ secrets.REACT_APP_API }}
-        directory: /
+        directory: ./
         file_name: .env
         fail_on_empty: false
     - name: Build app

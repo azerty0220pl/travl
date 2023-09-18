@@ -21,7 +21,7 @@ const RoomsTableRow = ({ x, i }: { x: Room, i: number }) => {
             );
     }
 
-    const types = (type) => {
+    const types = (type: number) => {
         switch (type) {
             case 0:
                 return "Single Bed";
