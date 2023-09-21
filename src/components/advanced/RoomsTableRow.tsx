@@ -52,7 +52,7 @@ const RoomsTableRow = ({ x, i }: { x: Room, i: number }) => {
             </Cell>
             <Cell>
                 <Box $margin="0" $padding="0" $radius="0">
-                    <Text $line="1.25rem">{x.ammenities}</Text>
+                    <Text $line="1.25rem">AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi</Text>
                 </Box>
             </Cell>
             <Cell>
